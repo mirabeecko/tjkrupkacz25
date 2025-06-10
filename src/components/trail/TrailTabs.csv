@@ -1,0 +1,7 @@
+id,name,difficulty,length,elevation,color,description,status,category
+vetvicka,Větvička,Lehká,2.5 km,120 m,green,"Lehká stezka vhodná pro začátečníky a rodinné vyjížďky.",open,easy
+koren,Kořen,Střední,3.8 km,180 m,blue,"Středně obtížná stezka s technickými pasážemi.",open,medium
+lavina,Lavina,Těžká,4.2 km,220 m,red,"Náročná trasa pro zkušené jezdce s řadou skoků a dropů.",construction,expert
+horizont,Horizont,Střední,3.1 km,150 m,blue,"Středně obtížná stezka s nádherným výhledem na Krušné hory.",maintenance,medium
+mechova,Mechová,Lehká,1.8 km,90 m,green,"Jednoduchá trasa vedoucí smrkovým lesem, vhodná pro začátečníky.",construction,easy
+kamenna,Kamenná,Těžká,3.5 km,200 m,red,"Technicky velmi náročná trasa s množstvím kamenných pasáží.",closed,expert

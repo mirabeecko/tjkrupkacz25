@@ -1,0 +1,68 @@
+[
+  {
+    "id": "vetvicka",
+    "name": "Větvička",
+    "difficulty": "Lehká",
+    "length": "2.5 km",
+    "elevation": "120 m",
+    "color": "green",
+    "description": "Lehká stezka vhodná pro začátečníky a rodinné vyjížďky.",
+    "status": "open",
+    "category": "easy"
+  },
+  {
+    "id": "koren",
+    "name": "Kořen",
+    "difficulty": "Střední",
+    "length": "3.8 km",
+    "elevation": "180 m",
+    "color": "blue",
+    "description": "Středně obtížná stezka s technickými pasážemi.",
+    "status": "open",
+    "category": "medium"
+  },
+  {
+    "id": "lavina",
+    "name": "Lavina",
+    "difficulty": "Těžká",
+    "length": "4.2 km",
+    "elevation": "220 m",
+    "color": "red",
+    "description": "Náročná trasa pro zkušené jezdce s řadou skoků a dropů.",
+    "status": "construction",
+    "category": "expert"
+  },
+  {
+    "id": "horizont",
+    "name": "Horizont",
+    "difficulty": "Střední",
+    "length": "3.1 km",
+    "elevation": "150 m",
+    "color": "blue",
+    "description": "Středně obtížná stezka s nádherným výhledem na Krušné hory.",
+    "status": "maintenance",
+    "category": "medium"
+  },
+  {
+    "id": "mechova",
+    "name": "Mechová",
+    "difficulty": "Lehká",
+    "length": "1.8 km",
+    "elevation": "90 m",
+    "color": "green",
+    "description": "Jednoduchá trasa vedoucí smrkovým lesem, vhodná pro začátečníky.",
+    "status": "construction",
+    "category": "easy"
+  },
+  {
+    "id": "kamenna",
+    "name": "Kamenná",
+    "difficulty": "Těžká",
+    "length": "3.5 km",
+    "elevation": "200 m",
+    "color": "red",
+    "description": "Technicky velmi náročná trasa s množstvím kamenných pasáží.",
+    "status": "closed",
+    "category": "expert"
+  }
+]
