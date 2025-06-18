@@ -76,8 +76,7 @@ const KomariVizka = () => {
       try {
         const { data, error } = await supabase
           .from('places')
-          .select('*');
-          
+          .select('id, name, img_url, popis, address, web_url, map_url, phone, email, vzdalenost_km, category, tags');
         if (error) {
           console.error('Error fetching places:', error);
         } else {
@@ -118,7 +117,7 @@ const KomariVizka = () => {
     <PageLayout 
       title="Areál Komáří vížka" 
       description="Letní i zimní provoz areálu Komáří vížka – vleky, bike park, ubytování a atrakce v srdci Krušných hor."
-      backgroundImage="https://images.unsplash.com/photo-1571863533956-01c88e79957e?q=80&w=1974&auto=format&fit=crop"
+      backgroundImage="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
     >
       <section className="mb-12">
         <div className="prose max-w-none">
@@ -175,6 +174,7 @@ const KomariVizka = () => {
       </section>
       
       <section className="mb-12">
+        <h2 className="text-2xl font-montserrat font-bold mb-8 text-tjk-blue">Zajímavá místa v okolí areálu</h2>
         {placesLoading ? (
           <div className="flex justify-center py-8">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tjk-blue"></div>
@@ -186,48 +186,73 @@ const KomariVizka = () => {
                 key={place.id}
                 className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden border border-gray-100"
               >
-                {place.image_url && (
+                {place.img_url ? (
                   <img
-                    src={place.image_url}
+                    src={place.img_url}
                     alt={place.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover bg-gray-100"
                   />
+                ) : (
+                  <div className="w-full h-48 flex items-center justify-center bg-gray-100 text-gray-400">
+                    <MapPin className="w-12 h-12" />
+                  </div>
                 )}
                 <div className="flex-1 flex flex-col p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    {place.category && (
+                      <span className="inline-flex items-center px-2 py-0.5 bg-blue-50 text-tjk-blue text-xs rounded font-semibold">
+                        {getCategoryIcon(place.category)}{place.category}
+                      </span>
+                    )}
+                    {place.vzdalenost_km && (
+                      <span className="inline-flex items-center px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                        {place.vzdalenost_km} km
+                      </span>
+                    )}
+                  </div>
                   <h3 className="text-xl font-bold text-tjk-blue mb-2">{place.name}</h3>
-                  <p className="text-gray-600 mb-3">{place.description}</p>
+                  {place.popis ? (
+                    <p className="text-gray-600 mb-3">{place.popis}</p>
+                  ) : (
+                    <p className="text-gray-400 mb-3 italic">Popis není k dispozici.</p>
+                  )}
+                  {place.tags && (
+                    <div className="mb-2 flex flex-wrap gap-1">
+                      {place.tags.split(',').map((tag: string) => (
+                        <span key={tag.trim()} className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full font-medium">{tag.trim()}</span>
+                      ))}
+                    </div>
+                  )}
                   {place.address && (
                     <div className="text-sm text-gray-500 mb-1">
                       <span className="font-semibold">Adresa: </span>{place.address}
                     </div>
                   )}
-                  {place.type && (
-                    <div className="text-sm text-gray-500 mb-2">
-                      <span className="font-semibold">Typ: </span>{place.type}
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {place.web_url && (
+                      <a href={place.web_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-blue text-white rounded hover:bg-tjk-orange transition text-sm font-medium">
+                        <Globe className="h-4 w-4 mr-1" /> Web
+                        <ExternalLink className="h-4 w-4 ml-1" />
+                      </a>
+                    )}
+                    {place.map_url && (
+                      <a href={place.map_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-orange text-white rounded hover:bg-tjk-blue transition text-sm font-medium">
+                        <MapPin className="h-4 w-4 mr-1" /> Mapa
+                        <ExternalLink className="h-4 w-4 ml-1" />
+                      </a>
+                    )}
+                  </div>
+                  {place.phone && (
+                    <div className="text-sm text-gray-500 mt-2">
+                      <span className="font-semibold">Telefon: </span>{place.phone}
                     </div>
                   )}
-                  {/* Výpis všech ostatních sloupců kromě těch hlavních */}
-                  {Object.entries(place).map(([key, value]) => {
-                    if (
-                      ["id", "name", "description", "map_url", "image_url", "address", "type", "created_at"].includes(key)
-                      || value === null
-                    ) return null;
-                    return (
-                      <div key={key} className="text-xs text-gray-400">
-                        <span className="font-semibold">{key}: </span>{String(value)}
-                      </div>
-                    );
-                  })}
-                  <div className="mt-4">
-                    <a
-                      href={place.map_url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center text-tjk-blue hover:text-tjk-orange font-medium"
-                    >
-                      <MapPin className="h-4 w-4 mr-1" /> Zobrazit na mapě
-                    </a>
-                  </div>
+                  {place.email && (
+                    <div className="text-sm text-gray-500">
+                      <span className="font-semibold">E-mail: </span>
+                      <a href={`mailto:${place.email}`} className="text-tjk-blue hover:text-tjk-orange underline">{place.email}</a>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -345,7 +370,7 @@ const KomariVizka = () => {
       {/* --- NOVÝ BLOK: Nabídka pro školy (Komárek) --- */}
       <section className="my-16 flex flex-col md:flex-row items-center gap-10 bg-gradient-to-r from-blue-50 to-white rounded-2xl shadow-lg p-8">
         <div className="flex-1 flex justify-center items-center">
-          <img src="/src/loga/komárek.png" alt="Logo Komárek" className="max-h-40 w-auto object-contain drop-shadow-xl" />
+          <img src="/src/loga/komárek.png" alt="Logo Komárek" className="max-h-80 w-auto object-contain drop-shadow-xl" />
         </div>
         <div className="flex-1">
           <h2 className="text-2xl md:text-3xl font-bold text-tjk-blue mb-4">Nabídka pro školy: Zážitkové dny na Komáří vížce</h2>
@@ -359,7 +384,7 @@ const KomariVizka = () => {
       {/* --- NOVÝ BLOK: Trailpark pro školy --- */}
       <section className="my-16 flex flex-col md:flex-row-reverse items-center gap-10 bg-gradient-to-l from-orange-50 to-white rounded-2xl shadow-lg p-8">
         <div className="flex-1 flex justify-center items-center">
-          <img src="/src/img/komari-vizka-komari-vizka-l5d.jpeg" alt="Logo Trailpark" className="max-h-40 w-auto object-contain drop-shadow-xl rounded-xl" />
+          <img src="/src/loga/TRAILPARKKomarkaLOGO.png" alt="Logo Trailpark Komárka" className="max-h-80 w-auto object-contain drop-shadow-xl rounded-xl" />
         </div>
         <div className="flex-1">
           <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">Trailpark pro školy: Pohyb, zábava, bezpečí</h2>
