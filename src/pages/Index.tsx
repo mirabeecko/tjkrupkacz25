@@ -55,31 +55,31 @@ const Index = () => {
       name: "Stolní tenis", 
       icon: <Activity className="w-7 h-7 text-tjk-blue" />, 
       desc: "Oddíl pro všechny věkové kategorie, pravidelné tréninky a turnaje.",
-      image: "/lovable-uploads/hero-community.jpg"
+      image: "lovable-uploads/hero-community.jpg"
     },
     { 
       name: "MTB (horská kola)", 
       icon: <Bike className="w-7 h-7 text-tjk-blue" />, 
       desc: "Komunita MTB jezdců, traily v okolí a společné vyjížďky.",
-      image: "/lovable-uploads/hero-mtb.jpg"
+      image: "lovable-uploads/hero-mtb.jpg"
     },
     { 
       name: "Zimní sporty", 
       icon: <Snowflake className="w-7 h-7 text-blue-400" />, 
       desc: "Lyžování a snowboarding v areálu Komáří vížka.",
-      image: "/lovable-uploads/hero-winter.jpg"
+      image: "lovable-uploads/hero-winter.jpg"
     },
     { 
       name: "Kitesurfing", 
       icon: <Wind className="w-7 h-7 text-sky-500" />, 
       desc: "Adrenalin na větru, netradiční disciplína v Krušných horách.",
-      image: "/lovable-uploads/hero-mtb.jpg"
+      image: "lovable-uploads/hero-mtb.jpg"
     },
     { 
       name: "Kolečkové sporty", 
       icon: <Activity className="w-7 h-7 text-pink-500" />, 
       desc: "Inline brusle, skateboardy a další aktivity na kolečkách.",
-      image: "/lovable-uploads/hero-community.jpg"
+      image: "lovable-uploads/hero-community.jpg"
     }
   ];
 
@@ -121,17 +121,17 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/30 z-10"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-purple-900/40 mix-blend-overlay z-10"></div>
           
-          <video
+          {/* <video
 
             className="absolute inset-0 w-full h-full object-cover scale-105 transform transition-transform duration-10000 animate-slow-zoom"
-            poster="/lovable-uploads/hero-image.jpg"
+            poster="lovable-uploads/hero-image.jpg"
             muted
             loop
             autoPlay
             playsInline
           >
-            <source src="/lovable-uploads/hero-video.mp4" type="video/mp4" />
-          </video>
+            <source src="lovable-uploads/hero-video.mp4" type="video/mp4" />
+          </video> */}
 
 
 
@@ -154,12 +154,12 @@ const Index = () => {
 
 
               <div className="inline-block mb-8 animate-[fade-in_1.2s_ease-out] hover:scale-105 transition-transform duration-300">
-                <img 
-                  src="/lovable-uploads/tjk-logo-light.png" 
+                {/* <img 
+                  src="lovable-uploads/tjk-logo-light.png" 
                   alt="TJK Krupka" 
 
                   className="h-24 md:h-32 drop-shadow-2xl"
-                />
+                /> */}
               </div>
 
 

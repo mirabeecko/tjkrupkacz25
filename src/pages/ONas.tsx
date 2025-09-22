@@ -103,13 +103,13 @@ const ONas = () => {
                         </h3>
                         <p className="text-gray-700 text-base text-center mb-4 min-h-[56px]">{sport.desc}</p>
                         {sport.name === "MTB (horská kola)" && (
-                          <img src="/lovable-uploads/hero-mtb.jpg" alt="MTB" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-tjk-blue/20 mb-2 animate-fade-in-up" />
+                          <img src="lovable-uploads/hero-mtb.jpg" alt="MTB" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-tjk-blue/20 mb-2 animate-fade-in-up" />
                         )}
                         {sport.name === "Zimní sporty" && (
-                          <img src="/lovable-uploads/hero-winter.jpg" alt="Zimní sporty" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-blue-400/20 mb-2 animate-fade-in-up" />
+                          <img src="lovable-uploads/hero-winter.jpg" alt="Zimní sporty" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-blue-400/20 mb-2 animate-fade-in-up" />
                         )}
                         {sport.name === "Stolní tenis" && (
-                          <img src="/lovable-uploads/hero-community.jpg" alt="Stolní tenis" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-green-400/20 mb-2 animate-fade-in-up" />
+                          <img src="lovable-uploads/hero-community.jpg" alt="Stolní tenis" className="rounded-xl shadow-lg w-48 h-32 object-cover border-2 border-green-400/20 mb-2 animate-fade-in-up" />
                         )}
                         <Button size="sm" variant="secondary" className="mt-2 bg-white/80 text-tjk-blue hover:bg-tjk-blue/10 font-semibold px-6 py-2 rounded-full shadow-md animate-fade-in-up transition-all">
                           <a href="/kontakt">Chci vyzkoušet</a>
@@ -163,7 +163,7 @@ const ONas = () => {
         </div>
         <div className="flex justify-center mt-6 animate-fade-in-up delay-100">
           <img
-            src="/lovable-uploads/hero-community.jpg"
+            src="lovable-uploads/hero-community.jpg"
             alt="Komunita TJ Krupka"
             className="rounded-xl shadow-lg w-full max-w-md h-48 object-cover border-2 border-green-400/30"
           />

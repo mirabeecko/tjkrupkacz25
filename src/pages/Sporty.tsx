@@ -45,7 +45,7 @@ const Sporty = () => {
           audience: "10+",
           color: "blue",
           background: "bg-blue-100",
-          image_url: "/lovable-uploads/mountain-biking.jpg"
+          image_url: "lovable-uploads/mountain-biking.jpg"
         },
         {
           id: 2,
@@ -60,7 +60,7 @@ const Sporty = () => {
           audience: "15+",
           color: "red",
           background: "bg-red-100",
-          image_url: "/lovable-uploads/downhill-biking.jpg"
+          image_url: "lovable-uploads/downhill-biking.jpg"
         },
         {
           id: 3,
@@ -75,7 +75,7 @@ const Sporty = () => {
           audience: "Všechny věkové kategorie",
           color: "green",
           background: "bg-green-100",
-          image_url: "/lovable-uploads/nordic-walking.jpg"
+          image_url: "lovable-uploads/nordic-walking.jpg"
         },
         {
           id: 4,
@@ -90,7 +90,7 @@ const Sporty = () => {
           audience: "Všechny věkové kategorie",
           color: "yellow",
           background: "bg-yellow-100",
-          image_url: "/lovable-uploads/hiking.jpg"
+          image_url: "lovable-uploads/hiking.jpg"
         },
         {
           id: 5,
@@ -105,7 +105,7 @@ const Sporty = () => {
           audience: "8+",
           color: "blue",
           background: "bg-blue-100",
-          image_url: "/lovable-uploads/cross-country-skiing.jpg"
+          image_url: "lovable-uploads/cross-country-skiing.jpg"
         },
         {
           id: 6,
@@ -120,7 +120,7 @@ const Sporty = () => {
           audience: "12+",
           color: "purple",
           background: "bg-purple-100",
-          image_url: "/lovable-uploads/paragliding.jpg"
+          image_url: "lovable-uploads/paragliding.jpg"
         },
         {
           id: 7,
@@ -135,7 +135,7 @@ const Sporty = () => {
           audience: "Všechny věkové kategorie",
           color: "orange",
           background: "bg-orange-100",
-          image_url: "/lovable-uploads/badminton.jpg"
+          image_url: "lovable-uploads/badminton.jpg"
         },
         {
           id: 8,
@@ -150,7 +150,7 @@ const Sporty = () => {
           audience: "10+",
           color: "yellow",
           background: "bg-yellow-100",
-          image_url: "/lovable-uploads/volleyball.jpg"
+          image_url: "lovable-uploads/volleyball.jpg"
         }
       ];
       setSports(formattedSports);
@@ -194,7 +194,7 @@ const Sporty = () => {
     <PageLayout 
       title="Sportovní aktivity" 
       description="Objevte širokou nabídku sportovních aktivit pro všechny věkové kategorie a úrovně zkušeností. Vyberte si ze sportů pro každé roční období."
-      backgroundImage="/lovable-uploads/sports-bg.jpg"
+      backgroundImage="lovable-uploads/sports-bg.jpg"
     >
       <div className="mb-8">
         {loading ? (

@@ -11,19 +11,18 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-purple-900/30 mix-blend-overlay z-10"></div>
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        poster="/lovable-uploads/hero-image.jpg"
+        poster="lovable-uploads/hero-image.jpg"
         muted
         loop
         autoPlay
         playsInline
       >
-        <source src="/lovable-uploads/hero-video.mp4" type="video/mp4" />
+        <source src="lovable-uploads/hero-video.mp4" type="video/mp4" />
       </video>
 
       {/* Animated elements */}
       <div className="absolute inset-0 z-5">
         {/* Mountain silhouettes for depth */}
-        <div className="absolute bottom-0 left-0 w-full h-1/4 bg-[url('/lovable-uploads/mountain-silhouette.png')] bg-bottom bg-contain bg-repeat-x opacity-20"></div>
         
         {/* Floating particles */}
         <div className="absolute inset-0 opacity-30 pointer-events-none">
@@ -44,7 +43,7 @@ const Hero: React.FC = () => {
           {/* Logo badge */}
           <div className="inline-block mb-8 animate-[fade-in_1s_ease-out]">
             <img 
-              src="/lovable-uploads/tjk-logo-light.png" 
+              src="lovable-uploads/tjk-logo-light.png" 
               alt="TJK Krupka" 
               className="h-20 md:h-24 drop-shadow-lg"
             />

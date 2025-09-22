@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
           </button>
           <a href="/" className="flex items-center">
             <img 
-              src="/tjk-logo-header.png" 
+              src="tjk-logo-header.png" 
               alt="Tělovýchovná jednota Krupka z.s. logo" 
               className="h-12 w-auto drop-shadow-lg" 
               style={{ background: 'white', borderRadius: '50%' }}

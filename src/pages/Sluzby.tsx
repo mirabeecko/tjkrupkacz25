@@ -92,11 +92,11 @@ const Sluzby = () => {
                 <img
                   src={
                     cat.image ||
-                    "/lovable-uploads/c2b3b5df-f5a4-42d2-816a-3f11bd43a404.png"
+                    "lovable-uploads/c2b3b5df-f5a4-42d2-816a-3f11bd43a404.png"
                   }
                   alt={cat.title}
                   className="w-full h-44 object-cover rounded-xl mb-6 border-2 border-blue-100 shadow-md"
-                  onError={(e) => (e.currentTarget.src = "/placeholder.svg")}
+                  onError={(e) => (e.currentTarget.src = "placeholder.svg")}
                 />
               </div>
               <CardTitle className="text-2xl font-bold mb-3 text-blue-900 flex items-center gap-2 justify-center">

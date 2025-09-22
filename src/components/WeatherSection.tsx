@@ -288,7 +288,7 @@ const WeatherSection: React.FC = () => {
                   <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-md overflow-hidden relative">
                     <img 
                       src={
-                        selectedWebcam === "main" ? "/lovable-uploads/webcam.jpg" :
+                        selectedWebcam === "main" ? "lovable-uploads/webcam.jpg" :
                         selectedWebcam === "trail" ? "https://images.unsplash.com/photo-1491555103944-7c647fd857e6" :
                         selectedWebcam === "restaurant" ? "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4" :
                         "https://images.unsplash.com/photo-1573348722427-f1d6819fdf98"

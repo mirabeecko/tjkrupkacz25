@@ -4,6 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
+  // Use relative asset paths so the site works under subpaths (e.g., /spoolku/)
+  base: './',
   server: {
     host: "::",
     port: 8080,
