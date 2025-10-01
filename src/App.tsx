@@ -22,6 +22,7 @@ import Firmy from "./pages/firmy";
 import Ubytovani from "./pages/Ubytovani";
 import Trailpark from "./pages/trailpark";
 import Bistro from "./pages/bistro";
+import Pripravujeme from "./pages/Pripravujeme";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/ubytovani" element={<Ubytovani />} />
           <Route path="/trailpark" element={<Trailpark />} />
           <Route path="/bistro" element={<Bistro />} />
+          <Route path="/pripravujeme" element={<Pripravujeme />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
