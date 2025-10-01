@@ -322,7 +322,8 @@ const Kontakt = () => {
         </div>
       </section>
 
-      {/* Enhanced Interesting Places Section */}
+      {/* Enhanced Interesting Places Section - HIDDEN */}
+      {false && (
       <section className="mb-12">
         <div className="bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 p-8 rounded-lg shadow-md">
           <div className="flex items-center justify-between mb-6">
@@ -337,10 +338,10 @@ const Kontakt = () => {
             </div>
           </div>
 
-          <Tabs 
-            defaultValue="all" 
+          <Tabs
+            defaultValue="all"
             className="w-full mb-6"
-            value={activeTab} 
+            value={activeTab}
             onValueChange={setActiveTab}
           >
             <TabsList className="grid grid-cols-4 mb-6 bg-white/70">
@@ -369,10 +370,10 @@ const Kontakt = () => {
                     <div key={place.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all">
                       <div className="md:flex">
                         <div className="md:w-2/5 h-48 md:h-auto relative overflow-hidden">
-                          <img 
-                            src={place.image} 
-                            alt={place.title} 
-                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-700" 
+                          <img
+                            src={place.image}
+                            alt={place.title}
+                            className="w-full h-full object-cover transition-transform hover:scale-105 duration-700"
                           />
                           <div className="absolute bottom-0 right-0 bg-tjk-blue text-white px-3 py-1 rounded-tl-md text-sm flex items-center">
                             {getCategoryIcon(place.category)}
@@ -426,7 +427,7 @@ const Kontakt = () => {
               </TabsContent>
             ))}
           </Tabs>
-          
+
           <div className="bg-white p-6 rounded-lg mt-8 shadow-inner">
             <h3 className="text-lg font-semibold mb-3 text-tjk-blue flex items-center">
               <Coffee className="h-5 w-5 text-tjk-orange mr-2" />
@@ -449,6 +450,7 @@ const Kontakt = () => {
           </div>
         </div>
       </section>
+      )}
     </PageLayout>
   );
 };
