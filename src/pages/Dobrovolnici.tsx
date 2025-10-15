@@ -21,7 +21,7 @@ const Dobrovolnici = () => {
       <section className="relative bg-white rounded-3xl shadow px-6 py-14 mb-14 border border-gray-100">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold font-montserrat text-gray-900 mb-4 tracking-tight">
-            Společně tvoříme <span className="text-tjk-blue">budoucnost trailparku</span>
+            Společně tvoříme <span className="text-tjk-blue">budoucnost areálu</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-8">
             Přidejte se k nám jako dobrovolník nebo partner a pomozte nám rozvíjet unikátní sportovní areál na Komáří vížce. Každý může přispět – zkušenostmi, energií, podporou.
@@ -47,7 +47,7 @@ const Dobrovolnici = () => {
             <h2 className="text-3xl font-extrabold text-tjk-blue w-full text-left">Pro dobrovolníky</h2>
           </div>
           <p className="text-gray-700 mb-6 text-base w-full text-justify">
-            Dobrovolnictví je srdcem našeho trailparku. Hledáme lidi, kteří mají chuť přiložit ruku k dílu, naučit se nové věci a stát se součástí komunity, která sdílí lásku k přírodě, sportu a pohybu. Každý dobrovolník je pro nás důležitý – ať už pomáháte jednou za čas, nebo se zapojíte pravidelně. Přidejte se k nám a zažijte radost z práce, která má smysl a zanechává stopu v krajině i v lidech kolem vás.
+            Dobrovolnictví je srdcem našeho areálu. Hledáme lidi, kteří mají chuť přiložit ruku k dílu, naučit se nové věci a stát se součástí komunity, která sdílí lásku k přírodě, sportu a pohybu. Každý dobrovolník je pro nás důležitý – ať už pomáháte jednou za čas, nebo se zapojíte pravidelně. Přidejte se k nám a zažijte radost z práce, která má smysl a zanechává stopu v krajině i v lidech kolem vás.
           </p>
           <ul className="space-y-3 mb-6 text-gray-800 text-base w-full text-justify">
             <li className="flex items-center gap-3">
@@ -85,7 +85,7 @@ const Dobrovolnici = () => {
             <h2 className="text-3xl font-extrabold text-tjk-orange w-full text-left">Pro partnery & sponzory</h2>
           </div>
           <p className="text-gray-700 mb-6 text-base w-full text-justify">
-            Staňte se partnerem nebo sponzorem trailparku Komáří vížka a podpořte projekt, který má pozitivní dopad na region, sportovní komunitu i životní prostředí. Vaše podpora nám umožní rozšiřovat nabídku služeb, pořádat větší akce a zlepšovat zázemí pro všechny návštěvníky. Společně můžeme vytvořit místo, které inspiruje a spojuje lidi napříč generacemi. Nabízíme férovou spolupráci, zviditelnění vaší značky a možnost být součástí smysluplného rozvoje regionu.
+            Staňte se partnerem nebo sponzorem areálu Komáří vížka a podpořte projekt, který má pozitivní dopad na region, sportovní komunitu i životní prostředí. Vaše podpora nám umožní rozšiřovat nabídku služeb, pořádat větší akce a zlepšovat zázemí pro všechny návštěvníky. Společně můžeme vytvořit místo, které inspiruje a spojuje lidi napříč generacemi. Nabízíme férovou spolupráci, zviditelnění vaší značky a možnost být součástí smysluplného rozvoje regionu.
           </p>
           <ul className="space-y-3 mb-6 text-gray-800 text-base w-full text-justify">
             <li className="flex items-center gap-3">

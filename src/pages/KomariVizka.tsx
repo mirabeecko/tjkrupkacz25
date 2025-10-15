@@ -149,9 +149,9 @@ const KomariVizka = () => {
               Objevte naše udržované traily pro všechny úrovně zkušenosti. Single tracky, 
               technické sjezdy i rodinné stezky. Vhodné pro horská kola i enduro.
             </p>
-            <Link to="/trailpark" className="group">
+            <Link to="/sporty" className="group">
               <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-                Prozkoumat traily
+                Sportovní aktivity
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
@@ -387,9 +387,9 @@ const KomariVizka = () => {
           <img src="/src/loga/TRAILPARKKomarkaLOGO.png" alt="Logo Trailpark Komárka" className="max-h-80 w-auto object-contain drop-shadow-xl rounded-xl" />
         </div>
         <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">Trailpark pro školy: Pohyb, zábava, bezpečí</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">Sportovní programy pro školy: Pohyb, zábava, bezpečí</h2>
           <p className="text-lg text-gray-700 mb-3">
-            Přiveďte své žáky do moderního trailparku! Naučíme děti i teenagery základy bezpečné jízdy na kole, správné chování v terénu a týmové spolupráci. Programy vedou certifikovaní bike instruktoři, vše je přizpůsobeno věku a zkušenostem dětí. K dispozici je půjčovna kol, zázemí i možnost občerstvení. Ideální pro sportovní dny, školy v přírodě i adaptační kurzy.
+            Přiveďte své žáky do našeho sportovního areálu! Naučíme děti i teenagery základy bezpečné jízdy na kole, správné chování v terénu a týmové spolupráci. Programy vedou certifikovaní bike instruktoři, vše je přizpůsobeno věku a zkušenostem dětí. K dispozici je půjčovna kol, zázemí i možnost občerstvení. Ideální pro sportovní dny, školy v přírodě i adaptační kurzy.
           </p>
           <p className="text-md text-gray-600">Neváhejte a rezervujte si termín pro vaši třídu ještě dnes!</p>
         </div>

@@ -4,11 +4,11 @@ import { Coffee } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const meta = {
-  title: "Bistro | Komáří Vížka Trailpark",
+  title: "Bistro | Komáří Vížka",
   description:
     "Stylové bistro s domácí kuchyní, občerstvením a posezením na terase v areálu Komáří Vížka. Ideální místo pro relax po sportu.",
   keywords:
-    "bistro, občerstvení, Komáří Vížka, trailpark, domácí kuchyně, terasa, restaurace, Krušné hory, sportovní areál, kavárna, relax, jídlo a pití",
+    "bistro, občerstvení, Komáří Vížka, sportovní areál, domácí kuchyně, terasa, restaurace, Krušné hory, kavárna, relax, jídlo a pití",
 };
 
 const Bistro = () => (

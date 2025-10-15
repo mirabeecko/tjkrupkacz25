@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const meta = {
-  title: "Firemní akce a teambuilding | Komáří Vížka Trailpark",
+  title: "Firemní akce a teambuilding | Komáří Vížka",
   description:
-    "Firemní akce, teambuildingy a zážitkové programy na míru v Trailparku Komáří Vížka. Posilujte týmového ducha v inspirativním prostředí hor.",
+    "Firemní akce, teambuildingy a zážitkové programy na míru v areálu Komáří Vížka. Posilujte týmového ducha v inspirativním prostředí hor.",
   keywords:
-    "firemní akce, teambuilding, zážitkové programy, Komáří Vížka, trailpark, Krušné hory, firemní eventy, týmová spolupráce, outdoor aktivity, školení, workshopy, firemní večírky",
+    "firemní akce, teambuilding, zážitkové programy, Komáří Vížka, sportovní areál, Krušné hory, firemní eventy, týmová spolupráce, outdoor aktivity, školení, workshopy, firemní večírky",
 };
 
 const Firmy = () => (

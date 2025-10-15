@@ -4,11 +4,11 @@ import { School } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const meta = {
-  title: "Programy pro školy | Komáří Vížka Trailpark",
+  title: "Programy pro školy | Komáří Vížka",
   description:
-    "Zážitkové programy pro školy v Trailparku Komáří Vížka. Vzdělávání, pohyb a zábava v přírodě pod vedením zkušených instruktorů.",
+    "Zážitkové programy pro školy v areálu Komáří Vížka. Vzdělávání, pohyb a zábava v přírodě pod vedením zkušených instruktorů.",
   keywords:
-    "programy pro školy, školní výlety, outdoor vzdělávání, sportovní kurzy, Komáří Vížka, trailpark, dětské kolektivy, školní akce, Krušné hory, zážitková pedagogika",
+    "programy pro školy, školní výlety, outdoor vzdělávání, sportovní kurzy, Komáří Vížka, sportovní areál, dětské kolektivy, školní akce, Krušné hory, zážitková pedagogika",
 };
 
 const Skoly = () => (

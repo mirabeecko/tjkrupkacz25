@@ -1,156 +1,205 @@
-import React from "react";
+import React, { useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import { Link } from "react-router-dom";
-import { School, Briefcase, Bed, Bike, Coffee } from "lucide-react";
-import Hero from "@/components/Hero";
+import { School, Briefcase, Bed, Bike, Coffee, Sparkles, ArrowRight, ChevronRight, Zap, Target } from "lucide-react";
 
-// SEO meta description a klíčová slova
-export const meta = {
-  title: "Služby | Komáří Vížka Trailpark",
-  description:
-    "Objevte kompletní nabídku služeb v Trailparku Komáří Vížka: programy pro školy, firemní akce, ubytování, trailpark a bistro. Zážitky pro každého!",
-  keywords:
-    "trailpark, služby, školy, firemní akce, ubytování, bistro, cyklistika, Komáří Vížka, zážitky, sportovní areál, programy pro školy, firemní teambuilding, restaurace, bikepark, příroda, Krušné hory",
-};
-
-const categories = [
+const services = [
   {
     title: "Pro školy",
+    subtitle: "Vzdělávání v pohybu",
     description:
       "Speciální programy pro školy a dětské kolektivy. Zábava, pohyb a vzdělávání v přírodě pod vedením zkušených instruktorů.",
-    icon: <School className="w-10 h-10 text-blue-600" />,
-    cta: "Více pro školy",
+    icon: School,
+    cta: "Zjistit více",
     link: "/skoly",
-    image: "/images/sluzby_skoly.jpg",
+    gradient: "from-blue-500 via-cyan-500 to-teal-500",
   },
   {
     title: "Pro firmy",
+    subtitle: "Teambuilding na maximum",
     description:
       "Firemní akce, teambuildingy a zážitkové programy na míru. Posilujte týmového ducha v inspirativním prostředí hor.",
-    icon: <Briefcase className="w-10 h-10 text-green-600" />,
+    icon: Briefcase,
     cta: "Firemní nabídka",
     link: "/firmy",
-    image: "/images/sluzby_firmy.jpg",
+    gradient: "from-green-500 via-emerald-500 to-teal-500",
   },
   {
     title: "Ubytování",
+    subtitle: "Pohodlí v horách",
     description:
       "Komfortní ubytování přímo v areálu i v okolí. Ideální zázemí pro sportovce, rodiny i skupiny.",
-    icon: <Bed className="w-10 h-10 text-yellow-600" />,
-    cta: "Zjistit více o ubytování",
+    icon: Bed,
+    cta: "Rezervovat",
     link: "/ubytovani",
-    image: "/images/sluzby_ubytovani.jpg",
+    gradient: "from-orange-500 via-amber-500 to-yellow-500",
   },
   {
-    title: "TrailPark Komárka",
+    title: "Sportovní aktivity",
+    subtitle: "Pohyb a zábava",
     description:
-      "Moderní trailpark pro všechny úrovně jezdců. Flow traily, technické pasáže i zábava pro děti.",
-    icon: <Bike className="w-10 h-10 text-red-600" />,
-    cta: "Prozkoumat TrailPark",
-    link: "/trailpark",
-    image: "/images/sluzby_trailpark.jpg",
+      "Široká nabídka sportovních aktivit pro všechny věkové kategorie. Od zimních sportů až po letní adrenalin.",
+    icon: Bike,
+    cta: "Zjistit více",
+    link: "/sporty",
+    gradient: "from-red-500 via-rose-500 to-pink-500",
   },
   {
     title: "Bistro",
+    subtitle: "Chuť v přírodě",
     description:
       "Stylové bistro s domácí kuchyní, občerstvením a posezením na terase. Ideální místo pro relax po sportu.",
-    icon: <Coffee className="w-10 h-10 text-pink-600" />,
-    cta: "Menu a nabídka bistra",
+    icon: Coffee,
+    cta: "Zobrazit menu",
     link: "/bistro",
-    image: "/images/sluzby_bistro.jpg",
+    gradient: "from-purple-500 via-violet-500 to-indigo-500",
   },
 ];
 
-// --- Vylepšený hlavní banner s Hero komponentou a fallback obrázkem ---
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import Activities from "@/components/Activities";
-import ArealStats from "@/components/ArealStats";
-import WeatherSection from "@/components/WeatherSection";
-import NewsletterSignup from "@/components/NewsletterSignup";
-
 const Sluzby = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
     <PageLayout
-      title="Služby areálu Komáří Vížka"
-      description="Kompletní nabídka služeb pro školy, firmy, sportovce i rodiny. Užijte si zážitky v přírodě, kvalitní zázemí a moderní trailpark."
+      title="Naše služby"
+      description="Objevte komplexní nabídku služeb v areálu Komáří Vížka – od vzdělávacích programů přes teambuildingy až po ubytování a gastro zážitky."
     >
-      <Hero />
+      {/* HERO */}
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black text-white">
+        <div className="absolute top-20 left-[10%] w-32 h-32 rounded-full bg-gradient-to-br from-blue-500/30 to-cyan-500/30 blur-3xl animate-pulse" />
+        <div className="absolute bottom-32 right-[15%] w-48 h-48 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 blur-3xl" />
 
-      {/* --- Úvodní popis s Activities a ArealStats --- */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full mb-8 border border-white/20">
+            <Sparkles className="w-4 h-4 text-yellow-400" />
+            <span className="text-sm font-semibold tracking-wide">KOMPLETNÍ NABÍDKA</span>
+          </div>
 
+          <h1 className="font-montserrat font-black text-6xl md:text-8xl mb-6 leading-none">
+            <span className="block text-white mb-2">NAŠE</span>
+            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              SLUŽBY
+            </span>
+          </h1>
 
-      {/* --- Kategorie služeb s Card komponentou a stylistikou --- */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto mb-24 animate-fade-in-up">
-        {categories.map((cat, idx) => (
-          <Card
-            key={cat.title}
-            className="bg-white rounded-3xl shadow-xl flex flex-col items-center p-10 text-center hover:shadow-2xl transition-shadow border-2 border-blue-50 relative group overflow-hidden animate-fade-in-up delay-100"
-          >
-            <CardHeader>
-              <div className="flex flex-col items-center">
-                <div className="mb-4 text-5xl">{cat.icon}</div>
-                <img
-                  src={
-                    cat.image ||
-                    "lovable-uploads/c2b3b5df-f5a4-42d2-816a-3f11bd43a404.png"
-                  }
-                  alt={cat.title}
-                  className="w-full h-44 object-cover rounded-xl mb-6 border-2 border-blue-100 shadow-md"
-                  onError={(e) => (e.currentTarget.src = "placeholder.svg")}
-                />
-              </div>
-              <CardTitle className="text-2xl font-bold mb-3 text-blue-900 flex items-center gap-2 justify-center">
-                {cat.icon} {cat.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-700 mb-4 min-h-[60px] font-serif italic">
-                {cat.description}
-              </p>
-              {/* Rozšířený popis pro každou kategorii */}
-              {idx === 0 && (
-                <p className="text-blue-700 text-sm mb-2">
-                  Vzdělávací programy, sportovní dny, adaptační kurzy a zážitky v
-                  přírodě pro školy všech stupňů.
-                </p>
-              )}
-              {idx === 1 && (
-                <p className="text-green-700 text-sm mb-2">
-                  Teambuilding, firemní večírky, workshopy a akce na míru v
-                  inspirativním prostředí hor.
-                </p>
-              )}
-              {idx === 2 && (
-                <p className="text-yellow-700 text-sm mb-2">
-                  Pokoje, apartmány i chaty. Komfortní zázemí pro sportovce,
-                  rodiny i skupiny s možností stravování.
-                </p>
-              )}
-              {idx === 3 && (
-                <p className="text-red-700 text-sm mb-2">
-                  Flow traily, technické sekce, dětské trasy a půjčovna kol.
-                  Zábava a bezpečí pro všechny věkové kategorie.
-                </p>
-              )}
-              {idx === 4 && (
-                <p className="text-pink-700 text-sm mb-2">
-                  Domácí kuchyně, výběrová káva, dezerty a terasa s výhledem na
-                  hory. Otevřeno pro všechny návštěvníky.
-                </p>
-              )}
-              <Link to={cat.link} className="mt-auto">
-                <button className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-semibold px-8 py-3 rounded-xl shadow-lg text-lg transition-colors mt-4 animate-fade-in-up delay-200">
-                  {cat.cta}
-                </button>
-              </Link>
-            </CardContent>
-          </Card>
-        ))}
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Od vzdělávacích programů přes adrenalinové teambuildingy až po komfortní ubytování.
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">
+              Vše na jednom místě v srdci Krušných hor.
+            </span>
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            <div className="px-6 py-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+              <Target className="inline w-5 h-5 text-blue-400 mr-2" />
+              <span className="font-semibold">5 hlavních služeb</span>
+            </div>
+            <div className="px-6 py-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
+              <Zap className="inline w-5 h-5 text-yellow-400 mr-2" />
+              <span className="font-semibold">Programy na míru</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
       </section>
 
-      {/* --- Newsletter a další interaktivní sekce --- */}
-      <section className="max-w-3xl mx-auto mb-24 animate-fade-in-up">
-        <NewsletterSignup />
+      {/* SERVICES GRID */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, idx) => {
+              const Icon = service.icon;
+              const isHovered = hoveredIndex === idx;
+              const isLarge = idx === 0;
+
+              return (
+                <Link
+                  key={service.title}
+                  to={service.link}
+                  className={`group relative overflow-hidden rounded-3xl transition-all duration-500 hover:scale-[1.02] ${
+                    isLarge ? 'lg:col-span-2 lg:row-span-2' : ''
+                  }`}
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  style={{
+                    minHeight: isLarge ? '600px' : '320px'
+                  }}
+                >
+                  {/* Background gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} transition-transform duration-700 ${
+                    isHovered ? 'scale-110' : 'scale-100'
+                  }`} />
+
+                  {/* Content */}
+                  <div className="relative h-full p-8 flex flex-col justify-between text-white z-10">
+                    <div>
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md mb-6 transition-all duration-500 ${
+                        isHovered ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
+                      }`}>
+                        <Icon className="w-8 h-8" />
+                      </div>
+
+                      <div className="mb-3">
+                        <div className="text-sm font-semibold uppercase tracking-widest opacity-90 mb-2">
+                          {service.subtitle}
+                        </div>
+                        <h3 className={`font-montserrat font-black leading-tight ${
+                          isLarge ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'
+                        }`}>
+                          {service.title}
+                        </h3>
+                      </div>
+
+                      <p className={`text-white/90 leading-relaxed ${
+                        isLarge ? 'text-lg max-w-2xl' : 'text-base'
+                      }`}>
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* CTA */}
+                    <div className={`flex items-center gap-2 font-bold text-lg transition-all duration-300 ${
+                      isHovered ? 'gap-4' : 'gap-2'
+                    }`}>
+                      {service.cta}
+                      <ChevronRight className={`w-6 h-6 transition-transform duration-300 ${
+                        isHovered ? 'translate-x-2' : 'translate-x-0'
+                      }`} />
+                    </div>
+                  </div>
+
+                  {/* Hover overlay */}
+                  <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${
+                    isHovered ? 'opacity-100' : 'opacity-0'
+                  }`} />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-32 px-4 relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-blue-500/20 blur-[120px]" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-purple-500/20 blur-[120px]" />
+
+        <div className="relative max-w-4xl mx-auto text-center">
+          <Sparkles className="w-16 h-16 mx-auto mb-8 text-yellow-400 animate-pulse" />
+          <h2 className="font-montserrat font-black text-5xl md:text-6xl mb-6">
+            Nenašli jste, co hledáte?
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            Rádi vám připravíme program přesně na míru. Kontaktujte nás a společně vytvoříme nezapomenutelný zážitek.
+          </p>
+          <Link to="/kontakt">
+            <button className="group relative inline-flex items-center gap-3 px-12 py-6 bg-white text-black font-black text-xl rounded-2xl overflow-hidden hover:scale-105 transition-all duration-300 shadow-2xl">
+              Napište nám
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+            </button>
+          </Link>
+        </div>
       </section>
     </PageLayout>
   );

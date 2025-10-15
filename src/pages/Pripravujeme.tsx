@@ -4,9 +4,9 @@ import { Construction } from "lucide-react";
 
 const Pripravujeme = () => {
   return (
-    <PageLayout 
-      title="Připravujeme" 
-      description="Tato stránka je ve výstavbě. Brzy zde naleznete nový obsah."
+    <PageLayout
+      title=""
+      description=""
     >
       <div className="flex flex-col items-center justify-center text-center py-20">
         <Construction className="w-24 h-24 text-tjk-orange mb-6" />

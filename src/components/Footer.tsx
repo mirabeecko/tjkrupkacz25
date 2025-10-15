@@ -44,10 +44,6 @@ const Footer: React.FC = () => {
 
         {/* Popular Links */}
         <div className="mb-10 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-4">
-          <Link to="/trailpark" className="group bg-gradient-to-br from-blue-800/80 to-blue-600/80 hover:from-blue-700 hover:to-blue-500 backdrop-blur-md rounded-xl p-4 transition-all duration-300 flex flex-col items-center text-center shadow-lg hover:scale-105">
-            <Mountain className="h-8 w-8 mb-2 text-amber-400 group-hover:text-white transition-colors drop-shadow-lg" />
-            <h3 className="font-bold text-base mb-0.5 tracking-wide text-white group-hover:text-amber-300 transition-colors">TPK</h3>
-          </Link>
           <Link to="/sluzby" className="group bg-gradient-to-br from-yellow-700/80 to-yellow-500/80 hover:from-yellow-600 hover:to-yellow-400 backdrop-blur-md rounded-xl p-4 transition-all duration-300 flex flex-col items-center text-center shadow-lg hover:scale-105">
             <Home className="h-8 w-8 mb-2 text-white group-hover:text-yellow-300 transition-colors drop-shadow-lg" />
             <h3 className="font-bold text-base mb-0.5 tracking-wide text-white group-hover:text-yellow-200 transition-colors">Ubytování</h3>
@@ -104,11 +100,7 @@ const Footer: React.FC = () => {
                   <ChevronRight className="h-4 w-4 mr-1" /> Komáří vížka
                 </Link>
               </li>
-              <li className="transition-transform hover:translate-x-1">
-                <Link to="/trail-park-komarka" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
-                  <ChevronRight className="h-4 w-4 mr-1" /> Trail Park Komárka
-                </Link>
-              </li>
+              
               <li className="transition-transform hover:translate-x-1">
                 <Link to="/dobrovolnici" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
                   <ChevronRight className="h-4 w-4 mr-1" /> Dobrovolníci

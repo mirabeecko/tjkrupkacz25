@@ -44,31 +44,33 @@ const PageLayout: React.FC<PageLayoutProps> = ({
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
       
       <main className="flex-1">
-        <div 
-          className={`bg-tjk-gray ${!backgroundImage ? 'bg-dots-pattern' : ''} relative`}
-          style={headerBackgroundStyle}
-        >
-          {/* Decorative elements */}
-          {!backgroundImage && (
-            <>
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent"></div>
-              <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-tjk-orange to-transparent"></div>
-            </>
-          )}
-          
-          <div className="container mx-auto px-4 py-16 md:py-24">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-primary tracking-tighter slide-in">{title}</h1>
-              {description && (
-                <p className="text-lg md:text-xl font-inter text-foreground/80 leading-relaxed max-w-3xl fade-in">{description}</p>
-              )}
+        {(title || description) && (
+          <div
+            className={`bg-tjk-gray ${!backgroundImage ? 'bg-dots-pattern' : ''} relative`}
+            style={headerBackgroundStyle}
+          >
+            {/* Decorative elements */}
+            {!backgroundImage && (
+              <>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent"></div>
+                <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-tjk-orange to-transparent"></div>
+              </>
+            )}
 
-              <div className="mt-6 hidden md:block">
-                <WeatherWidget />
+            <div className="container mx-auto px-4 py-16 md:py-24">
+              <div className="max-w-4xl mx-auto">
+                <h1 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-primary tracking-tighter slide-in">{title}</h1>
+                {description && (
+                  <p className="text-lg md:text-xl font-inter text-foreground/80 leading-relaxed max-w-3xl fade-in">{description}</p>
+                )}
+
+                <div className="mt-6 hidden md:block">
+                  <WeatherWidget />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="container mx-auto px-4 py-12">
           <BreadcrumbNav />
           {children}
