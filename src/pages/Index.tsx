@@ -156,10 +156,10 @@ const Index = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
-                <Link to="/kontakt">
+                <Link to="/snowkiting-kurzy">
                   <Button size="lg" className="group bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
                     <Calendar className="mr-2 h-6 w-6" />
-                    Rezervovat kurz
+                    Zobrazit kurzy
                     <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
                   </Button>
                 </Link>
@@ -215,9 +215,9 @@ const Index = () => {
                     <div className="text-3xl font-bold text-blue-600 mb-6">
                       {course.price}
                     </div>
-                    <Link to="/kontakt">
+                    <Link to="/snowkiting-kurzy">
                       <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                        Rezervovat
+                        Zobrazit detaily
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -228,15 +228,20 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Benefits Section */}
-        <section className="py-20 bg-gradient-to-b from-blue-600 to-cyan-700 text-white">
-          <div className="container mx-auto px-4">
+        {/* Benefits Section - Full Width */}
+        <section className="relative py-20 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 text-white overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
                   Proč kurz u nás?
                 </h2>
-                <p className="text-xl text-blue-100">
+                <p className="text-xl text-blue-100 drop-shadow-md">
                   Poskytneme vám vše, co potřebujete pro bezpečný a zábavný start
                 </p>
               </div>
@@ -245,17 +250,17 @@ const Index = () => {
                 {courseBenefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300"
+                    className="flex items-start gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-green-300 flex-shrink-0 mt-1" />
-                    <span className="text-lg">{benefit}</span>
+                    <CheckCircle2 className="w-6 h-6 text-green-300 flex-shrink-0 mt-1 drop-shadow-lg" />
+                    <span className="text-lg drop-shadow-md">{benefit}</span>
                   </div>
                 ))}
               </div>
 
               <div className="mt-12 text-center">
                 <Link to="/kontakt">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                     <Calendar className="mr-2 h-6 w-6" />
                     Chci začít!
                   </Button>
@@ -302,26 +307,44 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Final CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 text-white relative overflow-hidden">
+        {/* Final CTA Section - Full Width with Enhanced Design */}
+        <section className="relative py-24 bg-gradient-to-r from-blue-700 via-cyan-700 to-blue-800 text-white overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
             }}></div>
           </div>
 
+          {/* Animated snowflakes */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(20)].map((_, i) => (
+              <Snowflake
+                key={i}
+                className="absolute text-white/20 animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${20 + Math.random() * 30}px`,
+                  height: `${20 + Math.random() * 30}px`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              <h2 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl animate-[fadeInUp_1s_ease-out]">
                 Připraveni na dobrodružství?
               </h2>
-              <p className="text-xl md:text-2xl mb-10 text-blue-100">
+              <p className="text-2xl md:text-3xl mb-12 text-blue-100 drop-shadow-lg animate-[fadeInUp_1s_ease-out_0.2s_both]">
                 Přidejte se k nám a zažijte snowkiting v krásném prostředí Krušných hor
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-[fadeInUp_1s_ease-out_0.4s_both]">
                 <Link to="/kontakt">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-12 py-7 rounded-2xl shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300">
                     <Users className="mr-2 h-6 w-6" />
                     Kontaktujte nás
                     <ArrowRight className="ml-2 h-6 w-6" />
@@ -329,18 +352,18 @@ const Index = () => {
                 </Link>
               </div>
 
-              <div className="mt-12 flex flex-wrap justify-center gap-8 text-blue-100">
-                <div className="flex items-center gap-2">
-                  <Wind className="w-5 h-5" />
-                  <span>50+ spokojených účastníků ročně</span>
+              <div className="mt-12 flex flex-wrap justify-center gap-8 text-blue-100 drop-shadow-md animate-[fadeInUp_1s_ease-out_0.6s_both]">
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                  <Wind className="w-6 h-6" />
+                  <span className="font-semibold">50+ spokojených účastníků ročně</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Award className="w-5 h-5" />
-                  <span>10+ let zkušeností</span>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                  <Award className="w-6 h-6" />
+                  <span className="font-semibold">10+ let zkušeností</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mountain className="w-5 h-5" />
-                  <span>Krušné hory</span>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
+                  <Mountain className="w-6 h-6" />
+                  <span className="font-semibold">Krušné hory</span>
                 </div>
               </div>
             </div>

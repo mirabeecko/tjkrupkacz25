@@ -91,19 +91,33 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li className="transition-transform hover:translate-x-1">
+                <Link to="/komari-vizka" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
+                  <ChevronRight className="h-4 w-4 mr-1" /> Komáří vížka
+                </Link>
+              </li>
+              <li className="transition-transform hover:translate-x-1">
                 <Link to="/sluzby" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
                   <ChevronRight className="h-4 w-4 mr-1" /> Služby
                 </Link>
               </li>
               <li className="transition-transform hover:translate-x-1">
-                <Link to="/komari-vizka" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
-                  <ChevronRight className="h-4 w-4 mr-1" /> Komáří vížka
+                <Link to="/snowkiting-kurzy" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
+                  <ChevronRight className="h-4 w-4 mr-1" /> Kurzy Snowkitingu
                 </Link>
               </li>
-              
               <li className="transition-transform hover:translate-x-1">
                 <Link to="/dobrovolnici" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
-                  <ChevronRight className="h-4 w-4 mr-1" /> Dobrovolníci
+                  <ChevronRight className="h-4 w-4 mr-1" /> Dobrovolníci & Sponzoři
+                </Link>
+              </li>
+              <li className="transition-transform hover:translate-x-1">
+                <Link to="/kontakt" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
+                  <ChevronRight className="h-4 w-4 mr-1" /> Kontakt
+                </Link>
+              </li>
+              <li className="transition-transform hover:translate-x-1">
+                <Link to="/pocasi" className="text-gray-300 hover:text-tjk-orange transition-colors flex items-center">
+                  <ChevronRight className="h-4 w-4 mr-1" /> Počasí
                 </Link>
               </li>
             </ul>

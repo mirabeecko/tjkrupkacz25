@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
-  Info, Activity, Coffee, Map, ShoppingBag, Ticket, Heart, Mail, CloudSun
+import {
+  Info, Activity, Coffee, Map, ShoppingBag, Ticket, Heart, Mail, CloudSun, Wind, Briefcase
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,8 @@ interface NavbarProps {
 const menuItems = [
   { name: "O nás", icon: <Info className="h-5 w-5" />, href: "/o-nas" },
   { name: "Komáří vížka", icon: <Map className="h-5 w-5" />, href: "/komari-vizka" },
+  { name: "Služby", icon: <Briefcase className="h-5 w-5" />, href: "/sluzby" },
+  { name: "Kurzy Snowkitingu", icon: <Wind className="h-5 w-5" />, href: "/snowkiting-kurzy" },
   { name: "Dobrovolníci & Sponzoři", icon: <Heart className="h-5 w-5" />, href: "/dobrovolnici" },
   { name: "Kontakt", icon: <Mail className="h-5 w-5" />, href: "/kontakt" },
   { name: "Počasí", icon: <CloudSun className="h-5 w-5" />, href: "/pocasi" },
