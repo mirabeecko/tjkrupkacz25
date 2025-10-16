@@ -51,7 +51,7 @@ const Dobrovolnici = () => {
           </p>
           <ul className="space-y-3 mb-6 text-gray-800 text-base w-full text-justify">
             <li className="flex items-center gap-3">
-              <Users className="h-6 w-6 text-tjk-blue/80" /> Stavba a údržba trailů – naučíte se, jak vznikají moderní stezky a jak je udržovat v perfektním stavu.
+              <Users className="h-6 w-6 text-tjk-blue/80" /> Péče o areál a zázemí – naučíte se praktické dovednosti a pomůžete udržovat vše v perfektním stavu.
             </li>
             <li className="flex items-center gap-3">
               <Star className="h-6 w-6 text-tjk-blue/80" /> Pomoc při akcích a závodech – zažijte atmosféru sportovních událostí z první ruky.
