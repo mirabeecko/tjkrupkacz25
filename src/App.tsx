@@ -24,6 +24,7 @@ import Trailpark from "./pages/trailpark";
 import Bistro from "./pages/bistro";
 import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
+import Pujcovna from "./pages/Pujcovna";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/bistro" element={<Bistro />} />
           <Route path="/pripravujeme" element={<Pripravujeme />} />
           <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
+          <Route path="/pujcovna" element={<Pujcovna />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

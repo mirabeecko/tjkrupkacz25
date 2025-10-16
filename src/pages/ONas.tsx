@@ -56,19 +56,19 @@ const ONas = () => {
   return (
     <PageLayout title="O nás" description="Tělovýchovná jednota Krupka z.s. – 50 let tradice, sportu a práce s mládeží v Krušných horách.">
       {/* Hero sekce */}
-      <section className="relative bg-gradient-to-br from-tjk-blue via-blue-600 to-blue-800 text-white py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative bg-gradient-to-br from-tjk-blue via-blue-700 to-blue-900 text-white py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
           <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-green-300 rounded-full blur-3xl" />
         </div>
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="font-montserrat font-extrabold text-4xl md:text-6xl mb-6 drop-shadow-lg">
+          <h1 className="font-montserrat font-extrabold text-4xl md:text-6xl mb-6 drop-shadow-2xl text-white">
             Tělovýchovná jednota Krupka z.s.
           </h1>
-          <p className="text-xl md:text-2xl mb-4 font-semibold">
+          <p className="text-xl md:text-2xl mb-4 font-semibold text-white drop-shadow-lg">
             50 let tradice sportu v Krušných horách
           </p>
-          <p className="text-lg md:text-xl opacity-90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/95 max-w-3xl mx-auto drop-shadow-md">
             Od roku 1974 budujeme sportovní komunitu, provozujeme moderní areál a věnujeme se systematické práci s dětmi a mládeží. Jsme domovem pro širokou škálu sportů – od zimních aktivit až po adrenalinové disciplíny.
           </p>
         </div>

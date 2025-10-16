@@ -640,6 +640,168 @@ export type Database = {
         }
         Relationships: []
       }
+      vehicles: {
+        Row: {
+          id: number
+          brand: string | null
+          model: string | null
+          year: number | null
+          type: string | null
+          battery_voltage: number | null
+          battery_capacity_ah: number | null
+          battery_capacity_kwh: number | null
+          engine_capacity_cc: number | null
+          power_kw: number | null
+          power_hp: number | null
+          torque_nm: number | null
+          max_speed_kmh: number | null
+          range_km: number | null
+          weight_kg: number | null
+          seat_height_mm: number | null
+          wheelbase_mm: number | null
+          wheels: string | null
+          tyre_front: string | null
+          tyre_rear: string | null
+          tube_front: string | null
+          tube_rear: string | null
+          vehicle_length_mm: number | null
+          vehicle_width_mm: number | null
+          vehicle_height_mm: number | null
+          cooling_type: string | null
+          gears: number | null
+          oil_type: string | null
+          fuel_type: string | null
+          consumption_l_per_100km: number | null
+          stk_until: string | null
+          pov_until: string | null
+          pov_price_eur: number | null
+          insurance_company: string | null
+          odometer_km: number | null
+          charging_time_h: number | null
+          luggage_capacity_l: number | null
+          new_price_eur: number | null
+          current_price_eur: number | null
+          spz: string | null
+          vin: string | null
+          photo_url: string | null
+          notes: string | null
+          created_at: string
+          moye: boolean | null
+          color: string | null
+          insurance_expiry: string | null
+          last_service_date: string | null
+          license_plate: string | null
+          next_service_date: string | null
+          technical_inspection_expiry: string | null
+        }
+        Insert: {
+          id?: number
+          brand?: string | null
+          model?: string | null
+          year?: number | null
+          type?: string | null
+          battery_voltage?: number | null
+          battery_capacity_ah?: number | null
+          battery_capacity_kwh?: number | null
+          engine_capacity_cc?: number | null
+          power_kw?: number | null
+          power_hp?: number | null
+          torque_nm?: number | null
+          max_speed_kmh?: number | null
+          range_km?: number | null
+          weight_kg?: number | null
+          seat_height_mm?: number | null
+          wheelbase_mm?: number | null
+          wheels?: string | null
+          tyre_front?: string | null
+          tyre_rear?: string | null
+          tube_front?: string | null
+          tube_rear?: string | null
+          vehicle_length_mm?: number | null
+          vehicle_width_mm?: number | null
+          vehicle_height_mm?: number | null
+          cooling_type?: string | null
+          gears?: number | null
+          oil_type?: string | null
+          fuel_type?: string | null
+          consumption_l_per_100km?: number | null
+          stk_until?: string | null
+          pov_until?: string | null
+          pov_price_eur?: number | null
+          insurance_company?: string | null
+          odometer_km?: number | null
+          charging_time_h?: number | null
+          luggage_capacity_l?: number | null
+          new_price_eur?: number | null
+          current_price_eur?: number | null
+          spz?: string | null
+          vin?: string | null
+          photo_url?: string | null
+          notes?: string | null
+          created_at?: string
+          moye?: boolean | null
+          color?: string | null
+          insurance_expiry?: string | null
+          last_service_date?: string | null
+          license_plate?: string | null
+          next_service_date?: string | null
+          technical_inspection_expiry?: string | null
+        }
+        Update: {
+          id?: number
+          brand?: string | null
+          model?: string | null
+          year?: number | null
+          type?: string | null
+          battery_voltage?: number | null
+          battery_capacity_ah?: number | null
+          battery_capacity_kwh?: number | null
+          engine_capacity_cc?: number | null
+          power_kw?: number | null
+          power_hp?: number | null
+          torque_nm?: number | null
+          max_speed_kmh?: number | null
+          range_km?: number | null
+          weight_kg?: number | null
+          seat_height_mm?: number | null
+          wheelbase_mm?: number | null
+          wheels?: string | null
+          tyre_front?: string | null
+          tyre_rear?: string | null
+          tube_front?: string | null
+          tube_rear?: string | null
+          vehicle_length_mm?: number | null
+          vehicle_width_mm?: number | null
+          vehicle_height_mm?: number | null
+          cooling_type?: string | null
+          gears?: number | null
+          oil_type?: string | null
+          fuel_type?: string | null
+          consumption_l_per_100km?: number | null
+          stk_until?: string | null
+          pov_until?: string | null
+          pov_price_eur?: number | null
+          insurance_company?: string | null
+          odometer_km?: number | null
+          charging_time_h?: number | null
+          luggage_capacity_l?: number | null
+          new_price_eur?: number | null
+          current_price_eur?: number | null
+          spz?: string | null
+          vin?: string | null
+          photo_url?: string | null
+          notes?: string | null
+          created_at?: string
+          moye?: boolean | null
+          color?: string | null
+          insurance_expiry?: string | null
+          last_service_date?: string | null
+          license_plate?: string | null
+          next_service_date?: string | null
+          technical_inspection_expiry?: string | null
+        }
+        Relationships: []
+      }
       vleky: {
         Row: {
           created_at: string

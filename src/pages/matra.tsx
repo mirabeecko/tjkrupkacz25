@@ -13,11 +13,11 @@ const LandingMatPage: React.FC = () => {
         className="relative h-96 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImg})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-start px-8">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85 flex flex-col justify-center items-start px-8">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
             Nafukovací dopadová matrace
           </h1>
-          <p className="text-lg md:text-2xl text-white">
+          <p className="text-lg md:text-2xl text-white drop-shadow-lg">
             Bezpečný trénink skoků a triků pro začátečníky i pokročilé
           </p>
         </div>

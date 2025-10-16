@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -15,13 +16,27 @@ import {
   Snowflake,
   CheckCircle2,
   Star,
-  Clock
+  Clock,
+  Bike,
+  Shield,
+  Building2,
+  GraduationCap
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+interface Vehicle {
+  id: number;
+  brand: string | null;
+  model: string | null;
+  type: string | null;
+  photo_url: string | null;
+  notes: string | null;
+}
+
 const Index = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
   const toggleNavbar = () => {
     setNavbarOpen(!navbarOpen);
@@ -29,6 +44,28 @@ const Index = () => {
 
   const closeNavbar = () => {
     setNavbarOpen(false);
+  };
+
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
+
+  const fetchVehicles = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("vehicles")
+        .select("id, brand, model, type, photo_url, notes")
+        .eq("moye", true)
+        .limit(3);
+
+      if (error) {
+        console.error("Error fetching vehicles:", error);
+      } else {
+        setVehicles(data || []);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const courseBenefits = [
@@ -303,6 +340,442 @@ const Index = () => {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Ubytování Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 to-orange-900/30"></div>
+          </div>
+
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Main Heading */}
+              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+                <span className="bg-gradient-to-r from-white via-amber-200 to-orange-300 bg-clip-text text-transparent">
+                  Ubytování v Krušných horách
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+                Pohodlné a dostupné <span className="font-semibold text-amber-300">ubytování</span>
+                <br className="hidden md:block" />
+                v blízkosti všech aktivit
+              </p>
+
+              {/* Key Points */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Moderní vybavení</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Blízko ski areálu</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Rodinné prostředí</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                <Link to="/ubytovani">
+                  <Button size="lg" className="group bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                    Zobrazit ubytování
+                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Půjčovna Motocyklů Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-900/30 to-red-900/30"></div>
+          </div>
+
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-[fade-in_1s_ease-out]">
+                <Bike className="w-4 h-4 text-orange-400" />
+                <span className="text-sm font-medium">Premiové motocykly KTM</span>
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+                <span className="bg-gradient-to-r from-white via-orange-200 to-red-300 bg-clip-text text-transparent">
+                  Půjčovna Motocyklů
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+                Zažijte adrenalin na <span className="font-semibold text-orange-300">prémiových motocyklech KTM</span>
+                <br className="hidden md:block" />
+                v krásném terénu Krušných hor
+              </p>
+
+              {/* Bike Models - Dynamic from Supabase */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                {vehicles.length > 0 ? (
+                  vehicles.map((vehicle) => (
+                    <div key={vehicle.id} className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                      <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
+                        <img
+                          src={vehicle.photo_url || "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070"}
+                          alt={`${vehicle.brand} ${vehicle.model}`}
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        {vehicle.type && (
+                          <div className="absolute top-2 right-2">
+                            <Badge className="bg-orange-500 text-white text-xs">
+                              {vehicle.type}
+                            </Badge>
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Bike className="w-4 h-4 text-orange-400" />
+                        <span className="text-xs font-semibold text-orange-300">{vehicle.brand}</span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{vehicle.model}</h3>
+                      {vehicle.notes && (
+                        <p className="text-gray-300 text-sm line-clamp-2">{vehicle.notes}</p>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-bold mb-2">KTM FREERIDE 350</h3>
+                      <p className="text-gray-300">Lehký enduro stroj pro terénní jízdu</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-bold mb-2">KTM LC4 640 SUPERMOTO</h3>
+                      <p className="text-gray-300">Výkonný supermoto pro asfalt i terén</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+                      <h3 className="text-xl font-bold mb-2">KTM DUKE 390</h3>
+                      <p className="text-gray-300">Sportovní naked bike pro každého</p>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              {/* Key Points */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.7s_both]">
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Profesionální servis</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Kompletní výstroj</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Instruktáž zdarma</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                <Link to="/pujcovna">
+                  <Button size="lg" className="group bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <Bike className="mr-2 h-6 w-6" />
+                    Zobrazit všechny motocykly
+                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* AIRBAG Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=2070')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-pink-900/30"></div>
+          </div>
+
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-purple-500/20 backdrop-blur-sm rounded-full border border-purple-400/30 animate-[fade-in_1s_ease-out]">
+                <Shield className="w-4 h-4 text-purple-400" />
+                <span className="text-sm font-medium">COMING SOON</span>
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+                <span className="bg-gradient-to-r from-white via-purple-200 to-pink-300 bg-clip-text text-transparent">
+                  AIRBAG
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+                Bezpečnost na <span className="font-semibold text-purple-300">nové úrovni</span>
+                <br className="hidden md:block" />
+                Již brzy u nás!
+              </p>
+
+              {/* Key Points */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                <div className="flex items-center gap-2 text-lg">
+                  <Shield className="w-5 h-5 text-purple-400" />
+                  <span>Maximální ochrana</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <Shield className="w-5 h-5 text-purple-400" />
+                  <span>Profesionální vybavení</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <Shield className="w-5 h-5 text-purple-400" />
+                  <span>Moderní technologie</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                <Link to="/kontakt">
+                  <Button size="lg" className="group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <Shield className="mr-2 h-6 w-6" />
+                    Více informací
+                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Firemní akce Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/30 to-teal-900/30"></div>
+          </div>
+
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Main Heading */}
+              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+                <span className="bg-gradient-to-r from-white via-emerald-200 to-teal-300 bg-clip-text text-transparent">
+                  Firemní akce
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+                Team building a <span className="font-semibold text-emerald-300">firemní akce na míru</span>
+                <br className="hidden md:block" />
+                pro posílení týmového ducha
+              </p>
+
+              {/* Key Points */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Team building aktivity</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Catering na míru</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Kompletní servis</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                <Link to="/firmy">
+                  <Button size="lg" className="group bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-emerald-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <Building2 className="mr-2 h-6 w-6" />
+                    Zobrazit nabídku
+                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Školní akce Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=2070')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/30 to-violet-900/30"></div>
+          </div>
+
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Main Heading */}
+              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+                <span className="bg-gradient-to-r from-white via-indigo-200 to-violet-300 bg-clip-text text-transparent">
+                  Školní akce
+                </span>
+              </h2>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+                Nezapomenutelné <span className="font-semibold text-indigo-300">zážitky pro žáky</span>
+                <br className="hidden md:block" />
+                a studenty všech věkových kategorií
+              </p>
+
+              {/* Key Points */}
+              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Školní výlety</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Lyžařské kurzy</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg">
+                  <CheckCircle2 className="w-5 h-5 text-green-400" />
+                  <span>Sportovní dny</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                <Link to="/skoly">
+                  <Button size="lg" className="group bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-indigo-500/50 transition-all duration-300 transform hover:-translate-y-1">
+                    <GraduationCap className="mr-2 h-6 w-6" />
+                    Zobrazit nabídku
+                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
