@@ -136,8 +136,8 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-700 mt-10 pt-8 text-center text-gray-400">
           <p>© {currentYear} Tělovýchovná jednota Krupka z.s. Všechna práva vyhrazena.</p>
           <div className="mt-2 text-sm flex flex-wrap justify-center gap-x-4 gap-y-2">
-            <Link to="/gdpr" className="hover:text-tjk-orange transition-colors">Zásady ochrany osobních údajů</Link>
-            <Link to="/podminky" className="hover:text-tjk-orange transition-colors">Podmínky použití</Link>
+            <Link to="/zasady-ochrany-osobnich-udaju" className="hover:text-tjk-orange transition-colors">Zásady ochrany osobních údajů</Link>
+            <Link to="/podminky-pouziti" className="hover:text-tjk-orange transition-colors">Podmínky použití</Link>
             <Link to="/cookies" className="hover:text-tjk-orange transition-colors">Cookies</Link>
             <Link to="/pristupnost" className="hover:text-tjk-orange transition-colors">Přístupnost</Link>
           </div>

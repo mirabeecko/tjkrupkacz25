@@ -170,9 +170,9 @@ const Index = () => {
 
               {/* Subtitle */}
               <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                Ovládněte <span className="font-bold text-cyan-200">sílu větru</span> na zasněžených pláních
+                Když vítr <span className="font-bold text-cyan-200">šeptá tvé jméno</span>
                 <br className="hidden md:block" />
-                Staňte se mistrem snowkitingu s <span className="font-bold text-white">TJ Krupka</span>
+                a sníh se <span className="font-bold text-white">mění v svobodu</span>
               </p>
 
               {/* Key Points */}

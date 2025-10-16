@@ -25,6 +25,10 @@ import Bistro from "./pages/bistro";
 import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
 import Pujcovna from "./pages/Pujcovna";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import Cookies from "./pages/cookies";
+import Accessibility from "./pages/Accessibility";
 
 const queryClient = new QueryClient();
 
@@ -56,6 +60,10 @@ const App = () => (
           <Route path="/pripravujeme" element={<Pripravujeme />} />
           <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
           <Route path="/pujcovna" element={<Pujcovna />} />
+          <Route path="/zasady-ochrany-osobnich-udaju" element={<PrivacyPolicy />} />
+          <Route path="/podminky-pouziti" element={<TermsOfService />} />
+          <Route path="/cookies" element={<Cookies />} />
+          <Route path="/pristupnost" element={<Accessibility />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
