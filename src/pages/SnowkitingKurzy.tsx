@@ -295,6 +295,54 @@ const SnowkitingKurzy = () => {
           </div>
         </section>
 
+        {/* PROČ KURZY U NÁS - Full Width */}
+        <section className="relative py-20 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 text-white overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+                  Proč kurz u nás?
+                </h2>
+                <p className="text-xl text-blue-100 drop-shadow-md">
+                  Poskytneme vám vše, co potřebujete pro bezpečný a zábavný start
+                </p>
+              </div>
+
+              <div className="grid gap-6">
+                {[
+                  "Profesionální instruktoři s letitou zkušeností",
+                  "Kvalitní výukový materiál a bezpečnostní vybavení",
+                  "Malé skupiny pro individuální přístup",
+                  "Praxe na sněhu v Krušných horách",
+                  "Certifikát po absolvování kurzu"
+                ].map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  >
+                    <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0 mt-1 drop-shadow-lg" />
+                    <span className="text-lg drop-shadow-md">{benefit}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-12 text-center">
+                <Link to="/kontakt">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <Calendar className="mr-2 h-6 w-6" />
+                    Chci začít!
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* JAK TO FUNGUJE */}
         <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="max-w-7xl mx-auto px-4">
