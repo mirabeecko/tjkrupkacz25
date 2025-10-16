@@ -130,7 +130,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070')",
+              backgroundImage: "url('/images/snowkiting/jj produktovka.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
