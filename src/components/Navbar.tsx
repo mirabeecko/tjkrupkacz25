@@ -33,12 +33,12 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
       
       {/* Navigation menu - Desktop: horizontal under header, Mobile: slideout menu */}
       <nav className={cn(
-        "bg-white z-30 transition-all duration-300 ease-in-out",
+        "bg-white z-50 transition-all duration-300 ease-in-out",
         // Mobile styles - slide out menu
-        "fixed top-0 left-0 h-full w-64 shadow-lg transform lg:shadow-none lg:transform-none", 
+        "fixed top-0 left-0 h-full w-64 shadow-lg transform lg:shadow-none lg:transform-none",
         isOpen ? "translate-x-0" : "-translate-x-full",
         // Desktop styles - horizontal menu under header
-        "lg:static lg:flex lg:h-auto lg:w-full lg:translate-x-0 lg:justify-center lg:border-b lg:border-gray-100"
+        "lg:static lg:flex lg:h-auto lg:w-full lg:translate-x-0 lg:justify-center lg:border-b lg:border-gray-100 lg:z-30"
       )}>
         {/* Mobile menu header */}
         <div className="p-4 border-b flex justify-between items-center lg:hidden">
@@ -80,12 +80,13 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
         {/* Mobile Footer */}
         <div className="mt-auto p-4 border-t lg:hidden">
           <div className="flex flex-col space-y-2">
-            <a 
-              href="/dobrovolnici" 
+            <Link
+              to="/dobrovolnici"
+              onClick={closeNavbar}
               className="border border-tjk-blue text-tjk-blue hover:bg-tjk-blue/10 py-2 px-4 rounded text-center font-medium"
             >
               Staňte se dobrovolníkem
-            </a>
+            </Link>
           </div>
         </div>
       </nav>

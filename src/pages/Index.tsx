@@ -133,8 +133,8 @@ const Index = () => {
               backgroundImage: "url('/images/snowkiting/jj produktovka.jpg')",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-cyan-900/30"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-cyan-900/40"></div>
           </div>
 
           {/* Animated particles */}
@@ -162,32 +162,32 @@ const Index = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
-                <span className="bg-gradient-to-r from-white via-cyan-200 to-blue-300 bg-clip-text text-transparent">
+              <h1 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both] drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
                   Snowkiting v Krušných horách
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
-                Objevte adrenalin na <span className="font-semibold text-cyan-300">sněhu a větru</span>
+              <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                Ovládněte <span className="font-bold text-cyan-200">sílu větru</span> na zasněžených pláních
                 <br className="hidden md:block" />
-                s profesionálními instruktory TJ Krupka
+                Staňte se mistrem snowkitingu s <span className="font-bold text-white">TJ Krupka</span>
               </p>
 
               {/* Key Points */}
               <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Kurzy pro všechny úrovně</span>
+                <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
+                  <span className="text-white">Kurzy pro všechny úrovně</span>
                 </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Certifikovaní instruktoři</span>
+                <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
+                  <span className="text-white">Certifikovaní instruktoři</span>
                 </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Zapůjčení vybavení</span>
+                <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
+                  <span className="text-white">Zapůjčení vybavení</span>
                 </div>
               </div>
 
