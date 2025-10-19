@@ -130,7 +130,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('/images/snowkiting/jj produktovka.jpg')",
+              backgroundImage: "url('/images/homepage/jj-kom-jump.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
@@ -169,25 +169,23 @@ const Index = () => {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                Když vítr <span className="font-bold text-cyan-200">šeptá tvé jméno</span>
-                <br className="hidden md:block" />
-                a sníh se <span className="font-bold text-white">mění v svobodu</span>
+              <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-white">
+                Když vítr <span className="font-bold text-cyan-200">šeptá tvé jméno..</span>
               </p>
 
               {/* Key Points */}
               <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
                 <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                   <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
+                  <span className="text-white">Seznámení s teorií a základy</span>
+                </div>
+                <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
                   <span className="text-white">Kurzy pro všechny úrovně</span>
                 </div>
                 <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                   <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
-                  <span className="text-white">Certifikovaní instruktoři</span>
-                </div>
-                <div className="flex items-center gap-2 text-lg font-semibold drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-                  <CheckCircle2 className="w-5 h-5 text-green-400 drop-shadow-lg" />
-                  <span className="text-white">Zapůjčení vybavení</span>
+                  <span className="text-white">Zapůjčení kompletního vybavení</span>
                 </div>
               </div>
 
@@ -255,7 +253,7 @@ const Index = () => {
                     </div>
                     <Link to="/snowkiting-kurzy">
                       <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
-                        Zobrazit detaily
+                        Zobrazit detail
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
@@ -313,7 +311,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070')",
+              backgroundImage: "url('/images/homepage/ubytovani.PNG')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -346,7 +344,7 @@ const Index = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Pohodlné a dostupné <span className="font-semibold text-amber-300">ubytování</span>
                 <br className="hidden md:block" />
                 v blízkosti všech aktivit
@@ -387,7 +385,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070')",
+              backgroundImage: "url('/images/homepage/pujcovna.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -426,10 +424,8 @@ const Index = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
-                Zažijte adrenalin na <span className="font-semibold text-orange-300">prémiových motocyklech KTM</span>
-                <br className="hidden md:block" />
-                v krásném terénu Krušných hor
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+                Užijte si Krušné hory na <span className="font-semibold text-orange-300">motorce nebo čtyřkolce</span>.. Enduro? Supermoto? Naked? Vyberte si...
               </p>
 
               {/* Bike Models - Dynamic from Supabase */}
@@ -439,7 +435,7 @@ const Index = () => {
                     <div key={vehicle.id} className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
                       <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
                         <img
-                          src={vehicle.photo_url || "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070"}
+                          src={vehicle.photo_url || "/images/sluzby/pujcovna.jpg"}
                           alt={`${vehicle.brand} ${vehicle.model}`}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
@@ -457,7 +453,7 @@ const Index = () => {
                       </div>
                       <h3 className="text-xl font-bold mb-2">{vehicle.model}</h3>
                       {vehicle.notes && (
-                        <p className="text-gray-300 text-sm line-clamp-2">{vehicle.notes}</p>
+                        <p className="text-white text-sm line-clamp-2">{vehicle.notes}</p>
                       )}
                     </div>
                   ))
@@ -466,17 +462,17 @@ const Index = () => {
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                       <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
                       <h3 className="text-xl font-bold mb-2">KTM FREERIDE 350</h3>
-                      <p className="text-gray-300">Lehký enduro stroj pro terénní jízdu</p>
+                      <p className="text-white">Lehký enduro stroj pro terénní jízdu</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                       <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
                       <h3 className="text-xl font-bold mb-2">KTM LC4 640 SUPERMOTO</h3>
-                      <p className="text-gray-300">Výkonný supermoto pro asfalt i terén</p>
+                      <p className="text-white">Výkonný supermoto pro asfalt i terén</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                       <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
                       <h3 className="text-xl font-bold mb-2">KTM DUKE 390</h3>
-                      <p className="text-gray-300">Sportovní naked bike pro každého</p>
+                      <p className="text-white">Sportovní naked bike pro každého</p>
                     </div>
                   </>
                 )}
@@ -503,7 +499,7 @@ const Index = () => {
                 <Link to="/pujcovna">
                   <Button size="lg" className="group bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:-translate-y-1">
                     <Bike className="mr-2 h-6 w-6" />
-                    Zobrazit všechny motocykly
+                    Zobrazit motocykly
                     <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
                   </Button>
                 </Link>
@@ -518,7 +514,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=2070')",
+              backgroundImage: "url('/images/homepage/airbag.png')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -557,7 +553,7 @@ const Index = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Bezpečnost na <span className="font-semibold text-purple-300">nové úrovni</span>
                 <br className="hidden md:block" />
                 Již brzy u nás!
@@ -599,7 +595,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069')",
+              backgroundImage: "url('/images/homepage/okoli.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -632,7 +628,7 @@ const Index = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Team building a <span className="font-semibold text-emerald-300">firemní akce na míru</span>
                 <br className="hidden md:block" />
                 pro posílení týmového ducha
@@ -674,7 +670,7 @@ const Index = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=2070')",
+              backgroundImage: "url('/images/homepage/okoli.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -700,6 +696,7 @@ const Index = () => {
           <div className="container relative z-20 px-4 py-20">
             <div className="max-w-5xl mx-auto text-center text-white">
               {/* Main Heading */}
+              <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-24 h-24 mx-auto mb-4" />
               <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-indigo-200 to-violet-300 bg-clip-text text-transparent">
                   Školní akce
@@ -707,7 +704,7 @@ const Index = () => {
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Nezapomenutelné <span className="font-semibold text-indigo-300">zážitky pro žáky</span>
                 <br className="hidden md:block" />
                 a studenty všech věkových kategorií
@@ -774,7 +771,7 @@ const Index = () => {
               <h2 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl animate-[fadeInUp_1s_ease-out]">
                 Připraveni na dobrodružství?
               </h2>
-              <p className="text-2xl md:text-3xl mb-12 text-blue-100 drop-shadow-lg animate-[fadeInUp_1s_ease-out_0.2s_both]">
+              <p className="text-2xl md:text-3xl mb-12 text-white drop-shadow-lg animate-[fadeInUp_1s_ease-out_0.2s_both]">
                 Přidejte se k nám a zažijte snowkiting v krásném prostředí Krušných hor
               </p>
 
@@ -788,7 +785,7 @@ const Index = () => {
                 </Link>
               </div>
 
-              <div className="mt-12 flex flex-wrap justify-center gap-8 text-blue-100 drop-shadow-md animate-[fadeInUp_1s_ease-out_0.6s_both]">
+              <div className="mt-12 flex flex-wrap justify-center gap-8 text-white drop-shadow-md animate-[fadeInUp_1s_ease-out_0.6s_both]">
                 <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
                   <Wind className="w-6 h-6" />
                   <span className="font-semibold">50+ spokojených účastníků ročně</span>

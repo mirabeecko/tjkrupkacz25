@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 
 const services = [
   {
+    id: "snowkiting",
     title: "Kurzy Snowkitingu",
     subtitle: "Létejte na sněhu",
     description:
@@ -26,6 +27,7 @@ const services = [
     ]
   },
   {
+    id: "pujcovna",
     title: "Půjčovna Motocyklů",
     subtitle: "Adrenalin na kolech",
     description:
@@ -34,7 +36,7 @@ const services = [
     cta: "Zobrazit motocykly",
     link: "/pujcovna",
     gradient: "from-orange-500 via-red-500 to-orange-600",
-    image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070",
+    image: "/images/sluzby/pujcovna.jpg",
     benefits: [
       "KTM Freeride, Duke, Supermoto",
       "Profesionální servis",
@@ -43,6 +45,7 @@ const services = [
     ]
   },
   {
+    id: "lyzarsky-areal",
     title: "Lyžařský areál Komáří Vížka",
     subtitle: "Zimní radovánky",
     description:
@@ -60,6 +63,7 @@ const services = [
     ]
   },
   {
+    id: "airbag",
     title: "AIRBAG",
     subtitle: "Již brzy!",
     description:
@@ -68,7 +72,7 @@ const services = [
     cta: "Více informací",
     link: "/kontakt",
     gradient: "from-purple-600 via-pink-500 to-purple-600",
-    image: "https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=2070",
+    image: "/images/sluzby/airbag.png",
     benefits: [
       "Maximální ochrana",
       "Profesionální vybavení",
@@ -78,11 +82,12 @@ const services = [
     badge: "COMING SOON"
   },
   {
+    id: "skoly",
     title: "Pro školy",
     subtitle: "Vzdělávání v pohybu",
     description:
       "Speciální programy pro školy a dětské kolektivy. Zábava, pohyb a vzdělávání v přírodě pod vedením zkušených instruktorů.",
-    icon: School,
+    icon: () => <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-12 h-12" />,
     cta: "Zjistit více",
     link: "/skoly",
     gradient: "from-blue-500 via-cyan-500 to-teal-500",
@@ -95,6 +100,7 @@ const services = [
     ]
   },
   {
+    id: "firmy",
     title: "Pro firmy",
     subtitle: "Teambuilding na maximum",
     description:
@@ -112,6 +118,7 @@ const services = [
     ]
   },
   {
+    id: "ubytovani",
     title: "Ubytování",
     subtitle: "Pohodlí v horách",
     description:
@@ -120,7 +127,7 @@ const services = [
     cta: "Rezervovat",
     link: "/ubytovani",
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
+    image: "/images/sluzby/ubytovani.png",
     benefits: [
       "Moderní vybavení",
       "Blízko ski areálu",
@@ -129,13 +136,14 @@ const services = [
     ]
   },
   {
+    id: "bistro",
     title: "Bistro",
     subtitle: "Chuť v přírodě",
     description:
       "Stylové bistro s domácí kuchyní, občerstvením a posezením na terase. Ideální místo pro relax po sportu.",
     icon: Coffee,
-    cta: "Zobrazit menu",
-    link: "/bistro",
+    cta: "Již brzy",
+    link: "/pripravujeme",
     gradient: "from-purple-500 via-violet-500 to-indigo-500",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070",
     benefits: [
@@ -205,7 +213,7 @@ const Sluzby = () => {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both]">
+              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Od vzdělávacích programů přes <span className="font-semibold text-blue-300">adrenalinové teambuildingy</span>
                 <br className="hidden md:block" />
                 až po komfortní ubytování a gastro zážitky
@@ -269,7 +277,8 @@ const Sluzby = () => {
               return (
                 <Card
                   key={service.title}
-                  className="group overflow-hidden border-2 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                  id={service.id}
+                  className="group overflow-hidden border-2 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl scroll-mt-24"
                   onMouseEnter={() => setHoveredIndex(idx)}
                   onMouseLeave={() => setHoveredIndex(null)}
                 >

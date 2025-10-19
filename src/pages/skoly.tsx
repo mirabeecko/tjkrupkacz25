@@ -27,7 +27,7 @@ const Skoly = () => (
         />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/85 via-blue-800/75 to-blue-600/65 z-10" />
         <div className="relative z-20 text-center text-white px-6 md:px-12 max-w-4xl animate-[fadeInUp_1s_ease-out]">
-          <School className="w-20 h-20 mx-auto mb-6 drop-shadow-2xl animate-[bounce_2s_ease-in-out_infinite]" />
+          <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-40 h-40 mx-auto mb-6 drop-shadow-2xl" />
           <h1 className="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-2xl tracking-tight text-shadow-lg">
             Programy pro školy
           </h1>

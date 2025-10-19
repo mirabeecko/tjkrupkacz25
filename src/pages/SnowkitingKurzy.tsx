@@ -257,7 +257,7 @@ const SnowkitingKurzy = () => {
                       ))}
                     </ul>
 
-                    <Link to="/kontakt">
+                    <Link to="/kontakt-snowkiting">
                       <Button className={`w-full bg-gradient-to-r ${level.color} text-white font-bold py-6 text-lg hover:opacity-90 transition-opacity`}>
                         Rezervovat kurz
                         <ChevronRight className="ml-2 w-5 h-5" />
@@ -267,31 +267,6 @@ const SnowkitingKurzy = () => {
                 </Card>
               ))}
             </div>
-
-            {/* Bonusy */}
-            <Card className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white border-0 p-8">
-              <div className="text-center">
-                <Star className="w-16 h-16 mx-auto mb-6 animate-pulse" />
-                <h3 className="text-3xl font-black mb-4">V CENĚ KURZU</h3>
-                <div className="grid md:grid-cols-3 gap-6 mt-8">
-                  <div className="flex flex-col items-center gap-3">
-                    <Wind className="w-12 h-12" />
-                    <p className="font-bold text-lg">Kompletní vybavení</p>
-                    <p className="text-sm opacity-90">Kite, trapéz, helma, všechno zapůjčíme</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-3">
-                    <Shield className="w-12 h-12" />
-                    <p className="font-bold text-lg">Pojištění</p>
-                    <p className="text-sm opacity-90">Úrazové pojištění v ceně kurzu</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-3">
-                    <Award className="w-12 h-12" />
-                    <p className="font-bold text-lg">Certifikát</p>
-                    <p className="text-sm opacity-90">Po absolvování kurzu získáte certifikát</p>
-                  </div>
-                </div>
-              </div>
-            </Card>
           </div>
         </section>
 
@@ -332,7 +307,7 @@ const SnowkitingKurzy = () => {
               </div>
 
               <div className="mt-12 text-center">
-                <Link to="/kontakt">
+                <Link to="/kontakt-snowkiting">
                   <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                     <Calendar className="mr-2 h-6 w-6" />
                     Chci začít!
@@ -455,7 +430,7 @@ const SnowkitingKurzy = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
-              <Link to="/kontakt" className="w-full sm:w-auto">
+              <Link to="/kontakt-snowkiting" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full bg-white text-blue-600 hover:bg-gray-100 font-black px-12 py-8 text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all">
                   <Calendar className="mr-3 w-6 h-6" />
                   Rezervovat kurz

@@ -4,6 +4,7 @@ import { Cloud, CloudRain, Sun, Wind, CloudSun, Droplets, Thermometer, MapPin, A
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import WindguruWidget from "@/components/WindguruWidget";
 
 const Pocasi = () => {
   const [activeTab, setActiveTab] = useState("aktualni");
@@ -223,6 +224,16 @@ const Pocasi = () => {
             </div>
           </TabsContent>
         </Tabs>
+
+        <section>
+          <h2 className="text-2xl font-montserrat font-bold mb-6 text-tjk-blue">Předpověď větru (Windguru)</h2>
+          <WindguruWidget />
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-montserrat font-bold mb-6 text-tjk-blue">Větrná mapa (Windy)</h2>
+          <iframe width="100%" height="450" src="https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=mm&metricTemp=°C&metricWind=m/s&zoom=11&overlay=wind&product=ecmwf&level=surface&lat=50.75&lon=13.976&detailLat=50.789&detailLon=13.976&detail=true" frameBorder="0"></iframe>
+        </section>
         
         <section className="bg-image relative rounded-lg overflow-hidden">
           <div className="absolute inset-0">

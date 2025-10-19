@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import PageLayout from "@/components/PageLayout";
+import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { supabase } from '@/supabaseClient';
 import { MapPin, ArrowRight, Users, Lightbulb, Bike, Coffee, Map, Users as UsersIcon, Globe, ExternalLink, Compass, Bird, Mountain, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -52,6 +54,10 @@ const KomariVizka = () => {
   const [vlekyLoading, setVlekyLoading] = useState(true);
   const [places, setPlaces] = useState<any[]>([]);
   const [placesLoading, setPlacesLoading] = useState(true);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+
+  const toggleNavbar = () => setNavbarOpen(!navbarOpen);
+  const closeNavbar = () => setNavbarOpen(false);
 
   useEffect(() => {
     async function fetchVleky() {
@@ -114,287 +120,342 @@ const KomariVizka = () => {
   };
 
   return (
-    <PageLayout 
-      title="Areál Komáří vížka" 
-      description="Letní i zimní provoz areálu Komáří vížka – vleky, bike park, ubytování a atrakce v srdci Krušných hor."
-      backgroundImage="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
-    >
-      <section className="mb-12">
-        <div className="prose max-w-none">
-          <p className="text-lg mb-6">
-            Komáří vížka leží ve výšce 800–900 m n. m., obklopena hustými smrkovými lesy a zvlněnými 
-            loukami Krušných hor. Výhledy sahají k českoněmecké hranici a nejvyššímu vrcholu Klínovec.
-            Areál nabízí celoroční vyžití pro sportovce všech úrovní.
-          </p>
-        </div>
-        
-        <div className="relative h-80 mb-8 rounded-xl overflow-hidden shadow-lg">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20334.990979076266!2d13.81428368599375!3d50.676307072674574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709ff62287d0415%3A0x4cb0aa2f30c44b43!2zS29tw6HFmcOtIHbDrcW-a2E!5e0!3m2!1scs!2scz!4v1715704057041!5m2!1scs!2scz" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Mapa areálu Komáří vížka"
-            className="absolute inset-0"
-          ></iframe>
-        </div>
+    <div className="flex flex-col min-h-screen">
+      <Header toggleNavbar={toggleNavbar} />
+      <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
 
-        <div className="grid md:grid-cols-2 gap-8 my-12">
-          <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-tjk-blue mb-4">Trailpark Komárka</h3>
-            <p className="text-gray-600 mb-6">
-              Objevte naše udržované traily pro všechny úrovně zkušenosti. Single tracky, 
-              technické sjezdy i rodinné stezky. Vhodné pro horská kola i enduro.
-            </p>
-            <Link to="/sporty" className="group">
-              <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-                Sportovní aktivity
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: "url('/images/sluzby/komarka.jpg')",
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 to-cyan-900/40"></div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-            <h3 className="text-xl font-semibold text-tjk-blue mb-4">Dobrovolnické programy</h3>
-            <p className="text-gray-600 mb-6">
-              Přidejte se k nám při budování a údržbě trailů, organizaci akcí nebo 
-              jako instruktoři v bikeškole. Získejte slevy a další výhody.
-            </p>
-            <Link to="/dobrovolnici" className="group">
-              <Button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
-                Přidat se k týmu
-                <Users className="ml-2 h-4 w-4 transition-transform group-hover:scale-110" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-      
-      <section className="mb-12">
-        <h2 className="text-2xl font-montserrat font-bold mb-8 text-tjk-blue">Zajímavá místa v okolí areálu</h2>
-        {placesLoading ? (
-          <div className="flex justify-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tjk-blue"></div>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-3 gap-8">
-            {places.map((place) => (
+          {/* Animated particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(30)].map((_, i) => (
               <div
-                key={place.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden border border-gray-100"
-              >
-                {place.img_url ? (
-                  <img
-                    src={place.img_url}
-                    alt={place.name}
-                    className="w-full h-48 object-cover bg-gray-100"
-                  />
-                ) : (
-                  <div className="w-full h-48 flex items-center justify-center bg-gray-100 text-gray-400">
-                    <MapPin className="w-12 h-12" />
-                  </div>
-                )}
-                <div className="flex-1 flex flex-col p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    {place.category && (
-                      <span className="inline-flex items-center px-2 py-0.5 bg-blue-50 text-tjk-blue text-xs rounded font-semibold">
-                        {getCategoryIcon(place.category)}{place.category}
-                      </span>
-                    )}
-                    {place.vzdalenost_km && (
-                      <span className="inline-flex items-center px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
-                        {place.vzdalenost_km} km
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold text-tjk-blue mb-2">{place.name}</h3>
-                  {place.popis ? (
-                    <p className="text-gray-600 mb-3">{place.popis}</p>
-                  ) : (
-                    <p className="text-gray-400 mb-3 italic">Popis není k dispozici.</p>
-                  )}
-                  {place.tags && (
-                    <div className="mb-2 flex flex-wrap gap-1">
-                      {place.tags.split(',').map((tag: string) => (
-                        <span key={tag.trim()} className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full font-medium">{tag.trim()}</span>
-                      ))}
-                    </div>
-                  )}
-                  {place.address && (
-                    <div className="text-sm text-gray-500 mb-1">
-                      <span className="font-semibold">Adresa: </span>{place.address}
-                    </div>
-                  )}
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {place.web_url && (
-                      <a href={place.web_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-blue text-white rounded hover:bg-tjk-orange transition text-sm font-medium">
-                        <Globe className="h-4 w-4 mr-1" /> Web
-                        <ExternalLink className="h-4 w-4 ml-1" />
-                      </a>
-                    )}
-                    {place.map_url && (
-                      <a href={place.map_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-orange text-white rounded hover:bg-tjk-blue transition text-sm font-medium">
-                        <MapPin className="h-4 w-4 mr-1" /> Mapa
-                        <ExternalLink className="h-4 w-4 ml-1" />
-                      </a>
-                    )}
-                  </div>
-                  {place.phone && (
-                    <div className="text-sm text-gray-500 mt-2">
-                      <span className="font-semibold">Telefon: </span>{place.phone}
-                    </div>
-                  )}
-                  {place.email && (
-                    <div className="text-sm text-gray-500">
-                      <span className="font-semibold">E-mail: </span>
-                      <a href={`mailto:${place.email}`} className="text-tjk-blue hover:text-tjk-orange underline">{place.email}</a>
-                    </div>
-                  )}
-                </div>
-              </div>
+                key={i}
+                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 3}s`
+                }}
+              />
             ))}
           </div>
-        )}
-        {!placesLoading && places.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-gray-500">Momentálně nejsou k dispozici žádná místa.</p>
-          </div>
-        )}
-      </section>
 
-      <section className="mb-12">
-        <h2 className="text-2xl font-montserrat font-bold mb-6 text-tjk-blue">Vleky</h2>
-        {vlekyLoading ? (
-          <div className="flex justify-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tjk-blue"></div>
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-5xl mx-auto text-center text-white">
+              {/* Main Heading */}
+              <h1 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both] drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+                <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
+                  Areál Komáří vížka
+                </span>
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                Letní i zimní provoz areálu Komáří vížka – vleky, bike park, ubytování a atrakce v srdci Krušných hor.
+              </p>
+            </div>
           </div>
-        ) : (
-          <div className="overflow-x-auto rounded-xl shadow-md">
-            <Table>
-              <TableHeader className="bg-tjk-blue">
-                <TableRow>
-                  <TableHead className="text-white">Název</TableHead>
-                  <TableHead className="text-white">Délka</TableHead>
-                  <TableHead className="text-white">Převýšení</TableHead>
-                  <TableHead className="text-white">Kapacita sedačky</TableHead>
-                  <TableHead className="text-white">Kapacita kotvy</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {vleky.map((vlek) => (
-                  <TableRow key={vlek.id} className="hover:bg-gray-50">
-                    <TableCell className="font-medium">{vlek.name}</TableCell>
-                    <TableCell>{vlek.long} m</TableCell>
-                    <TableCell>{vlek.elevation} m</TableCell>
-                    <TableCell>{vlek.unasedel}</TableCell>
-                    <TableCell>{vlek.unasecu}</TableCell>
-                  </TableRow>
+        </section>
+
+        <div className="container mx-auto px-4 py-12">
+          <section className="mb-12">
+            <div className="prose max-w-none">
+              <p className="text-lg mb-6">
+                Komáří vížka leží ve výšce 800–900 m n. m., obklopena hustými smrkovými lesy a zvlněnými 
+                loukami Krušných hor. Výhledy sahají k českoněmecké hranici a nejvyššímu vrcholu Klínovec.
+                Areál nabízí celoroční vyžití pro sportovce všech úrovní.
+              </p>
+            </div>
+            
+            <div className="relative h-80 mb-8 rounded-xl overflow-hidden shadow-lg">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20334.990979076266!2d13.81428368599375!3d50.676307072674574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709ff62287d0415%3A0x4cb0aa2f30c44b43!2zS29tw6HFmcOtIHbDrcW-a2E!5e0!3m2!1scs!2scz!4v1715704057041!5m2!1scs!2scz" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa areálu Komáří vížka"
+                className="absolute inset-0"
+              ></iframe>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 my-12">
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-tjk-blue mb-4">Trailpark Komárka</h3>
+                <p className="text-gray-600 mb-6">
+                  Objevte naše udržované traily pro všechny úrovně zkušenosti. Single tracky, 
+                  technické sjezdy i rodinné stezky. Vhodné pro horská kola i enduro.
+                </p>
+                <Link to="/sporty" className="group">
+                  <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Sportovní aktivity
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                <h3 className="text-xl font-semibold text-tjk-blue mb-4">Dobrovolnické programy</h3>
+                <p className="text-gray-600 mb-6">
+                  Přidejte se k nám při budování a údržbě trailů, organizaci akcí nebo 
+                  jako instruktoři v bikeškole. Získejte slevy a další výhody.
+                </p>
+                <Link to="/dobrovolnici" className="group">
+                  <Button className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-medium py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Přidat se k týmu
+                    <Users className="ml-2 h-4 w-4 transition-transform group-hover:scale-110" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </section>
+          
+          {/*
+          <section className="mb-12">
+            <h2 className="text-2xl font-montserrat font-bold mb-8 text-tjk-blue">Zajímavá místa v okolí areálu</h2>
+            {placesLoading ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tjk-blue"></div>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-3 gap-8">
+                {places.map((place) => (
+                  <div
+                    key={place.id}
+                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden border border-gray-100"
+                  >
+                    {place.img_url ? (
+                      <img
+                        src={place.img_url}
+                        alt={place.name}
+                        className="w-full h-48 object-cover bg-gray-100"
+                      />
+                    ) : (
+                      <div className="w-full h-48 flex items-center justify-center bg-gray-100 text-gray-400">
+                        <MapPin className="w-12 h-12" />
+                      </div>
+                    )}
+                    <div className="flex-1 flex flex-col p-6">
+                      <div className="flex items-center gap-2 mb-2">
+                        {place.category && (
+                          <span className="inline-flex items-center px-2 py-0.5 bg-blue-50 text-tjk-blue text-xs rounded font-semibold">
+                            {getCategoryIcon(place.category)}{place.category}
+                          </span>
+                        )}
+                        {place.vzdalenost_km && (
+                          <span className="inline-flex items-center px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
+                            {place.vzdalenost_km} km
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-xl font-bold text-tjk-blue mb-2">{place.name}</h3>
+                      {place.popis ? (
+                        <p className="text-gray-600 mb-3">{place.popis}</p>
+                      ) : (
+                        <p className="text-gray-400 mb-3 italic">Popis není k dispozici.</p>
+                      )}
+                      {place.tags && (
+                        <div className="mb-2 flex flex-wrap gap-1">
+                          {place.tags.split(',').map((tag: string) => (
+                            <span key={tag.trim()} className="bg-orange-100 text-orange-700 text-xs px-2 py-0.5 rounded-full font-medium">{tag.trim()}</span>
+                          ))}
+                        </div>
+                      )}
+                      {place.address && (
+                        <div className="text-sm text-gray-500 mb-1">
+                          <span className="font-semibold">Adresa: </span>{place.address}
+                        </div>
+                      )}
+                      <div className="flex flex-wrap gap-2 mt-2">
+                        {place.web_url && (
+                          <a href={place.web_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-blue text-white rounded hover:bg-tjk-orange transition text-sm font-medium">
+                            <Globe className="h-4 w-4 mr-1" /> Web
+                            <ExternalLink className="h-4 w-4 ml-1" />
+                          </a>
+                        )}
+                        {place.map_url && (
+                          <a href={place.map_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 bg-tjk-orange text-white rounded hover:bg-tjk-blue transition text-sm font-medium">
+                            <MapPin className="h-4 w-4 mr-1" /> Mapa
+                            <ExternalLink className="h-4 w-4 ml-1" />
+                          </a>
+                        )}
+                      </div>
+                      {place.phone && (
+                        <div className="text-sm text-gray-500 mt-2">
+                          <span className="font-semibold">Telefon: </span>{place.phone}
+                        </div>
+                      )}
+                      {place.email && (
+                        <div className="text-sm text-gray-500">
+                          <span className="font-semibold">E-mail: </span>
+                          <a href={`mailto:${place.email}`} className="text-tjk-blue hover:text-tjk-orange underline">{place.email}</a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
-          </div>
-        )}
+              </div>
+            )}
+            {!placesLoading && places.length === 0 && (
+              <div className="text-center py-8">
+                <p className="text-gray-500">Momentálně nejsou k dispozici žádná místa.</p>
+              </div>
+            )}
+          </section>
+          */}
 
-        {!vlekyLoading && vleky.length === 0 && (
-          <div className="text-center py-8">
-            <p className="text-gray-500">Momentálně nejsou k dispozici žádné vleky.</p>
-          </div>
-        )}
-      </section>
+          {/*
+          <section className="mb-12">
+            <h2 className="text-2xl font-montserrat font-bold mb-6 text-tjk-blue">Vleky</h2>
+            {vlekyLoading ? (
+              <div className="flex justify-center py-8">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tjk-blue"></div>
+              </div>
+            ) : (
+              <div className="overflow-x-auto rounded-xl shadow-md">
+                <Table>
+                  <TableHeader className="bg-tjk-blue">
+                    <TableRow>
+                      <TableHead className="text-white">Název</TableHead>
+                      <TableHead className="text-white">Délka</TableHead>
+                      <TableHead className="text-white">Převýšení</TableHead>
+                      <TableHead className="text-white">Kapacita sedačky</TableHead>
+                      <TableHead className="text-white">Kapacita kotvy</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {vleky.map((vlek) => (
+                      <TableRow key={vlek.id} className="hover:bg-gray-50">
+                        <TableCell className="font-medium">{vlek.name}</TableCell>
+                        <TableCell>{vlek.long} m</TableCell>
+                        <TableCell>{vlek.elevation} m</TableCell>
+                        <TableCell>{vlek.unasedel}</TableCell>
+                        <TableCell>{vlek.unasecu}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
-          <CardHeader className="bg-gradient-to-r from-tjk-blue to-blue-700 text-white">
-            <CardTitle>Jízdenky</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-gray-700 mb-4">
-              Zakupte si jízdenky na vleky online a vyhněte se frontám.
-              Nabízíme výhodné celodenní, polodenní a bodové jízdné.
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Link to="/pripravujeme" className="w-full">
-              <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md">
-                Koupit jízdenky
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </CardFooter>
-        </Card>
+            {!vlekyLoading && vleky.length === 0 && (
+              <div className="text-center py-8">
+                <p className="text-gray-500">Momentálně nejsou k dispozici žádné vleky.</p>
+              </div>
+            )}
+          </section>
+          */}
 
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
-          <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
-            <CardTitle>Ubytování</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-gray-700 mb-4">
-              Komfortní pokoje s výhledem do krajiny Krušných hor.
-              Ideální pro víkendové pobyty, rodinné dovolené i skupiny.
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Link to="/sluzby" className="w-full">
-              <Button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-md">
-                Rezervovat pobyt
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </CardFooter>
-        </Card>
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
+              <CardHeader className="bg-gradient-to-r from-tjk-blue to-blue-700 text-white">
+                <CardTitle>Jízdenky</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <p className="text-gray-700 mb-4">
+                  Zakupte si jízdenky na vleky online a vyhněte se frontám.
+                  Nabízíme výhodné celodenní, polodenní a bodové jízdné.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Link to="/pripravujeme" className="w-full">
+                  <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-md">
+                    Koupit jízdenky
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
 
-        <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
-          <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
-            <CardTitle>Bistro</CardTitle>
-          </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-gray-700 mb-4">
-              Občerstvení přímo v areálu. Nabízíme teplá jídla,
-              čerstvé bagety, dezerty a širokou nabídku nápojů.
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Link to="/sluzby" className="w-full">
-              <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 shadow-md">
-                Prohlédnout menu
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </CardFooter>
-        </Card>
-      </section>
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
+              <CardHeader className="bg-gradient-to-r from-purple-600 to-purple-800 text-white">
+                <CardTitle>Ubytování</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <p className="text-gray-700 mb-4">
+                  Komfortní pokoje s výhledem do krajiny Krušných hor.
+                  Ideální pro víkendové pobyty, rodinné dovolené i skupiny.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Link to="/sluzby" className="w-full">
+                  <Button className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 shadow-md">
+                    Rezervovat pobyt
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
 
-      {/* --- NOVÝ BLOK: Nabídka pro školy (Komárek) --- */}
-      <section className="my-16 flex flex-col md:flex-row items-center gap-10 bg-gradient-to-r from-blue-50 to-white rounded-2xl shadow-lg p-8">
-        <div className="flex-1 flex justify-center items-center">
-          <img src="/src/loga/komárek.png" alt="Logo Komárek" className="max-h-80 w-auto object-contain drop-shadow-xl" />
+            <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 border-gray-100">
+              <CardHeader className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                <CardTitle>Bistro</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <p className="text-gray-700 mb-4">
+                  Občerstvení přímo v areálu. Nabízíme teplá jídla,
+                  čerstvé bagety, dezerty a širokou nabídku nápojů.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Link to="/sluzby" className="w-full">
+                  <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 shadow-md">
+                    Prohlédnout menu
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </CardFooter>
+            </Card>
+          </section>
+
+          {/* --- NOVÝ BLOK: Nabídka pro školy (Komárek) --- */}
+          <section className="my-16 flex flex-col md:flex-row items-center gap-10 bg-gradient-to-r from-blue-50 to-white rounded-2xl shadow-lg p-8">
+            <div className="flex-1 flex justify-center items-center">
+              <img src="/src/loga/komárek.png" alt="Logo Komárek" className="max-h-80 w-auto object-contain drop-shadow-xl" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-tjk-blue mb-4">Nabídka pro školy: Zážitkové dny na Komáří vížce</h2>
+              <p className="text-lg text-gray-700 mb-3">
+                Hledáte originální program pro školní výlet, adaptační kurz nebo sportovní den? Nabízíme bezpečné a zábavné aktivity v přírodě pod vedením zkušených instruktorů. Připravíme program na míru pro základní i střední školy – cyklistika, hry v přírodě, environmentální workshopy, orientační běh, základy první pomoci a mnoho dalšího. Vše v krásném prostředí Krušných hor s možností stravování a ubytování.
+              </p>
+              <p className="text-md text-gray-600">Kontaktujte nás pro individuální nabídku a rezervaci termínu!</p>
+            </div>
+          </section>
+
+          {/* --- NOVÝ BLOK: Trailpark pro školy --- */}
+          <section className="my-16 flex flex-col md:flex-row-reverse items-center gap-10 bg-gradient-to-l from-orange-50 to-white rounded-2xl shadow-lg p-8">
+            <div className="flex-1 flex justify-center items-center">
+              <img src="/src/loga/TRAILPARKKomarkaLOGO.png" alt="Logo Trailpark Komárka" className="max-h-80 w-auto object-contain drop-shadow-xl rounded-xl" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">Sportovní programy pro školy: Pohyb, zábava, bezpečí</h2>
+              <p className="text-lg text-gray-700 mb-3">
+                Přiveďte své žáky do našeho sportovního areálu! Naučíme děti i teenagery základy bezpečné jízdy na kole, správné chování v terénu a týmové spolupráci. Programy vedou certifikovaní bike instruktoři, vše je přizpůsobeno věku a zkušenostem dětí. K dispozici je půjčovna kol, zázemí i možnost občerstvení. Ideální pro sportovní dny, školy v přírodě i adaptační kurzy.
+              </p>
+              <p className="text-md text-gray-600">Neváhejte a rezervujte si termín pro vaši třídu ještě dnes!</p>
+            </div>
+          </section>
         </div>
-        <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold text-tjk-blue mb-4">Nabídka pro školy: Zážitkové dny na Komáří vížce</h2>
-          <p className="text-lg text-gray-700 mb-3">
-            Hledáte originální program pro školní výlet, adaptační kurz nebo sportovní den? Nabízíme bezpečné a zábavné aktivity v přírodě pod vedením zkušených instruktorů. Připravíme program na míru pro základní i střední školy – cyklistika, hry v přírodě, environmentální workshopy, orientační běh, základy první pomoci a mnoho dalšího. Vše v krásném prostředí Krušných hor s možností stravování a ubytování.
-          </p>
-          <p className="text-md text-gray-600">Kontaktujte nás pro individuální nabídku a rezervaci termínu!</p>
-        </div>
-      </section>
+      </main>
 
-      {/* --- NOVÝ BLOK: Trailpark pro školy --- */}
-      <section className="my-16 flex flex-col md:flex-row-reverse items-center gap-10 bg-gradient-to-l from-orange-50 to-white rounded-2xl shadow-lg p-8">
-        <div className="flex-1 flex justify-center items-center">
-          <img src="/src/loga/TRAILPARKKomarkaLOGO.png" alt="Logo Trailpark Komárka" className="max-h-80 w-auto object-contain drop-shadow-xl rounded-xl" />
-        </div>
-        <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">Sportovní programy pro školy: Pohyb, zábava, bezpečí</h2>
-          <p className="text-lg text-gray-700 mb-3">
-            Přiveďte své žáky do našeho sportovního areálu! Naučíme děti i teenagery základy bezpečné jízdy na kole, správné chování v terénu a týmové spolupráci. Programy vedou certifikovaní bike instruktoři, vše je přizpůsobeno věku a zkušenostem dětí. K dispozici je půjčovna kol, zázemí i možnost občerstvení. Ideální pro sportovní dny, školy v přírodě i adaptační kurzy.
-          </p>
-          <p className="text-md text-gray-600">Neváhejte a rezervujte si termín pro vaši třídu ještě dnes!</p>
-        </div>
-      </section>
-    </PageLayout>
+      <Footer />
+    </div>
   );
 };
 

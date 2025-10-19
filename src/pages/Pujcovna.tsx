@@ -95,7 +95,7 @@ const Pujcovna = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070')",
+              backgroundImage: "url('/images/sluzby/pujcovna.jpg')",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
@@ -189,7 +189,7 @@ const Pujcovna = () => {
                     {/* Vehicle Image */}
                     <div className="relative h-64 overflow-hidden">
                       <img
-                        src={vehicle.photo_url || "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070"}
+                        src={vehicle.photo_url || "/images/sluzby/pujcovna.jpg"}
                         alt={`${vehicle.brand} ${vehicle.model}`}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
@@ -290,9 +290,9 @@ const Pujcovna = () => {
                       )}
 
                       {/* CTA Button */}
-                      <Link to="/kontakt">
+                      <Link to={`/vozidlo/${vehicle.id}`}>
                         <Button className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 group">
-                          Rezervovat
+                          Zobrazit detail
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-2" />
                         </Button>
                       </Link>
@@ -336,7 +336,7 @@ const Pujcovna = () => {
               </div>
 
               <div className="mt-12 text-center">
-                <Link to="/kontakt">
+                <Link to="/kontakt-pujcovna">
                   <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                     <Bike className="mr-2 h-6 w-6" />
                     Rezervovat motocykl

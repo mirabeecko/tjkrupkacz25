@@ -1,0 +1,56 @@
+{
+  "short_name": "TJK Krupka",
+  "name": "Tělovýchovná jednota Krupka z.s.",
+  "description": "Snowkiting v Krušných horách, trail park Komárka a další outdoorové aktivity",
+  "icons": [
+    {
+      "src": "/tjk-logo-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/tjk-logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#161c2d",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["sports", "lifestyle", "travel"],
+  "screenshots": [
+    {
+      "src": "/screenshots/homepage.png",
+      "type": "image/png",
+      "sizes": "1280x720"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kurzy Snowkitingu",
+      "short_name": "Kurzy",
+      "description": "Prohlédnout si kurzy snowkitingu",
+      "url": "/snowkiting-kurzy",
+      "icons": [{ "src": "/icons/snowflake.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Trail Park",
+      "short_name": "Trails",
+      "description": "Informace o trail parku Komárka",
+      "url": "/komari-vizka",
+      "icons": [{ "src": "/icons/bike.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Počasí",
+      "short_name": "Počasí",
+      "description": "Aktuální počasí v Krušných horách",
+      "url": "/pocasi",
+      "icons": [{ "src": "/icons/weather.png", "sizes": "96x96" }]
+    }
+  ]
+}
