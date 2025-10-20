@@ -34,6 +34,7 @@ import Accessibility from "./pages/Accessibility";
 import KontaktSnowkiting from "./pages/KontaktSnowkiting";
 import KontaktPujcovna from "./pages/KontaktPujcovna";
 import VehicleDetail from "./pages/VehicleDetail";
+import Airbag from "./pages/Airbag";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,7 @@ const App = () => (
           <Route path="/pristupnost" element={<Accessibility />} />
           <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
           <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} />
+          <Route path="/airbag" element={<Airbag />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
