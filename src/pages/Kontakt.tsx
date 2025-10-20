@@ -4,9 +4,9 @@ import PageLayout from "@/components/PageLayout";
 import { supabase } from "@/supabaseClient";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { 
-  Map, Mail, Phone, Clock, Info, MapPin, Car, Calendar, 
-  ArrowRight, ExternalLink, Globe, Camera, Coffee, 
+import {
+  Map as MapIcon, Mail, Phone, Clock, Info, MapPin, Car, Calendar,
+  ArrowRight, ExternalLink, Globe, Camera, Coffee,
   Mountain, Snowflake, Bird, Fish, Compass, Sun, CloudSun
 } from "lucide-react";
 import { 
@@ -75,53 +75,79 @@ const Kontakt = () => {
   };
 
   return (
-    <PageLayout 
-      title="Kontakt" 
+    <PageLayout
+      title="Kontakt"
       description="Jak nás najdete, kontaktní údaje, mapa areálu."
     >
       <div className="grid md:grid-cols-2 gap-8 mb-12">
-        <div>
-          <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-            <h2 className="text-xl font-montserrat font-bold mb-4 text-tjk-blue">Kontaktní údaje</h2>
-            <div className="space-y-6 pl-6">
-              <div className="flex items-start gap-4">
-                <MapPin className="h-7 w-7 text-tjk-orange mt-1" />
+        <div className="space-y-6">
+          {/* Kontaktní údaje - Vylepšené */}
+          <div className="bg-gradient-to-br from-white via-blue-50 to-cyan-50 p-8 rounded-2xl shadow-xl border-2 border-blue-100 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-xl shadow-lg">
+                <Phone className="h-6 w-6 text-white" />
+              </div>
+              <h2 className="text-2xl font-montserrat font-bold text-tjk-blue">Kontaktní údaje</h2>
+            </div>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 bg-orange-100 rounded-lg">
+                  <MapPin className="h-6 w-6 text-tjk-orange" />
+                </div>
                 <div>
-                  <h3 className="font-semibold text-tjk-blue">Adresa</h3>
+                  <h3 className="font-bold text-tjk-blue text-lg mb-1">Adresa</h3>
                   <p className="text-gray-700">Husitská 191/8, 417 41 Krupka</p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <Mail className="h-7 w-7 text-tjk-blue mt-1" />
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <Mail className="h-6 w-6 text-tjk-blue" />
+                </div>
                 <div>
-                  <h3 className="font-semibold">E-mail</h3>
-                  <p><a href="mailto:miroslavbroozek@gmail.com" className="text-tjk-blue hover:underline">miroslavbroozek@gmail.com</a></p>
+                  <h3 className="font-bold text-tjk-blue text-lg mb-1">E-mail</h3>
+                  <p><a href="mailto:miroslavbroozek@gmail.com" className="text-tjk-blue hover:text-tjk-orange hover:underline transition-colors">miroslavbroozek@gmail.com</a></p>
                 </div>
               </div>
-              <div className="flex items-start gap-4">
-                <Phone className="h-7 w-7 text-green-600 mt-1" />
+              <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <Phone className="h-6 w-6 text-green-600" />
+                </div>
                 <div>
-                  <h3 className="font-semibold text-tjk-blue">Telefon</h3>
-                  <p><a href="tel:+420777734389" className="text-tjk-blue hover:underline">+420 777 734 389</a></p>
+                  <h3 className="font-bold text-tjk-blue text-lg mb-1">Telefon</h3>
+                  <p><a href="tel:+420777734389" className="text-tjk-blue hover:text-green-600 hover:underline transition-colors">+420 777 734 389</a></p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-montserrat font-bold mb-4 text-tjk-blue">Sledujte nás</h2>
+          {/* Sociální sítě - Vylepšené */}
+          <div className="bg-gradient-to-br from-white via-purple-50 to-pink-50 p-8 rounded-2xl shadow-xl border-2 border-purple-100 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-lg">
+                <Globe className="h-6 w-6 text-white" />
+              </div>
+              <h2 className="text-2xl font-montserrat font-bold text-purple-700">Sledujte nás</h2>
+            </div>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/profile.php?id=100054246950281" target="_blank" rel="noopener noreferrer" className="text-tjk-blue hover:text-tjk-orange">
+              <a href="https://www.facebook.com/profile.php?id=100054246950281" target="_blank" rel="noopener noreferrer" className="p-3 bg-white rounded-xl shadow-md hover:shadow-xl hover:scale-110 transition-all duration-300 text-blue-600 hover:text-blue-700">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
                 </svg>
               </a>
-              {/* ...ostatní sociální ikony, pokud budou potřeba... */}
             </div>
           </div>
         </div>
-        
-        <ContactForm />
+
+        {/* Formulář - Vylepšený wrapper */}
+        <div className="bg-gradient-to-br from-white via-green-50 to-emerald-50 p-8 rounded-2xl shadow-xl border-2 border-green-100 hover:shadow-2xl transition-all duration-300">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg">
+              <Mail className="h-6 w-6 text-white" />
+            </div>
+            <h2 className="text-2xl font-montserrat font-bold text-green-700">Napište nám</h2>
+          </div>
+          <ContactForm />
+        </div>
       </div>
 
       <section className="mb-12 -mx-4 md:-mx-8 lg:-mx-16 xl:-mx-32">
@@ -139,13 +165,21 @@ const Kontakt = () => {
         </div>
       </section>
 
-      <section className="mb-12 bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-montserrat font-bold mb-6 text-tjk-blue">Jak k nám</h2>
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          <div className="flex flex-col bg-gradient-to-br from-blue-50 to-sky-50 p-6 rounded-lg shadow-md">
-            <div className="flex items-center mb-2">
-              <Car className="h-6 w-6 text-tjk-orange mr-2" />
-              <h3 className="text-xl font-bold text-tjk-blue">Příjezd autem</h3>
+      <section className="mb-12 bg-gradient-to-br from-white via-gray-50 to-blue-50 p-10 rounded-3xl shadow-2xl border-2 border-gray-200">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-tjk-blue/10 backdrop-blur-md border border-tjk-blue/20 rounded-full mb-4">
+            <Car className="h-5 w-5 text-tjk-blue" />
+            <span className="text-sm font-semibold text-tjk-blue">Navigace</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-tjk-blue">Jak k nám</h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          <div className="flex flex-col bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 p-8 rounded-2xl shadow-xl border-2 border-blue-200 hover:shadow-2xl hover:border-tjk-blue transition-all duration-500">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-tjk-orange to-amber-500 rounded-xl shadow-lg">
+                <Car className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-tjk-blue">Příjezd autem</h3>
             </div>
             <p className="mb-4 text-gray-700">
               Z Teplic směr Dubí, poté po silnici II/382 směr Krupka. V Krupce odbočit na značenou silnici směr Komáří vížka. K dispozici je bezplatné parkoviště přímo u areálu.
@@ -161,16 +195,19 @@ const Kontakt = () => {
                 href="https://www.google.com/maps/dir//SKI+AREA+KRUPKA,+Horn%C3%AD+Krupka+107,+Krupka,+Czechia/data=!4m9!4m8!1m0!1m5!1m1!19sChIJfxUC3MORCUcRLJ465ayTqOM!2m2!1d13.8670323!2d50.702396!3e0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center mt-auto px-6 py-3 rounded-lg bg-tjk-blue text-white font-semibold shadow hover:bg-tjk-blue/90 transition text-base"
+                className="inline-flex items-center justify-center mt-auto px-8 py-4 rounded-xl bg-gradient-to-r from-tjk-blue to-cyan-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-base"
               >
                 Navigovat do areálu
+                <ExternalLink className="ml-2 h-5 w-5" />
               </a>
             </div>
           </div>
-          <div className="flex flex-col bg-gradient-to-br from-orange-50 to-yellow-50 p-6 rounded-lg shadow-md">
-            <div className="flex items-center mb-2">
-              <Map className="h-6 w-6 text-tjk-orange mr-2" />
-              <h3 className="text-xl font-bold text-tjk-blue">Veřejná doprava</h3>
+          <div className="flex flex-col bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 p-8 rounded-2xl shadow-xl border-2 border-orange-200 hover:shadow-2xl hover:border-tjk-orange transition-all duration-500">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg">
+                <MapIcon className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-tjk-blue">Veřejná doprava</h3>
             </div>
             <p className="mb-4 text-gray-700">
               Z Teplic autobusem číslo 10 nebo 13 do zastávky Krupka, Bohosudov. Poté přestup na turistický autobus s cílovou zastávkou Komáří vížka (jezdí pouze v letní sezóně o víkendech).
@@ -190,135 +227,142 @@ const Kontakt = () => {
                 href="https://idos.cz/vlakyautobusymhdvse/spojeni/vysledky/?f=Teplice&fc=1&t=Fojtovice/Krupka,Kom%C3%A1%C5%99%C3%AD%20v%C3%AD%C5%BEka&tc=200003&cmd=cmdSearch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center mt-auto px-6 py-3 rounded-lg bg-tjk-orange text-white font-semibold shadow hover:bg-tjk-orange/90 transition text-base"
+                className="inline-flex items-center justify-center mt-auto px-8 py-4 rounded-xl bg-gradient-to-r from-tjk-orange to-amber-500 text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-base"
               >
                 Vyhledat autobus do areálu
+                <ExternalLink className="ml-2 h-5 w-5" />
               </a>
             </div>
           </div>
         </div>
-        <div className="mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <h4 className="font-medium text-gray-600">Z Prahy</h4>
-              <p className="text-2xl font-bold text-tjk-blue">92 km</p>
+
+        {/* Vzdálenosti - Vylepšené */}
+        <div className="mb-0">
+          <h3 className="text-xl font-bold text-tjk-blue mb-6 text-center">Vzdálenosti z hlavních měst</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center border-2 border-gray-100 hover:border-tjk-blue">
+              <h4 className="font-semibold text-gray-600 mb-2">Z Prahy</h4>
+              <p className="text-3xl font-extrabold text-tjk-blue mb-1">92 km</p>
               <p className="text-sm text-gray-500">cca 1h 15min</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <h4 className="font-medium text-gray-600">Z Ústí n.L.</h4>
-              <p className="text-2xl font-bold text-tjk-blue">25 km</p>
+            <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center border-2 border-gray-100 hover:border-tjk-blue">
+              <h4 className="font-semibold text-gray-600 mb-2">Z Ústí n.L.</h4>
+              <p className="text-3xl font-extrabold text-tjk-blue mb-1">25 km</p>
               <p className="text-sm text-gray-500">cca 30min</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <h4 className="font-medium text-gray-600">Z Teplic</h4>
-              <p className="text-2xl font-bold text-tjk-blue">12 km</p>
+            <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center border-2 border-gray-100 hover:border-tjk-blue">
+              <h4 className="font-semibold text-gray-600 mb-2">Z Teplic</h4>
+              <p className="text-3xl font-extrabold text-tjk-blue mb-1">12 km</p>
               <p className="text-sm text-gray-500">cca 20min</p>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-              <h4 className="font-medium text-gray-600">Z Drážďan</h4>
-              <p className="text-2xl font-bold text-tjk-blue">68 km</p>
+            <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center border-2 border-gray-100 hover:border-tjk-blue">
+              <h4 className="font-semibold text-gray-600 mb-2">Z Drážďan</h4>
+              <p className="text-3xl font-extrabold text-tjk-blue mb-1">68 km</p>
               <p className="text-sm text-gray-500">cca 1h</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Webcams Section with Weather Information */}
-      <section className="mb-12 bg-gradient-to-r from-blue-50 via-sky-50 to-indigo-50 p-8 rounded-lg shadow-md">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-montserrat font-bold text-tjk-blue flex items-center">
-            <Info className="h-6 w-6 text-tjk-orange mr-3" />
+      {/* Enhanced Webcams Section - Vylepšená */}
+      <section className="mb-12 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 p-10 rounded-3xl shadow-2xl border-2 border-indigo-200">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 backdrop-blur-md border border-indigo-300 rounded-full mb-4">
+            <Camera className="h-5 w-5 text-indigo-600" />
+            <span className="text-sm font-semibold text-indigo-700">Live náhled</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-montserrat font-bold text-tjk-blue flex items-center justify-center gap-3">
             Webkamery & Počasí
           </h2>
-          <div className="flex items-center space-x-2">
-            <Sun className="h-5 w-5 text-amber-500 animate-pulse" />
-            <span className="font-medium text-tjk-blue">12°C</span>
+          <div className="flex items-center justify-center space-x-2 mt-4">
+            <Sun className="h-6 w-6 text-amber-500 animate-pulse" />
+            <span className="font-bold text-xl text-tjk-blue">12°C</span>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="rounded-lg overflow-hidden shadow-lg group transition-all duration-300 hover:shadow-xl">
-            <h3 className="bg-gradient-to-r from-tjk-blue to-blue-700 text-white p-3 font-medium flex justify-between items-center">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="rounded-2xl overflow-hidden shadow-xl group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border-2 border-blue-200">
+            <h3 className="bg-gradient-to-r from-tjk-blue to-cyan-700 text-white p-4 font-bold text-lg flex justify-between items-center">
               <span>HORNÍ STANICE</span>
-              <CloudSun className="h-5 w-5 text-white" />
+              <CloudSun className="h-6 w-6 text-white" />
             </h3>
             <div className="aspect-video group-hover:brightness-105 transition-all">
-              <iframe 
-                src="https://rtsp.me/embed/eyST2ZdA/" 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                allowFullScreen 
+              <iframe
+                src="https://rtsp.me/embed/eyST2ZdA/"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
                 title="Webkamera - Horní stanice"
               ></iframe>
             </div>
-            <div className="bg-white p-3">
+            <div className="bg-white p-4">
               <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-600">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
-                <div className="flex items-center">
-                  <Snowflake className="h-4 w-4 text-blue-400 mr-1" />
-                  <span>8°C</span>
+                <span className="text-gray-600 font-medium">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
+                <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 rounded-full">
+                  <Snowflake className="h-4 w-4 text-blue-600" />
+                  <span className="font-bold text-blue-600">8°C</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-lg group transition-all duration-300 hover:shadow-xl">
-            <h3 className="bg-gradient-to-r from-tjk-blue to-blue-700 text-white p-3 font-medium flex justify-between items-center">
+          <div className="rounded-2xl overflow-hidden shadow-xl group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border-2 border-blue-200">
+            <h3 className="bg-gradient-to-r from-tjk-blue to-cyan-700 text-white p-4 font-bold text-lg flex justify-between items-center">
               <span>SLOUP č. 22</span>
-              <Sun className="h-5 w-5 text-white" />
+              <Sun className="h-6 w-6 text-white" />
             </h3>
             <div className="aspect-video group-hover:brightness-105 transition-all">
-              <iframe 
-                src="https://rtsp.me/embed/r32e6FtS/" 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                allowFullScreen 
+              <iframe
+                src="https://rtsp.me/embed/r32e6FtS/"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
                 title="Webkamera - Sloup č. 22"
               ></iframe>
             </div>
-            <div className="bg-white p-3">
+            <div className="bg-white p-4">
               <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-600">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
-                <div className="flex items-center">
-                  <Sun className="h-4 w-4 text-amber-500 mr-1" />
-                  <span>10°C</span>
+                <span className="text-gray-600 font-medium">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
+                <div className="flex items-center gap-1 px-3 py-1 bg-amber-100 rounded-full">
+                  <Sun className="h-4 w-4 text-amber-600" />
+                  <span className="font-bold text-amber-600">10°C</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-lg group transition-all duration-300 hover:shadow-xl">
-            <h3 className="bg-gradient-to-r from-tjk-blue to-blue-700 text-white p-3 font-medium flex justify-between items-center">
+          <div className="rounded-2xl overflow-hidden shadow-xl group transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 border-2 border-blue-200">
+            <h3 className="bg-gradient-to-r from-tjk-blue to-cyan-700 text-white p-4 font-bold text-lg flex justify-between items-center">
               <span>FOJTOVICE</span>
-              <Sun className="h-5 w-5 text-white" />
+              <Sun className="h-6 w-6 text-white" />
             </h3>
             <div className="aspect-video group-hover:brightness-105 transition-all">
-              <iframe 
-                src="https://www.ipcamlive.com/592f3bce0107c" 
-                width="100%" 
-                height="100%" 
-                frameBorder="0" 
-                allowFullScreen 
+              <iframe
+                src="https://www.ipcamlive.com/592f3bce0107c"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
                 title="Webkamera - Fojtovice"
               ></iframe>
             </div>
-            <div className="bg-white p-3">
+            <div className="bg-white p-4">
               <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-600">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
-                <div className="flex items-center">
-                  <Sun className="h-4 w-4 text-amber-500 mr-1" />
-                  <span>11°C</span>
+                <span className="text-gray-600 font-medium">Aktualizováno: {new Date().toLocaleTimeString('cs-CZ')}</span>
+                <div className="flex items-center gap-1 px-3 py-1 bg-amber-100 rounded-full">
+                  <Sun className="h-4 w-4 text-amber-600" />
+                  <span className="font-bold text-amber-600">11°C</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="mt-6 text-center">
-          <Button asChild variant="outline" className="bg-white hover:bg-tjk-blue/5 transition-colors">
-            <Link to="/pocasi" className="inline-flex items-center">
+        <div className="mt-8 text-center">
+          <Link to="/pocasi">
+            <Button className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 text-lg">
               Zobrazit informace o počasí
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
       </section>
 

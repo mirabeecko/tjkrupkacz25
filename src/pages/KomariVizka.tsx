@@ -167,7 +167,7 @@ const KomariVizka = () => {
 
       <main className="flex-1">
         {/* Hero Section - Vylepšený */}
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image s paralaxou */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -267,22 +267,35 @@ const KomariVizka = () => {
         </section>
 
         <div className="container mx-auto px-4 py-16 md:py-24">
-          {/* Úvodní text - Vylepšený */}
+          {/* Úvodní text - Vylepšený profesionálně */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-20">
               <div className="max-w-4xl mx-auto">
-                <div className="bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
-                      <Mountain className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-tjk-blue mb-4">
-                        Objevte krásu Krušných hor
-                      </h2>
-                      <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                        Komáří vížka leží ve výšce <strong>800–900 m n. m.</strong>, obklopena hustými smrkovými lesy a zvlněnými loukami Krušných hor. Výhledy sahají k českoněmecké hranici a nejvyššímu vrcholu Klínovec. Areál nabízí <strong>celoroční vyžití</strong> pro sportovce všech úrovní.
-                      </p>
+                <div className="relative bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-3xl p-10 md:p-14 shadow-2xl border-2 border-blue-200 overflow-hidden hover:shadow-blue-500/20 transition-all duration-500">
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-cyan-200/30 to-blue-300/30 rounded-full blur-3xl"></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-200/30 to-cyan-300/30 rounded-full blur-3xl"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-start gap-5 mb-8">
+                      <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-2xl flex items-center justify-center shadow-xl">
+                        <Mountain className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 rounded-full mb-3">
+                          <Sparkles className="h-4 w-4 text-tjk-blue" />
+                          <span className="text-sm font-semibold text-tjk-blue">800-900 m n.m.</span>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-5 leading-tight">
+                          Objevte krásu Krušných hor
+                        </h2>
+                        <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-4">
+                          Komáří vížka leží ve výšce <strong className="text-tjk-blue">800–900 m n. m.</strong>, obklopena hustými smrkovými lesy a zvlněnými loukami Krušných hor. Výhledy sahají k českoněmecké hranici a nejvyššímu vrcholu Klínovec.
+                        </p>
+                        <p className="text-lg text-gray-600 leading-relaxed">
+                          Areál nabízí <strong className="text-tjk-orange">celoroční vyžití</strong> pro sportovce všech úrovní – od začátečníků až po profíky.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -290,10 +303,14 @@ const KomariVizka = () => {
             </section>
           </ScrollAnimation>
 
-          {/* Mapa - Vylepšená */}
+          {/* Mapa - Vylepšená profesionálně */}
           <ScrollAnimation animation="fade-up">
             <section id="mapa" className="mb-20">
-              <div className="text-center mb-8">
+              <div className="text-center mb-10">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 backdrop-blur-md border border-green-300 rounded-full mb-4">
+                  <MapPin className="h-5 w-5 text-green-600" />
+                  <span className="text-sm font-semibold text-green-700">Lokace</span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
                   Kde nás najdete
                 </h2>
@@ -301,7 +318,7 @@ const KomariVizka = () => {
                   Areál Komáří vížka, Krušné hory
                 </p>
               </div>
-              <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <div className="relative h-96 md:h-[500px] rounded-3xl overflow-hidden shadow-2xl border-4 border-blue-200 hover:border-tjk-blue transition-all duration-500">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20334.990979076266!2d13.81428368599375!3d50.676307072674574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4709ff62287d0415%3A0x4cb0aa2f30c44b43!2zS29tw6HFmcOtIHbDrcW-a2E!5e0!3m2!1scs!2scz!4v1715704057041!5m2!1scs!2scz"
                   width="100%"
@@ -317,32 +334,46 @@ const KomariVizka = () => {
             </section>
           </ScrollAnimation>
 
-          {/* Služby - Vylepšené karty */}
+          {/* Služby - Vylepšené profesionálně */}
           <section className="mb-20">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="text-center mb-12">
+              <ScrollAnimation animation="fade-up">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 backdrop-blur-md border border-purple-300 rounded-full mb-4">
+                  <Star className="h-5 w-5 text-purple-600" />
+                  <span className="text-sm font-semibold text-purple-700">Aktivity</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Co u nás zažijete
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Sportovní aktivity pro každého
+                </p>
+              </ScrollAnimation>
+            </div>
+            <div className="grid md:grid-cols-2 gap-10">
               {services.map((service, index) => (
                 <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
-                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 hover:border-tjk-orange h-full">
-                    <CardHeader className="bg-gradient-to-br from-gray-50 to-white pb-4">
-                      <div className="flex items-center gap-4">
-                        <div className={`p-4 bg-gradient-to-br ${service.gradient} rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          {React.cloneElement(service.icon, { className: "h-6 w-6 text-white" })}
+                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 hover:border-tjk-orange h-full hover:-translate-y-2">
+                    <CardHeader className="bg-gradient-to-br from-gray-50 to-white pb-6">
+                      <div className="flex items-center gap-5">
+                        <div className={`p-5 bg-gradient-to-br ${service.gradient} rounded-2xl shadow-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
+                          {React.cloneElement(service.icon, { className: "h-7 w-7 text-white" })}
                         </div>
-                        <CardTitle className="text-2xl text-tjk-blue group-hover:text-tjk-orange transition-colors">
+                        <CardTitle className="text-2xl md:text-3xl font-extrabold text-tjk-blue group-hover:text-tjk-orange transition-colors">
                           {service.title}
                         </CardTitle>
                       </div>
                     </CardHeader>
-                    <CardContent className="pt-6 pb-4">
-                      <p className="text-gray-700 text-lg leading-relaxed">
+                    <CardContent className="pt-6 pb-6">
+                      <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
                         {service.description}
                       </p>
                     </CardContent>
                     <CardFooter>
                       <Link to={service.link} className="w-full">
-                        <Button className={`w-full bg-gradient-to-r ${service.gradient} hover:${service.hoverGradient} text-white font-semibold py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-lg group-hover:scale-[1.02]`}>
+                        <Button className={`w-full bg-gradient-to-r ${service.gradient} hover:${service.hoverGradient} text-white font-bold py-6 md:py-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 text-lg md:text-xl group-hover:scale-[1.02]`}>
                           {service.buttonText}
-                          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
                         </Button>
                       </Link>
                     </CardFooter>
@@ -352,10 +383,14 @@ const KomariVizka = () => {
             </div>
           </section>
 
-          {/* Facilities - 3 karty */}
+          {/* Facilities - 3 karty profesionálně */}
           <section className="mb-20">
             <div className="text-center mb-12">
               <ScrollAnimation animation="fade-up">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 backdrop-blur-md border border-amber-300 rounded-full mb-4">
+                  <Coffee className="h-5 w-5 text-amber-600" />
+                  <span className="text-sm font-semibold text-amber-700">Zázemí</span>
+                </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
                   Naše služby
                 </h2>
@@ -364,28 +399,28 @@ const KomariVizka = () => {
                 </p>
               </ScrollAnimation>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
               {facilities.map((facility, index) => (
                 <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
-                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 hover:border-tjk-blue h-full flex flex-col">
-                    <CardHeader className="bg-gradient-to-br from-gray-50 to-white">
-                      <div className={`inline-flex items-center justify-center w-16 h-16 ${facility.iconBg} rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md`}>
-                        {React.cloneElement(facility.icon, { className: `h-6 w-6 ${facility.iconColor}` })}
+                  <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 hover:border-tjk-blue h-full flex flex-col hover:-translate-y-2">
+                    <CardHeader className="bg-gradient-to-br from-gray-50 to-white pb-6">
+                      <div className={`inline-flex items-center justify-center w-20 h-20 ${facility.iconBg} rounded-2xl mb-5 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
+                        {React.cloneElement(facility.icon, { className: `h-8 w-8 ${facility.iconColor}` })}
                       </div>
-                      <CardTitle className="text-2xl text-tjk-blue group-hover:text-tjk-orange transition-colors">
+                      <CardTitle className="text-2xl md:text-3xl font-extrabold text-tjk-blue group-hover:text-tjk-orange transition-colors">
                         {facility.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="pt-4 flex-1">
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
                         {facility.description}
                       </p>
                     </CardContent>
                     <CardFooter>
                       <Link to={facility.link} className="w-full">
-                        <Button className={`w-full bg-gradient-to-r ${facility.gradient} text-white font-semibold py-5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02]`}>
+                        <Button className={`w-full bg-gradient-to-r ${facility.gradient} text-white font-bold py-5 md:py-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] text-base md:text-lg`}>
                           {facility.buttonText}
-                          <ArrowRight className="ml-2 h-4 w-4" />
+                          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform" />
                         </Button>
                       </Link>
                     </CardFooter>
@@ -395,40 +430,43 @@ const KomariVizka = () => {
             </div>
           </section>
 
-          {/* Nabídka pro školy - Vylepšený design */}
+          {/* Nabídka pro školy - Profesionálně vylepšený */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-20">
-              <Card className="overflow-hidden border-2 border-blue-200 shadow-2xl hover:shadow-blue-500/20 transition-all duration-500">
+              <Card className="overflow-hidden border-2 border-blue-300 shadow-2xl hover:shadow-blue-500/30 transition-all duration-500 hover:-translate-y-1">
                 <div className="flex flex-col md:flex-row items-center">
-                  <div className="flex-1 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 p-8 md:p-12 flex items-center justify-center">
+                  <div className="flex-1 bg-gradient-to-br from-blue-50 via-cyan-50 to-blue-100 p-10 md:p-16 flex items-center justify-center relative overflow-hidden">
+                    {/* Decorative background */}
+                    <div className="absolute top-0 right-0 w-40 h-40 bg-blue-300/20 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-300/20 rounded-full blur-3xl"></div>
                     <img
                       src="/src/loga/komárek.png"
                       alt="Logo Komárek"
-                      className="max-h-72 w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                      className="max-h-80 w-auto object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-500 relative z-10"
                     />
                   </div>
-                  <div className="flex-1 p-8 md:p-12">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-blue-100 rounded-xl">
-                        <GraduationCap className="h-8 w-8 text-tjk-blue" />
+                  <div className="flex-1 p-10 md:p-14">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-4 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-2xl shadow-xl">
+                        <GraduationCap className="h-10 w-10 text-white" />
                       </div>
-                      <Badge className="bg-blue-100 text-tjk-blue text-sm font-semibold px-3 py-1">
+                      <Badge className="bg-blue-100 text-tjk-blue text-base font-bold px-4 py-2">
                         Pro školy
                       </Badge>
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-tjk-blue mb-4">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-tjk-blue mb-5 leading-tight">
                       Zážitkové dny na Komáří vížce
                     </h2>
-                    <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                      Hledáte originální program pro školní výlet, adaptační kurz nebo sportovní den? Nabízíme <strong>bezpečné a zábavné aktivity v přírodě</strong> pod vedením zkušených instruktorů.
+                    <p className="text-xl text-gray-700 mb-5 leading-relaxed">
+                      Hledáte originální program pro školní výlet, adaptační kurz nebo sportovní den? Nabízíme <strong className="text-tjk-blue">bezpečné a zábavné aktivity v přírodě</strong> pod vedením zkušených instruktorů.
                     </p>
-                    <p className="text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                       Připravíme program na míru – cyklistika, hry v přírodě, environmentální workshopy, orientační běh, první pomoc a mnoho dalšího. Vše v krásném prostředí s možností stravování a ubytování.
                     </p>
                     <Link to="/sluzby#skoly">
-                      <Button className="bg-gradient-to-r from-tjk-blue to-cyan-600 hover:from-tjk-blue/90 hover:to-cyan-600/90 text-white font-semibold px-6 py-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                      <Button className="bg-gradient-to-r from-tjk-blue to-cyan-600 hover:from-tjk-blue/90 hover:to-cyan-600/90 text-white font-bold px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all text-lg">
                         Více o programech
-                        <ChevronRight className="ml-2 h-5 w-5" />
+                        <ChevronRight className="ml-2 h-6 w-6" />
                       </Button>
                     </Link>
                   </div>
@@ -437,40 +475,43 @@ const KomariVizka = () => {
             </section>
           </ScrollAnimation>
 
-          {/* Trailpark pro školy */}
+          {/* Trailpark pro školy - Profesionálně vylepšený */}
           <ScrollAnimation animation="fade-up">
             <section>
-              <Card className="overflow-hidden border-2 border-orange-200 shadow-2xl hover:shadow-orange-500/20 transition-all duration-500">
+              <Card className="overflow-hidden border-2 border-orange-300 shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 hover:-translate-y-1">
                 <div className="flex flex-col md:flex-row-reverse items-center">
-                  <div className="flex-1 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 p-8 md:p-12 flex items-center justify-center">
+                  <div className="flex-1 bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 p-10 md:p-16 flex items-center justify-center relative overflow-hidden">
+                    {/* Decorative background */}
+                    <div className="absolute top-0 left-0 w-40 h-40 bg-orange-300/20 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-amber-300/20 rounded-full blur-3xl"></div>
                     <img
                       src="/src/loga/TRAILPARKKomarkaLOGO.png"
                       alt="Logo Trailpark Komárka"
-                      className="max-h-72 w-auto object-contain drop-shadow-2xl rounded-2xl hover:scale-105 transition-transform duration-300"
+                      className="max-h-80 w-auto object-contain drop-shadow-2xl rounded-2xl hover:scale-110 transition-transform duration-500 relative z-10"
                     />
                   </div>
-                  <div className="flex-1 p-8 md:p-12">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 bg-orange-100 rounded-xl">
-                        <Bike className="h-8 w-8 text-orange-600" />
+                  <div className="flex-1 p-10 md:p-14">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="p-4 bg-gradient-to-br from-orange-600 to-amber-500 rounded-2xl shadow-xl">
+                        <Bike className="h-10 w-10 text-white" />
                       </div>
-                      <Badge className="bg-orange-100 text-orange-700 text-sm font-semibold px-3 py-1">
+                      <Badge className="bg-orange-100 text-orange-700 text-base font-bold px-4 py-2">
                         Sportovní programy
                       </Badge>
                     </div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-orange-700 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-orange-700 mb-5 leading-tight">
                       Pohyb, zábava, bezpečí pro školy
                     </h2>
-                    <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                      Přiveďte své žáky do našeho sportovního areálu! Naučíme děti i teenagery <strong>základy bezpečné jízdy na kole</strong>, správné chování v terénu a týmovou spolupráci.
+                    <p className="text-xl text-gray-700 mb-5 leading-relaxed">
+                      Přiveďte své žáky do našeho sportovního areálu! Naučíme děti i teenagery <strong className="text-orange-700">základy bezpečné jízdy na kole</strong>, správné chování v terénu a týmovou spolupráci.
                     </p>
-                    <p className="text-gray-700 mb-6 leading-relaxed">
+                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                       Programy vedou certifikovaní bike instruktoři. K dispozici je půjčovna kol, zázemí i občerstvení. Ideální pro sportovní dny, školy v přírodě i adaptační kurzy.
                     </p>
                     <Link to="/sluzby#skoly">
-                      <Button className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-semibold px-6 py-5 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                      <Button className="bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-700 hover:to-amber-600 text-white font-bold px-8 py-6 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all text-lg">
                         Rezervovat termín
-                        <ChevronRight className="ml-2 h-5 w-5" />
+                        <ChevronRight className="ml-2 h-6 w-6" />
                       </Button>
                     </Link>
                   </div>

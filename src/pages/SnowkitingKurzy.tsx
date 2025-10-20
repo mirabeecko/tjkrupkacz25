@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { supabase } from "@/supabaseClient";
 import {
   Wind,
   Snowflake,
@@ -32,7 +33,19 @@ export const meta = {
     "snowkiting, kurzy snowkitingu, Komáří Vížka, Krušné hory, zimní sporty, kite, drak, snowboard, lyže, adrenalin, outdoor, winter sports",
 };
 
-const levels = [
+interface KurzData {
+  id: number;
+  title: string;
+  subtitle: string;
+  duration: string;
+  price: string;
+  features: string[];
+  image: string;
+  color?: string;
+  level_order?: number;
+}
+
+const defaultLevels = [
   {
     title: "Začátečník",
     subtitle: "PRVNÍ KROKY NA SNĚHU",
@@ -109,6 +122,83 @@ const whyUs = [
 const SnowkitingKurzy = () => {
   const [selectedLevel, setSelectedLevel] = useState(0);
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [levels, setLevels] = useState<any[]>(defaultLevels);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchKurzy() {
+      try {
+        console.log('🔍 Začínám načítat kurzy z Supabase...');
+        const { data, error } = await supabase
+          .from('kurzy_nabidka')
+          .select('*')
+          .eq('aktivni', true);
+
+        console.log('📊 Data z databáze:', data);
+        console.log('❌ Chyba:', error);
+
+        if (error) {
+          console.error('Chyba při načítání kurzů:', error);
+          setLevels(defaultLevels);
+        } else if (data && data.length > 0) {
+          console.log('✅ Načteno kurzů:', data.length);
+          // Mapujeme data z databáze na náš formát
+          const levelsWithIcons = data.map((kurz: any, index: number) => {
+            let icon, color;
+            const jmeno = kurz.jmeno_kurzu.toLowerCase();
+
+            // Určíme ikonu a barvu podle názvu kurzu
+            if (jmeno.includes('intro') || jmeno.includes('flyday') || jmeno.includes('kids')) {
+              icon = <Users className="w-12 h-12" />;
+              color = "from-blue-500 to-cyan-500";
+            } else if (jmeno.includes('freeride') || jmeno.includes('progress')) {
+              icon = <TrendingUp className="w-12 h-12" />;
+              color = "from-purple-500 to-pink-500";
+            } else if (jmeno.includes('expedition') || jmeno.includes('backcountry')) {
+              icon = <Award className="w-12 h-12" />;
+              color = "from-orange-500 to-red-500";
+            } else {
+              icon = <Mountain className="w-12 h-12" />;
+              color = "from-green-500 to-teal-500";
+            }
+
+            // Převedeme obsah kurzu na array features
+            const features = kurz.obsah_kurzu
+              ? kurz.obsah_kurzu.split(',').map((f: string) => f.trim())
+              : [];
+
+            // Přidáme "V ceně" items
+            if (kurz.v_cene) {
+              const vceneItems = kurz.v_cene.split(',').map((f: string) => f.trim());
+              features.push(...vceneItems);
+            }
+
+            return {
+              id: kurz.id,
+              title: kurz.jmeno_kurzu,
+              subtitle: kurz.subtitle || "SNOWKITING KURZ",
+              duration: kurz.doba_trvani || 'Dle dohody',
+              price: `${kurz.cena_czk} Kč`,
+              features: features.slice(0, 5), // Max 5 features pro zobrazení
+              image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80", // Default image
+              icon,
+              color,
+            };
+          });
+          setLevels(levelsWithIcons);
+        } else {
+          setLevels(defaultLevels);
+        }
+      } catch (err) {
+        console.error('Neočekávaná chyba:', err);
+        setLevels(defaultLevels);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchKurzy();
+  }, []);
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const closeNavbar = () => setNavbarOpen(false);
@@ -214,59 +304,65 @@ const SnowkitingKurzy = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
-              {levels.map((level, idx) => (
-                <Card
-                  key={idx}
-                  className={`overflow-hidden border-2 transition-all hover:scale-105 cursor-pointer ${
-                    selectedLevel === idx ? 'border-blue-600 shadow-2xl' : 'border-gray-200 hover:border-blue-400'
-                  }`}
-                  onClick={() => setSelectedLevel(idx)}
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={level.image}
-                      alt={level.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${level.color} opacity-80`} />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                      {level.icon}
-                      <h3 className="text-3xl font-black mt-4">{level.title}</h3>
-                      <p className="text-sm font-semibold tracking-wider mt-2">{level.subtitle}</p>
-                    </div>
-                  </div>
-
-                  <CardContent className="p-6">
-                    <div className="flex justify-between items-center mb-6">
-                      <div className="flex items-center gap-2 text-gray-600">
-                        <Clock className="w-5 h-5" />
-                        <span className="font-semibold">{level.duration}</span>
-                      </div>
-                      <div className="text-3xl font-black text-blue-600">
-                        {level.price}
+            {loading ? (
+              <div className="flex justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600"></div>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-3 gap-8 mb-16">
+                {levels.map((level, idx) => (
+                  <Card
+                    key={idx}
+                    className={`overflow-hidden border-2 transition-all hover:scale-105 cursor-pointer ${
+                      selectedLevel === idx ? 'border-blue-600 shadow-2xl' : 'border-gray-200 hover:border-blue-400'
+                    }`}
+                    onClick={() => setSelectedLevel(idx)}
+                  >
+                    <div className="relative h-64 overflow-hidden">
+                      <img
+                        src={level.image}
+                        alt={level.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${level.color} opacity-80`} />
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                        {level.icon}
+                        <h3 className="text-3xl font-black mt-4">{level.title}</h3>
+                        <p className="text-sm font-semibold tracking-wider mt-2">{level.subtitle}</p>
                       </div>
                     </div>
 
-                    <ul className="space-y-3 mb-6">
-                      {level.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-3">
-                          <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-center mb-6">
+                        <div className="flex items-center gap-2 text-gray-600">
+                          <Clock className="w-5 h-5" />
+                          <span className="font-semibold">{level.duration}</span>
+                        </div>
+                        <div className="text-3xl font-black text-blue-600">
+                          {level.price}
+                        </div>
+                      </div>
 
-                    <Link to="/kontakt-snowkiting">
-                      <Button className={`w-full bg-gradient-to-r ${level.color} text-white font-bold py-6 text-lg hover:opacity-90 transition-opacity`}>
-                        Rezervovat kurz
-                        <ChevronRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                      <ul className="space-y-3 mb-6">
+                        {level.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-3">
+                            <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Link to="/kontakt-snowkiting">
+                        <Button className={`w-full bg-gradient-to-r ${level.color} text-white font-bold py-6 text-lg hover:opacity-90 transition-opacity`}>
+                          Rezervovat kurz
+                          <ChevronRight className="ml-2 w-5 h-5" />
+                        </Button>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </section>
 

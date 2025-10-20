@@ -5,9 +5,36 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Mountain, Bike, Snowflake, Users, Activity, Hotel, Home, Shield, Heart, GraduationCap, Building2, Footprints, Wind, Baby, Award, Sparkles, TrendingUp, Target, ChevronRight, Star } from "lucide-react";
+import {
+  Mountain,
+  Bike,
+  Snowflake,
+  Users,
+  Activity,
+  Hotel,
+  Home,
+  Shield,
+  Heart,
+  GraduationCap,
+  Building2,
+  Footprints,
+  Wind,
+  Baby,
+  Award,
+  Sparkles,
+  TrendingUp,
+  Target,
+  ChevronRight,
+  Star,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const facilities = [
@@ -15,26 +42,26 @@ const facilities = [
     name: "Sportovní areál",
     icon: <Mountain className="w-8 h-8" />,
     desc: "Komplexní zázemí pro zimní i letní sporty v srdci Krušných hor.",
-    gradient: "from-blue-500 to-cyan-500"
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     name: "Ubytování",
     icon: <Hotel className="w-8 h-8" />,
     desc: "Kapacitní ubytovací zařízení pro sportovní soustředění, školy i rodinné pobyty.",
-    gradient: "from-green-500 to-emerald-500"
+    gradient: "from-green-500 to-emerald-500",
   },
   {
     name: "AIRBAG matrace",
     icon: <Shield className="w-8 h-8" />,
     desc: "Bezpečný trénink triků a akrobatických prvků na profesionální nafukovací matraci.",
-    gradient: "from-orange-500 to-amber-500"
+    gradient: "from-orange-500 to-amber-500",
   },
   {
     name: "Práce s dětmi",
     icon: <Baby className="w-8 h-8" />,
     desc: "Sportovní kroužky, tábory a systematická výchova mladých sportovců.",
-    gradient: "from-pink-500 to-rose-500"
-  }
+    gradient: "from-pink-500 to-rose-500",
+  },
 ];
 
 const values = [
@@ -42,33 +69,45 @@ const values = [
     title: "50 let tradice",
     icon: <Building2 className="w-10 h-10" />,
     desc: "Spojujeme generace sportovců od roku 1974.",
-    gradient: "from-amber-500 to-orange-500"
+    gradient: "from-amber-500 to-orange-500",
   },
   {
     title: "Široký záběr",
     icon: <Activity className="w-10 h-10" />,
     desc: "Od zimních sportů přes MTB až po stolní tenis a kitesurfing.",
-    gradient: "from-tjk-blue to-cyan-500"
+    gradient: "from-tjk-blue to-cyan-500",
   },
   {
     title: "Moderní zázemí",
     icon: <Home className="w-10 h-10" />,
     desc: "Investujeme do vybavení a infrastruktury pro maximální pohodlí.",
-    gradient: "from-green-500 to-emerald-500"
+    gradient: "from-green-500 to-emerald-500",
   },
   {
     title: "Komunita",
     icon: <Heart className="w-10 h-10" />,
     desc: "Rodina sportovců všech věkových kategorií a dovedností.",
-    gradient: "from-red-500 to-pink-500"
-  }
+    gradient: "from-red-500 to-pink-500",
+  },
 ];
 
 const stats = [
   { number: "50+", label: "Let tradice", icon: <Award className="h-6 w-6" /> },
-  { number: "1000+", label: "Spokojených sportovců", icon: <Users className="h-6 w-6" /> },
-  { number: "15+", label: "Sportovních aktivit", icon: <Activity className="h-6 w-6" /> },
-  { number: "365", label: "Dní v roce otevřeno", icon: <TrendingUp className="h-6 w-6" /> }
+  {
+    number: "1000+",
+    label: "Spokojených sportovců",
+    icon: <Users className="h-6 w-6" />,
+  },
+  {
+    number: "15+",
+    label: "Sportovních aktivit",
+    icon: <Activity className="h-6 w-6" />,
+  },
+  {
+    number: "365",
+    label: "Dní v roce otevřeno",
+    icon: <TrendingUp className="h-6 w-6" />,
+  },
 ];
 
 const ONas = () => {
@@ -88,12 +127,21 @@ const ONas = () => {
 
       <main className="flex-1">
         {/* Hero Section - Vylepšený s animacemi */}
-        <section className="relative bg-gradient-to-br from-tjk-blue via-blue-700 to-blue-900 text-white py-24 md:py-32 px-4 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-tjk-blue via-blue-700 to-blue-900 text-white py-24 md:py-32 px-4 overflow-hidden min-h-screen flex items-center">
           {/* Animated Background Elements */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }} />
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+            <div
+              className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"
+              style={{ animationDuration: "4s" }}
+            />
+            <div
+              className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse"
+              style={{ animationDuration: "5s", animationDelay: "1s" }}
+            />
+            <div
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-300 rounded-full blur-3xl animate-pulse"
+              style={{ animationDuration: "6s", animationDelay: "2s" }}
+            />
           </div>
 
           {/* Floating Icons */}
@@ -107,7 +155,7 @@ const ONas = () => {
                   top: `${Math.random() * 100}%`,
                   animation: `float ${Math.random() * 10 + 8}s ease-in-out infinite`,
                   animationDelay: `${Math.random() * 5}s`,
-                  opacity: 0.1
+                  opacity: 0.1,
                 }}
               >
                 {i % 3 === 0 && <Mountain className="h-8 w-8" />}
@@ -138,7 +186,9 @@ const ONas = () => {
                 50 let tradice sportu v Krušných horách
               </p>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 drop-shadow-md leading-relaxed">
-                Od roku 1974 budujeme sportovní komunitu, provozujeme moderní areál a věnujeme se systematické práci s dětmi a mládeží. Jsme domovem pro širokou škálu sportů.
+                Od roku 1974 budujeme sportovní komunitu, provozujeme moderní
+                areál a věnujeme se systematické práci s dětmi a mládeží. Jsme
+                domovem pro širokou škálu sportů.
               </p>
             </ScrollAnimation>
 
@@ -170,13 +220,20 @@ const ONas = () => {
             <ScrollAnimation animation="fade-up" delay={600}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
                 <Link to="/sluzby">
-                  <Button size="lg" className="bg-gradient-to-r from-tjk-orange to-amber-500 hover:from-tjk-orange/90 hover:to-amber-500/90 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-tjk-orange to-amber-500 hover:from-tjk-orange/90 hover:to-amber-500/90 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-2xl hover:shadow-amber-500/50 transition-all duration-300 hover:scale-105"
+                  >
                     Naše služby
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link to="/kontakt">
-                  <Button size="lg" variant="outline" className="border-2 border-white/30 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-bold text-lg px-8 py-6 rounded-xl">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white/30 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-bold text-lg px-8 py-6 rounded-xl"
+                  >
                     Kontaktujte nás
                   </Button>
                 </Link>
@@ -197,19 +254,28 @@ const ONas = () => {
                   Co nabízíme
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Komplexní sportovní zázemí pro všechny věkové kategorie a úrovně
+                  Komplexní sportovní zázemí pro všechny věkové kategorie a
+                  úrovně
                 </p>
               </div>
             </ScrollAnimation>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {facilities.map((facility, index) => (
-                <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
+                <ScrollAnimation
+                  key={index}
+                  animation="fade-up"
+                  delay={index * 100}
+                >
                   <Card className="group border-2 border-gray-200 hover:border-tjk-blue transition-all duration-500 hover:shadow-2xl overflow-hidden h-full">
                     <CardHeader className="bg-gradient-to-br from-white to-gray-50 pb-6">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`p-4 bg-gradient-to-br ${facility.gradient} rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          {React.cloneElement(facility.icon, { className: "w-8 h-8 text-white" })}
+                        <div
+                          className={`p-4 bg-gradient-to-br ${facility.gradient} rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          {React.cloneElement(facility.icon, {
+                            className: "w-8 h-8 text-white",
+                          })}
                         </div>
                         <div className="flex-1">
                           <CardTitle className="text-2xl md:text-3xl text-tjk-blue group-hover:text-tjk-orange transition-colors mb-2">
@@ -247,11 +313,19 @@ const ONas = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
+                <ScrollAnimation
+                  key={index}
+                  animation="fade-up"
+                  delay={index * 100}
+                >
                   <div className="group bg-gradient-to-br from-white to-gray-50 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-gray-100 hover:border-tjk-blue">
                     <div className="flex flex-col items-center text-center gap-4">
-                      <div className={`p-5 bg-gradient-to-br ${value.gradient} rounded-2xl shadow-xl group-hover:scale-110 transition-transform duration-300`}>
-                        {React.cloneElement(value.icon, { className: "w-10 h-10 text-white" })}
+                      <div
+                        className={`p-5 bg-gradient-to-br ${value.gradient} rounded-2xl shadow-xl group-hover:scale-110 transition-transform duration-300`}
+                      >
+                        {React.cloneElement(value.icon, {
+                          className: "w-10 h-10 text-white",
+                        })}
                       </div>
                       <h3 className="font-montserrat font-bold text-xl md:text-2xl text-tjk-blue group-hover:text-tjk-orange transition-colors">
                         {value.title}
@@ -301,7 +375,10 @@ const ONas = () => {
                         </Badge>
                       </div>
                       <p className="text-gray-700 text-lg leading-relaxed">
-                        <strong>Tělovýchovná jednota Krupka z.s.</strong> byla založena v roce 1974 s cílem rozvíjet sport a tělesnou kulturu v regionu Krušných hor. Od začátku jsme kladli důraz na práci s mládeží a vytváření kvalitního zázemí.
+                        <strong>Tělovýchovná jednota Krupka z.s.</strong> byla
+                        založena v roce 1974 s cílem rozvíjet sport a tělesnou
+                        kulturu v regionu Krušných hor. Od začátku jsme kladli
+                        důraz na práci s mládeží a vytváření kvalitního zázemí.
                       </p>
                     </CardContent>
                   </Card>
@@ -319,7 +396,11 @@ const ONas = () => {
                         </Badge>
                       </div>
                       <p className="text-gray-700 text-lg leading-relaxed">
-                        Během pěti dekád jsme prošli výraznou transformací – od malého sportovního klubu až po moderní spolek s <strong>provozem komplexního sportovního areálu</strong>. Investovali jsme do infrastruktury, ubytování a špičkového vybavení.
+                        Během pěti dekád jsme prošli výraznou transformací – od
+                        malého sportovního klubu až po moderní spolek s{" "}
+                        <strong>provozem komplexního sportovního areálu</strong>
+                        . Investovali jsme do infrastruktury, ubytování a
+                        špičkového vybavení.
                       </p>
                     </CardContent>
                   </Card>
@@ -337,7 +418,11 @@ const ONas = () => {
                         </Badge>
                       </div>
                       <p className="text-gray-700 text-lg leading-relaxed">
-                        Naše práce s <strong>dětmi a mládeží</strong> je prioritou. Provozujeme sportovní kroužky, pořádáme letní tábory a soustředění, systematicky podporujeme mladé talenty a pomáháme jim rozvíjet nejen sportovní dovednosti, ale i charakterové vlastnosti.
+                        Naše práce s <strong>dětmi a mládeží</strong> je
+                        prioritou. Provozujeme sportovní kroužky, pořádáme letní
+                        tábory a soustředění, systematicky podporujeme mladé
+                        talenty a pomáháme jim rozvíjet nejen sportovní
+                        dovednosti, ale i charakterové vlastnosti.
                       </p>
                     </CardContent>
                   </Card>
@@ -355,7 +440,12 @@ const ONas = () => {
                         </Badge>
                       </div>
                       <p className="text-gray-700 text-lg leading-relaxed">
-                        Dnes nabízíme <strong>široký rozsah sportovních aktivit</strong> – od stolního tenisu, přes zimní sporty (lyžování, snowboarding), horskou cyklistiku (MTB), až po adrenalinové sporty jako kitesurfing. Ubytování využívají sportovní týmy, školy i rodiny.
+                        Dnes nabízíme{" "}
+                        <strong>široký rozsah sportovních aktivit</strong> – od
+                        stolního tenisu, přes zimní sporty (lyžování,
+                        snowboarding), horskou cyklistiku (MTB), až po
+                        adrenalinové sporty jako kitesurfing. Ubytování
+                        využívají sportovní týmy, školy i rodiny.
                       </p>
                     </CardContent>
                   </Card>
@@ -373,10 +463,16 @@ const ONas = () => {
                         Dnes
                       </Badge>
                       <p className="text-xl md:text-2xl font-bold mb-4 leading-relaxed">
-                        50 let tradice nás zavazuje k uchování hodnot i neustálému rozvoji
+                        50 let tradice nás zavazuje k uchování hodnot i
+                        neustálému rozvoji
                       </p>
                       <p className="text-lg text-white/90 leading-relaxed max-w-3xl mx-auto">
-                        Jsme hrdí na to, že spojujeme generace sportovců a vytváříme prostředí, kde může každý najít svou cestu ke sportu a zdravému životnímu stylu. Naše vize je jasná – být <strong>předním sportovním centrem Krušných hor</strong>.
+                        Jsme hrdí na to, že spojujeme generace sportovců a
+                        vytváříme prostředí, kde může každý najít svou cestu ke
+                        sportu a zdravému životnímu stylu. Naše vize je jasná –
+                        být{" "}
+                        <strong>předním sportovním centrem Krušných hor</strong>
+                        .
                       </p>
                     </CardContent>
                   </Card>
@@ -392,8 +488,14 @@ const ONas = () => {
 
           {/* Animated background */}
           <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDuration: '5s' }} />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+            <div
+              className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"
+              style={{ animationDuration: "5s" }}
+            />
+            <div
+              className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300 rounded-full blur-3xl animate-pulse"
+              style={{ animationDuration: "6s", animationDelay: "1s" }}
+            />
           </div>
 
           <div className="max-w-4xl mx-auto text-center text-white relative z-10">
@@ -404,21 +506,32 @@ const ONas = () => {
               </div>
 
               <h2 className="font-montserrat font-bold text-3xl md:text-5xl mb-6 leading-tight">
-                Staňte se součástí naší<br />sportovní rodiny
+                Staňte se součástí naší
+                <br />
+                sportovní rodiny
               </h2>
               <p className="text-lg md:text-xl mb-10 text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Ať už hledáte sportovní vyžití pro sebe nebo své děti, plánujete soustředění nebo ubytování v krásném prostředí Krušných hor – jsme tu pro vás.
+                Ať už hledáte sportovní vyžití pro sebe nebo své děti, plánujete
+                soustředění nebo ubytování v krásném prostředí Krušných hor –
+                jsme tu pro vás.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/kontakt">
-                  <Button size="lg" className="bg-white text-tjk-blue hover:bg-blue-50 font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all duration-300">
+                  <Button
+                    size="lg"
+                    className="bg-white text-tjk-blue hover:bg-blue-50 font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all duration-300"
+                  >
                     Kontaktujte nás
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link to="/sluzby">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-bold text-lg px-10 py-7 rounded-xl">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-bold text-lg px-10 py-7 rounded-xl"
+                  >
                     Prohlédnout služby
                   </Button>
                 </Link>
