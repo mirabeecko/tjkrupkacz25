@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
           <a href="/" className="flex items-center group">
             <div className="relative">
               <img
-                src="tjk-logo-header.png"
+                src="tjk-logo-header-new.png"
                 alt="Tělovýchovná jednota Krupka z.s. logo"
                 className={cn(
                   "w-auto drop-shadow-xl transition-all duration-300 group-hover:scale-110",
