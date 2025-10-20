@@ -12,14 +12,14 @@ interface NavbarProps {
 
 // Submenu pro Služby
 const servicesSubmenu = [
-  { name: "Snowkiting Kurzy", icon: <Wind className="h-4 w-4" />, href: "/sluzby#snowkiting" },
-  { name: "Půjčovna Motocyklů", icon: <Bike className="h-4 w-4" />, href: "/sluzby#pujcovna" },
-  { name: "Lyžařský areál", icon: <Mountain className="h-4 w-4" />, href: "/sluzby#lyzarsky-areal" },
-  { name: "Pro školy", icon: <School className="h-4 w-4" />, href: "/sluzby#skoly" },
-  { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/sluzby#firmy" },
-  { name: "Ubytování", icon: <Bed className="h-4 w-4" />, href: "/sluzby#ubytovani" },
-  { name: "Bistro", icon: <Coffee className="h-4 w-4" />, href: "/sluzby#bistro" },
-  { name: "AIRBAG", icon: <Shield className="h-4 w-4" />, href: "/sluzby#airbag" },
+  { name: "Snowkiting Kurzy", icon: <Wind className="h-4 w-4" />, href: "/snowkiting-kurzy" },
+  { name: "Půjčovna Motocyklů", icon: <Bike className="h-4 w-4" />, href: "/pujcovna" },
+  { name: "Lyžařský areál", icon: <Mountain className="h-4 w-4" />, href: "/komari-vizka" },
+  { name: "Pro školy", icon: <School className="h-4 w-4" />, href: "/skoly" },
+  { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/firmy" },
+  { name: "Ubytování", icon: <Bed className="h-4 w-4" />, href: "/ubytovani" },
+  { name: "Bistro", icon: <Coffee className="h-4 w-4" />, href: "/pripravujeme" },
+  { name: "AIRBAG", icon: <Shield className="h-4 w-4" />, href: "/kontakt" },
 ];
 
 const menuItems = [
@@ -146,11 +146,11 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                   )}
 
                   {/* Desktop - hover menu */}
-                  <div className="hidden lg:block group">
+                  <div className="hidden lg:block group h-full">
                     <Link
                       to={item.href}
                       className={cn(
-                        "relative flex items-center gap-2 px-5 py-6 font-medium transition-all duration-300",
+                        "relative flex items-center gap-2 px-5 py-6 font-medium transition-all duration-300 h-full",
                         "text-gray-700 hover:text-tjk-orange",
                         "relative overflow-hidden",
                         isServiceActive() && "text-tjk-orange font-semibold"
@@ -169,9 +169,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                     </Link>
 
                     {/* Desktop Dropdown Menu */}
-                    <div className="absolute top-full left-0 w-64 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <div className="absolute top-full left-0 w-[32rem] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
                       <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden mt-2">
-                        <div className="p-2">
+                        <div className="p-2 grid grid-cols-2 gap-2">
                           {servicesSubmenu.map((subItem) => (
                             <Link
                               key={subItem.name}
