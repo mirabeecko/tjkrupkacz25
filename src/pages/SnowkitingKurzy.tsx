@@ -233,7 +233,7 @@ const SnowkitingKurzy = () => {
               </span>
             </h1>
 
-            <p className="text-xl md:text-3xl mb-12 font-light max-w-4xl mx-auto animate-fade-in-up delay-100">
+            <p className="text-xl md:text-3xl mb-12 font-light max-w-4xl mx-auto animate-fade-in-up delay-100 text-white">
               Zažijte adrenalin snowkitingu s profesionálními instruktory
               <span className="block mt-2 text-cyan-400 font-semibold">Létejte na sněhu s drakem!</span>
             </p>
