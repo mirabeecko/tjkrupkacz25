@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircleQuestion, Menu, Phone, Mail, Search, Moon, Sun } from "lucide-react";
+import { MessageCircleQuestion, Menu, Phone, Mail, Search } from "lucide-react";
 import WeatherWidget from "./WeatherWidget";
 import LanguageSelector from "./LanguageSelector";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -24,13 +24,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+
 
   return (
     <header
@@ -117,24 +111,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
           <WeatherWidget />
           <LanguageSelector />
 
-          {/* Dark Mode Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setDarkMode(!darkMode)}
-            className={cn(
-              "rounded-xl transition-all duration-300 hover:scale-110",
-              scrolled
-                ? "text-white hover:bg-white/20"
-                : "text-tjk-blue hover:bg-tjk-blue/10"
-            )}
-          >
-            {darkMode ? (
-              <Sun className="h-5 w-5 transition-transform hover:rotate-180" />
-            ) : (
-              <Moon className="h-5 w-5 transition-transform hover:-rotate-12" />
-            )}
-          </Button>
+
 
           {/* Search Button */}
           <Button
