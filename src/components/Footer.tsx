@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, UserPlus, ArrowRight, ChevronRight, Mountain, Home, Book, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag } from "lucide-react";
 import WeatherWidget from "@/components/WeatherWidget";
 
 const Footer: React.FC = () => {

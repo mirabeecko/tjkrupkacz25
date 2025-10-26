@@ -345,24 +345,24 @@ const Index = () => {
 
               {/* Subtitle */}
               <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
-                Pohodlné a dostupné <span className="font-semibold text-amber-300">ubytování</span>
+                Objevte <span className="font-semibold text-amber-300">horskou pohostinnost</span>
                 <br className="hidden md:block" />
-                v blízkosti všech aktivit
+                na místě, kde příroda a dobrodružství čekají přímo za prahem
               </p>
 
               {/* Key Points */}
               <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
                 <div className="flex items-center gap-2 text-lg">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Moderní vybavení</span>
+                  <span>Autentická horská atmosféra</span>
                 </div>
                 <div className="flex items-center gap-2 text-lg">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Blízko ski areálu</span>
+                  <span>Uprostřed přírody</span>
                 </div>
                 <div className="flex items-center gap-2 text-lg">
                   <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Rodinné prostředí</span>
+                  <span>Ideální pro aktivní odpočinek</span>
                 </div>
               </div>
 
@@ -428,7 +428,8 @@ const Index = () => {
                 Užijte si Krušné hory na <span className="font-semibold text-orange-300">motorce nebo čtyřkolce</span>.. Enduro? Supermoto? Naked? Vyberte si...
               </p>
 
-              {/* Bike Models - Dynamic from Supabase */}
+              {/* Bike Models - HIDDEN */}
+              {/*
               <div className="grid md:grid-cols-3 gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
                 {vehicles.length > 0 ? (
                   vehicles.map((vehicle) => (
@@ -477,6 +478,7 @@ const Index = () => {
                   </>
                 )}
               </div>
+              */}
 
               {/* Key Points */}
               <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.7s_both]">
@@ -577,7 +579,7 @@ const Index = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
-                <Link to="/kontakt">
+                <Link to="/airbag">
                   <Button size="lg" className="group bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:-translate-y-1">
                     <Shield className="mr-2 h-6 w-6" />
                     Více informací

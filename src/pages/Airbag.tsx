@@ -155,12 +155,26 @@ const Airbag = () => {
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-xl md:text-3xl mb-8 font-bold text-white/95 drop-shadow-lg max-w-3xl mx-auto leading-relaxed">
-                  Bezpečný trénink triků a akrobatických prvků
+                <p className="text-xl md:text-3xl mb-6 font-bold text-white/95 drop-shadow-lg max-w-3xl mx-auto leading-relaxed">
+                  Profesionální dopadová matrace pro bezpečný trénink
                 </p>
-                <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto mb-12 drop-shadow-md">
-                  Profesionální nafukovací matrace pro nácvik a zdokonalování náročných prvků bez rizika zranění
+                <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 drop-shadow-md leading-relaxed">
+                  Špičkové tréninkové zařízení umožňující bezpečný nácvik a zdokonalování náročných akrobatických prvků, triků a skoků. Ideální pro snowboardisty, lyžaře, freestyle bikery, skateboardisty a další adrenalinové sporty.
                 </p>
+                <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm md:text-base">
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <CheckCircle2 className="h-5 w-5 text-green-400" />
+                    <span>Certifikovaná matrace</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <CheckCircle2 className="h-5 w-5 text-green-400" />
+                    <span>Profesionální dohled</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                    <CheckCircle2 className="h-5 w-5 text-green-400" />
+                    <span>Pro všechny úrovně</span>
+                  </div>
+                </div>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -319,13 +333,13 @@ const Airbag = () => {
               <div className="text-center mb-12">
                 <Badge className="mb-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-2 text-sm font-semibold shadow-lg">
                   <Heart className="h-4 w-4 inline mr-2" />
-                  Poděkování
+                  Partneři projektu
                 </Badge>
                 <h2 className="font-montserrat font-bold text-3xl md:text-5xl text-tjk-blue mb-4">
-                  Děkujeme našim partnerům
+                  S podporou našich partnerů
                 </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                  Bez jejich podpory by realizace AIRBAG matrace nebyla možná
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                  AIRBAG matrace byla realizována díky finanční a morální podpoře našich klíčových partnerů. Děkujeme za důvěru a pomoc při vytváření bezpečného tréninkového zázemí pro mladé sportovce v regionu Krušných hor.
                 </p>
               </div>
             </ScrollAnimation>
@@ -334,26 +348,61 @@ const Airbag = () => {
               {/* LIVE VET Litoměřice */}
               <ScrollAnimation animation="fade-up" delay={100}>
                 <Card className="group border-2 border-gray-200 hover:border-green-500 transition-all duration-500 hover:shadow-2xl overflow-hidden">
-                  <CardContent className="p-8 text-center">
-                    <div className="bg-white rounded-2xl p-6 mb-6 shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                      <div className="flex items-center justify-center h-32">
-                        {/* Placeholder pro logo LIVE VET */}
-                        <div className="text-green-600 flex flex-col items-center gap-2">
-                          <Heart className="h-16 w-16" />
-                          <span className="font-bold text-xl">LIVE VET</span>
+                  <CardContent className="p-8">
+                    <a href="https://www.livevet.cz" target="_blank" rel="noopener noreferrer" className="block">
+                      <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 mb-6 shadow-md group-hover:shadow-xl transition-all duration-300">
+                        <div className="flex items-center justify-center h-32">
+                          {/* Logo LIVE VET - nahraďte vlastním logem */}
+                          <img
+                            src="/images/partners/livevet-logo.png"
+                            alt="LIVE VET Litoměřice"
+                            className="h-24 object-contain"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                          <div className="text-green-600 flex-col items-center gap-2 hidden">
+                            <Heart className="h-16 w-16" />
+                            <span className="font-bold text-2xl">LIVE VET</span>
+                          </div>
                         </div>
                       </div>
+                    </a>
+
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <Star className="h-5 w-5 fill-green-500 text-green-500" />
+                      <Badge className="bg-green-500 text-white">Hlavní partner</Badge>
                     </div>
-                    <h3 className="text-2xl font-bold text-tjk-blue mb-3 group-hover:text-green-600 transition-colors">
+
+                    <h3 className="text-2xl font-bold text-tjk-blue mb-3 group-hover:text-green-600 transition-colors text-center">
                       LIVE VET Litoměřice
                     </h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      Veterinární klinika, která nám poskytla klíčovou podporu při realizaci projektu AIRBAG matrace.
-                    </p>
-                    <div className="flex items-center justify-center gap-2 text-green-600">
-                      <Star className="h-5 w-5 fill-current" />
-                      <span className="font-semibold">Hlavní partner</span>
+
+                    <div className="space-y-3 text-left mb-4">
+                      <p className="text-gray-700 leading-relaxed font-semibold text-green-700">
+                        🏥 Komplexní veterinární péče 24/7
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Specializace:</strong> Moderní veterinární klinika poskytující špičkovou péči o malá i velká zvířata. Kompletní diagnostika, chirurgie, preventivní péče a pohotovostní služba.
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Co je dělá unikátními:</strong> Nejmodernější vybavení v regionu, tým zkušených veterinářů, individuální přístup ke každému pacientovi a non-stop dostupnost.
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Jejich podpora:</strong> Díky finanční a morální podpoře LIVE VET jsme mohli realizovat projekt AIRBAG matrace a poskytnout tak bezpečné tréninkové zázemí pro mladé sportovce.
+                      </p>
                     </div>
+
+                    <a
+                      href="https://www.livevet.cz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold transition-colors"
+                    >
+                      <span>Navštivte web LIVE VET</span>
+                      <ChevronRight className="h-4 w-4" />
+                    </a>
                   </CardContent>
                 </Card>
               </ScrollAnimation>
@@ -361,26 +410,61 @@ const Airbag = () => {
               {/* Ústecký kraj */}
               <ScrollAnimation animation="fade-up" delay={200}>
                 <Card className="group border-2 border-gray-200 hover:border-blue-500 transition-all duration-500 hover:shadow-2xl overflow-hidden">
-                  <CardContent className="p-8 text-center">
-                    <div className="bg-white rounded-2xl p-6 mb-6 shadow-md group-hover:shadow-xl transition-shadow duration-300">
-                      <div className="flex items-center justify-center h-32">
-                        {/* Placeholder pro logo Ústeckého kraje */}
-                        <div className="text-blue-600 flex flex-col items-center gap-2">
-                          <Award className="h-16 w-16" />
-                          <span className="font-bold text-xl">Ústecký kraj</span>
+                  <CardContent className="p-8">
+                    <a href="https://www.kr-ustecky.cz" target="_blank" rel="noopener noreferrer" className="block">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 mb-6 shadow-md group-hover:shadow-xl transition-all duration-300">
+                        <div className="flex items-center justify-center h-32">
+                          {/* Logo Ústeckého kraje - nahraďte vlastním logem */}
+                          <img
+                            src="/images/partners/ustecky-kraj-logo.png"
+                            alt="Ústecký kraj"
+                            className="h-24 object-contain"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.nextElementSibling.style.display = 'flex';
+                            }}
+                          />
+                          <div className="text-blue-600 flex-col items-center gap-2 hidden">
+                            <Award className="h-16 w-16" />
+                            <span className="font-bold text-2xl">Ústecký kraj</span>
+                          </div>
                         </div>
                       </div>
+                    </a>
+
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <Star className="h-5 w-5 fill-blue-500 text-blue-500" />
+                      <Badge className="bg-blue-500 text-white">Oficiální partner</Badge>
                     </div>
-                    <h3 className="text-2xl font-bold text-tjk-blue mb-3 group-hover:text-blue-600 transition-colors">
+
+                    <h3 className="text-2xl font-bold text-tjk-blue mb-3 group-hover:text-blue-600 transition-colors text-center">
                       Ústecký kraj
                     </h3>
-                    <p className="text-gray-700 leading-relaxed mb-4">
-                      Kraj Ústeckého kraje, jehož podpora umožnila rozšíření sportovního zázemí pro mladé sportovce.
-                    </p>
-                    <div className="flex items-center justify-center gap-2 text-blue-600">
-                      <Star className="h-5 w-5 fill-current" />
-                      <span className="font-semibold">Oficiální partner</span>
+
+                    <div className="space-y-3 text-left mb-4">
+                      <p className="text-gray-700 leading-relaxed font-semibold text-blue-700">
+                        🏛️ Regionální samospráva a podpora rozvoje
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Zaměření:</strong> Ústecký kraj podporuje rozvoj regionu v oblastech vzdělávání, kultury, sportu, sociálních služeb a infrastruktury. Aktivně podporuje projekty zaměřené na mládež a sport.
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Sportovní podpora:</strong> Kraj dlouhodobě investuje do sportovní infrastruktury a podporuje sportovní aktivity dětí a mládeže. Cílem je vytvářet kvalitní podmínky pro rozvoj talentů.
+                      </p>
+                      <p className="text-gray-700 leading-relaxed">
+                        <strong>Význam podpory:</strong> Dotace od Ústeckého kraje výrazně přispěla k realizaci AIRBAG matrace, která slouží jako moderní tréninkové zařízení pro bezpečný rozvoj dovedností mladých sportovců v Krušnohoří.
+                      </p>
                     </div>
+
+                    <a
+                      href="https://www.kr-ustecky.cz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                    >
+                      <span>Navštivte web Ústeckého kraje</span>
+                      <ChevronRight className="h-4 w-4" />
+                    </a>
                   </CardContent>
                 </Card>
               </ScrollAnimation>

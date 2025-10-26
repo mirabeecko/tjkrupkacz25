@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { supabase } from '@/supabaseClient';
-import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target } from "lucide-react";
+import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -166,17 +166,17 @@ const KomariVizka = () => {
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
 
       <main className="flex-1">
-        {/* Hero Section - Vylepšený */}
+        {/* Hero Section - Dechberoucí */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image s paralaxou */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-fixed"
             style={{
-              backgroundImage: "url('/images/sluzby/komarka.jpg')",
+              backgroundImage: "url('/images/homepage/okoli.jpg')",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-transparent to-purple-900/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/75"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/30 via-transparent to-blue-900/30"></div>
           </div>
 
           {/* Animated Particles - Vylepšené */}
@@ -218,8 +218,9 @@ const KomariVizka = () => {
                 </h1>
 
                 {/* Subtitle */}
-                <p className="text-xl md:text-3xl mb-12 font-semibold text-white/95 drop-shadow-lg max-w-3xl mx-auto">
-                  Nově letní i zimní provoz v srdci Krušných hor
+                <p className="text-xl md:text-3xl mb-12 font-semibold text-white/95 drop-shadow-lg max-w-3xl mx-auto leading-relaxed">
+                  Kde se snoubí divoká příroda s adrenalinem,<br className="hidden md:block" />
+                  klid hor s rytmem sportu a každá návštěva zanechává stopy v srdci
                 </p>
 
                 {/* Highlights Grid */}
@@ -287,13 +288,13 @@ const KomariVizka = () => {
                           <span className="text-sm font-semibold text-tjk-blue">800-900 m n.m.</span>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-5 leading-tight">
-                          Objevte krásu Krušných hor
+                          Perlou Krušných hor
                         </h2>
                         <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-4">
-                          Komáří vížka leží ve výšce <strong className="text-tjk-blue">800–900 m n. m.</strong>, obklopena hustými smrkovými lesy a zvlněnými loukami Krušných hor. Výhledy sahají k českoněmecké hranici a nejvyššímu vrcholu Klínovec.
+                          Ve výšce <strong className="text-tjk-blue">800–900 metrů nad mořem</strong> se rozprostírá místo, kde čas zpomaluje a dech se zatajuje. Obklopena nekonečnými smrkovými lesy a zvlněnými loukami, <strong className="text-tjk-orange">Komáří vížka</strong> je místem, kde se setkává nebe se zemí.
                         </p>
                         <p className="text-lg text-gray-600 leading-relaxed">
-                          Areál nabízí <strong className="text-tjk-orange">celoroční vyžití</strong> pro sportovce všech úrovní – od začátečníků až po profíky.
+                          Výhledy sahají k českoněmecké hranici, k majestátnímu Klínovci a za ním k horizontu, který láká k dobrodružství. Ať už jste začátečník hledající první zážitky, nebo profík toužící po adrenalinových výzvách – <strong className="text-tjk-blue">tady najdete svůj domov v horách</strong>.
                         </p>
                       </div>
                     </div>
@@ -517,6 +518,361 @@ const KomariVizka = () => {
                   </div>
                 </div>
               </Card>
+            </section>
+          </ScrollAnimation>
+
+          {/* Vzdálenosti z měst */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-100 backdrop-blur-md border border-cyan-300 rounded-full mb-4">
+                  <MapPin className="h-5 w-5 text-cyan-600" />
+                  <span className="text-sm font-semibold text-cyan-700">Doprava</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Jak se k nám dostanete
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Vzdálenosti z okolních měst
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { city: "Teplice", distance: "15 km", time: "20 min", icon: "🚗" },
+                  { city: "Ústí nad Labem", distance: "30 km", time: "35 min", icon: "🚗" },
+                  { city: "Most", distance: "35 km", time: "40 min", icon: "🚗" },
+                  { city: "Chomutov", distance: "40 km", time: "45 min", icon: "🚗" },
+                  { city: "Praha", distance: "90 km", time: "1:15 hod", icon: "🚗" },
+                  { city: "Drážďany (DE)", distance: "70 km", time: "1:00 hod", icon: "🚗" },
+                ].map((item, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
+                    <Card className="group hover:shadow-xl transition-all duration-300 border-2 border-gray-200 hover:border-cyan-500 hover:-translate-y-1">
+                      <CardContent className="p-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="text-2xl font-bold text-tjk-blue group-hover:text-cyan-600 transition-colors">
+                            {item.city}
+                          </h3>
+                          <span className="text-3xl">{item.icon}</span>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between text-gray-700">
+                            <span className="font-medium">Vzdálenost:</span>
+                            <span className="text-lg font-bold text-tjk-orange">{item.distance}</span>
+                          </div>
+                          <div className="flex items-center justify-between text-gray-700">
+                            <span className="font-medium">Čas jízdy:</span>
+                            <span className="text-lg font-semibold text-gray-900">{item.time}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimation>
+                ))}
+              </div>
+
+              {/* MHD a Lanovka info */}
+              <div className="mt-12 grid md:grid-cols-2 gap-6">
+                <Card className="border-2 border-blue-300 shadow-lg hover:shadow-xl transition-all">
+                  <CardHeader className="bg-gradient-to-br from-blue-50 to-cyan-50">
+                    <CardTitle className="text-2xl font-bold text-tjk-blue flex items-center gap-3">
+                      <Clock className="h-6 w-6" />
+                      Lanovka Krupka
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      Nejdelší sedačková lanovka v ČR spojující město Krupka s areálem Komáří vížka.
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex justify-between text-sm">
+                        <span className="font-semibold text-gray-700">Délka:</span>
+                        <span className="text-tjk-blue font-bold">2 348 m</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="font-semibold text-gray-700">Převýšení:</span>
+                        <span className="text-tjk-blue font-bold">415 m</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="font-semibold text-gray-700">Čas jízdy:</span>
+                        <span className="text-tjk-blue font-bold">~15 min</span>
+                      </div>
+                    </div>
+                    <a href="https://www.lanovkakrupka.cz" target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full bg-gradient-to-r from-tjk-blue to-cyan-600 text-white font-semibold">
+                        Provozní řád a jízdné
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-2 border-green-300 shadow-lg hover:shadow-xl transition-all">
+                  <CardHeader className="bg-gradient-to-br from-green-50 to-emerald-50">
+                    <CardTitle className="text-2xl font-bold text-tjk-blue flex items-center gap-3">
+                      <MapIcon className="h-6 w-6" />
+                      MHD Krupka
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      Veřejná autobusová doprava spojující Krupku s okolními městy a spodní stanicí lanovky.
+                    </p>
+                    <div className="space-y-2 mb-4">
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Spodní stanice lanovky:</p>
+                        <p className="font-semibold text-tjk-blue">Zastávka "Lanovka"</p>
+                      </div>
+                      <div className="bg-gray-50 p-3 rounded-lg">
+                        <p className="text-sm text-gray-600 mb-1">Spojení:</p>
+                        <p className="font-semibold text-gray-900">Teplice • Dubí • Bohosudov</p>
+                      </div>
+                    </div>
+                    <a href="https://www.dpuk.cz" target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold">
+                        Jízdní řády MHD
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
+          </ScrollAnimation>
+
+          {/* Zajímavá místa v okolí */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 backdrop-blur-md border border-purple-300 rounded-full mb-4">
+                  <Mountain className="h-5 w-5 text-purple-600" />
+                  <span className="text-sm font-semibold text-purple-700">Okolí</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Objevte krásy regionu
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Zajímavá místa v okolí Komáří vížky
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  {
+                    name: "Klínovec",
+                    distance: "15 km",
+                    description: "Nejvyšší hora Krušných hor (1 244 m n.m.). Rozhledna, ski areál a krásné výhledy.",
+                    icon: <Mountain className="h-8 w-8" />,
+                    color: "from-blue-500 to-cyan-500"
+                  },
+                  {
+                    name: "Teplice",
+                    distance: "15 km",
+                    description: "Lázeňské město s bohatou historií, zámeckými parky a termálními prameny.",
+                    icon: <Home className="h-8 w-8" />,
+                    color: "from-amber-500 to-orange-500"
+                  },
+                  {
+                    name: "Geopark Egeria",
+                    distance: "okolí",
+                    description: "Unikátní geologická lokalita s sopečnými útvary a minerály.",
+                    icon: <Award className="h-8 w-8" />,
+                    color: "from-green-500 to-emerald-500"
+                  },
+                  {
+                    name: "Hrad Přemyslovců",
+                    distance: "10 km",
+                    description: "Zřícenina hradu s nádherným výhledem do údolí a na okolní hory.",
+                    icon: <Shield className="h-8 w-8" />,
+                    color: "from-purple-500 to-pink-500"
+                  },
+                  {
+                    name: "Rozhledna Telnice",
+                    distance: "20 km",
+                    description: "Moderní rozhledna s panoramatickým výhledem na Krušné hory a Polabí.",
+                    icon: <Target className="h-8 w-8" />,
+                    color: "from-red-500 to-rose-500"
+                  },
+                  {
+                    name: "Botanická zahrada Teplice",
+                    distance: "15 km",
+                    description: "Krásná zahrada s exotickými rostlinami, skleníky a japons kou zahradou.",
+                    icon: <Sparkles className="h-8 w-8" />,
+                    color: "from-pink-500 to-fuchsia-500"
+                  },
+                ].map((place, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
+                    <Card className="group h-full hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-tjk-orange hover:-translate-y-2">
+                      <CardHeader className="pb-4">
+                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${place.color} mb-4 shadow-lg group-hover:scale-110 transition-transform`}>
+                          {React.cloneElement(place.icon, { className: "text-white" })}
+                        </div>
+                        <CardTitle className="text-2xl font-bold text-tjk-blue group-hover:text-tjk-orange transition-colors">
+                          {place.name}
+                        </CardTitle>
+                        <Badge className="bg-gray-100 text-gray-700 mt-2 w-fit">
+                          📍 {place.distance}
+                        </Badge>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-gray-700 leading-relaxed">
+                          {place.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </section>
+          </ScrollAnimation>
+
+          {/* Zajímavé informace o Komárce */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 backdrop-blur-md border border-orange-300 rounded-full mb-4">
+                  <Sparkles className="h-5 w-5 text-orange-600" />
+                  <span className="text-sm font-semibold text-orange-700">Zajímavosti</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Věděli jste, že...?
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Unikátní fakta o Komáří vížce
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  {
+                    title: "Nejdelší sedačková lanovka v ČR",
+                    description: "Lanovka z Krupky na Komáří vížku měří 2 348 metrů a je nejdelší svého druhu v České republice. Jízda trvá přibližně 15 minut.",
+                    icon: "🚡",
+                    color: "border-blue-300 bg-blue-50"
+                  },
+                  {
+                    title: "Historická těžba rud",
+                    description: "Oblast Komáří vížky byla v minulosti důležitým centrem těžby cínových a wolframových rud. Dodnes lze v okolí najít pozůstatky starých dolů.",
+                    icon: "⛏️",
+                    color: "border-amber-300 bg-amber-50"
+                  },
+                  {
+                    title: "Pohraničí s Německem",
+                    description: "Komáří vížka leží v těsné blízkosti česko-německých hranic. Z areálu jsou krásné výhledy na německou stranu Krušných hor - Erzgebirge.",
+                    icon: "🗻",
+                    color: "border-green-300 bg-green-50"
+                  },
+                  {
+                    title: "Fauna a flóra",
+                    description: "V okolních lesích můžete potkat jeleny, srnce, lišky a vzácné druhy ptáků. Rostou zde také chráněné horské rostliny a vzácné druhy mechů.",
+                    icon: "🦌",
+                    color: "border-purple-300 bg-purple-50"
+                  },
+                  {
+                    title: "Celoroční provoz",
+                    description: "Areál je otevřen po celý rok. V zimě nabízí lyžování a snowkiting, v létě cykloturistiku, běh a další outdoorové aktivity.",
+                    icon: "🌞",
+                    color: "border-cyan-300 bg-cyan-50"
+                  },
+                  {
+                    title: "Meteorologická stanice",
+                    description: "Na Komáří vížce funguje meteorologická stanice, která sleduje počasí v Krušných horách. Data jsou využívána pro předpověď počasí v regionu.",
+                    icon: "🌡️",
+                    color: "border-pink-300 bg-pink-50"
+                  },
+                ].map((fact, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
+                    <Card className={`group h-full hover:shadow-xl transition-all duration-300 border-2 ${fact.color} hover:-translate-y-1`}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <span className="text-4xl flex-shrink-0">{fact.icon}</span>
+                          <div>
+                            <h3 className="text-xl font-bold text-tjk-blue mb-2 group-hover:text-tjk-orange transition-colors">
+                              {fact.title}
+                            </h3>
+                            <p className="text-gray-700 leading-relaxed">
+                              {fact.description}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </section>
+          </ScrollAnimation>
+
+          {/* Důležité odkazy */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-20">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-100 backdrop-blur-md border border-red-300 rounded-full mb-4">
+                  <MapIcon className="h-5 w-5 text-red-600" />
+                  <span className="text-sm font-semibold text-red-700">Užitečné</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Důležité odkazy
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Vše, co potřebujete vědět před návštěvou
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    title: "Lanovka Krupka",
+                    url: "https://www.lanovkakrupka.cz",
+                    icon: <Clock className="h-6 w-6" />,
+                    color: "from-blue-600 to-cyan-600",
+                    description: "Jízdní řády a ceník"
+                  },
+                  {
+                    title: "MHD Krupka",
+                    url: "https://www.dpuk.cz",
+                    icon: <MapIcon className="h-6 w-6" />,
+                    color: "from-green-600 to-emerald-600",
+                    description: "Veřejná doprava"
+                  },
+                  {
+                    title: "Počasí Komárka",
+                    url: "/pocasi",
+                    icon: <Mountain className="h-6 w-6" />,
+                    color: "from-orange-600 to-amber-600",
+                    description: "Aktuální předpověď"
+                  },
+                  {
+                    title: "Kontakt",
+                    url: "/kontakt",
+                    icon: <Phone className="h-6 w-6" />,
+                    color: "from-purple-600 to-pink-600",
+                    description: "Kontaktujte nás"
+                  },
+                ].map((link, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
+                    <Link to={link.url.startsWith('http') ? link.url : link.url} target={link.url.startsWith('http') ? "_blank" : undefined} rel={link.url.startsWith('http') ? "noopener noreferrer" : undefined}>
+                      <Card className="group h-full hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-tjk-orange cursor-pointer hover:-translate-y-2">
+                        <CardContent className="p-6 text-center">
+                          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${link.color} mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all`}>
+                            {React.cloneElement(link.icon, { className: "text-white" })}
+                          </div>
+                          <h3 className="text-xl font-bold text-tjk-blue mb-2 group-hover:text-tjk-orange transition-colors">
+                            {link.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-3">
+                            {link.description}
+                          </p>
+                          <div className="flex items-center justify-center gap-2 text-tjk-orange font-semibold group-hover:gap-4 transition-all">
+                            <span>Navštívit</span>
+                            <ArrowRight className="h-4 w-4" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </ScrollAnimation>
+                ))}
+              </div>
             </section>
           </ScrollAnimation>
         </div>

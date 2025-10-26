@@ -213,8 +213,8 @@ const SnowkitingKurzy = () => {
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1920&q=80"
-              alt="Snowkiting"
+              src="/images/snowkiting/hero-snowkiting.jpg"
+              alt="Snowkiting v Krušných horách"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />

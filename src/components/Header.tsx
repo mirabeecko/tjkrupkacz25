@@ -13,7 +13,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
   const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +22,6 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-
 
   return (
     <header
@@ -110,8 +107,6 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
 
           <WeatherWidget />
           <LanguageSelector />
-
-
 
           {/* Search Button */}
           <Button
