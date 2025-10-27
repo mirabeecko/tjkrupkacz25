@@ -18,7 +18,6 @@ const servicesSubmenu = [
   { name: "Pro školy", icon: <School className="h-4 w-4" />, href: "/skoly" },
   { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/firmy" },
   { name: "Ubytování", icon: <Bed className="h-4 w-4" />, href: "/ubytovani" },
-  { name: "Bistro", icon: <Coffee className="h-4 w-4" />, href: "/pripravujeme" },
   { name: "AIRBAG", icon: <Shield className="h-4 w-4" />, href: "/airbag" },
 ];
 
