@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageCircleQuestion, Menu, Phone, Mail, Search } from "lucide-react";
+import { MessageCircleQuestion, Menu, Phone, Mail, Search, ShoppingCart } from "lucide-react";
 import WeatherWidget from "./WeatherWidget";
 import LanguageSelector from "./LanguageSelector";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/context/CartContext";
 
 interface HeaderProps {
   toggleNavbar: () => void;
@@ -13,6 +15,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
   const isMobile = useIsMobile();
   const [scrolled, setScrolled] = useState(false);
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,6 +110,27 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
 
           <WeatherWidget />
           <LanguageSelector />
+
+          {/* E-shop Button */}
+          <Link to="/eshop">
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                "rounded-xl transition-all duration-300 hover:scale-110 relative",
+                scrolled
+                  ? "text-white hover:bg-white/20"
+                  : "text-tjk-blue hover:bg-tjk-blue/10"
+              )}
+            >
+              <ShoppingCart className="h-5 w-5 transition-transform hover:scale-125" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-tjk-orange to-amber-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                  {cartCount}
+                </span>
+              )}
+            </Button>
+          </Link>
 
           {/* Search Button */}
           <Button
