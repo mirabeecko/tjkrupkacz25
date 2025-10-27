@@ -96,7 +96,7 @@ const Airbag = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="AIRBAG Matrace - Bezpečný trénink triků | TJ Krupka"
+        title="AIRBAG Matrace - Bezpečný trénink triků | Tělovýchovná jednota Krupka"
         description="Profesionální AIRBAG matrace pro bezpečný trénink triků a akrobatických prvků. Pro všechny úrovně - od začátečníků po profesionály."
       />
       <Header toggleNavbar={toggleNavbar} />

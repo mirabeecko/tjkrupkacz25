@@ -12,7 +12,7 @@ const Activities: React.FC = () => {
             Co děláme
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            TJ Krupka nabízí širokou škálu aktivit pro všechny věkové kategorie. 
+            Tělovýchovná jednota Krupka nabízí širokou škálu aktivit pro všechny věkové kategorie.
             Od sportovních zážitků, přes gastronomii až po ubytování.
           </p>
         </div>

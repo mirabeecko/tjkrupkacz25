@@ -50,7 +50,7 @@ const TermsOfService = () => {
                   1. Úvodní ustanovení
                 </h2>
                 <p className="text-gray-700 mb-6">
-                  Tyto podmínky použití upravují vztah mezi TJ Krupka, z.s.
+                  Tyto podmínky použití upravují vztah mezi Tělovýchovnou jednotou Krupka z.s.
                   (dále jen "poskytovatel") a uživateli našich služeb a webových stránek
                   (dále jen "uživatel"). Používáním našich služeb vyjadřujete souhlas
                   s těmito podmínkami.
@@ -58,8 +58,9 @@ const TermsOfService = () => {
 
                 <div className="bg-emerald-50 p-6 rounded-lg mb-6">
                   <p className="font-semibold text-gray-900 mb-2">Poskytovatel služeb:</p>
-                  <p className="text-gray-700">TJ Krupka, z.s.</p>
-                  <p className="text-gray-700">IČO: 00508128</p>
+                  <p className="text-gray-700">Tělovýchovná jednota Krupka z.s.</p>
+                  <p className="text-gray-700">IČO: 46070516</p>
+                  <p className="text-gray-700">Sídlo: Husitská 191/8, 417 41 Krupka</p>
                   <div className="flex items-center gap-2 mt-2">
                     <Mail className="w-4 h-4 text-emerald-600" />
                     <a href="mailto:info@tjkrupka.cz" className="text-emerald-600 hover:underline">

@@ -8,7 +8,7 @@ const Merch = () => {
     {
       id: 1,
       name: "TJK Tričko",
-      description: "Bavlněné tričko s logem TJ Krupka",
+      description: "Bavlněné tričko s logem Tělovýchovné jednoty Krupka",
       price: "399 Kč",
       image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1064&auto=format&fit=crop"
     },

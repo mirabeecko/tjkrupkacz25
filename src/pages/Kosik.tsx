@@ -47,8 +47,8 @@ const Kosik: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Košík | TJ Krupka"
-        description="Váš nákupní košík v TJ Krupka e-shopu"
+        title="Košík | Tělovýchovná jednota Krupka"
+        description="Váš nákupní košík v e-shopu Tělovýchovné jednoty Krupka"
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />

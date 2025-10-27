@@ -58,7 +58,7 @@ const PlatbaUspech: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Platba úspěšná | TJ Krupka"
+        title="Platba úspěšná | Tělovýchovná jednota Krupka"
         description="Vaše objednávka byla úspěšně vytvořena"
       />
       <Header toggleNavbar={toggleNavbar} />

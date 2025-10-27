@@ -260,8 +260,8 @@ const Pokladna: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Pokladna | TJ Krupka"
-        description="Dokončete nákup v TJ Krupka e-shopu"
+        title="Pokladna | Tělovýchovná jednota Krupka"
+        description="Dokončete nákup v e-shopu Tělovýchovné jednoty Krupka"
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />

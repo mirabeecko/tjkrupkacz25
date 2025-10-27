@@ -47,7 +47,8 @@ const Footer: React.FC = () => {
             <h3 className="font-poppins font-bold text-xl mb-4 text-white">Tělovýchovná jednota Krupka z.s.</h3>
             <p className="text-white/80 mb-4 font-inter leading-relaxed">
               IČO: 46070516<br />
-              Tělovýchovná jednota Krupka
+              Husitská 191/8<br />
+              417 41 Krupka
             </p>
             <div className="flex space-x-3">
               <a href="https://facebook.com" target="_blank" rel="noreferrer" className="group text-white hover:text-tjk-orange transition-all duration-300 bg-white/10 hover:bg-white/20 p-3 rounded-xl hover:scale-110 shadow-lg hover:shadow-xl" aria-label="Facebook">

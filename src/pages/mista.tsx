@@ -130,7 +130,7 @@ const ONas = () => {
       <section className="grid md:grid-cols-2 gap-8 mb-12">
         <div className="bg-tjk-blue text-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-montserrat font-bold mb-4">Přidejte se k nám!</h2>
-          <p className="mb-6">Staňte se členem TJ Krupka a získejte přístup k mnoha výhodám a aktivitám.</p>
+          <p className="mb-6">Staňte se členem Tělovýchovné jednoty Krupka a získejte přístup k mnoha výhodám a aktivitám.</p>
           <a href="/dobrovolnici" className="bg-white text-tjk-blue hover:bg-gray-100 font-semibold py-2 px-6 rounded-md inline-block transition-colors">
             Zjistit více
           </a>

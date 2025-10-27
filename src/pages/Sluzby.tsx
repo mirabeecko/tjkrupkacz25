@@ -158,7 +158,7 @@ const Sluzby = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <SEO
-        title="Naše služby | TJ Krupka"
+        title="Naše služby | Tělovýchovná jednota Krupka"
         description="Kompletní nabídka služeb - snowkiting kurzy, půjčovna motocyklů, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího."
         keywords="služby, snowkiting, půjčovna motocyklů, lyžařský areál, teambuilding, ubytování, Krušné hory"
         url="https://tjkrupka.cz/sluzby"

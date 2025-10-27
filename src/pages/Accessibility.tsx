@@ -50,7 +50,7 @@ const AccessibilityPage = () => {
                   1. Náš závazek k přístupnosti
                 </h2>
                 <p className="text-gray-700 mb-6">
-                  TJ Krupka, z.s. se zavazuje zajistit, aby naše webové stránky byly
+                  Tělovýchovná jednota Krupka z.s. se zavazuje zajistit, aby naše webové stránky byly
                   přístupné všem uživatelům bez ohledu na jejich schopnosti nebo technologie,
                   které používají. Věříme, že každý má právo na rovný přístup k informacím
                   a službám.

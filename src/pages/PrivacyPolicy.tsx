@@ -53,9 +53,9 @@ const PrivacyPolicy = () => {
                   Správcem vašich osobních údajů je:
                 </p>
                 <div className="bg-blue-50 p-6 rounded-lg mb-6">
-                  <p className="font-semibold text-gray-900 mb-2">TJ Krupka, z.s.</p>
-                  <p className="text-gray-700">IČO: 00508128</p>
-                  <p className="text-gray-700">Sídlo: Krupka, Česká republika</p>
+                  <p className="font-semibold text-gray-900 mb-2">Tělovýchovná jednota Krupka z.s.</p>
+                  <p className="text-gray-700">IČO: 46070516</p>
+                  <p className="text-gray-700">Sídlo: Husitská 191/8, 417 41 Krupka</p>
                   <div className="flex items-center gap-2 mt-2">
                     <Mail className="w-4 h-4 text-blue-600" />
                     <a href="mailto:info@tjkrupka.cz" className="text-blue-600 hover:underline">

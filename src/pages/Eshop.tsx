@@ -90,8 +90,8 @@ const Eshop: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="E-shop | TJ Krupka"
-        description="Nakupujte merch, vybavení, jízdenky a členství v TJ Krupka. Online platby kartou i bankovním převodem."
+        title="E-shop | Tělovýchovná jednota Krupka"
+        description="Nakupujte merch, vybavení, jízdenky a členství v Tělovýchovné jednotě Krupka. Online platby kartou i bankovním převodem."
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
@@ -104,7 +104,7 @@ const Eshop: React.FC = () => {
               <div className="max-w-4xl mx-auto text-center">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-6">
                   <ShoppingCart className="h-5 w-5 text-cyan-400" />
-                  <span className="text-sm font-semibold">TJ Krupka E-shop</span>
+                  <span className="text-sm font-semibold">Tělovýchovná jednota Krupka E-shop</span>
                 </div>
 
                 <h1 className="font-montserrat font-black text-4xl md:text-6xl mb-6">

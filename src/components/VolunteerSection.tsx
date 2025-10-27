@@ -12,7 +12,7 @@ const VolunteerSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-tjk-blue/90 to-tjk-blue/60 z-10 transition-opacity duration-500"></div>
             <img 
               src="lovable-uploads/volunteer-image.jpg" 
-              alt="Dobrovolníci TJ Krupka" 
+              alt="Dobrovolníci Tělovýchovné jednoty Krupka" 
               className="w-full h-72 md:h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -38,7 +38,7 @@ const VolunteerSection: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-tjk-blue/90 to-tjk-blue/60 z-10 transition-opacity duration-500"></div>
             <img 
               src="lovable-uploads/sponsor-image.jpg" 
-              alt="Sponzoři TJ Krupka" 
+              alt="Sponzoři Tělovýchovné jednoty Krupka" 
               className="w-full h-72 md:h-full object-cover transition-transform duration-700 group-hover:scale-105"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;

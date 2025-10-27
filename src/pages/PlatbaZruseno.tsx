@@ -20,7 +20,7 @@ const PlatbaZruseno: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Platba zrušena | TJ Krupka"
+        title="Platba zrušena | Tělovýchovná jednota Krupka"
         description="Platba byla zrušena"
       />
       <Header toggleNavbar={toggleNavbar} />
