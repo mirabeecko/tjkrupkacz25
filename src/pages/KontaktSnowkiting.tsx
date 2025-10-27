@@ -132,8 +132,8 @@ const KontaktSnowkiting: React.FC = () => {
                       <Phone className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-poppins font-semibold text-lg mb-2">Telefon</h3>
-                    <a href="tel:+420123456789" className="text-cyan-600 hover:text-cyan-700 font-medium">
-                      +420 123 456 789
+                    <a href="tel:+420773090842" className="text-cyan-600 hover:text-cyan-700 font-medium">
+                      +420 773 090 842
                     </a>
                   </CardContent>
                 </Card>
@@ -161,7 +161,7 @@ const KontaktSnowkiting: React.FC = () => {
                     </div>
                     <h3 className="font-poppins font-semibold text-lg mb-2">Lokalita</h3>
                     <p className="text-gray-600 dark:text-gray-300 font-medium">
-                      Komáří vížka<br />Krušné hory
+                      Komáří Vížka, Fojtovice, Petrovice<br />Krušné hory
                     </p>
                   </CardContent>
                 </Card>
@@ -367,9 +367,9 @@ const KontaktSnowkiting: React.FC = () => {
               <ScrollAnimation animation="scale" delay={0.3}>
                 <Card className="text-center p-6 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 border-2 border-indigo-200 dark:border-indigo-700">
                   <Wind className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-                  <h3 className="font-poppins font-bold text-lg mb-2">Certifikovaní instruktoři</h3>
+                  <h3 className="font-poppins font-bold text-lg mb-2">Profesionální instruktoři</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
-                    Zkušení lektoři s mezinárodními certifikáty
+                    Zkušení lektoři s mezinárodními kvalifikacemi
                   </p>
                 </Card>
               </ScrollAnimation>

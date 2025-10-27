@@ -338,8 +338,8 @@ const KontaktPujcovna: React.FC = () => {
                       <Phone className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-poppins font-semibold text-lg mb-2">Telefon</h3>
-                    <a href="tel:+420773090842" className="text-orange-600 hover:text-orange-700 font-medium">
-                      +420 773 090 842
+                    <a href="tel:+420777734389" className="text-orange-600 hover:text-orange-700 font-medium">
+                      +420 777 734 389
                     </a>
                   </CardContent>
                 </Card>

@@ -99,8 +99,8 @@ const defaultLevels = [
 const whyUs = [
   {
     icon: <Award className="w-8 h-8 text-blue-600" />,
-    title: "Certifikovaní instruktoři",
-    description: "Zkušení lektoři s mezinárodními certifikáty"
+    title: "Profesionální instruktoři",
+    description: "Zkušení lektoři s mezinárodními kvalifikacemi"
   },
   {
     icon: <Shield className="w-8 h-8 text-green-600" />,
@@ -300,7 +300,7 @@ const SnowkitingKurzy = () => {
                 NAŠE <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">KURZY</span>
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Vyberte si kurz podle vaší úrovně. Každý kurz je veden zkušenými instruktory s mezinárodními certifikáty.
+                Vyberte si kurz podle vaší úrovně a doby trvání. Každý kurz je veden zkušenými instruktory s mezinárodními kvalifikacemi.
               </p>
             </div>
 
@@ -389,8 +389,8 @@ const SnowkitingKurzy = () => {
                   "Profesionální instruktoři s letitou zkušeností",
                   "Kvalitní výukový materiál a bezpečnostní vybavení",
                   "Malé skupiny pro individuální přístup",
-                  "Praxe na sněhu v Krušných horách",
-                  "Certifikát po absolvování kurzu"
+                  "Praxe na sněhu v Krušných horách - Komáří Vížka, Fojtovice, Petrovice",
+                  "Potvrzení o absolvování kurzu"
                 ].map((benefit, index) => (
                   <div
                     key={index}
@@ -463,6 +463,39 @@ const SnowkitingKurzy = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* RYCHLÝ DOTAZ */}
+        <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+          <div className="max-w-3xl mx-auto px-4">
+            <Card className="border-2 border-blue-300 shadow-xl">
+              <CardHeader className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white">
+                <CardTitle className="text-2xl text-center flex items-center justify-center gap-2">
+                  <Mail className="w-6 h-6" />
+                  Máte dotaz? Napište nám!
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-6">
+                <p className="text-center text-gray-600 mb-4">
+                  Neváhejte se na nás obrátit s jakýmkoliv dotazem ohledně kurzů snowkitingu
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/kontakt-snowkiting">
+                    <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700">
+                      <Mail className="mr-2 w-5 h-5" />
+                      Kontaktní formulář
+                    </Button>
+                  </Link>
+                  <a href="tel:+420773090842">
+                    <Button size="lg" variant="outline" className="w-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50">
+                      <Phone className="mr-2 w-5 h-5" />
+                      Zavolat (+420 773 090 842)
+                    </Button>
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 
@@ -553,7 +586,7 @@ const SnowkitingKurzy = () => {
                 <MapPin className="w-8 h-8 flex-shrink-0" />
                 <div>
                   <p className="font-bold text-lg mb-1">Místo</p>
-                  <p className="text-white/90">SkiAreál Komáří Vížka</p>
+                  <p className="text-white/90">Komáří Vížka, Fojtovice, Petrovice</p>
                 </div>
               </div>
             </div>
