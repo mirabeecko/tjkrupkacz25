@@ -15,7 +15,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Flysurfer',
   'Soul 15m',
@@ -30,7 +31,8 @@ INSERT INTO vehicles (
   1800,
   '/images/kite/flysurfer-soul-15.jpg',
   'Výkonný kite pro silnější větry a začátečníky. Stabilní, bezpečný a velmi odolný. Ideální pro snowkiting i landkiting.',
-  true
+  true,
+  'kite'
 );
 
 -- Flysurfer Soul 10m
@@ -48,7 +50,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Flysurfer',
   'Soul 10m',
@@ -63,7 +66,8 @@ INSERT INTO vehicles (
   1500,
   '/images/kite/flysurfer-soul-10.jpg',
   'Všestranný kite pro středně silné větry. Vynikající ovladatelnost a bezpečnost. Perfektní pro pokročilé začátečníky i zkušené jezdce.',
-  true
+  true,
+  'kite'
 );
 
 -- Trapéz S
@@ -81,7 +85,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Dakine',
   'Trapéz - velikost S',
@@ -96,7 +101,8 @@ INSERT INTO vehicles (
   450,
   '/images/kite/trapez.jpg',
   'Ergonomický kiteboarding trapéz s perfektní podporou zad. Velikost S pro obvod pasu 65-75 cm.',
-  true
+  true,
+  'kite'
 );
 
 -- Trapéz M
@@ -114,7 +120,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Dakine',
   'Trapéz - velikost M',
@@ -129,7 +136,8 @@ INSERT INTO vehicles (
   450,
   '/images/kite/trapez.jpg',
   'Ergonomický kiteboarding trapéz s perfektní podporou zad. Velikost M pro obvod pasu 75-85 cm.',
-  true
+  true,
+  'kite'
 );
 
 -- Trapéz L
@@ -147,7 +155,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Dakine',
   'Trapéz - velikost L',
@@ -162,7 +171,8 @@ INSERT INTO vehicles (
   450,
   '/images/kite/trapez.jpg',
   'Ergonomický kiteboarding trapéz s perfektní podporou zad. Velikost L pro obvod pasu 85-95 cm.',
-  true
+  true,
+  'kite'
 );
 
 -- Trapéz XL
@@ -180,7 +190,8 @@ INSERT INTO vehicles (
   weekend_price_czk,
   photo_url,
   notes,
-  moye
+  moye,
+  category
 ) VALUES (
   'Dakine',
   'Trapéz - velikost XL',
@@ -195,5 +206,6 @@ INSERT INTO vehicles (
   450,
   '/images/kite/trapez.jpg',
   'Ergonomický kiteboarding trapéz s perfektní podporou zad. Velikost XL pro obvod pasu 95-105 cm.',
-  true
+  true,
+  'kite'
 );
