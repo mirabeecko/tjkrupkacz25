@@ -35,6 +35,12 @@ import KontaktSnowkiting from "./pages/KontaktSnowkiting";
 import KontaktPujcovna from "./pages/KontaktPujcovna";
 import VehicleDetail from "./pages/VehicleDetail";
 import Airbag from "./pages/Airbag";
+import Eshop from "./pages/Eshop";
+import Kosik from "./pages/Kosik";
+import Pokladna from "./pages/Pokladna";
+import PlatbaUspech from "./pages/PlatbaUspech";
+import PlatbaZruseno from "./pages/PlatbaZruseno";
+import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
 
@@ -42,12 +48,13 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <HotToaster position="top-right" />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
+        <CartProvider>
+          <Toaster />
+          <Sonner />
+          <HotToaster position="top-right" />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/o-nas" element={<ONasModern />} />
           <Route path="/sporty" element={<Sporty />} />
@@ -76,9 +83,15 @@ const App = () => (
           <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
           <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} />
           <Route path="/airbag" element={<Airbag />} />
+          <Route path="/eshop" element={<Eshop />} />
+          <Route path="/kosik" element={<Kosik />} />
+          <Route path="/pokladna" element={<Pokladna />} />
+          <Route path="/platba/uspech" element={<PlatbaUspech />} />
+          <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+        </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
   </HelmetProvider>
