@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag } from "lucide-react";
+import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag, Wind, Bike, Mountain, School, Briefcase, Bed, Shield } from "lucide-react";
 import WeatherWidget from "@/components/WeatherWidget";
 
 const Footer: React.FC = () => {
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
             <h3 className="font-poppins font-bold text-xl mb-4 text-white">Tělovýchovná jednota Krupka z.s.</h3>
             <p className="text-white/80 mb-4 font-inter leading-relaxed">
@@ -105,6 +105,54 @@ const Footer: React.FC = () => {
                 <Link to="/pocasi" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
                   <ChevronRight className="h-4 w-4 mr-2 transition-transform group-hover:translate-x-1" />
                   <span className="group-hover:font-medium">Počasí</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-white/20 transition-all duration-300">
+            <h3 className="font-poppins font-bold text-xl mb-4 text-white">Naše služby</h3>
+            <ul className="space-y-2.5">
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/snowkiting-kurzy" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Wind className="h-4 w-4 mr-2 text-cyan-400" />
+                  <span className="group-hover:font-medium">Snowkiting Kurzy</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/pujcovna" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Bike className="h-4 w-4 mr-2 text-orange-400" />
+                  <span className="group-hover:font-medium">Půjčovna Motocyklů</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/komari-vizka" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Mountain className="h-4 w-4 mr-2 text-green-400" />
+                  <span className="group-hover:font-medium">Lyžařský areál</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/skoly" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <School className="h-4 w-4 mr-2 text-blue-400" />
+                  <span className="group-hover:font-medium">Pro školy</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/firmy" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Briefcase className="h-4 w-4 mr-2 text-purple-400" />
+                  <span className="group-hover:font-medium">Pro firmy</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/ubytovani" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Bed className="h-4 w-4 mr-2 text-yellow-400" />
+                  <span className="group-hover:font-medium">Ubytování</span>
+                </Link>
+              </li>
+              <li className="transition-transform duration-200 hover:translate-x-2">
+                <Link to="/airbag" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                  <Shield className="h-4 w-4 mr-2 text-red-400" />
+                  <span className="group-hover:font-medium">AIRBAG</span>
                 </Link>
               </li>
             </ul>
