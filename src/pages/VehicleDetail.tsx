@@ -117,6 +117,21 @@ const VehicleDetail: React.FC = () => {
 
   const specifications = [
     {
+      label: "Značka",
+      value: vehicle.brand || null,
+      icon: <Bike className="w-5 h-5 text-orange-600" />
+    },
+    {
+      label: "Model",
+      value: vehicle.model || null,
+      icon: <Bike className="w-5 h-5 text-orange-600" />
+    },
+    {
+      label: "Styl",
+      value: vehicle.type || null,
+      icon: <Bike className="w-5 h-5 text-orange-600" />
+    },
+    {
       label: "Objem motoru",
       value: vehicle.engine_capacity_cc ? `${vehicle.engine_capacity_cc} cc` : null,
       icon: <Gauge className="w-5 h-5 text-orange-600" />
@@ -264,8 +279,9 @@ const VehicleDetail: React.FC = () => {
                               <span className="text-4xl font-black text-orange-600">
                                 {vehicle.new_price_eur}
                               </span>
-                              <span className="text-xl text-gray-600">€</span>
+                              <span className="text-xl text-gray-600">Kč</span>
                             </div>
+                            <p className="text-xs text-gray-500 mt-2">Uvedené ceny jsou v českých korunách</p>
                           </div>
                         )}
                         {vehicle.current_price_eur && (
@@ -278,8 +294,9 @@ const VehicleDetail: React.FC = () => {
                               <span className="text-4xl font-black text-orange-600">
                                 {vehicle.current_price_eur}
                               </span>
-                              <span className="text-xl text-gray-600">€</span>
+                              <span className="text-xl text-gray-600">Kč</span>
                             </div>
+                            <p className="text-xs text-gray-500 mt-2">Uvedené ceny jsou v českých korunách</p>
                           </div>
                         )}
                       </div>
