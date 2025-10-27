@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CloudSun, Wind, Droplets, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle, CloudFog } from "lucide-react";
+import { CloudSun, Wind, Droplets, Sun, Cloud, CloudRain, CloudLightning, CloudSnow, CloudDrizzle, CloudFog, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -74,7 +74,7 @@ const WeatherWidget: React.FC = () => {
       setError(null);
       try {
         const res = await fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=50.7&longitude=13.85&current_weather=true&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m,winddirection_10m,pressure_msl`
+          `https://api.open-meteo.com/v1/forecast?latitude=50.7&longitude=13.85&current_weather=true&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weathercode,cloudcover,windspeed_10m,winddirection_10m,pressure_msl,snow_depth`
         );
         const data = await res.json();
         if (data.current_weather) {
@@ -84,6 +84,7 @@ const WeatherWidget: React.FC = () => {
             windDirection: data.current_weather.winddirection,
             pressure: Math.round(data.current_weather.pressure_msl),
             humidity: data.hourly?.relative_humidity_2m?.[0] ?? 0,
+            snowDepth: data.hourly?.snow_depth?.[0] ?? 0,
             description: "Aktuální počasí",
             code: data.current_weather.weathercode,
           });
@@ -160,6 +161,12 @@ const WeatherWidget: React.FC = () => {
                   <span className="font-semibold">Tlak:</span>
                   <span>{weather.pressure} hPa</span>
                 </div>
+                {weather.snowDepth > 0 && (
+                  <div className="flex items-center gap-2 bg-blue-50 p-2 rounded-lg">
+                    <Snowflake className="h-4 w-4 text-blue-500" />
+                    <span className="font-semibold text-blue-700">Sníh: {Math.round(weather.snowDepth)} cm</span>
+                  </div>
+                )}
                 <div className="mt-3">
                   <div className="font-semibold mb-1">Předpověď</div>
                   <div className="flex gap-2">
