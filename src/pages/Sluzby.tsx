@@ -135,24 +135,6 @@ const services = [
       "Vlastní stravování"
     ]
   },
-  {
-    id: "bistro",
-    title: "Bistro",
-    subtitle: "Chuť v přírodě",
-    description:
-      "Stylové bistro s domácí kuchyní, občerstvením a posezením na terase. Ideální místo pro relax po sportu.",
-    icon: Coffee,
-    cta: "Již brzy",
-    link: "/pripravujeme",
-    gradient: "from-purple-500 via-violet-500 to-indigo-500",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070",
-    benefits: [
-      "Domácí kuchyně",
-      "Sezónní menu",
-      "Terasa s výhledem",
-      "Dětský koutek"
-    ]
-  },
 ];
 
 const Sluzby = () => {
