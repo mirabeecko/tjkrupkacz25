@@ -3,59 +3,72 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import { School, Briefcase, Bed, Bike, Coffee, Sparkles, ArrowRight, ChevronRight, Zap, Target, CheckCircle2, ChevronDown, Wind, Mountain, Shield } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import {
+  School,
+  Briefcase,
+  Bed,
+  Bike,
+  ArrowRight,
+  CheckCircle2,
+  Wind,
+  Mountain,
+  Shield,
+  Star,
+  Users,
+  Calendar,
+  Sparkles
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const services = [
   {
     id: "snowkiting",
-    title: "Kurzy Snowkitingu",
-    subtitle: "Létejte na sněhu",
-    description:
-      "Profesionální kurzy snowkitingu v Krušných horách. Naučte se létat na snowboardu nebo lyžích s drakem. Pro začátečníky i pokročilé.",
+    title: "Snowkiting Kurzy",
+    subtitle: "Létejte na sněhu s drakem",
+    description: "Profesionální kurzy snowkitingu v Krušných horách. Od začátečníků po pokročilé – naučíme vás ovládat drak na sněhu.",
     icon: Wind,
     cta: "Zobrazit kurzy",
     link: "/snowkiting-kurzy",
-    gradient: "from-blue-600 via-cyan-500 to-blue-600",
-    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070",
-    benefits: [
-      "Certifikovaní instruktoři",
-      "Kompletní vybavení v ceně",
-      "Malé skupiny (max 4 osoby)",
-      "Krušné hory - ideální podmínky"
-    ]
+    gradient: "from-cyan-500 to-blue-600",
+    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
+      "Kvalifikovaní instruktoři",
+      "Kompletní vybavení",
+      "Malé skupiny",
+      "Ideální podmínky"
+    ],
+    featured: true
   },
   {
     id: "pujcovna",
     title: "Půjčovna Motocyklů",
-    subtitle: "Adrenalin na kolech",
-    description:
-      "Prémiové motocykly KTM pro terénní jízdu. Profesionální servis, kompletní výstroj a instruktáž zdarma.",
+    subtitle: "Adrenalin na prémiových strojích",
+    description: "Motocykly KTM pro terénní jízdu. Kompletní výstroj, instruktáž a profesionální servis v ceně.",
     icon: Bike,
     cta: "Zobrazit motocykly",
     link: "/pujcovna",
-    gradient: "from-orange-500 via-red-500 to-orange-600",
-    image: "/images/sluzby/pujcovna.jpg",
-    benefits: [
-      "KTM Freeride, Duke, Supermoto",
+    gradient: "from-orange-500 to-red-600",
+    image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
+      "KTM Freeride, Duke",
       "Profesionální servis",
       "Kompletní výstroj",
       "Instruktáž zdarma"
-    ]
+    ],
+    featured: true
   },
   {
     id: "lyzarsky-areal",
-    title: "Lyžařský areál Komáří Vížka",
-    subtitle: "Zimní radovánky",
-    description:
-      "Moderní lyžařský areál s perfektními sjezdovkami pro rodiny i zkušené lyžaře. Lyžařská škola a půjčovna na místě.",
+    title: "Lyžařský areál",
+    subtitle: "Zimní radovánky pro všechny",
+    description: "Moderní lyžařský areál Komáří Vížka s perfektními sjezdovkami pro rodiny i zkušené lyžaře.",
     icon: Mountain,
     cta: "Zjistit více",
     link: "/komari-vizka",
-    gradient: "from-indigo-500 via-purple-500 to-indigo-600",
-    image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?q=80&w=2070",
-    benefits: [
+    gradient: "from-purple-500 to-indigo-600",
+    image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
       "Moderní vleky",
       "Upravené sjezdovky",
       "Lyžařská škola",
@@ -63,38 +76,18 @@ const services = [
     ]
   },
   {
-    id: "airbag",
-    title: "AIRBAG",
-    subtitle: "Již brzy!",
-    description:
-      "Bezpečnost na nové úrovni. Již brzy u nás - moderní airbag systém pro maximální ochranu při sportu.",
-    icon: Shield,
-    cta: "Více informací",
-    link: "/kontakt",
-    gradient: "from-purple-600 via-pink-500 to-purple-600",
-    image: "/images/sluzby/airbag.png",
-    benefits: [
-      "Maximální ochrana",
-      "Profesionální vybavení",
-      "Moderní technologie",
-      "Coming soon 2025"
-    ],
-    badge: "COMING SOON"
-  },
-  {
     id: "skoly",
     title: "Pro školy",
-    subtitle: "Vzdělávání v pohybu",
-    description:
-      "Speciální programy pro školy a dětské kolektivy. Zábava, pohyb a vzdělávání v přírodě pod vedením zkušených instruktorů.",
-    icon: () => <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-12 h-12" />,
+    subtitle: "Vzdělávání v přírodě",
+    description: "Speciální programy pro školy. Lyžařské kurzy, sportovní dny a vzdělávací aktivity v horách.",
+    icon: School,
     cta: "Zjistit více",
     link: "/skoly",
-    gradient: "from-blue-500 via-cyan-500 to-teal-500",
-    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=2070",
-    benefits: [
-      "Lyžařské kurzy pro školy",
-      "Sportovní dny v přírodě",
+    gradient: "from-blue-500 to-cyan-500",
+    image: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
+      "Lyžařské kurzy",
+      "Sportovní dny",
       "Vzdělávací programy",
       "Bezpečné prostředí"
     ]
@@ -102,16 +95,15 @@ const services = [
   {
     id: "firmy",
     title: "Pro firmy",
-    subtitle: "Teambuilding na maximum",
-    description:
-      "Firemní akce, teambuildingy a zážitkové programy na míru. Posilujte týmového ducha v inspirativním prostředí hor.",
+    subtitle: "Teambuilding, který funguje",
+    description: "Firemní akce a teambuildingy na míru. Posilujte týmového ducha v inspirativním prostředí Krušných hor.",
     icon: Briefcase,
     cta: "Firemní nabídka",
     link: "/firmy",
-    gradient: "from-green-500 via-emerald-500 to-teal-500",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069",
-    benefits: [
-      "Team building aktivity",
+    gradient: "from-green-500 to-emerald-600",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop",
+    highlights: [
+      "Team building",
       "Catering na míru",
       "Kompletní servis",
       "Motivační programy"
@@ -120,248 +112,354 @@ const services = [
   {
     id: "ubytovani",
     title: "Ubytování",
-    subtitle: "Pohodlí v horách",
-    description:
-      "Komfortní ubytování přímo v areálu i v okolí. Ideální zázemí pro sportovce, rodiny i skupiny.",
+    subtitle: "Pohodlí v srdci hor",
+    description: "Komfortní ubytování přímo v areálu. Ideální zázemí pro sportovce, rodiny i firemní skupiny.",
     icon: Bed,
     cta: "Rezervovat",
     link: "/ubytovani",
-    gradient: "from-orange-500 via-amber-500 to-yellow-500",
-    image: "/images/sluzby/ubytovani.png",
-    benefits: [
+    gradient: "from-amber-500 to-orange-500",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
       "Moderní vybavení",
-      "Blízko ski areálu",
+      "Blízko areálu",
       "Rodinné prostředí",
-      "Vlastní stravování"
+      "Snídaně v ceně"
     ]
   },
+  {
+    id: "airbag",
+    title: "AIRBAG",
+    subtitle: "Bezpečnost na nové úrovni",
+    description: "Již brzy – moderní airbag systém pro maximální ochranu při zimních a letních sportech.",
+    icon: Shield,
+    cta: "Více informací",
+    link: "/airbag",
+    gradient: "from-pink-500 to-rose-600",
+    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop",
+    highlights: [
+      "Maximální ochrana",
+      "Profesionální vybavení",
+      "Moderní technologie",
+      "Coming soon 2025"
+    ],
+    badge: "BRZY"
+  }
 ];
 
 const Sluzby = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const [activeService, setActiveService] = useState<string | null>(null);
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const closeNavbar = () => setNavbarOpen(false);
 
+  const featuredServices = services.filter(s => s.featured);
+  const otherServices = services.filter(s => !s.featured);
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
+      <SEO
+        title="Naše služby | TJ Krupka"
+        description="Kompletní nabídka služeb - snowkiting kurzy, půjčovna motocyklů, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího."
+        keywords="služby, snowkiting, půjčovna motocyklů, lyžařský areál, teambuilding, ubytování, Krušné hory"
+        url="https://tjkrupka.cz/sluzby"
+      />
+
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
 
       <main className="flex-1">
-        {/* HERO SECTION - Full Width */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2076')",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-purple-900/30"></div>
+        {/* HERO SECTION */}
+        <section className="relative pt-32 pb-20 px-4 overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03]">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
           </div>
 
-          {/* Animated particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(30)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="container relative z-20 px-4 py-20">
-            <div className="max-w-5xl mx-auto text-center text-white">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-[fade-in_1s_ease-out]">
-                <Sparkles className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm font-medium">KOMPLETNÍ NABÍDKA SLUŽEB</span>
-              </div>
-
-              {/* Main Heading */}
-              <h1 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
-                <span className="bg-gradient-to-r from-white via-blue-200 to-purple-300 bg-clip-text text-transparent">
-                  Naše služby
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
-                Od vzdělávacích programů přes <span className="font-semibold text-blue-300">adrenalinové teambuildingy</span>
-                <br className="hidden md:block" />
-                až po komfortní ubytování a gastro zážitky
-              </p>
-
-              {/* Key Points */}
-              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>8 komplexních služeb</span>
-                </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Programy na míru</span>
-                </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Vše na jednom místě</span>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
-                <a href="#sluzby">
-                  <button className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-1">
-                    Prozkoumat služby
-                    <ChevronDown className="ml-2 inline h-6 w-6 transition-transform group-hover:translate-y-1" />
-                  </button>
-                </a>
-                <Link to="/kontakt">
-                  <button className="font-bold text-xl px-8 py-6 rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 transition-all duration-300">
-                    Kontaktujte nás
-                  </button>
-                </Link>
+          <div className="max-w-7xl mx-auto relative">
+            {/* Badge */}
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 rounded-full">
+                <Sparkles className="w-4 h-4 text-blue-600" />
+                <span className="text-sm font-semibold text-blue-900">Vše pro nezapomenutelný zážitek</span>
               </div>
             </div>
 
-            {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <ChevronDown className="h-10 w-10 text-white/60" />
+            {/* Heading */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-center mb-6 text-gray-900">
+              Naše <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">služby</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-center text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+              Od adrenalinových sportů přes teambuildingy až po komfortní ubytování.
+              <span className="block mt-2 text-gray-900 font-semibold">Vše na jednom místě v Krušných horách.</span>
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-16">
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">7</div>
+                <div className="text-sm md:text-base text-gray-600 font-medium">Služeb</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">15+</div>
+                <div className="text-sm md:text-base text-gray-600 font-medium">Let zkušeností</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">1000+</div>
+                <div className="text-sm md:text-base text-gray-600 font-medium">Spokojených klientů</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">⭐️</div>
+                <div className="text-sm md:text-base text-gray-600 font-medium">Perfektní hodnocení</div>
+              </div>
             </div>
           </div>
         </section>
 
-      {/* SERVICES GRID */}
-      <section id="sluzby" className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Kompletní nabídka <span className="text-blue-600">pro každého</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Vyberte si ze široké škály služeb, které vám zajistí nezapomenutelný zážitek
-            </p>
-          </div>
+        {/* FEATURED SERVICES - Large Cards */}
+        <section className="py-20 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Naše <span className="text-blue-600">top služby</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Nejoblíbenější a nejvyhledávanější aktivity v Krušných horách
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, idx) => {
-              const Icon = service.icon;
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {featuredServices.map((service) => {
+                const Icon = service.icon;
+                return (
+                  <div
+                    key={service.id}
+                    className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                    onMouseEnter={() => setActiveService(service.id)}
+                    onMouseLeave={() => setActiveService(null)}
+                  >
+                    {/* Image Section */}
+                    <div className="relative h-80 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-60 group-hover:opacity-70 transition-opacity duration-500`}></div>
 
-              return (
-                <Card
-                  key={service.title}
-                  id={service.id}
-                  className="group overflow-hidden border-2 hover:border-blue-300 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl scroll-mt-24"
-                  onMouseEnter={() => setHoveredIndex(idx)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {/* Image with gradient overlay */}
-                  <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-80`} />
-                    {service.badge && (
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-yellow-500 text-black font-bold animate-pulse">
-                          {service.badge}
-                        </Badge>
+                      {/* Icon Badge */}
+                      <div className="absolute top-6 left-6 p-4 bg-white/20 backdrop-blur-md rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-10 h-10 text-white" />
                       </div>
-                    )}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
-                      <div className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-12 h-12" />
+
+                      {/* Title Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+                        <h3 className="text-3xl md:text-4xl font-black text-white mb-2">{service.title}</h3>
+                        <p className="text-white/90 text-lg font-medium">{service.subtitle}</p>
                       </div>
-                      <h3 className="text-3xl font-black text-center">{service.title}</h3>
-                      <p className="text-sm font-semibold tracking-wider mt-2 uppercase">{service.subtitle}</p>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="p-8">
+                      <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      {/* Highlights */}
+                      <div className="grid grid-cols-2 gap-3 mb-6">
+                        {service.highlights.map((highlight, idx) => (
+                          <div key={idx} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                            <span className="text-sm text-gray-700 font-medium">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA Button */}
+                      <Link to={service.link}>
+                        <Button
+                          className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold text-lg py-6 rounded-xl hover:opacity-90 transition-all group/btn`}
+                        >
+                          {service.cta}
+                          <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-2 transition-transform" />
+                        </Button>
+                      </Link>
                     </div>
                   </div>
-
-                  <CardContent className="p-6">
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    {/* Benefits */}
-                    <ul className="space-y-2 mb-6">
-                      {service.benefits.map((benefit, bIdx) => (
-                        <li key={bIdx} className="flex items-center gap-2 text-sm text-gray-700">
-                          <CheckCircle2 className="w-4 h-4 text-green-600 flex-shrink-0" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link to={service.link}>
-                      <button className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold py-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2`}>
-                        {service.cta}
-                        <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                      </button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA SECTION - Full Width */}
-      <section className="relative py-24 bg-gradient-to-r from-blue-700 via-purple-700 to-blue-800 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-        </div>
+        {/* OTHER SERVICES - Compact Grid */}
+        <section className="py-20 px-4 bg-gray-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Další <span className="text-blue-600">služby</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Kompletní nabídka pro školy, firmy i individuální návštěvníky
+              </p>
+            </div>
 
-        {/* Animated particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(20)].map((_, i) => (
-            <Sparkles
-              key={i}
-              className="absolute text-white/20 animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${20 + Math.random() * 30}px`,
-                height: `${20 + Math.random() * 30}px`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
-            />
-          ))}
-        </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherServices.map((service) => {
+                const Icon = service.icon;
+                return (
+                  <Link
+                    key={service.id}
+                    to={service.link}
+                    className="group relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  >
+                    {/* Compact Image */}
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-75`}></div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <Sparkles className="w-16 h-16 mx-auto mb-8 text-yellow-400 animate-pulse" />
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
-              Nenašli jste, co hledáte?
+                      {/* Badge if exists */}
+                      {service.badge && (
+                        <div className="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
+                          <span className="text-xs font-bold text-gray-900">{service.badge}</span>
+                        </div>
+                      )}
+
+                      {/* Icon */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                        <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl mb-3 group-hover:scale-110 transition-transform">
+                          <Icon className="w-8 h-8" />
+                        </div>
+                        <h3 className="text-2xl font-black text-center px-4">{service.title}</h3>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                        {service.description}
+                      </p>
+
+                      {/* Mini highlights */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {service.highlights.slice(0, 3).map((highlight, idx) => (
+                          <span key={idx} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-full font-medium">
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* CTA */}
+                      <div className="flex items-center justify-between">
+                        <span className={`font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                          {service.cta}
+                        </span>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-2 transition-all" />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY CHOOSE US */}
+        <section className="py-20 px-4 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Proč si vybrat <span className="text-blue-600">nás?</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Profesionální tým</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Zkušení instruktoři a lektoři s kvalifikacemi. Bezpečnost a kvalita na prvním místě.
+                </p>
+              </div>
+
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Komplexní služby</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Vše na jednom místě – sport, ubytování, stravování i relaxaci. Nemusíte nic řešit.
+                </p>
+              </div>
+
+              <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-lg transition-shadow">
+                <div className="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Calendar className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">Programy na míru</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Přizpůsobíme se vašim požadavkům. Individuální i skupinové programy dle vašich představ.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA SECTION */}
+        <section className="relative py-24 px-4 overflow-hidden bg-gradient-to-br from-blue-600 via-cyan-600 to-blue-700">
+          {/* Animated background */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}></div>
+          </div>
+
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8">
+              <Sparkles className="w-10 h-10 text-white" />
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
+              Pojďme vytvořit váš
+              <span className="block mt-2">nezapomenutelný zážitek</span>
             </h2>
-            <p className="text-2xl md:text-3xl mb-12 text-blue-100 drop-shadow-lg">
-              Rádi vám připravíme program přesně na míru. Kontaktujte nás a společně vytvoříme nezapomenutelný zážitek.
+
+            <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed">
+              Kontaktujte nás a společně naplánujeme program přesně podle vašich představ
             </p>
 
-            <Link to="/kontakt">
-              <button className="group bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-12 py-7 rounded-2xl shadow-2xl hover:shadow-white/20 hover:scale-105 transition-all duration-300 inline-flex items-center gap-3">
-                Napište nám
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </button>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/kontakt">
+                <Button
+                  size="lg"
+                  className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all"
+                >
+                  Napište nám
+                  <ArrowRight className="ml-2 w-6 h-6" />
+                </Button>
+              </Link>
+              <a href="tel:+420773090842">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white/10 font-bold text-xl px-10 py-7 rounded-xl backdrop-blur-sm"
+                >
+                  Zavolat +420 773 090 842
+                </Button>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       </main>
 
       <Footer />
