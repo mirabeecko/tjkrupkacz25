@@ -332,7 +332,7 @@ const VehicleDetail: React.FC = () => {
                       <ul className="text-sm text-gray-700 space-y-2">
                         <li>• Minimální věk: 18 let</li>
                         <li>• Řidičský průkaz skupiny A nebo A2</li>
-                        <li>• Kauce: 5 000 Kč (vrací se při vrácení v pořádku)</li>
+                        <li>• Kauce: 15 000 Kč (vrací se při vrácení v pořádku)</li>
                         <li>• Rezervace předem nutná (min. 24h)</li>
                       </ul>
                     </div>
@@ -411,26 +411,25 @@ const VehicleDetail: React.FC = () => {
                     </p>
 
                     {/* Contact */}
-                    <div className="mt-6 pt-6 border-t space-y-3">
-                      <p className="text-sm font-semibold text-gray-900">Máte dotazy?</p>
-                      <a href="tel:+420777734389" className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div className="p-2 bg-green-100 rounded-lg">
-                          <Phone className="w-4 h-4 text-green-600" />
+                    <div className="mt-6 pt-6 border-t">
+                      <div
+                        className="relative rounded-lg overflow-hidden p-6 bg-cover bg-center text-white"
+                        style={{ backgroundImage: "url('/images/sluzby/komarka.jpg')" }}
+                      >
+                        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                        <div className="relative z-10">
+                          <h3 className="text-xl font-bold mb-4">Máte dotazy?</h3>
+                          <p className="text-sm mb-4">Neváhejte nás kontaktovat, rádi vám pomůžeme s výběrem.</p>
+                          <a href="tel:+420777734389" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/20 transition-colors">
+                            <Phone className="w-5 h-5" />
+                            <span className="font-semibold">+420 777 734 389</span>
+                          </a>
+                          <a href="mailto:pujcovna@tjkrupka.cz" className="flex items-center gap-3 p-3 rounded-lg hover:bg-white/20 transition-colors">
+                            <Mail className="w-5 h-5" />
+                            <span className="font-semibold">pujcovna@tjkrupka.cz</span>
+                          </a>
                         </div>
-                        <div className="text-sm">
-                          <p className="text-gray-500">Zavolejte nám</p>
-                          <p className="font-semibold text-gray-900">+420 777 734 389</p>
-                        </div>
-                      </a>
-                      <a href="mailto:pujcovna@tjkrupka.cz" className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <div className="p-2 bg-blue-100 rounded-lg">
-                          <Mail className="w-4 h-4 text-blue-600" />
-                        </div>
-                        <div className="text-sm">
-                          <p className="text-gray-500">Napište nám</p>
-                          <p className="font-semibold text-gray-900">pujcovna@tjkrupka.cz</p>
-                        </div>
-                      </a>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
