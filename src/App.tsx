@@ -39,6 +39,7 @@ import Kosik from "./pages/Kosik";
 import Pokladna from "./pages/Pokladna";
 import PlatbaUspech from "./pages/PlatbaUspech";
 import PlatbaZruseno from "./pages/PlatbaZruseno";
+import PujcovnaCtyrkolky from "./pages/PujcovnaCtyrkolky";
 import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
@@ -73,6 +74,7 @@ const App = () => (
           <Route path="/pripravujeme" element={<Pripravujeme />} />
           <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
           <Route path="/pujcovna" element={<Pujcovna />} />
+          <Route path="/pujcovna-ctyrkolky" element={<PujcovnaCtyrkolky />} />
           <Route path="/vozidlo/:id" element={<VehicleDetail />} />
           <Route path="/zasady-ochrany-osobnich-udaju" element={<PrivacyPolicy />} />
           <Route path="/podminky-pouziti" element={<TermsOfService />} />
