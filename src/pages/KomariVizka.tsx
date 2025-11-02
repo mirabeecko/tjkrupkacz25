@@ -531,11 +531,11 @@ const KomariVizka = () => {
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-50"></div>
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Bus className="h-6 w-6" /> MHD Krupka</h3>
+                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Bus className="h-6 w-6" /> MHD</h3>
                     <p className="mb-4 leading-relaxed">Veřejná doprava až ke spodní stanici lanovky.</p>
-                    <a href="https://www.dpuk.cz" target="_blank" rel="noopener noreferrer">
+                    <a href="https://idos.cz/vlakyautobusymhdvse/spojeni/vysledky/?f=Teplice&fc=1&t=Fojtovice/Krupka,Kom%C3%A1%C5%99%C3%AD%20v%C3%AD%C5%BEka&tc=200003" target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold">
-                        Jízdní řády MHD
+                        Jízdní řády IDOS
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </a>
@@ -704,8 +704,8 @@ const KomariVizka = () => {
                     description: "Jízdní řády a ceník",
                   },
                   {
-                    title: "MHD Krupka",
-                    url: "https://www.dpuk.cz",
+                    title: "MHD",
+                    url: "https://idos.cz/vlakyautobusymhdvse/spojeni/vysledky/?f=Teplice&fc=1&t=Fojtovice/Krupka,Kom%C3%A1%C5%99%C3%AD%20v%C3%AD%C5%BEka&tc=200003",
                     icon: <Bus className="h-8 w-8" />,
                     description: "Veřejná doprava",
                   },
