@@ -20,7 +20,10 @@ import {
   Bike,
   Shield,
   Building2,
-  GraduationCap
+  GraduationCap,
+  Truck,
+  Package,
+  Wrench
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -162,14 +165,14 @@ const Index = () => {
               </div>
 
               {/* Main Heading */}
-              <h1 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both] drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+              <h1 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both] drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
                 <span className="bg-gradient-to-r from-white via-cyan-100 to-blue-200 bg-clip-text text-transparent">
                   Snowkiting v Krušných horách
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-medium leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] text-white">
                 Když vítr <span className="font-bold text-cyan-200">šeptá tvé jméno..</span>
               </p>
 
@@ -213,6 +216,195 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* Hero Section 2 - Čtyřkolky a vozík na práci - TEMPORARILY HIDDEN */}
+        {/*
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-600 via-amber-600 to-yellow-500">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}></div>
+          </div>
+
+          {/* Animated Trucks */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[...Array(15)].map((_, i) => (
+              <Truck
+                key={i}
+                className="absolute text-white/10 animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  width: `${30 + Math.random() * 40}px`,
+                  height: `${30 + Math.random() * 40}px`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  transform: `rotate(${Math.random() * 45 - 22}deg)`
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="container relative z-20 px-4 py-20">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Left - Text Content */}
+                <div className="text-white">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 mb-6 px-5 py-2.5 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 animate-[fade-in_1s_ease-out]">
+                    <Truck className="w-5 h-5 text-yellow-200" />
+                    <span className="text-sm font-semibold">Nová služba!</span>
+                  </div>
+
+                  {/* Main Heading */}
+                  <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both] drop-shadow-[0_4px_16px_rgba(0,0,0,0.5)]">
+                    <span className="text-white">
+                      Čtyřkolky a vozík
+                    </span>
+                    <br />
+                    <span className="bg-gradient-to-r from-yellow-200 via-amber-100 to-orange-200 bg-clip-text text-transparent">
+                      na práci
+                    </span>
+                  </h2>
+
+                  {/* Subtitle */}
+                  <p className="text-xl md:text-2xl mb-8 leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] drop-shadow-lg text-white/95 font-medium">
+                    <span className="font-bold text-yellow-100">Odvezte si, co potřebujete!</span>
+                    <br />
+                    Stavební materiál, dřevo, seno nebo cokoliv jiného.
+                  </p>
+
+                  {/* Key Features */}
+                  <div className="space-y-4 mb-10 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                        <CheckCircle2 className="w-5 h-5 text-yellow-200" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-semibold">Výkonné čtyřkolky s pohonem 4x4</p>
+                        <p className="text-white/80">Ideal pro terén i těžší práce</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                        <CheckCircle2 className="w-5 h-5 text-yellow-200" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-semibold">Robustní vozík s velkým objemem</p>
+                        <p className="text-white/80">Až 500 kg nosnosti</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                        <CheckCircle2 className="w-5 h-5 text-yellow-200" />
+                      </div>
+                      <div>
+                        <p className="text-lg font-semibold">Flexibilní půjčování</p>
+                        <p className="text-white/80">Na hodiny, dny nebo týdny</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-col sm:flex-row gap-4 animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
+                    <Link to="/pujcovna-ctyrkolky">
+                      <Button size="lg" className="group bg-white text-orange-600 hover:bg-yellow-50 font-bold text-xl px-10 py-7 rounded-2xl shadow-2xl hover:shadow-white/30 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                        <Package className="mr-2 h-6 w-6" />
+                        Zobrazit ceník
+                        <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
+                      </Button>
+                    </Link>
+                    <Link to="/kontakt">
+                      <Button size="lg" variant="outline" className="font-bold text-xl px-10 py-7 rounded-2xl bg-white/10 backdrop-blur-sm border-white/40 border-2 text-white hover:bg-white/20 transition-all duration-300">
+                        <Wrench className="mr-2 h-6 w-6" />
+                        Kontaktujte nás
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Right - Image/Visual */}
+                <div className="relative animate-[fade-in_1.5s_ease-out_0.4s_both]">
+                  <div className="relative">
+                    {/* Decorative circles */}
+                    <div className="absolute -top-8 -right-8 w-64 h-64 bg-yellow-300/20 rounded-full blur-3xl animate-pulse"></div>
+                    <div className="absolute -bottom-8 -left-8 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+                    {/* Main visual card */}
+                    <div className="relative bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/30 shadow-2xl">
+                      <div className="space-y-6">
+                        <div className="flex items-center justify-between p-6 bg-white/20 rounded-2xl backdrop-blur-sm">
+                          <div className="flex items-center gap-4">
+                            <div className="p-4 bg-orange-500 rounded-xl">
+                              <Truck className="w-8 h-8 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-white font-bold text-xl">Čtyřkolka</p>
+                              <p className="text-white/80 text-sm">Yamaha Grizzly 700</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-white/80 text-sm">od</p>
+                            <p className="text-white font-black text-3xl">800 Kč</p>
+                            <p className="text-white/80 text-xs">/ den</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between p-6 bg-white/20 rounded-2xl backdrop-blur-sm">
+                          <div className="flex items-center gap-4">
+                            <div className="p-4 bg-amber-500 rounded-xl">
+                              <Package className="w-8 h-8 text-white" />
+                            </div>
+                            <div>
+                              <p className="text-white font-bold text-xl">Vozík</p>
+                              <p className="text-white/80 text-sm">500 kg nosnost</p>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-white/80 text-sm">od</p>
+                            <p className="text-white font-black text-3xl">300 Kč</p>
+                            <p className="text-white/80 text-xs">/ den</p>
+                          </div>
+                        </div>
+
+                        <div className="p-6 bg-gradient-to-br from-yellow-400/30 to-orange-400/30 rounded-2xl backdrop-blur-sm border border-white/20">
+                          <div className="flex items-center gap-3 mb-3">
+                            <Star className="w-6 h-6 text-yellow-200 fill-yellow-200" />
+                            <p className="text-white font-bold text-lg">Skvělé pro:</p>
+                          </div>
+                          <ul className="space-y-2 text-white/90">
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-yellow-200 rounded-full"></div>
+                              Přepravu stavebního materiálu
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-yellow-200 rounded-full"></div>
+                              Práce na zahradě a pozemku
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-yellow-200 rounded-full"></div>
+                              Dovoz dřeva a sena
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-yellow-200 rounded-full"></div>
+                              Terénní práce v lese
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+              <ChevronDown className="h-10 w-10 text-white/60" />
+            </div>
+          </div>
+        </section>
+        */}
 
         {/* Course Types Section - HIDDEN */}
         {/*
@@ -337,14 +529,14 @@ const Index = () => {
           <div className="container relative z-20 px-4 py-20">
             <div className="max-w-5xl mx-auto text-center text-white">
               {/* Main Heading */}
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+              <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-amber-200 to-orange-300 bg-clip-text text-transparent">
                   Ubytování v Krušných horách
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Objevte <span className="font-semibold text-amber-300">horskou pohostinnost</span>
                 <br className="hidden md:block" />
                 na místě, kde příroda a dobrodružství čekají přímo za prahem
@@ -417,14 +609,14 @@ const Index = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+              <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-orange-200 to-red-300 bg-clip-text text-transparent">
                   Půjčovna Motocyklů
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Užijte si Krušné hory na <span className="font-semibold text-orange-300">motorce nebo čtyřkolce</span>.. Enduro? Supermoto? Naked? Vyberte si...
               </p>
 
@@ -548,14 +740,14 @@ const Index = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+              <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-purple-200 to-pink-300 bg-clip-text text-transparent">
                   AIRBAG
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Bezpečnost na <span className="font-semibold text-purple-300">nové úrovni</span>
                 <br className="hidden md:block" />
                 Již brzy u nás!
@@ -623,14 +815,14 @@ const Index = () => {
           <div className="container relative z-20 px-4 py-20">
             <div className="max-w-5xl mx-auto text-center text-white">
               {/* Main Heading */}
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+              <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-emerald-200 to-teal-300 bg-clip-text text-transparent">
                   Firemní akce
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Team building a <span className="font-semibold text-emerald-300">firemní akce na míru</span>
                 <br className="hidden md:block" />
                 pro posílení týmového ducha
@@ -699,14 +891,14 @@ const Index = () => {
             <div className="max-w-5xl mx-auto text-center text-white">
               {/* Main Heading */}
               <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-24 h-24 mx-auto mb-4" />
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
+              <h2 className="font-montserrat font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-indigo-200 to-violet-300 bg-clip-text text-transparent">
                   Školní akce
                 </span>
               </h2>
 
               {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
+              <p className="text-lg sm:text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
                 Nezapomenutelné <span className="font-semibold text-indigo-300">zážitky pro žáky</span>
                 <br className="hidden md:block" />
                 a studenty všech věkových kategorií
@@ -770,10 +962,10 @@ const Index = () => {
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl animate-[fadeInUp_1s_ease-out]">
+              <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl animate-[fadeInUp_1s_ease-out]">
                 Připraveni na dobrodružství?
               </h2>
-              <p className="text-2xl md:text-3xl mb-12 text-white drop-shadow-lg animate-[fadeInUp_1s_ease-out_0.2s_both]">
+              <p className="text-xl sm:text-2xl md:text-3xl mb-12 text-white drop-shadow-lg animate-[fadeInUp_1s_ease-out_0.2s_both]">
                 Přidejte se k nám a zažijte snowkiting v krásném prostředí Krušných hor
               </p>
 
