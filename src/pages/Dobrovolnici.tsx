@@ -206,6 +206,86 @@ const Dobrovolnici = () => {
             </div>
           </section>
 
+          {/* Naši partneři */}
+          <section className="mb-20 w-full max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue font-montserrat mb-4">
+                Naši partneři
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Děkujeme našim partnerům za podporu a důvěru
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Ústecký kraj */}
+              <a
+                href="https://www.kr-ustecky.cz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-blue-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-full h-32 flex items-center justify-center mb-4">
+                    <img
+                      src="/images/partners/ustecky-kraj-logo.png"
+                      alt="Ústecký kraj"
+                      className="max-h-28 max-w-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="hidden flex-col items-center justify-center text-blue-600">
+                      <svg className="h-20 w-20 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                      </svg>
+                      <span className="font-bold text-xl">Ústecký kraj</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-tjk-blue mb-2 text-center">Ústecký kraj</h3>
+                  <p className="text-gray-600 text-center text-sm">
+                    Podpora rozvoje sportu a cestovního ruchu v regionu
+                  </p>
+                </div>
+              </a>
+
+              {/* Veterina Live */}
+              <a
+                href="https://www.veterina-live.eu"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-green-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-full h-32 flex items-center justify-center mb-4">
+                    <img
+                      src="/images/partners/veterina-live-logo.png"
+                      alt="Veterina Live Litoměřice"
+                      className="max-h-28 max-w-full object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="hidden flex-col items-center justify-center text-green-600">
+                      <svg className="h-20 w-20 mb-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-bold text-xl">Veterina Live</span>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-tjk-blue mb-2 text-center">Veterina Live Litoměřice</h3>
+                  <p className="text-gray-600 text-center text-sm">
+                    Moderní veterinární klinika poskytující špičkovou péči 24/7
+                  </p>
+                </div>
+              </a>
+            </div>
+          </section>
+
           {/* Kontakt / výzva - Vylepšená */}
           <section
             ref={formRef}
