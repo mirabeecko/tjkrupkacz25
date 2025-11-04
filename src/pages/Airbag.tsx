@@ -458,7 +458,7 @@ const Airbag = () => {
                             <div className="flex items-center justify-center h-32">
                             {/* Logo LIVE VET - nahraďte vlastním logem */}
                             <img
-                                src="/images/partners/livevet-logo.png"
+                                src="/images/partners/veterina-live-logo.png"
                                 alt="LIVE VET Litoměřice"
                                 className="h-24 object-contain"
                                 onError={(e) => {
