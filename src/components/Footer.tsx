@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag, Wind, Bike, Mountain, School, Briefcase, Bed, Shield } from "lucide-react";
+import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag, Wind, Bike, Mountain, School, Briefcase, Bed, Shield, Building, Handshake } from "lucide-react";
 import WeatherWidget from "@/components/WeatherWidget";
 
 const Footer: React.FC = () => {
@@ -16,29 +16,29 @@ const Footer: React.FC = () => {
       <div className="container px-4 mx-auto relative z-10">
         {/* Popular Links */}
         <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Link to="/sluzby" className="group bg-gradient-to-br from-yellow-600/90 to-yellow-500/90 hover:from-yellow-500 hover:to-yellow-400 backdrop-blur-md rounded-2xl p-5 transition-all duration-300 flex flex-col items-center text-center shadow-xl hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30">
-            <div className="w-14 h-14 mb-3 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <Home className="h-7 w-7 text-white drop-shadow-lg" />
+          <Link to="/ubytovani" className="group bg-white/5 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/10 hover:border-tjk-orange/50 hover:bg-white/10">
+            <div className="p-3 rounded-lg bg-white/10 group-hover:bg-tjk-orange/20 transition-colors">
+              <Bed className="h-6 w-6 text-white group-hover:text-tjk-orange transition-colors" />
             </div>
-            <h3 className="font-poppins font-bold text-base tracking-wide text-white">Ubytování</h3>
+            <h3 className="font-poppins font-bold text-base text-white">Ubytování</h3>
           </Link>
-          <Link to="/sluzby" className="group bg-gradient-to-br from-blue-600/90 to-blue-500/90 hover:from-blue-500 hover:to-blue-400 backdrop-blur-md rounded-2xl p-5 transition-all duration-300 flex flex-col items-center text-center shadow-xl hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30">
-            <div className="w-14 h-14 mb-3 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <Book className="h-7 w-7 text-white drop-shadow-lg" />
+          <Link to="/skoly" className="group bg-white/5 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/10 hover:border-tjk-orange/50 hover:bg-white/10">
+            <div className="p-3 rounded-lg bg-white/10 group-hover:bg-tjk-orange/20 transition-colors">
+              <School className="h-6 w-6 text-white group-hover:text-tjk-orange transition-colors" />
             </div>
-            <h3 className="font-poppins font-bold text-base tracking-wide text-white">Pro školy</h3>
+            <h3 className="font-poppins font-bold text-base text-white">Pro školy</h3>
           </Link>
-          <Link to="/firmy" className="group bg-gradient-to-br from-green-600/90 to-green-500/90 hover:from-green-500 hover:to-green-400 backdrop-blur-md rounded-2xl p-5 transition-all duration-300 flex flex-col items-center text-center shadow-xl hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30">
-            <div className="w-14 h-14 mb-3 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <ShoppingBag className="h-7 w-7 text-white drop-shadow-lg" />
+          <Link to="/firmy" className="group bg-white/5 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/10 hover:border-tjk-orange/50 hover:bg-white/10">
+            <div className="p-3 rounded-lg bg-white/10 group-hover:bg-tjk-orange/20 transition-colors">
+              <Building className="h-6 w-6 text-white group-hover:text-tjk-orange transition-colors" />
             </div>
-            <h3 className="font-poppins font-bold text-base tracking-wide text-white">Pro firmy</h3>
+            <h3 className="font-poppins font-bold text-base text-white">Pro firmy</h3>
           </Link>
-          <Link to="/dobrovolnici" className="group bg-gradient-to-br from-pink-600/90 to-pink-500/90 hover:from-pink-500 hover:to-pink-400 backdrop-blur-md rounded-2xl p-5 transition-all duration-300 flex flex-col items-center text-center shadow-xl hover:scale-105 hover:shadow-2xl border border-white/20 hover:border-white/30">
-            <div className="w-14 h-14 mb-3 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <UserPlus className="h-7 w-7 text-white drop-shadow-lg" />
+          <Link to="/dobrovolnici" className="group bg-white/5 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/10 hover:border-tjk-orange/50 hover:bg-white/10">
+            <div className="p-3 rounded-lg bg-white/10 group-hover:bg-tjk-orange/20 transition-colors">
+              <Handshake className="h-6 w-6 text-white group-hover:text-tjk-orange transition-colors" />
             </div>
-            <h3 className="font-poppins font-bold text-base tracking-wide text-white">Partneři</h3>
+            <h3 className="font-poppins font-bold text-base text-white">Partneři</h3>
           </Link>
         </div>
 

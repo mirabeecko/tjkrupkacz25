@@ -33,6 +33,7 @@ const menuItems = [
 const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
   const location = useLocation();
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(false);
+  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -145,9 +146,13 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                   )}
 
                   {/* Desktop - hover menu */}
-                  <div className="hidden lg:block group h-full">
+                  <div 
+                    className="hidden lg:block h-full"
+                    onMouseLeave={() => setIsServicesMenuOpen(false)}
+                  >
                     <Link
                       to={item.href}
+                      onMouseEnter={() => setIsServicesMenuOpen(true)}
                       className={cn(
                         "relative flex items-center gap-2 px-5 py-6 font-medium transition-all duration-300 h-full",
                         "text-gray-700 hover:text-tjk-orange",
@@ -158,17 +163,20 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                       <span className="font-poppins font-semibold relative z-10">
                         {item.name}
                       </span>
-                      <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                      <ChevronDown className={cn("h-4 w-4 transition-transform duration-300", isServicesMenuOpen && "rotate-180")} />
 
                       {/* Desktop hover underline effect */}
                       <span className={cn(
                         "absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-tjk-orange to-amber-500 transition-transform duration-300 origin-left",
-                        isServiceActive() ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                        isServiceActive() || isServicesMenuOpen ? "scale-x-100" : "scale-x-0"
                       )}></span>
                     </Link>
 
                     {/* Desktop Dropdown Menu */}
-                    <div className="absolute top-full left-0 w-[32rem] opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <div className={cn(
+                      "absolute top-full left-0 w-[32rem] transition-all duration-300 transform z-50",
+                      isServicesMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2 pointer-events-none"
+                    )}>
                       <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden mt-2">
                         <div className="p-2 grid grid-cols-2 gap-2">
                           {servicesSubmenu.map((subItem) => (

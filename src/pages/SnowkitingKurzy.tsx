@@ -211,9 +211,22 @@ const SnowkitingKurzy = () => {
       <main className="flex-1">
         {/* HERO SECTION - Plná obrazovka */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute top-24 left-1/2 -translate-x-1/2 z-20 w-full px-4">
+            <div className="max-w-4xl mx-auto bg-black/30 backdrop-blur-sm rounded-full p-2">
+              <div className="flex justify-center items-center gap-2">
+                <a href="#kurzy" className="text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">Naše kurzy</a>
+                <a href="#info" className="text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">Co je snowkiting?</a>
+                <a href="#proc-kurz" className="text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">Proč u nás</a>
+                <a href="#jak-to-funguje" className="text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">Jak to funguje</a>
+                <a href="#faq" className="text-white text-xs sm:text-sm font-semibold px-3 py-1.5 rounded-full hover:bg-white/20 transition-colors">FAQ</a>
+                <a href="#pripraven" className="text-white text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full bg-blue-500 hover:bg-blue-600 transition-colors">Připraven?</a>
+              </div>
+            </div>
+          </div>
+
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop"
+              src="/images/snowkiting/jj_kom_jump.jpg"
               alt="Snowkiting v Krušných horách"
               className="w-full h-full object-cover"
             />
@@ -274,18 +287,14 @@ const SnowkitingKurzy = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {whyUs.map((item, idx) => (
-                <Card key={idx} className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/20 transition-all hover:scale-105">
-                  <CardHeader>
-                    <div className="flex flex-col items-center text-center gap-4">
-                      <div className="p-4 bg-white rounded-2xl">
-                        {item.icon}
-                      </div>
-                      <CardTitle className="text-white text-xl">{item.title}</CardTitle>
+                <Card key={idx} className="bg-white/10 backdrop-blur-lg border-white/20 hover:bg-white/20 transition-all hover:scale-105 p-6">
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className="p-3 bg-white rounded-full mb-2">
+                      {React.cloneElement(item.icon, { className: "w-6 h-6" })}
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-300 text-center">{item.description}</p>
-                  </CardContent>
+                    <CardTitle className="text-white text-lg font-bold">{item.title}</CardTitle>
+                    <p className="text-gray-300 text-center text-sm">{item.description}</p>
+                  </div>
                 </Card>
               ))}
             </div>
@@ -366,102 +375,101 @@ const SnowkitingKurzy = () => {
           </div>
         </section>
 
-        {/* PROČ KURZY U NÁS - Full Width */}
-        <section className="relative py-20 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 text-white overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-            }}></div>
-          </div>
+        <section id="proc-kurz" className="relative py-20 bg-white text-gray-800 overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">
-                  Proč kurz u nás?
-                </h2>
-                <p className="text-xl text-blue-100 drop-shadow-md">
-                  Poskytneme vám vše, co potřebujete pro bezpečný a zábavný start
-                </p>
-              </div>
+            <div className="grid md:grid-cols-2 gap-20 items-stretch">
+              <div className="max-w-xl">
+                <div className="text-left mb-8">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+                    Proč kurz u nás?
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Poskytneme vám vše, co potřebujete pro bezpečný a zábavný start
+                  </p>
+                </div>
 
-              <div className="grid gap-6">
-                {[
-                  "Profesionální instruktoři s letitou zkušeností",
-                  "Kvalitní výukový materiál a bezpečnostní vybavení",
-                  "Malé skupiny pro individuální přístup",
-                  "Praxe na sněhu v Krušných horách - Komáří Vížka, Fojtovice, Petrovice",
-                  "Potvrzení o absolvování kurzu"
-                ].map((benefit, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4 p-6 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                  >
-                    <CheckCircle className="w-6 h-6 text-green-300 flex-shrink-0 mt-1 drop-shadow-lg" />
-                    <span className="text-lg drop-shadow-md">{benefit}</span>
-                  </div>
-                ))}
-              </div>
+                <div className="grid gap-6">
+                  {[
+                    "Profesionální instruktoři s letitou zkušeností",
+                    "Kvalitní výukový materiál a bezpečnostní vybavení",
+                    "Malé skupiny pro individuální přístup",
+                    "Praxe na sněhu v Krušných horách - Komáří Vížka, Fojtovice, Petrovice",
+                    "Potvrzení o absolvování kurzu"
+                  ].map((benefit, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-4 p-4 bg-gray-100 rounded-lg hover:bg-blue-50 transition-all duration-300"
+                    >
+                      <CheckCircle className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <span className="text-lg text-gray-800">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="mt-12 text-center">
-                <Link to="/kontakt-snowkiting">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 font-bold text-xl px-10 py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    <Calendar className="mr-2 h-6 w-6" />
-                    Chci začít!
-                  </Button>
-                </Link>
+                <div className="mt-10">
+                  <Link to="/kontakt-snowkiting">
+                    <Button size="lg" className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-lg px-8 py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                      <Calendar className="mr-2 h-5 w-5" />
+                      Chci začít!
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="overflow-hidden rounded-2xl shadow-2xl">
+                <img src="/images/snowkiting/jj_top_ride_promo.jpg" alt="Snowkiting promo" className="w-full h-full object-cover"/>
               </div>
             </div>
           </div>
         </section>
 
-        {/* JAK TO FUNGUJE */}
-        <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
-                JAK TO <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">FUNGUJE</span>
-              </h2>
-            </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                {
-                  step: "01",
-                  title: "Rezervace",
-                  description: "Vyberte si kurz a termín, který vám vyhovuje. Kontaktujte nás telefonicky nebo e-mailem.",
-                  icon: <Calendar className="w-12 h-12 text-blue-600" />
-                },
-                {
-                  step: "02",
-                  title: "Příprava",
-                  description: "Před kurzem vás kontaktujeme s informacemi o počasí, vybavení a místě konání.",
-                  icon: <CheckCircle className="w-12 h-12 text-green-600" />
-                },
-                {
-                  step: "03",
-                  title: "Kurz začína!",
-                  description: "Přijeďte na místo, získáte vybavení a začneme s teorií a praxí na sněhu.",
-                  icon: <Zap className="w-12 h-12 text-orange-600" />
-                }
-              ].map((item, idx) => (
-                <div key={idx} className="relative">
-                  <div className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-shadow border-2 border-gray-100">
-                    <div className="text-8xl font-black text-gray-100 absolute top-4 right-4">
-                      {item.step}
+
+        {/* JAK TO FUNGUJE */}
+        <section id="jak-to-funguje" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="overflow-hidden">
+              <img src="/images/snowkiting/jj_vrtule.jpg" alt="Snowkiting vrtule" className="w-full h-full object-cover"/>
+            </div>
+            <div className="px-4">
+              <div className="text-left mb-8">
+                <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
+                  JAK TO <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">FUNGUJE</span>
+                </h2>
+              </div>
+
+              <div className="space-y-8">
+                {[
+                  {
+                    step: "01",
+                    title: "Rezervace",
+                    description: "Vyberte si kurz a termín, který vám vyhovuje. Kontaktujte nás telefonicky nebo e-mailem.",
+                    icon: <Calendar className="w-8 h-8 text-blue-600" />
+                  },
+                  {
+                    step: "02",
+                    title: "Příprava",
+                    description: "Před kurzem vás kontaktujeme s informacemi o počasí, vybavení a místě konání.",
+                    icon: <CheckCircle className="w-8 h-8 text-green-600" />
+                  },
+                  {
+                    step: "03",
+                    title: "Kurz začína!",
+                    description: "Přijeďte na místo, získáte vybavení a začneme s teorií a praxí na sněhu.",
+                    icon: <Zap className="w-8 h-8 text-orange-600" />
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-6">
+                    <div className="flex flex-col items-center">
+                      <div className="text-4xl font-black text-blue-200">{item.step}</div>
+                      <div className="mt-2">{item.icon}</div>
                     </div>
-                    <div className="relative z-10">
-                      <div className="mb-6">{item.icon}</div>
-                      <h3 className="text-2xl font-bold mb-4 text-gray-900">{item.title}</h3>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-2 text-gray-900">{item.title}</h3>
                       <p className="text-gray-600 leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                  {idx < 2 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                      <ChevronRight className="w-8 h-8 text-blue-600" />
-                    </div>
-                  )}
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -500,7 +508,7 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* FAQ */}
-        <section className="py-24 bg-white">
+        <section id="faq" className="py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
@@ -543,7 +551,7 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* KONTAKT CTA - Full Width */}
-        <section className="py-24 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white relative overflow-hidden">
+        <section id="pripraven" className="py-24 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000" />
@@ -591,8 +599,18 @@ const SnowkitingKurzy = () => {
               </div>
             </div>
           </div>
-        </section>
-      </main>
+                </section>
+        
+                {/* ZAPAD SLUNCE SECTION */}
+                <section className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: "url('/images/snowkiting/jj_zapad.jpg')" }}>
+                  <div className="absolute inset-0 bg-black/50"></div>
+                  <div className="relative h-full flex flex-col justify-center items-center text-white text-center px-4">
+                    <h2 className="text-4xl md:text-6xl font-black drop-shadow-2xl">Svoboda na dosah</h2>
+                    <p className="text-xl md:text-2xl mt-4 max-w-2xl drop-shadow-lg">Zažijte pocit, kdy se vítr stane vaším motorem a hory vaším hřištěm.</p>
+                  </div>
+                </section>
+        
+              </main>
 
       <Footer />
     </div>
