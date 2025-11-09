@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { supabase } from '@/supabaseClient';
-import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target, Phone, TrendingUp, Heart, Sprout, CloudSun, Bus, Cable, TreePine } from "lucide-react";
+import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target, Phone, TrendingUp, Heart, Sprout, CloudSun, Bus, Cable, TreePine, Car } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -113,15 +113,7 @@ const KomariVizka = () => {
       gradient: "from-purple-600 to-pink-600",
       hoverGradient: "from-purple-700 to-pink-700"
     },
-    {
-      icon: <Coffee className="h-6 w-6" />,
-      title: "Bistro",
-      description: "Občerstvení přímo v areálu. Teplá jídla, čerstvé bagety, dezerty a nápoje.",
-      link: "/sluzby#bistro",
-      buttonText: "Prohlédnout menu",
-      gradient: "from-amber-500 to-orange-500",
-      hoverGradient: "from-amber-600 to-orange-600"
-    },
+
     {
       icon: <GraduationCap className="h-6 w-6" />,
       title: "Programy pro školy",
@@ -322,6 +314,85 @@ const KomariVizka = () => {
               </div>
             </section>
           </ScrollAnimation>
+
+          {/* Jak se k nám dostanete */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-20">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
+                  Jak se k nám dostanete
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Snadno a rychle z okolních měst i veřejnou dopravou
+                </p>
+              </div>
+
+              {/* MHD a Lanovka info */}
+              <div className="mb-12 grid md:grid-cols-2 gap-6">
+                <div
+                  className="relative rounded-lg overflow-hidden p-6 flex flex-col justify-end text-white bg-cover bg-center min-h-[300px]"
+                  style={{ backgroundImage: "url('/images/komarivizka/lanovkakrupka.png')" }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Cable className="h-6 w-6" /> Lanovka Krupka</h3>
+                    <p className="mb-4 leading-relaxed">Nejdelší sedačková lanovka v ČR.</p>
+                    <a href="https://www.lanovkakrupka.cz" target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold">
+                        Provozní řád a jízdné
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  className="relative rounded-lg overflow-hidden p-6 flex flex-col justify-end text-white bg-cover bg-center min-h-[300px]"
+                  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800')" }}
+                >
+                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                  <div className="relative z-10">
+                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Bus className="h-6 w-6" /> MHD</h3>
+                    <p className="mb-4 leading-relaxed">Veřejná doprava až ke spodní stanici lanovky.</p>
+                    <a href="https://idos.cz/vlakyautobusymhdvse/spojeni/vysledky/?f=Teplice&fc=1&t=Fojtovice/Krupka,Kom%C3%A1%C5%99%C3%AD%20v%C3%AD%C5%BEka&tc=200003" target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold">
+                        Jízdní řády IDOS
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { city: "Teplice", distance: "15 km", time: "20 min" },
+                  { city: "Ústí nad Labem", distance: "30 km", time: "35 min" },
+                  { city: "Most", distance: "35 km", time: "40 min" },
+                  { city: "Chomutov", distance: "40 km", time: "45 min" },
+                  { city: "Praha", distance: "90 km", time: "1:15 hod" },
+                  { city: "Drážďany (DE)", distance: "70 km", time: "1:00 hod" },
+                ].map((item, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
+                    <Card className="group transition-all duration-300 border border-gray-200 hover:border-tjk-blue hover:shadow-md">
+                      <CardContent className="p-4 flex items-center gap-4">
+                        <div className="p-3 bg-blue-100 rounded-lg group-hover:bg-blue-200 transition-colors">
+                          <Car className="h-6 w-6 text-blue-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold text-tjk-blue">{item.city}</h3>
+                          <div className="flex justify-between text-sm text-gray-600">
+                            <span>{item.distance}</span>
+                            <span>{item.time}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </section>
+          </ScrollAnimation>
         </div>
 
           {/* Komárka dnes - Modrý 100% width blok */}
@@ -460,90 +531,7 @@ const KomariVizka = () => {
           </ScrollAnimation>
 
 
-          {/* Vzdálenosti z měst */}
-          <ScrollAnimation animation="fade-up">
-            <section className="mb-20">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-3">
-                  Jak se k nám dostanete
-                </h2>
-                <p className="text-lg text-gray-600">
-                  Vzdálenosti z okolních měst
-                </p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { city: "Teplice", distance: "15 km", time: "20 min", icon: "🚗" },
-                  { city: "Ústí nad Labem", distance: "30 km", time: "35 min", icon: "🚗" },
-                  { city: "Most", distance: "35 km", time: "40 min", icon: "🚗" },
-                  { city: "Chomutov", distance: "40 km", time: "45 min", icon: "🚗" },
-                  { city: "Praha", distance: "90 km", time: "1:15 hod", icon: "🚗" },
-                  { city: "Drážďany (DE)", distance: "70 km", time: "1:00 hod", icon: "🚗" },
-                ].map((item, index) => (
-                  <ScrollAnimation key={index} animation="fade-up" delay={index * 50}>
-                    <Card className="group hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-tjk-blue">
-                      <CardContent className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <h3 className="text-2xl font-bold text-tjk-blue group-hover:text-tjk-orange transition-colors">
-                            {item.city}
-                          </h3>
-                          <span className="text-3xl">{item.icon}</span>
-                        </div>
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between text-gray-700">
-                            <span className="font-medium">Vzdálenost:</span>
-                            <span className="text-lg font-bold text-tjk-orange">{item.distance}</span>
-                          </div>
-                          <div className="flex items-center justify-between text-gray-700">
-                            <span className="font-medium">Čas jízdy:</span>
-                            <span className="text-lg font-semibold text-gray-900">{item.time}</span>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </ScrollAnimation>
-                ))}
-              </div>
-
-              {/* MHD a Lanovka info */}
-              <div className="mt-12 grid md:grid-cols-2 gap-6">
-                <div
-                  className="relative rounded-lg overflow-hidden p-6 flex flex-col justify-end text-white bg-cover bg-center min-h-[300px]"
-                  style={{ backgroundImage: "url('/images/komarivizka/lanovkakrupka.png')" }}
-                >
-                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Cable className="h-6 w-6" /> Lanovka Krupka</h3>
-                    <p className="mb-4 leading-relaxed">Nejdelší sedačková lanovka v ČR.</p>
-                    <a href="https://www.lanovkakrupka.cz" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold">
-                        Provozní řád a jízdné
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-
-                <div
-                  className="relative rounded-lg overflow-hidden p-6 flex flex-col justify-end text-white bg-cover bg-center min-h-[300px]"
-                  style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=800')" }}
-                >
-                  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-2 flex items-center gap-3"><Bus className="h-6 w-6" /> MHD</h3>
-                    <p className="mb-4 leading-relaxed">Veřejná doprava až ke spodní stanici lanovky.</p>
-                    <a href="https://idos.cz/vlakyautobusymhdvse/spojeni/vysledky/?f=Teplice&fc=1&t=Fojtovice/Krupka,Kom%C3%A1%C5%99%C3%AD%20v%C3%AD%C5%BEka&tc=200003" target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full bg-white/20 hover:bg-white/30 text-white font-semibold">
-                        Jízdní řády IDOS
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </ScrollAnimation>
 
           {/* Zajímavá místa v okolí */}
           <ScrollAnimation animation="fade-up">
@@ -563,21 +551,21 @@ const KomariVizka = () => {
                     name: "Klínovec",
                     distance: "15 km",
                     description: "Nejvyšší hora Krušných hor (1 244 m n.m.). Rozhledna, ski areál a krásné výhledy.",
-                    image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800",
+                    image: "/images/okoli/klinovec.webp",
                     mapUrl: "https://www.google.com/maps/place/Kl%C3%ADnovec/@50.3939929,12.9721333,17z/"
                   },
                   {
                     name: "Teplice",
                     distance: "15 km",
                     description: "Lázeňské město s bohatou historií, zámeckými parky a termálními prameny.",
-                    image: "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=800",
+                    image: "/images/okoli/teplice.jpg",
                     mapUrl: "https://www.google.com/maps/place/Teplice/@50.6404382,13.8245225,14z/"
                   },
                   {
                     name: "Botanická zahrada Teplice",
                     distance: "15 km",
                     description: "Krásná zahrada s exotickými rostlinami, skleníky a japonskou zahradou.",
-                    image: "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800",
+                    image: "/images/okoli/botanicka.jpg",
                     mapUrl: "https://www.google.com/maps/place/Botanick%C3%A1+zahrada+Teplice/@50.6406,13.8242,16z/"
                   },
                 ].map((place, index) => (

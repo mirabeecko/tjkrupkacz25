@@ -59,9 +59,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
 
             <div className="container mx-auto px-4 py-16 md:py-24">
               <div className="max-w-4xl mx-auto">
-                <h1 className="text-3xl md:text-5xl font-poppins font-bold mb-4 text-primary tracking-tighter slide-in">{title}</h1>
+                <h1 className="text-2xl sm:text-3xl md:text-5xl font-poppins font-bold mb-4 text-primary tracking-tighter slide-in">{title}</h1>
                 {description && (
-                  <p className="text-lg md:text-xl font-inter text-foreground/80 leading-relaxed max-w-3xl fade-in">{description}</p>
+                  <p className="text-base sm:text-lg md:text-xl font-inter text-foreground/80 leading-relaxed max-w-3xl fade-in">{description}</p>
                 )}
 
                 <div className="mt-6 hidden md:block">

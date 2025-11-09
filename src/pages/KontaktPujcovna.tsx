@@ -159,24 +159,30 @@ const KontaktPujcovna: React.FC = () => {
 
       // Insert booking into database
       const { data: booking, error: insertError } = await supabase
-        .from("rental_bookings")
+        .from("tjkshop_bookings")
         .insert([
           {
-            full_name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone,
-            vehicle_id: parseInt(formData.vehicleId),
-            vehicle_name: vehicleName,
-            rental_start_date: formData.rentalStartDate,
-            rental_end_date: formData.rentalEndDate,
-            helmet_needed: formData.helmetNeeded,
-            protective_gear_needed: formData.protectiveGearNeeded,
-            price_per_day: selectedVehicle?.current_price_eur || null,
-            total_price: estimatedPrice,
-            message: formData.message || null,
+            booking_type: 'vehicle',
+            reference_table: 'vehicles',
+            reference_id: parseInt(formData.vehicleId),
+            reference_name: vehicleName,
+            customer_name: formData.fullName,
+            customer_email: formData.email,
+            customer_phone: formData.phone,
             driving_license_number: formData.drivingLicenseNumber || null,
+            booking_start_date: formData.rentalStartDate,
+            booking_end_date: formData.rentalEndDate,
+            quantity: 1,
+            extras: JSON.stringify({
+              helmet_needed: formData.helmetNeeded,
+              protective_gear_needed: formData.protectiveGearNeeded
+            }),
+            unit_price: selectedVehicle?.current_price_eur || 0,
+            total_price: estimatedPrice || 0,
+            customer_message: formData.message || null,
             gdpr_consent: formData.gdprConsent,
-            status: 'pending'
+            status: 'pending',
+            payment_status: 'unpaid'
           }
         ])
         .select()
@@ -191,20 +197,22 @@ const KontaktPujcovna: React.FC = () => {
 
       // Send confirmation emails via Edge Function
       try {
+        const extras = typeof booking.extras === 'string' ? JSON.parse(booking.extras) : booking.extras;
         const { error: emailError } = await supabase.functions.invoke('send-rental-booking-email', {
           body: { booking: {
             id: booking.id,
-            full_name: booking.full_name,
-            email: booking.email,
-            phone: booking.phone,
-            vehicle_name: booking.vehicle_name,
-            rental_start_date: booking.rental_start_date,
-            rental_end_date: booking.rental_end_date,
+            booking_number: booking.booking_number,
+            full_name: booking.customer_name,
+            email: booking.customer_email,
+            phone: booking.customer_phone,
+            vehicle_name: booking.reference_name,
+            rental_start_date: booking.booking_start_date,
+            rental_end_date: booking.booking_end_date,
             rental_duration_days: rentalDays,
-            helmet_needed: booking.helmet_needed,
-            protective_gear_needed: booking.protective_gear_needed,
+            helmet_needed: extras?.helmet_needed || false,
+            protective_gear_needed: extras?.protective_gear_needed || false,
             total_price: booking.total_price,
-            message: booking.message,
+            message: booking.customer_message,
             driving_license_number: booking.driving_license_number
           }}
         });

@@ -239,14 +239,14 @@ const SnowkitingKurzy = () => {
               <Snowflake className="w-16 h-16 animate-spin-slow" />
             </div>
 
-            <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight animate-fade-in-up">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 tracking-tight animate-fade-in-up">
               SNOWKITING
-              <span className="block text-5xl md:text-7xl bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2">
+              <span className="block text-4xl sm:text-5xl md:text-7xl bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2">
                 KURZY V KRUŠNÝCH HORÁCH
               </span>
             </h1>
 
-            <p className="text-xl md:text-3xl mb-12 font-light max-w-4xl mx-auto animate-fade-in-up delay-100 text-white">
+            <p className="text-lg sm:text-xl md:text-2xl mb-12 font-light max-w-4xl mx-auto animate-fade-in-up delay-100 text-white">
               Zažijte adrenalin snowkitingu s profesionálními instruktory
               <span className="block mt-2 text-cyan-400 font-semibold">Létejte na sněhu s drakem!</span>
             </p>
@@ -273,13 +273,13 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* ÚVODNÍ SEKCE - Full Width */}
-        <section id="info" className="py-24 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+        <section id="info" className="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-6">
                 CO JE <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">SNOWKITING</span>?
               </h2>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
                 Snowkiting je zimní sport, který kombinuje snowboarding nebo lyžování s ovládáním draka (kite).
                 Vítr vás táhne po sněhu a umožňuje vám dosahovat vysokých rychlostí i spektakulárních skoků.
               </p>
@@ -302,13 +302,13 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* KURZY SEKCE */}
-        <section id="kurzy" className="py-24 bg-white">
+        <section id="kurzy" className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-6 text-gray-900">
                 NAŠE <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">KURZY</span>
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                 Vyberte si kurz podle vaší úrovně a doby trvání. Každý kurz je veden zkušenými instruktory s mezinárodními kvalifikacemi.
               </p>
             </div>
@@ -375,15 +375,15 @@ const SnowkitingKurzy = () => {
           </div>
         </section>
 
-        <section id="proc-kurz" className="relative py-20 bg-white text-gray-800 overflow-hidden">
+        <section id="proc-kurz" className="relative py-16 md:py-20 bg-white text-gray-800 overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid md:grid-cols-2 gap-20 items-stretch">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-20 items-stretch">
               <div className="max-w-xl">
                 <div className="text-left mb-8">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+                  <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-900">
                     Proč kurz u nás?
                   </h2>
-                  <p className="text-xl text-gray-600">
+                  <p className="text-lg md:text-xl text-gray-600">
                     Poskytneme vám vše, co potřebujete pro bezpečný a zábavný start
                   </p>
                 </div>
@@ -420,19 +420,71 @@ const SnowkitingKurzy = () => {
               </div>
             </div>
           </div>
+                </section>
+
+        {/* EQUIPMENT SECTION */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+                Naše <span className="text-blue-600">špičkové vybavení</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Sázíme na kvalitu a bezpečnost. Proto je naše škola vybavena nejmodernějšími kity a vybavením od renomované německé značky Flysurfer.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <img src="/images/vybaveni/peak.jpg" alt="Flysurfer PEAK6" className="w-full h-auto object-contain mb-4"/>
+                <h3 className="text-2xl font-bold text-tjk-blue">Flysurfer PEAK6</h3>
+                <p className="text-gray-600 mb-4">Ultralehký single-skin kite, ideální pro snowkiting a touring ve slabém větru.</p>
+                <ul className="space-y-2 text-gray-700">                  
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Maximální bezpečnost díky B-Safe systému</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Neuvěřitelný výkon ve slabém větru</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Extrémně lehký a sbalitelný</li>
+                </ul>
+              </div>
+              <div className="bg-gray-50 rounded-2xl p-8">
+                <img src="/images/vybaveni/soul.jpg" alt="Flysurfer SOUL" className="w-full h-auto object-contain mb-4"/>
+                <h3 className="text-2xl font-bold text-tjk-blue">Flysurfer SOUL</h3>
+                <p className="text-gray-600 mb-4">Univerzální closed-cell foil kite pro freeride a big air s obrovským větrným rozsahem.</p>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Inspirující stabilita a intuitivní ovládání</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Působivý výkon ve skocích a big air</li>
+                  <li className="flex items-center gap-2"><CheckCircle size={16} className="text-green-500"/> Snadný start a restartovatelnost</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-gray-50 rounded-2xl p-8 max-w-3xl mx-auto">
+                <img src="/images/vybaveni/bar.jpg" alt="Flysurfer Connect 3 Bar" className="w-full h-auto object-contain mb-4"/>
+                <h3 className="text-2xl font-bold text-tjk-blue">Flysurfer Connect 3 Control Bar</h3>
+                <p className="text-gray-600 mb-4">Univerzální a bezpečný bar s přepínatelným bezpečnostním systémem pro maximální kontrolu.</p>
+              </div>
+            </div>
+
+            <div className="mt-16 bg-blue-50 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold text-tjk-blue mb-2">Chcete si vybavení vyzkoušet?</h3>
+              <p className="text-gray-600 mb-4">Veškeré vybavení naší školy si můžete také zapůjčit v naší půjčovně.</p>
+              <Link to="/pujcovna">
+                <Button size="lg" className="bg-tjk-orange hover:bg-orange-600 text-white font-bold text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                  Přejít do půjčovny
+                  <ChevronRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+          </div>
         </section>
-
-
-
-        {/* JAK TO FUNGUJE */}
-        <section id="jak-to-funguje" className="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <section id="jak-to-funguje" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="overflow-hidden">
               <img src="/images/snowkiting/jj_vrtule.jpg" alt="Snowkiting vrtule" className="w-full h-full object-cover"/>
             </div>
             <div className="px-4">
               <div className="text-left mb-8">
-                <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
+                <h2 className="text-4xl md:text-6xl font-black mb-6 text-gray-900">
                   JAK TO <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">FUNGUJE</span>
                 </h2>
               </div>
@@ -508,10 +560,10 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* FAQ */}
-        <section id="faq" className="py-24 bg-white">
+        <section id="faq" className="py-16 md:py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-gray-900">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-4xl md:text-6xl font-black mb-6 text-gray-900">
                 ČASTÉ <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">DOTAZY</span>
               </h2>
             </div>
@@ -551,7 +603,7 @@ const SnowkitingKurzy = () => {
         </section>
 
         {/* KONTAKT CTA - Full Width */}
-        <section id="pripraven" className="py-24 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white relative overflow-hidden">
+        <section id="pripraven" className="py-16 md:py-24 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600 text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 left-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000" />

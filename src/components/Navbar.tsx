@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School
+  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School, Smile
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +19,7 @@ const servicesSubmenu = [
   { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/firmy" },
   { name: "Ubytování", icon: <Bed className="h-4 w-4" />, href: "/ubytovani" },
   { name: "AIRBAG", icon: <Shield className="h-4 w-4" />, href: "/airbag" },
+  { name: "Aktivity pro děti", icon: <Smile className="h-4 w-4" />, href: "/aktivity-pro-deti" },
 ];
 
 const menuItems = [

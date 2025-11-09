@@ -16,7 +16,8 @@ import {
   Star,
   Users,
   Calendar,
-  Sparkles
+  Sparkles,
+  Smile
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
@@ -143,6 +144,23 @@ const services = [
       "Coming soon 2025"
     ],
     badge: "BRZY"
+  },
+  {
+    id: "aktivity-pro-deti",
+    title: "Aktivity pro děti",
+    subtitle: "Zábava a dobrodružství v přírodě",
+    description: "Speciální programy pro děti plné her, sportu a poznávání. Od lyžařské školy po letní dobrodružství.",
+    icon: Smile,
+    cta: "Prozkoumat aktivity",
+    link: "/aktivity-pro-deti",
+    gradient: "from-pink-500 to-yellow-500",
+    image: "/images/deti/treasure_hunt.jpg",
+    highlights: [
+      "Lyžařská škola",
+      "Letní aktivity",
+      "Bezpečné prostředí",
+      "Zkušení instruktoři"
+    ]
   }
 ];
 

@@ -39,6 +39,7 @@ import Kosik from "./pages/Kosik";
 import Pokladna from "./pages/Pokladna";
 import PlatbaUspech from "./pages/PlatbaUspech";
 import PlatbaZruseno from "./pages/PlatbaZruseno";
+import AktivityProDeti from "./pages/AktivityProDeti";
 import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
@@ -86,6 +87,7 @@ const App = () => (
           <Route path="/pokladna" element={<Pokladna />} />
           <Route path="/platba/uspech" element={<PlatbaUspech />} />
           <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
+          <Route path="/aktivity-pro-deti" element={<AktivityProDeti />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
