@@ -1,0 +1,2080 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snowkiting – Základní kurz | Komáří vížka Snowkiting School</title>
+  <meta name="description" content="Naučte se snowkiting za 1 den s profesionálními instruktory v Krušných horách. Bezpečnost, progres a nezapomenutelný zážitek. Rezervujte termín online.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Snowkiting – Základní kurz | Komáří vížka">
+  <meta property="og:description" content="Ovládněte snowkiting za jeden den. Profesionální instruktoři, špičkové vybavení, nádherná lokalita v Krušných horách.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1459478309853-2c33a60058e7?q=80&w=1600&auto=format&fit=crop">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🪂</text></svg>">
+
+  <!--
+    ═══════════════════════════════════════════════════════════════════
+    NÁVOD: Jak napojit rezervační systém
+    ═══════════════════════════════════════════════════════════════════
+
+    V sekci CONFIG.booking níže vyplňte jednu nebo více cest:
+
+    1) deepLinkUrl – přímý odkaz do rezervačního systému
+       - Všechna CTA tlačítka povedou na tuto URL
+       - Automaticky se přidají UTM parametry a vybrané doplňky
+
+    2) iframeSrc – URL widgetu vašeho rezervačního systému
+       - Zobrazí se integrovaný iframe pro okamžitou rezervaci
+       - Ideální pro minimální friction
+
+    3) availabilityApi – endpoint API vracející dostupné termíny
+       - Formát: GET /api/availability?courseId=XXX
+       - Očekávaná response: { "dates": ["2025-01-15", "2025-01-22", ...] }
+       - Zobrazí se interaktivní kalendář s výběrem termínu
+
+    ═══════════════════════════════════════════════════════════════════
+  -->
+
+  <style>
+    /* ========== CSS Variables ========== */
+    :root {
+      --color-primary: #0066cc;
+      --color-primary-dark: #004999;
+      --color-primary-light: #3388dd;
+      --color-secondary: #ff6b35;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+
+      --color-text: #1f2937;
+      --color-text-light: #6b7280;
+      --color-text-muted: #9ca3af;
+
+      --color-bg: #ffffff;
+      --color-bg-light: #f9fafb;
+      --color-bg-dark: #111827;
+
+      --border-color: #e5e7eb;
+      --border-radius: 12px;
+      --border-radius-sm: 8px;
+      --border-radius-lg: 16px;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+      --spacing-unit: 8px;
+      --container-max: 1180px;
+
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ========== Reset & Base ========== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ========== Typography ========== */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+    }
+
+    h3 {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+    }
+
+    p {
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    /* ========== Layout ========== */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 calc(var(--spacing-unit) * 3);
+    }
+
+    .section {
+      padding: calc(var(--spacing-unit) * 10) 0;
+    }
+
+    .section--dark {
+      background: var(--color-bg-dark);
+      color: white;
+    }
+
+    .section--light {
+      background: var(--color-bg-light);
+    }
+
+    /* ========== Grid System ========== */
+    .grid {
+      display: grid;
+      gap: calc(var(--spacing-unit) * 4);
+    }
+
+    .grid--2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .grid--3 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .grid--4 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      .grid--2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid--3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .grid--4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* ========== Buttons ========== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(var(--spacing-unit) * 1.5);
+      padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .btn--primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn--secondary {
+      background: var(--color-secondary);
+      color: white;
+    }
+
+    .btn--secondary:hover {
+      background: #e65a2b;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+
+    .btn--outline:hover {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn--lg {
+      padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 5);
+      font-size: 1.125rem;
+    }
+
+    .btn--block {
+      width: 100%;
+    }
+
+    /* ========== Header & Navigation ========== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      padding: calc(var(--spacing-unit) * 2) 0;
+    }
+
+    .header__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header__logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .header__nav {
+      display: none;
+      gap: calc(var(--spacing-unit) * 4);
+    }
+
+    @media (min-width: 768px) {
+      .header__nav {
+        display: flex;
+      }
+    }
+
+    .header__nav a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-text);
+      transition: var(--transition);
+    }
+
+    .header__nav a:hover {
+      color: var(--color-primary);
+    }
+
+    .header__cta {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .header__cta {
+        display: block;
+      }
+    }
+
+    /* ========== Hero ========== */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.85) 0%, rgba(17, 24, 39, 0.75) 100%);
+    }
+
+    .hero__content {
+      max-width: 800px;
+      padding: calc(var(--spacing-unit) * 4);
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 1);
+      padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .hero__title {
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero__subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 500;
+      margin-bottom: calc(var(--spacing-unit) * 5);
+      opacity: 0.95;
+    }
+
+    .hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--spacing-unit) * 2);
+      justify-content: center;
+    }
+
+    /* ========== Cards ========== */
+    .card {
+      background: var(--color-bg);
+      border-radius: var(--border-radius-lg);
+      padding: calc(var(--spacing-unit) * 4);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card__icon {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      border-radius: var(--border-radius);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    .card__icon svg {
+      width: 28px;
+      height: 28px;
+      color: white;
+    }
+
+    .card__title {
+      font-size: 1.25rem;
+      margin-bottom: calc(var(--spacing-unit) * 1.5);
+    }
+
+    .card__text {
+      color: var(--color-text-light);
+      margin-bottom: 0;
+    }
+
+    /* ========== Timeline ========== */
+    .timeline {
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 4);
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--color-primary), var(--color-primary-light));
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: calc(var(--spacing-unit) * -4.5);
+      top: 0;
+      width: 14px;
+      height: 14px;
+      background: var(--color-primary);
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--color-primary-light);
+    }
+
+    .timeline__time {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: calc(var(--spacing-unit) * 0.5);
+    }
+
+    .timeline__title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: calc(var(--spacing-unit) * 1);
+    }
+
+    .timeline__desc {
+      color: var(--color-text-light);
+      margin-bottom: 0;
+    }
+
+    /* ========== Pricing ========== */
+    .pricing {
+      background: var(--color-bg-light);
+      border-radius: var(--border-radius-lg);
+      padding: calc(var(--spacing-unit) * 4);
+    }
+
+    .pricing__main {
+      display: flex;
+      align-items: baseline;
+      gap: calc(var(--spacing-unit) * 1);
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .pricing__amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .pricing__currency {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .pricing__vat {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .pricing__addons {
+      margin-top: calc(var(--spacing-unit) * 3);
+    }
+
+    .addon {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 2);
+      padding: calc(var(--spacing-unit) * 2);
+      background: white;
+      border-radius: var(--border-radius);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .addon:hover {
+      box-shadow: var(--shadow);
+    }
+
+    .addon__checkbox {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .addon__label {
+      flex: 1;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .addon__price {
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* ========== Gallery ========== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    .gallery__item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+    }
+
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery__item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ========== Testimonials ========== */
+    .testimonials {
+      display: grid;
+      gap: calc(var(--spacing-unit) * 3);
+    }
+
+    .testimonial {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: calc(var(--spacing-unit) * 4);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial__text {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      margin-bottom: calc(var(--spacing-unit) * 3);
+      position: relative;
+      padding-left: calc(var(--spacing-unit) * 4);
+    }
+
+    .testimonial__text::before {
+      content: '"';
+      position: absolute;
+      left: 0;
+      top: -10px;
+      font-size: 4rem;
+      color: var(--color-primary);
+      opacity: 0.2;
+      font-weight: 700;
+    }
+
+    .testimonial__author {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* ========== FAQ ========== */
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq__item {
+      background: white;
+      border-radius: var(--border-radius);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq__question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(var(--spacing-unit) * 2);
+      padding: calc(var(--spacing-unit) * 3);
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 600;
+      background: white;
+      transition: var(--transition);
+    }
+
+    .faq__question:hover {
+      background: var(--color-bg-light);
+    }
+
+    .faq__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      transition: var(--transition);
+    }
+
+    .faq__item.active .faq__icon {
+      transform: rotate(180deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq__answer-content {
+      padding: 0 calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 3);
+      color: var(--color-text-light);
+    }
+
+    .faq__item.active .faq__answer {
+      max-height: 500px;
+    }
+
+    /* ========== Sticky CTA ========== */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      background: white;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+      padding: calc(var(--spacing-unit) * 2);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sticky-cta.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cta__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: calc(var(--spacing-unit) * 2);
+      flex-wrap: wrap;
+    }
+
+    .sticky-cta__price {
+      display: flex;
+      align-items: baseline;
+      gap: calc(var(--spacing-unit) * 1);
+    }
+
+    .sticky-cta__amount {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .sticky-cta__label {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    /* ========== Modal ========== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--spacing-unit) * 3);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal__content {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      padding: calc(var(--spacing-unit) * 5);
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .modal__close {
+      position: absolute;
+      top: calc(var(--spacing-unit) * 2);
+      right: calc(var(--spacing-unit) * 2);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .modal__close:hover {
+      background: var(--color-bg-light);
+    }
+
+    .modal__title {
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .summary {
+      background: var(--color-bg-light);
+      border-radius: var(--border-radius);
+      padding: calc(var(--spacing-unit) * 3);
+      margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .summary__row {
+      display: flex;
+      justify-content: space-between;
+      padding: calc(var(--spacing-unit) * 1.5) 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .summary__row:last-child {
+      border-bottom: none;
+      padding-top: calc(var(--spacing-unit) * 2);
+      margin-top: calc(var(--spacing-unit) * 1);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-primary);
+    }
+
+    /* ========== List Styles ========== */
+    .list {
+      list-style: none;
+    }
+
+    .list__item {
+      display: flex;
+      align-items: flex-start;
+      gap: calc(var(--spacing-unit) * 2);
+      margin-bottom: calc(var(--spacing-unit) * 2);
+    }
+
+    .list__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-success);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+    }
+
+    .list__icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ========== Contact Buttons ========== */
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--spacing-unit) * 2);
+    }
+
+    .contact-btn {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* ========== Map ========== */
+    .map {
+      background: var(--color-bg-light);
+      border-radius: var(--border-radius-lg);
+      padding: calc(var(--spacing-unit) * 8);
+      text-align: center;
+      border: 2px dashed var(--border-color);
+    }
+
+    .map__icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto calc(var(--spacing-unit) * 2);
+      color: var(--color-primary);
+    }
+
+    /* ========== Calendar ========== */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: calc(var(--spacing-unit) * 2);
+      margin-top: calc(var(--spacing-unit) * 3);
+    }
+
+    .calendar__date {
+      padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+      background: white;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius);
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .calendar__date:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow);
+    }
+
+    .calendar__date.selected {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+
+    .calendar__day {
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: calc(var(--spacing-unit) * 0.5);
+    }
+
+    .calendar__num {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: calc(var(--spacing-unit) * 0.5);
+    }
+
+    .calendar__month {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+
+    .calendar__date.selected .calendar__month {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ========== Iframe Container ========== */
+    .iframe-container {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-top: calc(var(--spacing-unit) * 3);
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      min-height: 560px;
+      border: none;
+      display: block;
+    }
+
+    /* ========== Badge ========== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--spacing-unit) * 1);
+      padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+      background: var(--color-primary);
+      color: white;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .badge--success {
+      background: var(--color-success);
+    }
+
+    .badge--warning {
+      background: var(--color-warning);
+    }
+
+    /* ========== Partners ========== */
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: calc(var(--spacing-unit) * 4);
+      justify-content: center;
+      align-items: center;
+      opacity: 0.6;
+    }
+
+    .partner {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      padding: calc(var(--spacing-unit) * 2);
+      background: white;
+      border-radius: var(--border-radius);
+    }
+
+    /* ========== Utilities ========== */
+    .text-center {
+      text-align: center;
+    }
+
+    .text-muted {
+      color: var(--color-text-muted);
+    }
+
+    .mt-4 {
+      margin-top: calc(var(--spacing-unit) * 4);
+    }
+
+    .mb-4 {
+      margin-bottom: calc(var(--spacing-unit) * 4);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* ========== Animations ========== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* ========== Responsive ========== */
+    @media (max-width: 767px) {
+      .section {
+        padding: calc(var(--spacing-unit) * 6) 0;
+      }
+
+      .hero__cta {
+        flex-direction: column;
+      }
+
+      .hero__cta .btn {
+        width: 100%;
+      }
+
+      .sticky-cta__container {
+        justify-content: center;
+      }
+
+      .contact-btn {
+        min-width: 100%;
+      }
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__container">
+        <a href="/" class="header__logo">🪂 Komáří vížka School</a>
+        <nav class="header__nav">
+          <a href="#obsah">Obsah kurzu</a>
+          <a href="#terminy">Termíny</a>
+          <a href="#cenik">Ceník</a>
+          <a href="#faq">FAQ</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+        <div class="header__cta">
+          <button class="btn btn--primary" data-analytic="cta_reserve_header" onclick="openBooking()">
+            Rezervovat
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1459478309853-2c33a60058e7?q=80&w=1600&auto=format&fit=crop"
+        alt="Snowkiting v Krušných horách"
+        fetchpriority="high"
+        decoding="async"
+      >
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="hero__badge">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+        <span id="hero-rating">4.9 / 128 recenzí</span>
+      </div>
+      <h1 class="hero__title">Ovládněte snowkiting za jeden den</h1>
+      <p class="hero__subtitle">
+        Bezpečný progres s profesionálními instruktory v jedné z nejkrásnějších lokalit Krušných hor.
+        Od prvních kroků po samostatnou jízdu.
+      </p>
+      <div class="hero__cta">
+        <button class="btn btn--primary btn--lg" data-analytic="cta_reserve_hero" onclick="openBooking()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          Rezervovat termín
+        </button>
+        <a href="tel:+420777000000" class="btn btn--outline btn--lg" data-analytic="cta_call_hero">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+          </svg>
+          Zavolat
+        </a>
+        <a href="https://wa.me/420777000000" target="_blank" rel="noopener" class="btn btn--secondary btn--lg" data-analytic="cta_whatsapp_hero">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center">Co získáš</h2>
+      <div class="grid grid--4">
+        <div class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="card__title">Bezpečnost na prvním místě</h3>
+          <p class="card__text">Licencovaní instruktoři, rescue postupy a komunikační vysílačky. Každý krok pod dohledem.</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="card__title">Rychlý progres</h3>
+          <p class="card__text">Od teorie po samostatnou jízdu za jediný den. Strukturovaná metodika s osvědčenými výsledky.</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="card__title">Špičkové vybavení</h3>
+          <p class="card__text">Nové kity značek North, Duotone a Core. Profesionální školicí materiály a bezpečnostní prvky.</p>
+        </div>
+
+        <div class="card">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="card__title">Jedinečná lokalita</h3>
+          <p class="card__text">Komáří vížka v Krušných horách – ideální terén, stabilní vítr a nádherné výhledy do okolí.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Content -->
+  <section class="section section--light" id="obsah">
+    <div class="container">
+      <h2 class="text-center">Obsah kurzu</h2>
+      <div class="grid grid--2">
+        <!-- Timeline -->
+        <div>
+          <h3 class="mb-4">Průběh dne</h3>
+          <div class="timeline">
+            <div class="timeline__item">
+              <div class="timeline__time">09:00 – 10:00</div>
+              <div class="timeline__title">Teorie a bezpečnost</div>
+              <p class="timeline__desc">Představení vybavení, základy aerodynamiky kitu, bezpečnostní systémy a krizové postupy.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__time">10:00 – 12:00</div>
+              <div class="timeline__title">První kontakt s kitem</div>
+              <p class="timeline__desc">Trénink ovládání na suchu, starty, přistání, znakový jazyk a komunikace přes vysílačky.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__time">12:00 – 13:00</div>
+              <div class="timeline__title">Přestávka na oběd</div>
+              <p class="timeline__desc">Volný čas na občerstvení (doporučujeme bistro v areálu Komáří vížky).</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__time">13:00 – 15:30</div>
+              <div class="timeline__title">Jízda na sněhu</div>
+              <p class="timeline__desc">První tahy, jízda ve směru větru, první tacky a ovládání kitu za pohybu.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__time">15:30 – 16:00</div>
+              <div class="timeline__title">Vyhodnocení a tipy</div>
+              <p class="timeline__desc">Shrnutí pokroků, doporučení na další trénink a zodpovězení dotazů.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- What You Learn -->
+        <div>
+          <h3 class="mb-4">Co se naučíš</h3>
+          <ul class="list">
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Bezpečné ovládání kitu na sněhu a v silném větru</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Starty, přistání a krizové vypuštění kitu</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Jízda proti větru a první tacky (změny směru)</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Čtení větru, volba vhodného spotu a předpovědi počasí</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Znakový jazyk pro komunikaci na distance</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">
+                <svg viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </span>
+              <span>Rescue postupy a sebezáchrana</span>
+            </li>
+          </ul>
+
+          <div class="card mt-4">
+            <h4>Co je v ceně</h4>
+            <ul class="list">
+              <li class="list__item">
+                <span class="list__icon">✓</span>
+                <span>Instruktor s licencí IKO/VDWS</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">✓</span>
+                <span>Bezpečnostní školení a rescue postupy</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">✓</span>
+                <span>Trénink znakové řeči pro kite</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">✓</span>
+                <span>Komunikační vysílačky na place</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card mt-4">
+            <h4>Co potřebuješ</h4>
+            <ul class="list">
+              <li class="list__item">
+                <span class="list__icon">!</span>
+                <span>Věk 15+ (mladší s doprovodem zákonného zástupce)</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">!</span>
+                <span>Základní fyzická kondice (není třeba být profík)</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">!</span>
+                <span>Vlastní lyže/snowboard a helma (půjčení možné)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="cenik">
+    <div class="container">
+      <h2 class="text-center">Ceník</h2>
+      <div class="grid grid--2">
+        <div class="pricing">
+          <div class="pricing__main">
+            <div class="pricing__amount" id="base-price">4 490</div>
+            <div class="pricing__currency">Kč</div>
+          </div>
+          <p class="pricing__vat">Cena zahrnuje DPH</p>
+          <ul class="list">
+            <li class="list__item">
+              <span class="list__icon">✓</span>
+              <span><strong>Délka:</strong> 1 den (6 hodin)</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">✓</span>
+              <span><strong>Skupina:</strong> Max. 6 osob / 2 instruktoři</span>
+            </li>
+            <li class="list__item">
+              <span class="list__icon">✓</span>
+              <span><strong>Úroveň:</strong> Začátečník až mírně pokročilý</span>
+            </li>
+          </ul>
+
+          <div class="pricing__addons">
+            <h4 class="mb-4">Prémiové doplňky</h4>
+            <div id="addons-container"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Storno podmínky</h3>
+            <p>Zrušení do 72 hodin před kurzem zdarma, poté 50% z ceny. Peníze vrátíme do 7 dní.</p>
+          </div>
+
+          <div class="card mt-4">
+            <h3>Nepříznivé počasí</h3>
+            <p>Při nevhodných podmínkách (slabý vítr, vichřice, bouřka) přesuneme termín bez poplatku nebo vrátíme plnou částku.</p>
+          </div>
+
+          <div class="card mt-4">
+            <h3>Proč s námi</h3>
+            <ul class="list">
+              <li class="list__item">
+                <span class="list__icon">★</span>
+                <span>Instruktoři s mezinárodní licencí IKO/VDWS</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">★</span>
+                <span>Rescue postupy a krizová příprava</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">★</span>
+                <span>Týmová spolupráce 2 instruktorů na skupinu</span>
+              </li>
+              <li class="list__item">
+                <span class="list__icon">★</span>
+                <span>Komunikace přes vysílačky v reálném čase</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section section--light">
+    <div class="container">
+      <h2 class="text-center">Fotogalerie</h2>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- Availability & Booking -->
+  <section class="section" id="terminy">
+    <div class="container">
+      <h2 class="text-center">Dostupné termíny</h2>
+      <p class="text-center text-muted">Vyberte si termín a rezervujte kurz online</p>
+
+      <!-- Iframe Widget -->
+      <div id="iframe-widget" class="hidden"></div>
+
+      <!-- Calendar -->
+      <div id="calendar" class="calendar"></div>
+
+      <!-- Direct Link -->
+      <div id="direct-link" class="text-center mt-4 hidden">
+        <p class="text-muted mb-4">Aktuální dostupnost termínů najdete v rezervačním systému</p>
+        <button class="btn btn--primary btn--lg" onclick="openBooking()" data-analytic="cta_reserve_dates">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+          </svg>
+          Zobrazit dostupné termíny
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section--dark">
+    <div class="container">
+      <h2 class="text-center">Co říkají účastníci</h2>
+      <div class="testimonials grid grid--2" id="testimonials"></div>
+
+      <div class="partners mt-4">
+        <div class="partner">Partner: North</div>
+        <div class="partner">Partner: Duotone</div>
+        <div class="partner">Partner: Core</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="text-center">Časté dotazy</h2>
+      <div class="faq">
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Je snowkiting bezpečný?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Ano. Bezpečnost je naší prioritou. Používáme moderní vybavení s bezpečnostními systémy (quick release), poskytujeme helmy, komunikujeme přes vysílačky a máme rescue postupy. Každý kurz začíná důkladným bezpečnostním školením.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Co když nefouká vítr?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Sledujeme předpovědi a minimálně 24 hodin předem vás kontaktujeme, pokud podmínky nebudou vhodné. Můžeme kurz přesunout na jiný termín bez poplatku nebo vám vrátíme plnou částku.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Musím mít vlastní vybavení?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Potřebujete vlastní lyže nebo snowboard a helmu. Kity a ostatní vybavení poskytujeme. Pokud nemáte lyže/snowboard, nabízíme půjčení kompletního vybavení za 1 200 Kč (viz doplňky).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Zvládnu to jako začátečník?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Určitě. Kurz je navržený pro začátečníky. Začínáme od úplných základů a postupujeme v malých krocích. Většina účastníků se na konci dne již samostatně pohybuje na sněhu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Jaká je minimální fyzická kondice?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Stačí základní kondice – nemusíte být sportovec. Důležitější je chuť učit se a základní ovládání lyží/snowboardu. Pokud zvládnete celý den lyžování, zvládnete i snowkiting.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Můžu si u vás i přenocovat?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Ano! Nabízíme ubytování přímo na Komárce za 950 Kč/noc (viz doplňky při rezervaci). Máte tak vše na jednom místě a ráno můžete vyrazit rovnou na kurz.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Jak probíhá rezervace?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Klikněte na tlačítko "Rezervovat termín", vyberte datum a vyplňte kontaktní údaje. Poté zaplatíte zálohu nebo plnou částku online. Potvrzení dostanete e-mailem do 5 minut. Můžete nám také zavolat nebo napsat na WhatsApp.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__question" onclick="toggleFaq(this)">
+            <span>Dostanu certifikát?</span>
+            <svg class="faq__icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-content">
+              <p>Po absolvování kurzu dostanete certifikát o účasti. Pokud máte zájem o mezinárodně uznávanou licenci IKO/VDWS, je možné ji získat po rozšířeném kurzu (2-3 dny) – kontaktujte nás pro více informací.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section section--light" id="kontakt">
+    <div class="container">
+      <h2 class="text-center">Kontakt</h2>
+      <div class="grid grid--2">
+        <div>
+          <h3>Máte otázky?</h3>
+          <p>Rádi vám poradíme s výběrem termínu, odpovíme na jakékoli dotazy nebo pomůžeme s rezervací.</p>
+
+          <div class="contact-buttons">
+            <a href="tel:+420777000000" class="btn btn--primary contact-btn" data-analytic="cta_call_contact">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              +420 777 000 000
+            </a>
+            <a href="https://wa.me/420777000000" target="_blank" rel="noopener" class="btn btn--secondary contact-btn" data-analytic="cta_whatsapp_contact">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+              </svg>
+              WhatsApp
+            </a>
+            <a href="mailto:info@komarkasnowschool.cz" class="btn btn--outline contact-btn" data-analytic="cta_email_contact">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+              E-mail
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3>Kde nás najdete</h3>
+          <div class="map">
+            <svg class="map__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <h4>Komáří vížka, Krupka</h4>
+            <p class="text-muted">Krušné hory, Česká republika</p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=50.7307,13.8640"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--primary mt-4"
+              data-analytic="cta_map"
+            >
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+              Otevřít v Mapách Google
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta" id="sticky-cta">
+    <div class="container">
+      <div class="sticky-cta__container">
+        <div class="sticky-cta__price">
+          <div class="sticky-cta__amount" id="sticky-price">4 490 Kč</div>
+          <div class="sticky-cta__label">celková cena</div>
+        </div>
+        <button class="btn btn--primary btn--lg" data-analytic="cta_reserve_sticky" onclick="openBooking()">
+          Rezervovat termín
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="booking-modal">
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Zavřít">
+        <svg width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <h2 class="modal__title">Rekapitulace objednávky</h2>
+      <div class="summary" id="modal-summary"></div>
+      <button class="btn btn--primary btn--lg btn--block" id="confirm-booking" data-analytic="cta_confirm_booking">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+        Dokončit rezervaci
+      </button>
+    </div>
+  </div>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" id="structured-data"></script>
+
+  <!-- Main JavaScript -->
+  <script>
+    // ========== Configuration ==========
+    const CONFIG = {
+      courseId: "snowkiting_basic_komarka",
+      courseName: "Snowkiting – Základní kurz",
+      courseSlug: "snowkiting-zakladni-kurz",
+      locationName: "Komáří vížka, Krupka (Krušné hory)",
+      coordinates: { lat: 50.7307, lng: 13.8640 },
+      duration: "1 den (6 hodin)",
+      groupSize: "Max. 6 osob / 2 instruktoři",
+      difficulty: "Začátečník až mírně pokročilý",
+      priceCZK: 4490,
+      premiumAddons: [
+        { name: "Foto/Video balíček", priceCZK: 690 },
+        { name: "Půjčení kompletního vybavení", priceCZK: 1200 },
+        { name: "Ubytování na Komárce (1 noc)", priceCZK: 950 }
+      ],
+      includes: [
+        "Instruktor s licencí",
+        "Bezpečnostní školení a rescue postupy",
+        "Trénink znakové řeči pro kite",
+        "Komunikační vysílačky na place"
+      ],
+      prerequisites: [
+        "Věk 15+ (mladší s doprovodem)",
+        "Základní fyzická kondice",
+        "Vlastní lyže/snowboard a helma"
+      ],
+      whatYouLearn: [
+        "Bezpečné ovládání kitu na sněhu",
+        "Starty, přistání, krizové vypuštění",
+        "Jízda proti větru, první tacky",
+        "Čtení větru a volba spotu"
+      ],
+      contact: {
+        phone: "+420 777 000 000",
+        whatsapp: "https://wa.me/420777000000",
+        email: "info@komarkasnowschool.cz"
+      },
+      booking: {
+        deepLinkUrl: "https://rezervace.tjkrupka.cz/booking?course=snowkiting_basic_komarka&utm_source=web&utm_medium=detail&utm_campaign=kurz",
+        iframeSrc: "", // Vyplňte URL iframe widgetu, pokud máte
+        availabilityApi: "" // Vyplňte endpoint API pro dostupné termíny
+      },
+      socialProof: {
+        rating: 4.9,
+        reviewsCount: 128,
+        testimonials: [
+          { name: "Petr", text: "Skvělý zážitek a profi instruktoři. Bezpečnost na prvním místě!" },
+          { name: "Jana", text: "Naučila jsem se víc za den než jinde za dva. Doporučuju." }
+        ],
+        logos: ["Partner: North", "Partner: Duotone", "Partner: Core"]
+      },
+      policies: {
+        refund: "Zrušení do 72 h zdarma, poté 50 %.",
+        weather: "Při nevhodných podmínkách přesun bez poplatku."
+      },
+      images: {
+        hero: "https://images.unsplash.com/photo-1459478309853-2c33a60058e7?q=80&w=1600&auto=format&fit=crop",
+        gallery: [
+          "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1520975922284-0f5bb4f0b2c1?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1200&auto=format&fit=crop"
+        ]
+      }
+    };
+
+    // ========== State Management ==========
+    let selectedAddons = [];
+    let selectedDate = null;
+    let availableDates = [];
+
+    // ========== Price Calculator ==========
+    function calculateTotalPrice() {
+      let total = CONFIG.priceCZK;
+      selectedAddons.forEach(addon => {
+        total += addon.priceCZK;
+      });
+      return total;
+    }
+
+    function updatePriceDisplay() {
+      const total = calculateTotalPrice();
+      const formatted = total.toLocaleString('cs-CZ');
+
+      document.getElementById('sticky-price').textContent = `${formatted} Kč`;
+    }
+
+    function toggleAddon(addon, checkbox) {
+      if (checkbox.checked) {
+        selectedAddons.push(addon);
+      } else {
+        selectedAddons = selectedAddons.filter(a => a.name !== addon.name);
+      }
+      updatePriceDisplay();
+      trackEvent('addon_toggle', { addon: addon.name, checked: checkbox.checked });
+    }
+
+    // ========== Render Functions ==========
+    function renderAddons() {
+      const container = document.getElementById('addons-container');
+      container.innerHTML = CONFIG.premiumAddons.map((addon, index) => `
+        <label class="addon" for="addon-${index}">
+          <input
+            type="checkbox"
+            id="addon-${index}"
+            class="addon__checkbox"
+            onchange="toggleAddon(${JSON.stringify(addon).replace(/"/g, '&quot;')}, this)"
+          >
+          <span class="addon__label">${addon.name}</span>
+          <span class="addon__price">+${addon.priceCZK.toLocaleString('cs-CZ')} Kč</span>
+        </label>
+      `).join('');
+    }
+
+    function renderGallery() {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = CONFIG.images.gallery.map((img, index) => `
+        <div class="gallery__item">
+          <img
+            src="${img}"
+            alt="Snowkiting kurz na Komáří vížce - fotka ${index + 1}"
+            loading="lazy"
+            decoding="async"
+          >
+        </div>
+      `).join('');
+    }
+
+    function renderTestimonials() {
+      const container = document.getElementById('testimonials');
+      container.innerHTML = CONFIG.socialProof.testimonials.map(t => `
+        <div class="testimonial">
+          <p class="testimonial__text">${t.text}</p>
+          <div class="testimonial__author">${t.name}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderCalendar(dates) {
+      const calendar = document.getElementById('calendar');
+
+      if (!dates || dates.length === 0) {
+        calendar.innerHTML = '<p class="text-center text-muted">Načítání dostupných termínů...</p>';
+        return;
+      }
+
+      calendar.innerHTML = dates.map(dateStr => {
+        const date = new Date(dateStr);
+        const day = date.toLocaleDateString('cs-CZ', { weekday: 'short' });
+        const num = date.getDate();
+        const month = date.toLocaleDateString('cs-CZ', { month: 'short' });
+
+        return `
+          <button
+            class="calendar__date ${selectedDate === dateStr ? 'selected' : ''}"
+            onclick="selectDate('${dateStr}')"
+            data-analytic="date_select"
+          >
+            <div class="calendar__day">${day}</div>
+            <div class="calendar__num">${num}</div>
+            <div class="calendar__month">${month}</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderIframeWidget() {
+      if (!CONFIG.booking.iframeSrc) return;
+
+      const container = document.getElementById('iframe-widget');
+      container.classList.remove('hidden');
+      container.innerHTML = `
+        <div class="iframe-container">
+          <iframe src="${CONFIG.booking.iframeSrc}" title="Rezervační systém"></iframe>
+        </div>
+      `;
+    }
+
+    // ========== Availability API ==========
+    async function fetchAvailability() {
+      if (!CONFIG.booking.availabilityApi) {
+        // Fallback: generate mock dates
+        const dates = [];
+        const today = new Date();
+        for (let i = 7; i < 90; i += 7) {
+          const date = new Date(today);
+          date.setDate(today.getDate() + i);
+          dates.push(date.toISOString().split('T')[0]);
+        }
+        availableDates = dates;
+        renderCalendar(dates);
+        return;
+      }
+
+      try {
+        const response = await fetch(CONFIG.booking.availabilityApi);
+        const data = await response.json();
+        availableDates = data.dates || [];
+        renderCalendar(availableDates);
+      } catch (error) {
+        console.error('Failed to fetch availability:', error);
+        // Fallback to mock dates
+        const dates = [];
+        const today = new Date();
+        for (let i = 7; i < 90; i += 7) {
+          const date = new Date(today);
+          date.setDate(today.getDate() + i);
+          dates.push(date.toISOString().split('T')[0]);
+        }
+        availableDates = dates;
+        renderCalendar(dates);
+      }
+    }
+
+    // ========== Date Selection ==========
+    function selectDate(dateStr) {
+      selectedDate = dateStr;
+      renderCalendar(availableDates);
+
+      // Show modal with summary
+      const modal = document.getElementById('booking-modal');
+      const summary = document.getElementById('modal-summary');
+
+      const date = new Date(dateStr);
+      const formattedDate = date.toLocaleDateString('cs-CZ', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      let summaryHTML = `
+        <div class="summary__row">
+          <span>Kurz:</span>
+          <strong>${CONFIG.courseName}</strong>
+        </div>
+        <div class="summary__row">
+          <span>Termín:</span>
+          <strong>${formattedDate}</strong>
+        </div>
+        <div class="summary__row">
+          <span>Základní cena:</span>
+          <strong>${CONFIG.priceCZK.toLocaleString('cs-CZ')} Kč</strong>
+        </div>
+      `;
+
+      if (selectedAddons.length > 0) {
+        selectedAddons.forEach(addon => {
+          summaryHTML += `
+            <div class="summary__row">
+              <span>${addon.name}:</span>
+              <strong>+${addon.priceCZK.toLocaleString('cs-CZ')} Kč</strong>
+            </div>
+          `;
+        });
+      }
+
+      const total = calculateTotalPrice();
+      summaryHTML += `
+        <div class="summary__row">
+          <span>Celkem:</span>
+          <strong>${total.toLocaleString('cs-CZ')} Kč</strong>
+        </div>
+      `;
+
+      summary.innerHTML = summaryHTML;
+      modal.classList.add('active');
+
+      trackEvent('date_selected', { date: dateStr });
+    }
+
+    // ========== Booking Flow ==========
+    function openBooking() {
+      if (CONFIG.booking.iframeSrc) {
+        // Scroll to iframe
+        document.getElementById('iframe-widget').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if (availableDates.length > 0) {
+        // Scroll to calendar
+        document.getElementById('calendar').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      // Direct link
+      const url = buildBookingUrl();
+      window.open(url, '_blank');
+      trackEvent('cta_click', { cta: 'reserve', method: 'direct_link' });
+    }
+
+    function buildBookingUrl() {
+      let url = CONFIG.booking.deepLinkUrl;
+
+      if (selectedDate) {
+        url += `&date=${selectedDate}`;
+      }
+
+      if (selectedAddons.length > 0) {
+        const addonsParam = selectedAddons.map(a => encodeURIComponent(a.name)).join(',');
+        url += `&addons=${addonsParam}`;
+      }
+
+      return url;
+    }
+
+    function confirmBooking() {
+      const url = buildBookingUrl();
+      window.open(url, '_blank');
+      closeModal();
+      trackEvent('booking_confirmed', {
+        date: selectedDate,
+        addons: selectedAddons.map(a => a.name),
+        total: calculateTotalPrice()
+      });
+    }
+
+    // ========== Modal ==========
+    function closeModal() {
+      document.getElementById('booking-modal').classList.remove('active');
+    }
+
+    // Click outside to close
+    document.getElementById('booking-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'booking-modal') {
+        closeModal();
+      }
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // ========== FAQ ==========
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('active'));
+
+      // Open clicked if it wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+
+      trackEvent('faq_toggle', { question: button.textContent.trim() });
+    }
+
+    // ========== Sticky CTA ==========
+    function handleStickyCtaVisibility() {
+      const stickyCta = document.getElementById('sticky-cta');
+      const hero = document.querySelector('.hero');
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+
+      if (window.scrollY > heroBottom) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', handleStickyCtaVisibility);
+
+    // ========== Analytics ==========
+    function trackEvent(eventName, params = {}) {
+      // Google Analytics / GTM
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: eventName,
+          ...params
+        });
+      }
+
+      // Console log for debugging
+      console.log('Event:', eventName, params);
+    }
+
+    // Track CTA clicks
+    document.querySelectorAll('[data-analytic]').forEach(el => {
+      el.addEventListener('click', () => {
+        const cta = el.getAttribute('data-analytic');
+        trackEvent('cta_click', { cta });
+      });
+    });
+
+    // ========== Structured Data ==========
+    function generateStructuredData() {
+      const data = {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": CONFIG.courseName,
+        "description": "Naučte se snowkiting za 1 den s profesionálními instruktory v Krušných horách. Bezpečnost, progres a nezapomenutelný zážitek.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Komáří vížka – Snowkiting School",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Krupka",
+            "addressRegion": "Ústecký kraj",
+            "addressCountry": "CZ"
+          },
+          "telephone": CONFIG.contact.phone,
+          "email": CONFIG.contact.email
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "onsite",
+          "location": {
+            "@type": "Place",
+            "name": CONFIG.locationName,
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": CONFIG.coordinates.lat,
+              "longitude": CONFIG.coordinates.lng
+            }
+          },
+          "instructor": {
+            "@type": "Person",
+            "name": "Licencovaný instruktor IKO/VDWS"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": CONFIG.socialProof.rating,
+          "reviewCount": CONFIG.socialProof.reviewsCount
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": CONFIG.priceCZK,
+          "priceCurrency": "CZK",
+          "availability": "https://schema.org/InStock",
+          "url": window.location.href
+        }
+      };
+
+      document.getElementById('structured-data').textContent = JSON.stringify(data);
+    }
+
+    // ========== Initialization ==========
+    function init() {
+      // Render components
+      renderAddons();
+      renderGallery();
+      renderTestimonials();
+      generateStructuredData();
+
+      // Setup booking integration
+      if (CONFIG.booking.iframeSrc) {
+        renderIframeWidget();
+        document.getElementById('calendar').classList.add('hidden');
+        document.getElementById('direct-link').classList.add('hidden');
+      } else if (CONFIG.booking.availabilityApi || !CONFIG.booking.deepLinkUrl) {
+        fetchAvailability();
+        document.getElementById('direct-link').classList.add('hidden');
+      } else {
+        // Direct link only
+        document.getElementById('calendar').classList.add('hidden');
+        document.getElementById('direct-link').classList.remove('hidden');
+      }
+
+      // Update hero badge
+      document.getElementById('hero-rating').textContent =
+        `${CONFIG.socialProof.rating} / ${CONFIG.socialProof.reviewsCount} recenzí`;
+
+      // Setup confirm booking button
+      document.getElementById('confirm-booking').addEventListener('click', confirmBooking);
+
+      // Track page view
+      trackEvent('page_view', {
+        course: CONFIG.courseName,
+        courseId: CONFIG.courseId
+      });
+
+      console.log('✅ Snowkiting kurz initialized');
+      console.log('📊 Config:', CONFIG);
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+
+</body>
+</html>
