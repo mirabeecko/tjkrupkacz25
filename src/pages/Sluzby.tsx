@@ -21,8 +21,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
+import { FEATURES } from "@/config/features";
 
-const services = [
+const allServices = [
   {
     id: "snowkiting",
     title: "Snowkiting Kurzy",
@@ -41,7 +42,8 @@ const services = [
     ],
     featured: true
   },
-  {
+  // FEATURE FLAG: Půjčovna - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts
+  ...(FEATURES.ENABLE_PUJCOVNA ? [{
     id: "pujcovna",
     title: "Půjčovna Motocyklů",
     subtitle: "Adrenalin na prémiových strojích",
@@ -58,7 +60,7 @@ const services = [
       "Instruktáž zdarma"
     ],
     featured: true
-  },
+  }] : []),
   {
     id: "lyzarsky-areal",
     title: "Lyžařský areál",
@@ -164,6 +166,8 @@ const services = [
   }
 ];
 
+const services = allServices;
+
 const Sluzby = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -177,8 +181,8 @@ const Sluzby = () => {
     <div className="flex flex-col min-h-screen bg-white">
       <SEO
         title="Naše služby | Tělovýchovná jednota Krupka"
-        description="Kompletní nabídka služeb - snowkiting kurzy, půjčovna motocyklů, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího."
-        keywords="služby, snowkiting, půjčovna motocyklů, lyžařský areál, teambuilding, ubytování, Krušné hory"
+        description={`Kompletní nabídka služeb - snowkiting kurzy${FEATURES.ENABLE_PUJCOVNA ? ', půjčovna motocyklů' : ''}, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího.`}
+        keywords={`služby, snowkiting${FEATURES.ENABLE_PUJCOVNA ? ', půjčovna motocyklů' : ''}, lyžařský areál, teambuilding, ubytování, Krušné hory`}
         url="https://tjkrupka.cz/sluzby"
       />
 
@@ -218,7 +222,7 @@ const Sluzby = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-16">
               <div className="text-center">
-                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">7</div>
+                <div className="text-4xl md:text-5xl font-black text-blue-600 mb-2">{services.length}</div>
                 <div className="text-sm md:text-base text-gray-600 font-medium">Služeb</div>
               </div>
               <div className="text-center">

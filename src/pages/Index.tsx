@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { FEATURES } from "@/config/features";
 
 interface Vehicle {
   id: number;
@@ -47,7 +48,10 @@ const Index = () => {
   };
 
   useEffect(() => {
-    fetchVehicles();
+    // FEATURE FLAG: Fetch vehicles only if půjčovna is enabled
+    if (FEATURES.ENABLE_PUJCOVNA) {
+      fetchVehicles();
+    }
   }, []);
 
   const fetchVehicles = async () => {
@@ -379,7 +383,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Půjčovna Motocyklů Section */}
+        {/* FEATURE FLAG: Půjčovna Motocyklů Section - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts */}
+        {FEATURES.ENABLE_PUJCOVNA && (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
@@ -509,6 +514,7 @@ const Index = () => {
             </div>
           </div>
         </section>
+        )}
 
         {/* AIRBAG Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

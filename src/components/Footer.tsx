@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag, Wind, Bike, Mountain, School, Briefcase, Bed, Shield, Building, Handshake } from "lucide-react";
 import WeatherWidget from "@/components/WeatherWidget";
+import { FEATURES } from "@/config/features";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -120,12 +121,15 @@ const Footer: React.FC = () => {
                   <span className="group-hover:font-medium">Snowkiting Kurzy</span>
                 </Link>
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-2">
-                <Link to="/pujcovna" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
-                  <Bike className="h-4 w-4 mr-2 text-orange-400" />
-                  <span className="group-hover:font-medium">Půjčovna Motocyklů</span>
-                </Link>
-              </li>
+              {/* FEATURE FLAG: Půjčovna - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts */}
+              {FEATURES.ENABLE_PUJCOVNA && (
+                <li className="transition-transform duration-200 hover:translate-x-2">
+                  <Link to="/pujcovna" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                    <Bike className="h-4 w-4 mr-2 text-orange-400" />
+                    <span className="group-hover:font-medium">Půjčovna Motocyklů</span>
+                  </Link>
+                </li>
+              )}
               <li className="transition-transform duration-200 hover:translate-x-2">
                 <Link to="/komari-vizka" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
                   <Mountain className="h-4 w-4 mr-2 text-green-400" />

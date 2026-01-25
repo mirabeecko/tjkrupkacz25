@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Mountain, UtensilsCrossed, Building, ArrowRight, Bike, Dumbbell, Compass } from "lucide-react";
+import { FEATURES } from "@/config/features";
 
 const Activities: React.FC = () => {
   return (
@@ -53,7 +54,8 @@ const Activities: React.FC = () => {
               Služby
             </h3>
             <p className="text-gray-600 mb-6">
-              Nabízíme kvalitní gastronomii, půjčovnu sportovního vybavení a profesionální instruktory pro vaše sportovní aktivity.
+              {/* FEATURE FLAG: Text upravený pro skrytí půjčovny - původní: "Nabízíme kvalitní gastronomii, půjčovnu sportovního vybavení a profesionální instruktory pro vaše sportovní aktivity." */}
+              Nabízíme kvalitní gastronomii{FEATURES.ENABLE_PUJCOVNA ? ', půjčovnu sportovního vybavení' : ''} a profesionální instruktory pro vaše sportovní aktivity.
             </p>
             <Link 
               to="/sluzby" 
@@ -65,7 +67,8 @@ const Activities: React.FC = () => {
 
             <div className="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-2 justify-center">
               <span className="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-medium">Bistro</span>
-              <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">Půjčovna</span>
+              {/* FEATURE FLAG: Půjčovna badge - pro obnovení změň ENABLE_PUJCOVNA na true */}
+              {FEATURES.ENABLE_PUJCOVNA && <span className="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-medium">Půjčovna</span>}
               <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">Instruktoři</span>
             </div>
           </div>

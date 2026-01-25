@@ -465,7 +465,8 @@ const SnowkitingKurzy = () => {
               </div>
             </div>
 
-            <div className="mt-16 bg-blue-50 rounded-2xl p-8 text-center">
+            {/* FEATURE FLAG: Půjčovna CTA - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts */}
+            {/* <div className="mt-16 bg-blue-50 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-tjk-blue mb-2">Chcete si vybavení vyzkoušet?</h3>
               <p className="text-gray-600 mb-4">Veškeré vybavení naší školy si můžete také zapůjčit v naší půjčovně.</p>
               <Link to="/pujcovna">
@@ -474,7 +475,7 @@ const SnowkitingKurzy = () => {
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </section>
         <section id="jak-to-funguje" className="py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">

@@ -4,6 +4,7 @@ import {
   Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School, Smile
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { FEATURES } from "@/config/features";
 
 interface NavbarProps {
   isOpen: boolean;
@@ -13,7 +14,8 @@ interface NavbarProps {
 // Submenu pro Služby
 const servicesSubmenu = [
   { name: "Snowkiting Kurzy", icon: <Wind className="h-4 w-4" />, href: "/snowkiting-kurzy" },
-  { name: "Půjčovna Motocyklů", icon: <Bike className="h-4 w-4" />, href: "/pujcovna" },
+  // FEATURE FLAG: Půjčovna - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts
+  ...(FEATURES.ENABLE_PUJCOVNA ? [{ name: "Půjčovna Motocyklů", icon: <Bike className="h-4 w-4" />, href: "/pujcovna" }] : []),
   { name: "Lyžařský areál", icon: <Mountain className="h-4 w-4" />, href: "/komari-vizka" },
   { name: "Pro školy", icon: <School className="h-4 w-4" />, href: "/skoly" },
   { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/firmy" },

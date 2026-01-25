@@ -25,14 +25,15 @@ import Ubytovani from "./pages/Ubytovani";
 import Trailpark from "./pages/trailpark";
 import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
-import Pujcovna from "./pages/Pujcovna";
+// FEATURE FLAG: Půjčovna imports - pro obnovení odkomentuj následující řádky a změň ENABLE_PUJCOVNA na true v src/config/features.ts
+// import Pujcovna from "./pages/Pujcovna";
+// import KontaktPujcovna from "./pages/KontaktPujcovna";
+// import VehicleDetail from "./pages/VehicleDetail";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Cookies from "./pages/cookies";
 import Accessibility from "./pages/Accessibility";
 import KontaktSnowkiting from "./pages/KontaktSnowkiting";
-import KontaktPujcovna from "./pages/KontaktPujcovna";
-import VehicleDetail from "./pages/VehicleDetail";
 import Airbag from "./pages/Airbag";
 import Eshop from "./pages/Eshop";
 import Kosik from "./pages/Kosik";
@@ -40,6 +41,7 @@ import Pokladna from "./pages/Pokladna";
 import PlatbaUspech from "./pages/PlatbaUspech";
 import PlatbaZruseno from "./pages/PlatbaZruseno";
 import AktivityProDeti from "./pages/AktivityProDeti";
+import AkteriDetail from "./pages/AkteriDetail";
 import { CartProvider } from "./context/CartContext";
 
 const queryClient = new QueryClient();
@@ -73,14 +75,14 @@ const App = () => (
           <Route path="/trailpark" element={<Trailpark />} />
           <Route path="/pripravujeme" element={<Pripravujeme />} />
           <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
-          <Route path="/pujcovna" element={<Pujcovna />} />
-          <Route path="/vozidlo/:id" element={<VehicleDetail />} />
+          {/* __PUJCOVNA_START__ <Route path="/pujcovna" element={<Pujcovna />} /> __PUJCOVNA_END__ */}
+          {/* __PUJCOVNA_START__ <Route path="/vozidlo/:id" element={<VehicleDetail />} /> __PUJCOVNA_END__ */}
+          {/* __PUJCOVNA_START__ <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} /> __PUJCOVNA_END__ */}
           <Route path="/zasady-ochrany-osobnich-udaju" element={<PrivacyPolicy />} />
           <Route path="/podminky-pouziti" element={<TermsOfService />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/pristupnost" element={<Accessibility />} />
           <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
-          <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} />
           <Route path="/airbag" element={<Airbag />} />
           <Route path="/eshop" element={<Eshop />} />
           <Route path="/kosik" element={<Kosik />} />
@@ -88,6 +90,7 @@ const App = () => (
           <Route path="/platba/uspech" element={<PlatbaUspech />} />
           <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
           <Route path="/aktivity-pro-deti" element={<AktivityProDeti />} />
+          <Route path="/akteri/:name" element={<AkteriDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
