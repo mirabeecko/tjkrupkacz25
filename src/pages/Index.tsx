@@ -123,13 +123,13 @@ const Index = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="snap-y snap-mandatory overflow-y-auto h-screen">
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
 
-      <main className="flex-1">
+      <main className="">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -310,7 +310,7 @@ const Index = () => {
         */}
 
         {/* Ubytování Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -385,7 +385,7 @@ const Index = () => {
 
         {/* FEATURE FLAG: Půjčovna Motocyklů Section - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts */}
         {FEATURES.ENABLE_PUJCOVNA && (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -517,7 +517,7 @@ const Index = () => {
         )}
 
         {/* AIRBAG Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -598,7 +598,7 @@ const Index = () => {
         </section>
 
         {/* Firemní akce Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -673,7 +673,7 @@ const Index = () => {
         </section>
 
         {/* Školní akce Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -812,7 +812,9 @@ const Index = () => {
         </section>
       </main>
 
-      <Footer />
+      <div className="snap-start">
+        <Footer />
+      </div>
     </div>
   );
 };
