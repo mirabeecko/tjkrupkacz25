@@ -21,7 +21,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
-import { FEATURES } from "@/config/features";
 
 const allServices = [
   {
@@ -42,25 +41,25 @@ const allServices = [
     ],
     featured: true
   },
-  // FEATURE FLAG: Půjčovna - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts
-  ...(FEATURES.ENABLE_PUJCOVNA ? [{
-    id: "pujcovna",
-    title: "Půjčovna Motocyklů",
-    subtitle: "Adrenalin na prémiových strojích",
-    description: "Motocykly KTM pro terénní jízdu. Kompletní výstroj, instruktáž a profesionální servis v ceně.",
-    icon: Bike,
-    cta: "Zobrazit motocykly",
-    link: "/pujcovna",
-    gradient: "from-orange-500 to-red-600",
-    image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop",
-    highlights: [
-      "KTM Freeride, Duke",
-      "Profesionální servis",
-      "Kompletní výstroj",
-      "Instruktáž zdarma"
-    ],
-    featured: true
-  }] : []),
+  // PŮJČOVNA SKRYTA - pro obnovení odkomentuj
+  // {
+  //   id: "pujcovna",
+  //   title: "Půjčovna Motocyklů",
+  //   subtitle: "Adrenalin na prémiových strojích",
+  //   description: "Motocykly KTM pro terénní jízdu. Kompletní výstroj, instruktáž a profesionální servis v ceně.",
+  //   icon: Bike,
+  //   cta: "Zobrazit motocykly",
+  //   link: "/pujcovna",
+  //   gradient: "from-orange-500 to-red-600",
+  //   image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=2070&auto=format&fit=crop",
+  //   highlights: [
+  //     "KTM Freeride, Duke",
+  //     "Profesionální servis",
+  //     "Kompletní výstroj",
+  //     "Instruktáž zdarma"
+  //   ],
+  //   featured: true
+  // },
   {
     id: "lyzarsky-areal",
     title: "Lyžařský areál",
@@ -181,8 +180,8 @@ const Sluzby = () => {
     <div className="flex flex-col min-h-screen bg-white">
       <SEO
         title="Naše služby | Tělovýchovná jednota Krupka"
-        description={`Kompletní nabídka služeb - snowkiting kurzy${FEATURES.ENABLE_PUJCOVNA ? ', půjčovna motocyklů' : ''}, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího.`}
-        keywords={`služby, snowkiting${FEATURES.ENABLE_PUJCOVNA ? ', půjčovna motocyklů' : ''}, lyžařský areál, teambuilding, ubytování, Krušné hory`}
+        description="Kompletní nabídka služeb - snowkiting kurzy, lyžařský areál, programy pro školy a firmy, ubytování a mnoho dalšího."
+        keywords="služby, snowkiting, lyžařský areál, teambuilding, ubytování, Krušné hory"
         url="https://tjkrupka.cz/sluzby"
       />
 

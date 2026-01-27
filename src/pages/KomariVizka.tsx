@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { FEATURES } from "@/config/features";
 
 interface Vlek {
   id: number;
@@ -96,16 +95,16 @@ const KomariVizka = () => {
       gradient: "from-cyan-500 to-blue-600",
       hoverGradient: "from-cyan-600 to-blue-700"
     },
-    // FEATURE FLAG: Půjčovna - pro obnovení změň ENABLE_PUJCOVNA na true v src/config/features.ts
-    ...(FEATURES.ENABLE_PUJCOVNA ? [{
-      icon: <Bike className="h-6 w-6" />,
-      title: "Půjčovna",
-      description: "Kompletní vybavení na snowkiting, kola a další sportovní potřeby k pronájmu.",
-      link: "/pujcovna",
-      buttonText: "Zobrazit půjčovnu",
-      gradient: "from-green-500 to-emerald-600",
-      hoverGradient: "from-green-600 to-emerald-700"
-    }] : []),
+    // PŮJČOVNA SKRYTA - pro obnovení odkomentuj
+    // {
+    //   icon: <Bike className="h-6 w-6" />,
+    //   title: "Půjčovna",
+    //   description: "Kompletní vybavení na snowkiting, kola a další sportovní potřeby k pronájmu.",
+    //   link: "/pujcovna",
+    //   buttonText: "Zobrazit půjčovnu",
+    //   gradient: "from-green-500 to-emerald-600",
+    //   hoverGradient: "from-green-600 to-emerald-700"
+    // },
     {
       icon: <Home className="h-6 w-6" />,
       title: "Ubytování",
