@@ -120,13 +120,13 @@ const Index = () => {
   ];
 
   return (
-    <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+    <div className="flex flex-col min-h-screen">
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
 
-      <main className="">
+      <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -307,7 +307,7 @@ const Index = () => {
         */}
 
         {/* Ubytování Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -380,139 +380,8 @@ const Index = () => {
           </div>
         </section>
 
-        {/* PŮJČOVNA SKRYTA - pro obnovení odkomentuj celou sekci */}
-        {/* <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
-          {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('/images/homepage/pujcovna.jpg')",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/85"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-900/30 to-red-900/30"></div>
-          </div>
-
-          {/* Animated particles */}
-          <div className="absolute inset-0 overflow-hidden">
-            {[...Array(30)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${2 + Math.random() * 3}s`
-                }}
-              />
-            ))}
-          </div>
-
-          <div className="container relative z-20 px-4 py-20">
-            <div className="max-w-5xl mx-auto text-center text-white">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-[fade-in_1s_ease-out]">
-                <Bike className="w-4 h-4 text-orange-400" />
-                <span className="text-sm font-medium">Premiové motocykly KTM</span>
-              </div>
-
-              {/* Main Heading */}
-              <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
-                <span className="bg-gradient-to-r from-white via-orange-200 to-red-300 bg-clip-text text-transparent">
-                  Půjčovna Motocyklů
-                </span>
-              </h2>
-
-              {/* Subtitle */}
-              <p className="text-xl md:text-3xl mb-8 font-light leading-relaxed animate-[fade-in-up_1.2s_ease-out_0.4s_both] text-white">
-                Užijte si Krušné hory na <span className="font-semibold text-orange-300">motorce nebo čtyřkolce</span>.. Enduro? Supermoto? Naked? Vyberte si...
-              </p>
-
-              {/* Bike Models - HIDDEN */}
-              {/*
-              <div className="grid md:grid-cols-3 gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.6s_both]">
-                {vehicles.length > 0 ? (
-                  vehicles.map((vehicle) => (
-                    <div key={vehicle.id} className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
-                      <div className="relative h-48 mb-4 rounded-xl overflow-hidden">
-                        <img
-                          src={vehicle.photo_url || "/images/sluzby/pujcovna.jpg"}
-                          alt={`${vehicle.brand} ${vehicle.model}`}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {vehicle.type && (
-                          <div className="absolute top-2 right-2">
-                            <Badge className="bg-orange-500 text-white text-xs">
-                              {vehicle.type}
-                            </Badge>
-                          </div>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Bike className="w-4 h-4 text-orange-400" />
-                        <span className="text-xs font-semibold text-orange-300">{vehicle.brand}</span>
-                      </div>
-                      <h3 className="text-xl font-bold mb-2">{vehicle.model}</h3>
-                      {vehicle.notes && (
-                        <p className="text-white text-sm line-clamp-2">{vehicle.notes}</p>
-                      )}
-                    </div>
-                  ))
-                ) : (
-                  <>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                      <h3 className="text-xl font-bold mb-2">KTM FREERIDE 350</h3>
-                      <p className="text-white">Lehký enduro stroj pro terénní jízdu</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                      <h3 className="text-xl font-bold mb-2">KTM LC4 640 SUPERMOTO</h3>
-                      <p className="text-white">Výkonný supermoto pro asfalt i terén</p>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
-                      <Bike className="w-12 h-12 text-orange-400 mx-auto mb-4" />
-                      <h3 className="text-xl font-bold mb-2">KTM DUKE 390</h3>
-                      <p className="text-white">Sportovní naked bike pro každého</p>
-                    </div>
-                  </>
-                )}
-              </div>
-              */}
-
-              {/* Key Points */}
-              <div className="flex flex-wrap justify-center gap-6 mb-12 animate-[fade-in-up_1.2s_ease-out_0.7s_both]">
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Profesionální servis</span>
-                </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Kompletní výstroj</span>
-                </div>
-                <div className="flex items-center gap-2 text-lg">
-                  <CheckCircle2 className="w-5 h-5 text-green-400" />
-                  <span>Instruktáž zdarma</span>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center animate-[fade-in-up_1.2s_ease-out_0.8s_both]">
-                <Link to="/pujcovna">
-                  <Button size="lg" className="group bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold text-xl px-8 py-6 rounded-2xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 transform hover:-translate-y-1">
-                    <Bike className="mr-2 h-6 w-6" />
-                    Zobrazit motocykly
-                    <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         {/* AIRBAG Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -593,7 +462,7 @@ const Index = () => {
         </section>
 
         {/* Firemní akce Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -668,7 +537,7 @@ const Index = () => {
         </section>
 
         {/* Školní akce Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden snap-start">
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -699,7 +568,7 @@ const Index = () => {
           <div className="container relative z-20 px-4 py-20">
             <div className="max-w-5xl mx-auto text-center text-white">
               {/* Main Heading */}
-              <img src="/src/loga/komárek.png" alt="Logo Komárek" className="w-24 h-24 mx-auto mb-4" />
+              <img src="/images/loga/komarek.png" alt="Logo Komárek" className="w-24 h-24 mx-auto mb-4" />
               <h2 className="font-montserrat font-black text-5xl md:text-7xl lg:text-8xl mb-6 animate-[fade-in-up_1.2s_ease-out_0.2s_both]">
                 <span className="bg-gradient-to-r from-white via-indigo-200 to-violet-300 bg-clip-text text-transparent">
                   Školní akce
@@ -807,9 +676,7 @@ const Index = () => {
         </section>
       </main>
 
-      <div className="snap-start">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };
