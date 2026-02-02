@@ -43,7 +43,6 @@ import Pokladna from "./pages/Pokladna";
 import PlatbaUspech from "./pages/PlatbaUspech";
 import PlatbaZruseno from "./pages/PlatbaZruseno";
 import AktivityProDeti from "./pages/AktivityProDeti";
-import AkteriDetail from "./pages/AkteriDetail";
 
 import { CartProvider } from "./context/CartContext";
 
@@ -97,7 +96,6 @@ const App = () => (
               <Route path="/platba/uspech" element={<PlatbaUspech />} />
               <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
               <Route path="/aktivity-pro-deti" element={<AktivityProDeti />} />
-              <Route path="/akteri/:name" element={<AkteriDetail />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
