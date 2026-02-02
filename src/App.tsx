@@ -27,9 +27,9 @@ import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
 
 // FEATURE FLAG: Půjčovna imports - pro obnovení odkomentuj následující řádky a změň ENABLE_PUJCOVNA na true v src/config/features.ts
-import Pujcovna from "./pages/Pujcovna";
-import KontaktPujcovna from "./pages/KontaktPujcovna";
-import VehicleDetail from "./pages/VehicleDetail";
+// import Pujcovna from "./pages/Pujcovna";
+// import KontaktPujcovna from "./pages/KontaktPujcovna";
+// import VehicleDetail from "./pages/VehicleDetail";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -77,9 +77,10 @@ const App = () => (
               <Route path="/pripravujeme" element={<Pripravujeme />} />
               <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
 
-              <Route path="/pujcovna" element={<Pujcovna />} />
-              <Route path="/vozidlo/:id" element={<VehicleDetail />} />
-              <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} />
+              {/* PŮJČOVNA SKRYTA - pro obnovení odkomentuj následující řádky */}
+              {/* <Route path="/pujcovna" element={<Pujcovna />} /> */}
+              {/* <Route path="/vozidlo/:id" element={<VehicleDetail />} /> */}
+              {/* <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} /> */}
 
               <Route
                 path="/zasady-ochrany-osobnich-udaju"
