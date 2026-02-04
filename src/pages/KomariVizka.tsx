@@ -216,7 +216,7 @@ const KomariVizka = () => {
               </AlertTitle>
               <AlertDescription className="text-gray-700 text-base leading-relaxed">
                 Areál Komáří vížka <strong>momentálně slouží výhradně pro junior sportovní činnost</strong> –
-                děti a mládež ve věku 5-16 let jako členy spolku TJ Krupka z.s.
+                děti a mládež ve věku 5-16 let jako členy spolku Tělovýchovná jednota Krupka z.s.
                 Nejde o veřejný komerční provoz. Pro více informací o členství navštivte sekci{" "}
                 <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">
                   Pro členy
@@ -249,7 +249,7 @@ const KomariVizka = () => {
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Komárka ožívá prostřednictvím junior sportovní činnosti!</strong> Areál momentálně slouží výhradně pro členy spolku TJ Krupka z.s. (děti a mládež 5-16 let). Obnovujeme tradici a vytváříme bezpečné sportovní zázemí pro mladé nadšence. V zimě lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě sportovní aktivity pro všechny úrovně – od začátečníků až po pokročilé mladé sportovce.
+                     <strong className="text-tjk-blue">Komárka ožívá prostřednictvím junior sportovní činnosti!</strong> Areál momentálně slouží výhradně pro členy spolku Tělovýchovná jednota Krupka z.s. (děti a mládež 5-16 let). Obnovujeme tradici a vytváříme bezpečné sportovní zázemí pro mladé nadšence. V zimě lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě sportovní aktivity pro všechny úrovně – od začátečníků až po pokročilé mladé sportovce.
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">

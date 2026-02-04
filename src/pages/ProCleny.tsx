@@ -245,7 +245,7 @@ const ProCleny = () => {
               </AlertTitle>
               <AlertDescription className="text-gray-700 text-base leading-relaxed">
                 Areál Komáří vížka <strong>momentálně slouží výhradně pro junior sportovní činnost</strong> –
-                děti a mládež ve věku 5-16 let jako členy spolku TJ Krupka z.s.
+                děti a mládež ve věku 5-16 let jako členy spolku Tělovýchovná jednota Krupka z.s.
                 Nejde o veřejný komerční provoz. Přihlaste své dítě do naší junior sportovní party! 🏔️
               </AlertDescription>
             </Alert>
@@ -467,93 +467,6 @@ const ProCleny = () => {
 
         <div className="container mx-auto px-4 py-16 md:py-24">
 
-          {/* Bezpečnost a pravidla - ale cool */}
-          <ScrollAnimation animation="fade-up">
-            <section className="mb-24">
-              <div className="max-w-5xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  {/* Text column */}
-                  <div>
-                    <Badge className="mb-4 bg-gradient-to-r from-red-600 to-orange-600 text-white border-0 px-4 py-2 text-sm font-semibold">
-                      Bezpečnost na prvním místě
-                    </Badge>
-                    <h2 className="text-4xl md:text-5xl font-black text-tjk-blue mb-6">
-                      Bezpečně a s partou
-                    </h2>
-                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                      Sport je super zábava, ale bezpečnost je na prvním místě!
-                      Máme pár jednoduchých pravidel, díky kterým si všichni
-                      užijeme aktivity naplno.
-                    </p>
-
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
-                        <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Užívej si to!</h4>
-                          <p className="text-gray-600">
-                            Jsi tady dobrovolně a pro zábavu – sportuj s respektem ke svým schopnostem.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border-l-4 border-blue-500">
-                        <CheckCircle className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Poslouchej vedoucí</h4>
-                          <p className="text-gray-600">
-                            Naši instruktoři a vedoucí jsou tu pro tvoji bezpečnost – poslouchej jejich pokyny.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
-                        <CheckCircle className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
-                        <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Respekt k ostatním</h4>
-                          <p className="text-gray-600">
-                            Buď kamarádský k ostatním dětem – všichni jsme tady kvůli sportu a zábavě!
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Image column */}
-                  <div className="relative">
-                    <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
-                      <img
-                        src="/images/snowkiting/jj_kom_jump.jpg"
-                        alt="Sportovní aktivita na Komáří vížce"
-                        className="w-full h-[500px] object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <div className="absolute bottom-6 left-6 right-6">
-                        <p className="text-white font-bold text-xl">
-                          "Je to super zábava a našel jsem tu spoustu kamarádů!"
-                        </p>
-                        <p className="text-white/80 text-sm mt-1">– Jakub, 14 let, junior člen</p>
-                      </div>
-                    </div>
-
-                    {/* Floating badge */}
-                    <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-2xl p-4 transform -rotate-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
-                          <Shield className="h-6 w-6 text-white" />
-                        </div>
-                        <div>
-                          <div className="font-black text-2xl text-tjk-blue">100%</div>
-                          <div className="text-xs text-gray-600">Bezpečnost</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </ScrollAnimation>
-
           {/* FAQ - Vylepšené */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-24">
@@ -583,7 +496,7 @@ const ProCleny = () => {
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="text-base text-gray-700 leading-relaxed pl-11 pb-6">
-                          Areál je určen pro junior členy spolku TJ Krupka z.s. (děti 5-16 let).
+                          Areál je určen pro junior členy spolku Tělovýchovná jednota Krupka z.s. (děti 5-16 let).
                           Není to veřejný provoz, ale junior členství je otevřené všem dětem,
                           které milují sport a hory! 🏔️
                         </AccordionContent>
