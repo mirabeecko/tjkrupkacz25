@@ -49,59 +49,59 @@ const ProCleny = () => {
   const benefits = [
     {
       icon: <Mountain className="h-8 w-8" />,
-      title: "Přístup do areálu",
-      description: "Užívej si všechny aktivity na Komáří vížce po celý rok",
+      title: "Celoroční aktivity",
+      description: "Lyžuj v zimě, jezdi na kole v létě - užívej si Komárku po celý rok",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
       icon: <Users className="h-8 w-8" />,
-      title: "Aktivní komunita",
-      description: "Staň se součástí party nadšenců pro sport a outdoorové aktivity",
+      title: "Noví kamarádi",
+      description: "Poznej partu mladých sportovců, kteří to milují stejně jako ty",
       gradient: "from-purple-500 to-pink-500",
     },
     {
       icon: <Calendar className="h-8 w-8" />,
-      title: "Exkluzivní akce",
-      description: "Zapoj se do workshopů, závodů a společných výjezdů pro členy",
+      title: "Zábavné akce",
+      description: "Závody, výlety a workshopy speciálně pro junior členy",
       gradient: "from-orange-500 to-red-500",
     },
     {
       icon: <Zap className="h-8 w-8" />,
-      title: "Bezkonkurenční zážitky",
-      description: "Lyžování, snowkiting, bikování - adrenalin 365 dní v roce",
+      title: "Adrenalinové zážitky",
+      description: "Snowkiting, sjezdovka, bikeparky - akce a adrenalin na max!",
       gradient: "from-green-500 to-emerald-500",
     },
     {
-      icon: <Heart className="h-8 w-8" />,
-      title: "Podpora projektu",
-      description: "Pomáháš rozvíjet sportovní zázemí v Krušných horách",
-      gradient: "from-rose-500 to-pink-500",
+      icon: <Trophy className="h-8 w-8" />,
+      title: "Nauč se nové věci",
+      description: "Zlepšuj své dovednosti s pomocí zkušených trenérů a instruktorů",
+      gradient: "from-amber-500 to-yellow-500",
     },
     {
-      icon: <Trophy className="h-8 w-8" />,
-      title: "Rozvoj dovedností",
-      description: "Zlepšuj se pod vedením zkušených členů a instruktorů",
-      gradient: "from-amber-500 to-yellow-500",
+      icon: <Heart className="h-8 w-8" />,
+      title: "Buď součástí týmu",
+      description: "Společně udržujeme areál a vytváříme skvělé místo pro mladé sportovce",
+      gradient: "from-rose-500 to-pink-500",
     },
   ];
 
   const steps = [
     {
       number: "01",
-      title: "Podej přihlášku",
-      description: "Vyplň přihlášku a pošli nám ji mailem nebo telefonicky",
+      title: "Vyplň přihlášku",
+      description: "S rodiči vyplňte online přihlášku – zabere to jen pár minut",
       icon: <FileText className="h-6 w-6" />,
     },
     {
       number: "02",
-      title: "Schválení výborem",
-      description: "Výbor spolku posoudí tvou přihlášku",
+      title: "Počkej na schválení",
+      description: "Výbor spolku posoudí přihlášku (obvykle do týdne)",
       icon: <Users className="h-6 w-6" />,
     },
     {
       number: "03",
-      title: "Vítej v týmu!",
-      description: "Staň se oficiálním členem a vyrážej do akce",
+      title: "Hurá na Komárku!",
+      description: "Staň se junior členem a vyraž si užívat sport s partou!",
       icon: <PartyPopper className="h-6 w-6" />,
     },
   ];
@@ -162,13 +162,13 @@ const ProCleny = () => {
               <ScrollAnimation animation="fade-up">
                 <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 mb-8">
                   <Sparkles className="h-5 w-5 text-yellow-300" />
-                  <span className="font-semibold">Staň se součástí naší komunity</span>
+                  <span className="font-semibold">Junior členství pro mladé sportovce</span>
                 </div>
               </ScrollAnimation>
 
               <ScrollAnimation animation="fade-up" delay={0.1}>
                 <h1 className="font-montserrat font-black text-5xl md:text-7xl mb-6 leading-tight">
-                  Tvoje členství,
+                  Tvůj start ve sportu,
                   <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400">
                     neomezené možnosti
@@ -178,8 +178,8 @@ const ProCleny = () => {
 
               <ScrollAnimation animation="fade-up" delay={0.2}>
                 <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-10">
-                  Komáří vížka není jen místo – je to životní styl. Připoj se k partě,
-                  která žije sportem, adrenalinenem a horami.
+                  Sportovní kroužek pro děti a mládež na Komáří vížce. Připoj se k partě
+                  mladých nadšenců, kteří milují sport, adrenalin a hory!
                 </p>
               </ScrollAnimation>
 
@@ -190,7 +190,11 @@ const ProCleny = () => {
                     className="bg-gradient-to-r from-tjk-orange to-amber-600 hover:from-tjk-orange/90 hover:to-amber-600/90 text-white font-bold px-8 py-6 text-lg shadow-2xl hover:shadow-orange-500/50 transition-all transform hover:scale-105"
                     asChild
                   >
-                    <a href="#kontakt">
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <UserPlus className="mr-2 h-5 w-5" />
                       Chci se stát členem
                     </a>
@@ -213,16 +217,16 @@ const ProCleny = () => {
               <ScrollAnimation animation="fade-up" delay={0.4}>
                 <div className="grid grid-cols-3 gap-4 md:gap-8 mt-16 max-w-3xl mx-auto">
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 md:p-6">
-                    <div className="text-3xl md:text-4xl font-black text-cyan-400 mb-2">365</div>
-                    <div className="text-sm md:text-base text-white/80">dní aktivit</div>
+                    <div className="text-3xl md:text-4xl font-black text-cyan-400 mb-2">5-16</div>
+                    <div className="text-sm md:text-base text-white/80">let věku</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 md:p-6">
-                    <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2">50+</div>
-                    <div className="text-sm md:text-base text-white/80">let tradice</div>
+                    <div className="text-3xl md:text-4xl font-black text-purple-400 mb-2">365</div>
+                    <div className="text-sm md:text-base text-white/80">dní zábavy</div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 md:p-6">
                     <div className="text-3xl md:text-4xl font-black text-pink-400 mb-2">100%</div>
-                    <div className="text-sm md:text-base text-white/80">zážitek</div>
+                    <div className="text-sm md:text-base text-white/80">kamarádů</div>
                   </div>
                 </div>
               </ScrollAnimation>
@@ -236,12 +240,12 @@ const ProCleny = () => {
             <Alert className="mb-20 border-2 border-tjk-orange bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
               <AlertCircle className="h-6 w-6 text-tjk-orange" />
               <AlertTitle className="text-tjk-blue font-bold text-xl">
-                Důležitá informace
+                Důležitá informace pro rodiče
               </AlertTitle>
               <AlertDescription className="text-gray-700 text-base leading-relaxed">
-                Areál Komáří vížka provozujeme jako <strong>interní sportovní činnost</strong> pro
-                členy spolku Tělovýchovná jednota Krupka z.s. Nejde o veřejný komerční provoz.
-                Členství je otevřené všem, kteří sdílejí naši vášeň pro sport a hory! 🏔️
+                Areál Komáří vížka <strong>momentálně slouží výhradně pro junior sportovní činnost</strong> –
+                děti a mládež ve věku 5-16 let jako členy spolku TJ Krupka z.s.
+                Nejde o veřejný komerční provoz. Přihlaste své dítě do naší junior sportovní party! 🏔️
               </AlertDescription>
             </Alert>
           </ScrollAnimation>
@@ -251,13 +255,13 @@ const ProCleny = () => {
             <section className="mb-24">
               <div className="text-center mb-12">
                 <Badge className="mb-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0 px-4 py-2 text-sm font-semibold">
-                  Proč se stát členem
+                  Proč se přihlásit
                 </Badge>
                 <h2 className="text-4xl md:text-5xl font-black text-tjk-blue mb-4">
-                  Co ti členství přináší?
+                  Co ti junior členství přináší?
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Být členem TJ Krupka znamená být součástí něčeho většího. Tady jsou top důvody, proč se připojit.
+                  Být junior členem TJ Krupka znamená partu, zábavu a sport po celý rok. Tady je 6 důvodů, proč se připojit!
                 </p>
               </div>
 
@@ -297,10 +301,10 @@ const ProCleny = () => {
                   Jednoduchý proces
                 </Badge>
                 <h2 className="text-4xl md:text-5xl font-black text-tjk-blue mb-4">
-                  Jak se stát členem?
+                  Jak se přihlásit?
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Tři jednoduché kroky od přihlášky k tvým prvním jízdám na Komárce.
+                  Tři jednoduché kroky od přihlášky k prvním jízdám na Komárce. Děti do 16 let vítáme!
                 </p>
               </div>
 
@@ -349,16 +353,64 @@ const ProCleny = () => {
                     <div className="flex items-center justify-center gap-3 mb-4">
                       <Info className="h-6 w-6 text-blue-600" />
                       <h3 className="text-2xl font-bold text-tjk-blue">
-                        O členských příspěvcích
+                        Informace pro rodiče
                       </h3>
                     </div>
                     <p className="text-lg text-gray-700 leading-relaxed">
-                      Členské příspěvky slouží na <strong>podporu činnosti spolku</strong> –
-                      údržbu areálu, rozvoj aktivit a pořádání akcí.
-                      Nejsou úhradou za jednotlivé služby, ale investicí do společné vášně! 🚀
+                      Členské příspěvky slouží na <strong>podporu junior sportovní činnosti</strong> –
+                      údržbu areálu, nákup vybavení, pořádání dětských akcí a rozvoj aktivit.
+                      Nejsou úhradou za jednotlivé jízdy, ale investicí do sportovního rozvoje vašich dětí! 🚀
                     </p>
                   </CardContent>
                 </Card>
+              </ScrollAnimation>
+
+              {/* CTA - Přihláška pro děti */}
+              <ScrollAnimation animation="fade-up" delay={0.4}>
+                <div className="mt-12 max-w-4xl mx-auto">
+                  <Card className="relative overflow-hidden border-0 shadow-2xl bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600">
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute top-0 right-0 w-full h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+                      <div className="absolute bottom-0 left-0 w-full h-64 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
+                    </div>
+
+                    <CardContent className="relative z-10 p-8 md:p-12 text-center text-white">
+                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 mb-4">
+                        <Sparkles className="h-4 w-4 text-yellow-300" />
+                        <span className="font-semibold text-sm">Junior členství • 5-16 let</span>
+                      </div>
+
+                      <h3 className="text-3xl md:text-4xl font-black mb-4">
+                        Připrav se na akci! 🎉
+                      </h3>
+
+                      <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                        S rodiči vyplňte online přihlášku a staňte se součástí junior sportovní party.
+                        Je to jednoduché a rychlé!
+                      </p>
+
+                      <Button
+                        size="lg"
+                        className="bg-white text-green-700 hover:bg-gray-100 font-black px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
+                        asChild
+                      >
+                        <a
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FileText className="mr-2 h-6 w-6" />
+                          Vyplnit přihlášku
+                          <ChevronRight className="ml-2 h-6 w-6" />
+                        </a>
+                      </Button>
+
+                      <p className="text-sm text-white/70 mt-6">
+                        ✓ Pro děti 5-16 let  •  ✓ Vyplňte s rodiči  •  ✓ Zabere 5 minut
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
               </ScrollAnimation>
             </section>
           </ScrollAnimation>
@@ -374,21 +426,21 @@ const ProCleny = () => {
                       Bezpečnost na prvním místě
                     </Badge>
                     <h2 className="text-4xl md:text-5xl font-black text-tjk-blue mb-6">
-                      Společně a bezpečně
+                      Bezpečně a s partou
                     </h2>
                     <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                      Sport je zábava, ale bezpečnost je základ. Jako členové
-                      se řídíme jednoduchými pravidly, která zajišťují, že si
-                      všichni užijeme aktivity naplno.
+                      Sport je super zábava, ale bezpečnost je na prvním místě!
+                      Máme pár jednoduchých pravidel, díky kterým si všichni
+                      užijeme aktivity naplno.
                     </p>
 
                     <div className="space-y-4">
                       <div className="flex items-start gap-4 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
                         <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Dobrovolná účast</h4>
+                          <h4 className="font-bold text-tjk-blue mb-1">Užívej si to!</h4>
                           <p className="text-gray-600">
-                            Sportuješ, protože to miluješ – dobrovolně a s respektem ke svým limitům.
+                            Jsi tady dobrovolně a pro zábavu – sportuj s respektem ke svým schopnostem.
                           </p>
                         </div>
                       </div>
@@ -396,9 +448,9 @@ const ProCleny = () => {
                       <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border-l-4 border-blue-500">
                         <CheckCircle className="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Respekt k obsluze</h4>
+                          <h4 className="font-bold text-tjk-blue mb-1">Poslouchej vedoucí</h4>
                           <p className="text-gray-600">
-                            Poslouchej pokyny týmu – jsou tu pro tvoji bezpečnost i zábavu.
+                            Naši instruktoři a vedoucí jsou tu pro tvoji bezpečnost – poslouchej jejich pokyny.
                           </p>
                         </div>
                       </div>
@@ -406,9 +458,9 @@ const ProCleny = () => {
                       <div className="flex items-start gap-4 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
                         <CheckCircle className="h-6 w-6 text-purple-600 flex-shrink-0 mt-1" />
                         <div>
-                          <h4 className="font-bold text-tjk-blue mb-1">Ohleduplnost</h4>
+                          <h4 className="font-bold text-tjk-blue mb-1">Respekt k ostatním</h4>
                           <p className="text-gray-600">
-                            Buď cool k ostatním – všichni jsme tady kvůli stejné lásce ke sportu.
+                            Buď kamarádský k ostatním dětem – všichni jsme tady kvůli sportu a zábavě!
                           </p>
                         </div>
                       </div>
@@ -426,9 +478,9 @@ const ProCleny = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                       <div className="absolute bottom-6 left-6 right-6">
                         <p className="text-white font-bold text-xl">
-                          "Nejlepší rozhodnutí, které jsem udělal!"
+                          "Je to super zábava a našel jsem tu spoustu kamarádů!"
                         </p>
-                        <p className="text-white/80 text-sm mt-1">– Člen TJ Krupka</p>
+                        <p className="text-white/80 text-sm mt-1">– Jakub, 14 let, junior člen</p>
                       </div>
                     </div>
 
@@ -456,13 +508,13 @@ const ProCleny = () => {
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
                   <Badge className="mb-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white border-0 px-4 py-2 text-sm font-semibold">
-                    Máš otázky?
+                    Pro rodiče
                   </Badge>
                   <h2 className="text-4xl md:text-5xl font-black text-tjk-blue mb-4">
-                    Nejčastější dotazy
+                    Často kladené otázky
                   </h2>
                   <p className="text-lg text-gray-600">
-                    Všechno, co potřebuješ vědět, než se staneš členem.
+                    Odpovědi na dotazy rodičů o junior členství pro děti.
                   </p>
                 </div>
 
@@ -475,14 +527,13 @@ const ProCleny = () => {
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
                               ?
                             </div>
-                            Je areál přístupný veřejnosti?
+                            Je areál otevřený pro všechny děti?
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="text-base text-gray-700 leading-relaxed pl-11 pb-6">
-                          Ne, areál slouží výhradně členům spolku Tělovýchovná
-                          jednota Krupka z.s. – ale členství je otevřené všem,
-                          kteří sdílejí naši vášeň! Není to žádný exkluzivní klub,
-                          prostě místo pro lidi, co mají rádi sport. 🎿
+                          Areál je určen pro junior členy spolku TJ Krupka z.s. (děti 5-16 let).
+                          Není to veřejný provoz, ale junior členství je otevřené všem dětem,
+                          které milují sport a hory! 🏔️
                         </AccordionContent>
                       </AccordionItem>
 
@@ -492,13 +543,13 @@ const ProCleny = () => {
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold text-sm">
                               ?
                             </div>
-                            Platí se jízdné?
+                            Musí děti platit za každou jízdu?
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="text-base text-gray-700 leading-relaxed pl-11 pb-6">
-                          Nevybírá se žádné jízdné! Členové platí členské příspěvky,
-                          které podporují celý spolek – údržbu, rozvoj a akce.
-                          Jednoduše řečeno: investuješ do společné věci, ne do jízdenek. 💪
+                          Ne! Nevybírá se žádné jízdné. Junior členové platí členské příspěvky,
+                          které podporují celý spolek – údržbu areálu, vybavení a dětské akce.
+                          Investice do sportovního rozvoje vašeho dítěte, ne do jednotlivých jízd! 💪
                         </AccordionContent>
                       </AccordionItem>
 
@@ -508,13 +559,13 @@ const ProCleny = () => {
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-sm">
                               ?
                             </div>
-                            Jak se stanu členem?
+                            Jak přihlásím své dítě?
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="text-base text-gray-700 leading-relaxed pl-11 pb-6">
-                          Super jednoduché: pošleš přihlášku, výbor ji schválí
-                          (což obvykle trvá pár dní) a pak už jen vyrazíš užívat
-                          si Komárku! Kontaktuj nás níže a pomůžeme ti se vším. 🚀
+                          Super jednoduché! Vyplňte online přihlášku (link níže), výbor ji schválí
+                          (obvykle do týdne) a pak už vaše dítě může vyrazit na Komárku!
+                          Pokud máte dotazy, neváhejte nás kontaktovat. 🚀
                         </AccordionContent>
                       </AccordionItem>
 
@@ -524,13 +575,13 @@ const ProCleny = () => {
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-white font-bold text-sm">
                               ?
                             </div>
-                            Kde najdu pravidla?
+                            Jaká jsou pravidla pro děti?
                           </div>
                         </AccordionTrigger>
                         <AccordionContent className="text-base text-gray-700 leading-relaxed pl-11 pb-6">
-                          Vše dostaneš po přijetí za člena – stanovy, interní
-                          pravidla a všechny důležité info. Neboj, nic složitého,
-                          jen základní věci, aby to fungovalo pro všechny. 📋
+                          Vše dostanete po přijetí dítěte za člena – stanovy spolku, interní
+                          pravidla a důležité informace. Nejsou to nic složitého, jen základní
+                          pravidla bezpečnosti a chování, aby si to všichni užili! 📋
                         </AccordionContent>
                       </AccordionItem>
                     </Accordion>
@@ -562,12 +613,12 @@ const ProCleny = () => {
                     </div>
 
                     <h2 className="text-4xl md:text-5xl font-black mb-6">
-                      Pojď do toho s námi!
+                      Přihlaš své dítě ještě dnes!
                     </h2>
 
                     <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10">
-                      Máš dotazy? Chceš se dozvědět víc o členství? Kontaktuj nás
-                      a my ti všechno vysvětlíme. Těšíme se na tebe! 🤙
+                      Máte dotazy k junior členství? Chcete se dozvědět víc o programu
+                      pro děti? Kontaktujte nás a my vám všechno vysvětlíme. Těšíme se! 🤙
                     </p>
 
                     <div className="grid md:grid-cols-2 gap-6 mb-10 max-w-2xl mx-auto">
@@ -593,17 +644,34 @@ const ProCleny = () => {
                       </div>
                     </div>
 
-                    <Button
-                      size="lg"
-                      className="bg-white text-tjk-blue hover:bg-gray-100 font-bold px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
-                      asChild
-                    >
-                      <Link to="/kontakt">
-                        <Mail className="mr-2 h-5 w-5" />
-                        Kontaktní formulář
-                        <ChevronRight className="ml-2 h-5 w-5" />
-                      </Link>
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                      <Button
+                        size="lg"
+                        className="bg-white text-tjk-blue hover:bg-gray-100 font-bold px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
+                        asChild
+                      >
+                        <a
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <FileText className="mr-2 h-6 w-6" />
+                          Vyplnit přihlášku
+                        </a>
+                      </Button>
+
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:bg-white/20 text-white font-bold px-10 py-7 text-lg"
+                        asChild
+                      >
+                        <Link to="/kontakt">
+                          <Mail className="mr-2 h-5 w-5" />
+                          Nebo nás kontaktuj
+                        </Link>
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               </div>
