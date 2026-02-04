@@ -250,7 +250,119 @@ const ProCleny = () => {
               </AlertDescription>
             </Alert>
           </ScrollAnimation>
+        </div>
 
+        {/* Info blok - Dětský vlek zdarma - FULL WIDTH */}
+        <ScrollAnimation animation="fade-up">
+          <section className="mb-20 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-32">
+            <div className="bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600 py-16 md:py-24 px-4 relative overflow-hidden min-h-[400px] md:min-h-[450px]">
+              {/* Background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 -left-4 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-0 -right-4 w-96 h-96 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl animate-pulse animation-delay-2000"></div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute top-10 left-10 text-white text-8xl">⛷️</div>
+                <div className="absolute bottom-10 right-10 text-white text-8xl">🎿</div>
+              </div>
+
+              <div className="container mx-auto max-w-6xl relative z-10">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+                  {/* Icon */}
+                  <div className="flex-shrink-0">
+                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-3xl bg-white/20 backdrop-blur-md border-4 border-white/40 flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">
+                      <Cable className="h-16 w-16 md:h-20 md:w-20 text-white" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 text-white text-center md:text-left max-w-3xl">
+                    <div className="flex items-center justify-center md:justify-start gap-3 mb-4">
+                      <Badge className="bg-yellow-400 text-tjk-blue border-0 px-4 py-2 text-sm font-black shadow-lg">
+                        ZDARMA PRO ČLENY
+                      </Badge>
+                      <Sparkles className="h-6 w-6 text-yellow-300 animate-pulse" />
+                    </div>
+
+                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+                      Dětský vlek bez poplatků!
+                    </h3>
+
+                    <p className="text-xl md:text-2xl lg:text-3xl text-white/95 leading-relaxed mb-6">
+                      Junior členové spolku mohou <strong className="text-yellow-300">využívat dětský vlek zcela zdarma</strong> ve vyhrazených časech.
+                    </p>
+
+                    <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-6">
+                      Ideální pro nácvik lyžování, snowboardingu a získávání prvních zkušeností na svahu!
+                    </p>
+
+                    <div className="flex items-start justify-center md:justify-start gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                      <CheckCircle className="h-6 w-6 text-yellow-300 flex-shrink-0 mt-1" />
+                      <p className="text-white/95 text-base md:text-lg leading-relaxed">
+                        Po přijetí za člena obdržíte informace o vyhrazených časech a pravidlech využívání.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollAnimation>
+
+        {/* CTA - Přihláška pro děti - FULL WIDTH */}
+        <ScrollAnimation animation="fade-up">
+          <section className="mb-20 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-32">
+            <div className="bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 py-12 md:py-16 px-4 relative overflow-hidden">
+              {/* Background effects */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 right-0 w-full h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-full h-64 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
+              </div>
+
+              <div className="container mx-auto max-w-5xl relative z-10">
+                <div className="text-center text-white">
+                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 mb-4">
+                    <Sparkles className="h-4 w-4 text-yellow-300" />
+                    <span className="font-semibold text-sm">Junior členství • 5-16 let</span>
+                  </div>
+
+                  <h3 className="text-3xl md:text-4xl font-black mb-4">
+                    Připrav se na akci! 🎉
+                  </h3>
+
+                  <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    S rodiči vyplňte online přihlášku a staňte se součástí junior sportovní party.
+                    Je to jednoduché a rychlé!
+                  </p>
+
+                  <Button
+                    size="lg"
+                    className="bg-white text-green-700 hover:bg-gray-100 font-black px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
+                    asChild
+                  >
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FileText className="mr-2 h-6 w-6" />
+                      Vyplnit přihlášku
+                      <ChevronRight className="ml-2 h-6 w-6" />
+                    </a>
+                  </Button>
+
+                  <p className="text-sm text-white/70 mt-6">
+                    ✓ Pro děti 5-16 let  •  ✓ Vyplňte s rodiči  •  ✓ Zabere 5 minut
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollAnimation>
+
+        <div className="container mx-auto px-4 py-16 md:py-24">
           {/* Benefity členství - Hvězdná sekce */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-24">
@@ -293,59 +405,9 @@ const ProCleny = () => {
               </div>
             </section>
           </ScrollAnimation>
+        </div>
 
-          {/* Info blok - Dětský vlek zdarma */}
-          <ScrollAnimation animation="fade-up">
-            <section className="mb-24">
-              <div className="max-w-4xl mx-auto">
-                <Card className="relative overflow-hidden border-0 shadow-2xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600">
-                  {/* Background pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 -left-4 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
-                    <div className="absolute bottom-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
-                  </div>
-
-                  <CardContent className="relative z-10 p-8 md:p-12">
-                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                      {/* Icon */}
-                      <div className="flex-shrink-0">
-                        <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-md border-2 border-white/40 flex items-center justify-center">
-                          <Cable className="h-10 w-10 text-white" />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 text-white">
-                        <div className="flex items-center gap-3 mb-3">
-                          <Badge className="bg-yellow-400 text-tjk-blue border-0 px-3 py-1 text-xs font-bold">
-                            ZDARMA PRO ČLENY
-                          </Badge>
-                          <Sparkles className="h-5 w-5 text-yellow-300" />
-                        </div>
-
-                        <h3 className="text-2xl md:text-3xl font-black mb-3">
-                          Dětský vlek bez poplatků!
-                        </h3>
-
-                        <p className="text-lg md:text-xl text-white/95 leading-relaxed">
-                          Junior členové spolku mohou <strong className="text-yellow-300">využívat dětský vlek zcela zdarma</strong> ve vyhrazených časech.
-                          Ideální pro nácvik lyžování, snowboardingu a získávání prvních zkušeností na svahu!
-                        </p>
-
-                        <div className="mt-4 flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-yellow-300 flex-shrink-0 mt-0.5" />
-                          <p className="text-white/90 text-sm">
-                            Po přijetí za člena obdržíte informace o vyhrazených časech a pravidlech využívání.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </section>
-          </ScrollAnimation>
-
+        <div className="container mx-auto px-4 py-16 md:py-24">
           {/* Jak to funguje - Vizuální kroky */}
           <ScrollAnimation animation="fade-up">
             <section id="jak-to-funguje" className="mb-24">
@@ -402,57 +464,6 @@ const ProCleny = () => {
             </section>
           </ScrollAnimation>
         </div>
-
-        {/* CTA - Přihláška pro děti - FULL WIDTH */}
-        <ScrollAnimation animation="fade-up">
-          <section className="mb-20 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-32">
-            <div className="bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 py-12 md:py-16 px-4 relative overflow-hidden">
-              {/* Background effects */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 right-0 w-full h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-full h-64 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
-              </div>
-
-              <div className="container mx-auto max-w-5xl relative z-10">
-                <div className="text-center text-white">
-                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 mb-4">
-                    <Sparkles className="h-4 w-4 text-yellow-300" />
-                    <span className="font-semibold text-sm">Junior členství • 5-16 let</span>
-                  </div>
-
-                  <h3 className="text-3xl md:text-4xl font-black mb-4">
-                    Připrav se na akci! 🎉
-                  </h3>
-
-                  <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                    S rodiči vyplňte online přihlášku a staňte se součástí junior sportovní party.
-                    Je to jednoduché a rychlé!
-                  </p>
-
-                  <Button
-                    size="lg"
-                    className="bg-white text-green-700 hover:bg-gray-100 font-black px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
-                    asChild
-                  >
-                    <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FileText className="mr-2 h-6 w-6" />
-                      Vyplnit přihlášku
-                      <ChevronRight className="ml-2 h-6 w-6" />
-                    </a>
-                  </Button>
-
-                  <p className="text-sm text-white/70 mt-6">
-                    ✓ Pro děti 5-16 let  •  ✓ Vyplňte s rodiči  •  ✓ Zabere 5 minut
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </ScrollAnimation>
 
         <div className="container mx-auto px-4 py-16 md:py-24">
 

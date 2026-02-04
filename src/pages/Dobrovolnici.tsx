@@ -289,21 +289,21 @@ const Dobrovolnici = () => {
           {/* Kontakt / výzva - Vylepšená */}
           <section
             ref={formRef}
-            className="mb-20 w-full max-w-7xl mx-auto bg-gradient-to-br from-white via-blue-50 to-cyan-50 rounded-3xl shadow-2xl border-2 border-blue-100 p-12 pt-32 -mt-32 mt-16"
+            className="mb-20 w-full max-w-7xl mx-auto bg-gradient-to-br from-white via-blue-50 to-cyan-50 rounded-3xl shadow-2xl border-2 border-blue-100 p-4 md:p-8 lg:p-12"
             style={{ boxSizing: "border-box" }}
           >
-            <div className="flex flex-col items-center mb-8">
-              <div className="p-4 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-2xl shadow-lg mb-4">
-                <Users className="h-10 w-10 text-white" />
+            <div className="flex flex-col items-center mb-6 md:mb-8">
+              <div className="p-3 md:p-4 bg-gradient-to-br from-tjk-blue to-cyan-600 rounded-2xl shadow-lg mb-3 md:mb-4">
+                <Users className="h-8 w-8 md:h-10 md:w-10 text-white" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue text-center font-montserrat mb-3">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-tjk-blue text-center font-montserrat mb-2 md:mb-3 px-4">
                 Máte zájem? Ozvěte se nám!
               </h2>
-              <p className="text-lg text-gray-600 text-center max-w-2xl">
+              <p className="text-base md:text-lg text-gray-600 text-center max-w-2xl px-4">
                 Vyplňte formulář a my se vám co nejdříve ozveme
               </p>
             </div>
-            <div className="w-full bg-white rounded-2xl shadow-xl border border-gray-100 p-6">
+            <div className="w-full">
               <ContactForm showPhone={true} />
             </div>
           </section>

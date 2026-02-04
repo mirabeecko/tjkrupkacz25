@@ -136,10 +136,10 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8 bg-white rounded-2xl shadow-lg px-8 py-10 md:px-16 md:py-12 border border-gray-100">
-      <div className="flex items-center gap-3 mb-8">
-        <MessageCircle className="h-8 w-8 text-tjk-blue" />
-        <h2 className="text-2xl font-bold text-tjk-blue font-montserrat">Kontaktní formulář</h2>
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white rounded-2xl shadow-lg px-4 py-6 md:px-8 md:py-8 border border-gray-100">
+      <div className="flex items-center gap-3 mb-6">
+        <MessageCircle className="h-6 w-6 md:h-8 md:w-8 text-tjk-blue" />
+        <h2 className="text-xl md:text-2xl font-bold text-tjk-blue font-montserrat">Kontaktní formulář</h2>
       </div>
       <div className="grid md:grid-cols-2 gap-8">
         <div>
