@@ -225,49 +225,100 @@ const KomariVizka = () => {
             </Alert>
           </ScrollAnimation>
 
-          {/* Úvodní text - O Komáří vížce s fotkou */}
+          {/* Informace - Blogový styl */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-20">
               <div className="max-w-7xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-8 text-center">
-                  Komáří vížka – Legendární areál probouzí Krušné hory k životu
-                </h2>
-
-                 <div className="prose prose-lg max-w-none prose-p:text-justify">
-                   <div className="float-right ml-6 mb-4 w-full md:w-1/2">
-                     <div className="relative rounded-lg overflow-hidden shadow-xl">
-                       <img
-                         src="/images/sluzby/komarka.jpg"
-                         alt="Areál Komáří vížka"
-                         className="w-full h-64 md:h-80 object-cover"
-                       />
-                     </div>
-                   </div>
-
-                   <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Legenda Krušných hor ožívá!</strong> Komáří vížka je ikonické místo s více než 50letou tradicí, kde vyrostly celé generace lyžařů a milovníků hor. Díky nejdelší sedačkové lanovce v ČR a jedinečné polohe se stal areál srdcem zimní rekreace v regionu Teplice, Ústí nad Labem a Krupka.
-                   </p>
-
-                   <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Komárka ožívá prostřednictvím junior sportovní činnosti!</strong> Areál momentálně slouží výhradně pro členy spolku Tělovýchovná jednota Krupka z.s. (děti a mládež 5-16 let). Obnovujeme tradici a vytváříme bezpečné sportovní zázemí pro mladé nadšence. V zimě lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě sportovní aktivity pro všechny úrovně – od začátečníků až po pokročilé mladé sportovce.
-                   </p>
-
-                   <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     Areál nabízí junior členům rozmanité sportovní aktivity v krásném horském prostředí. Od zimních sportů jako lyžování a snowkiting až po letní sportovní vyžití s využitím lanovky. Vytváříme podmínky pro bezpečný rozvoj sportovních dovedností dětí a mládeže.
-                   </p>
-
-                   <div className="clear-both"></div>
-                 </div>
-
-                {/* Další text pod fotkou */}
-                <div className="mt-8 space-y-4">
-                  <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    <strong className="text-tjk-blue">Více než areál – centrum junior sportovní činnosti v horách.</strong> Areál momentálně slouží výhradně pro členy spolku. Spolupracujeme se školami a sportovními kluby na přípravě dětských programů. Nabízíme adaptační kurzy, sportovní tábory, tréninky mládeže a víkendové pobyty s ubytováním a profesionálním zázemím.
+                <div className="text-center mb-10">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-tjk-blue/10 border border-tjk-blue/20 rounded-full mb-4">
+                    <span className="text-sm font-semibold text-tjk-blue">Informace</span>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue">
+                    Komáří vížka – aktuálně a přehledně
+                  </h2>
+                  <p className="text-lg text-gray-600 mt-3">
+                    Krátké, jasné informace o areálu a jeho provozu.
                   </p>
+                </div>
 
-                  <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    <strong className="text-tjk-blue">Dokonalé místo pro mladé sportovce a adrenalinové nadšence!</strong> Areál je zaměřen na děti a mládež (5-16 let) jako členy spolku. Lyžování, snowkiting, mountain biking, airbag pro bezpečný nácvik triků a další aktivity. Naše novinka – profesionální AIRBAG matrace – umožní bezpečné trénování skoků a triků na kole, snowboardu i lyžích. Pro informace o členství navštivte sekci <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">Pro členy</Link>.
-                  </p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <article className="bg-white border-2 border-tjk-blue/10 rounded-2xl shadow-lg p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-bold tracking-wide text-tjk-blue bg-tjk-blue/10 px-3 py-1 rounded-full">
+                        INFO
+                      </span>
+                      <span className="text-xs text-gray-500">Aktualizace</span>
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-tjk-blue mb-3">
+                      Legenda Krušných hor ožívá
+                    </h3>
+                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                      Komáří vížka je ikonické místo s více než 50letou tradicí. Díky nejdelší sedačkové lanovce v ČR a jedinečné poloze
+                      se areál stal srdcem zimní rekreace regionu Teplice, Ústí nad Labem a Krupka.
+                    </p>
+                  </article>
+
+                  <article className="bg-white border-2 border-emerald-200 rounded-2xl shadow-lg p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-bold tracking-wide text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
+                        PROVOZ
+                      </span>
+                      <span className="text-xs text-gray-500">Aktuální stav</span>
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-tjk-blue mb-3">
+                      Areál slouží sportovní činnosti mládeže
+                    </h3>
+                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                      Areál momentálně slouží výhradně pro členy spolku Tělovýchovná jednota Krupka z.s. (děti a mládež 5-16 let).
+                      Provoz není veřejný komerční.
+                    </p>
+                    <div className="mt-4">
+                      <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">
+                        Více informací v sekci Pro členy
+                      </Link>
+                    </div>
+                  </article>
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+                  <article className="bg-white border-2 border-orange-200 rounded-2xl shadow-lg p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-bold tracking-wide text-orange-700 bg-orange-100 px-3 py-1 rounded-full">
+                        ZIMA
+                      </span>
+                      <span className="text-xs text-gray-500">Sezóna</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-tjk-blue mb-2">Lyžování, snowboarding, snowkiting</h3>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                      Ideální podmínky pro zimní sporty a rozvoj dovedností v horském prostředí.
+                    </p>
+                  </article>
+
+                  <article className="bg-white border-2 border-blue-200 rounded-2xl shadow-lg p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-bold tracking-wide text-blue-700 bg-blue-100 px-3 py-1 rounded-full">
+                        LÉTO
+                      </span>
+                      <span className="text-xs text-gray-500">Sezóna</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-tjk-blue mb-2">Sportovní aktivity v létě</h3>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                      Využití lanovky, tréninky a aktivity pro různé úrovně zkušeností.
+                    </p>
+                  </article>
+
+                  <article className="bg-white border-2 border-purple-200 rounded-2xl shadow-lg p-6">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-xs font-bold tracking-wide text-purple-700 bg-purple-100 px-3 py-1 rounded-full">
+                        NOVINKA
+                      </span>
+                      <span className="text-xs text-gray-500">AIRBAG</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-tjk-blue mb-2">Bezpečný nácvik triků</h3>
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                      Profesionální AIRBAG matrace pro bezpečné trénování skoků na kole, snowboardu i lyžích.
+                    </p>
+                  </article>
                 </div>
               </div>
             </section>
