@@ -207,22 +207,26 @@ const KomariVizka = () => {
         </section>
 
         <div className="container mx-auto px-4 py-16 md:py-24">
-          {/* Důležité upozornění */}
+          {/* Více informací */}
           <ScrollAnimation animation="fade-up">
-            <Alert className="mb-20 border-2 border-tjk-orange bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
-              <AlertCircle className="h-6 w-6 text-tjk-orange" />
-              <AlertTitle className="text-tjk-blue font-bold text-xl">
-                Důležitá informace o využívání areálu
-              </AlertTitle>
-              <AlertDescription className="text-gray-700 text-base leading-relaxed">
-                Areál Komáří vížka <strong>momentálně slouží výhradně pro junior sportovní činnost</strong> –
-                děti a mládež ve věku 5-16 let jako členy spolku Tělovýchovná jednota Krupka z.s.
-                Nejde o veřejný komerční provoz. Pro více informací o členství navštivte sekci{" "}
-                <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">
-                  Pro členy
-                </Link>. 🏔️
-              </AlertDescription>
-            </Alert>
+            <div className="mb-12">
+              <div className="bg-white border-2 border-tjk-blue/20 rounded-2xl shadow-lg px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-bold text-tjk-blue">
+                    Více informací najdete na stránce Pro členy
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Podrobnosti o členství, pravidlech a využívání areálu.
+                  </p>
+                </div>
+                <Link
+                  to="/komari-vizka/pro-cleny"
+                  className="inline-flex items-center justify-center px-5 py-2 rounded-full bg-tjk-orange text-white font-bold hover:bg-tjk-blue transition-colors"
+                >
+                  Přejít na Pro členy
+                </Link>
+              </div>
+            </div>
           </ScrollAnimation>
 
           {/* Informace - Blogový styl */}
