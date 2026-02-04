@@ -346,74 +346,62 @@ const ProCleny = () => {
                 </div>
               </div>
 
-              {/* Členské příspěvky info */}
-              <ScrollAnimation animation="fade-up" delay={0.3}>
-                <Card className="mt-12 max-w-4xl mx-auto bg-gradient-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 shadow-xl">
-                  <CardContent className="p-8 text-center">
-                    <div className="flex items-center justify-center gap-3 mb-4">
-                      <Info className="h-6 w-6 text-blue-600" />
-                      <h3 className="text-2xl font-bold text-tjk-blue">
-                        Informace pro rodiče
-                      </h3>
-                    </div>
-                    <p className="text-lg text-gray-700 leading-relaxed">
-                      Členské příspěvky slouží na <strong>podporu junior sportovní činnosti</strong> –
-                      údržbu areálu, nákup vybavení, pořádání dětských akcí a rozvoj aktivit.
-                      Nejsou úhradou za jednotlivé jízdy, ale investicí do sportovního rozvoje vašich dětí! 🚀
-                    </p>
-                  </CardContent>
-                </Card>
-              </ScrollAnimation>
-
-              {/* CTA - Přihláška pro děti */}
-              <ScrollAnimation animation="fade-up" delay={0.4}>
-                <div className="mt-12 max-w-4xl mx-auto">
-                  <Card className="relative overflow-hidden border-0 shadow-2xl bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600">
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="absolute top-0 right-0 w-full h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
-                      <div className="absolute bottom-0 left-0 w-full h-64 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
-                    </div>
-
-                    <CardContent className="relative z-10 p-8 md:p-12 text-center text-white">
-                      <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 mb-4">
-                        <Sparkles className="h-4 w-4 text-yellow-300" />
-                        <span className="font-semibold text-sm">Junior členství • 5-16 let</span>
-                      </div>
-
-                      <h3 className="text-3xl md:text-4xl font-black mb-4">
-                        Připrav se na akci! 🎉
-                      </h3>
-
-                      <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
-                        S rodiči vyplňte online přihlášku a staňte se součástí junior sportovní party.
-                        Je to jednoduché a rychlé!
-                      </p>
-
-                      <Button
-                        size="lg"
-                        className="bg-white text-green-700 hover:bg-gray-100 font-black px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
-                        asChild
-                      >
-                        <a
-                          href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FileText className="mr-2 h-6 w-6" />
-                          Vyplnit přihlášku
-                          <ChevronRight className="ml-2 h-6 w-6" />
-                        </a>
-                      </Button>
-
-                      <p className="text-sm text-white/70 mt-6">
-                        ✓ Pro děti 5-16 let  •  ✓ Vyplňte s rodiči  •  ✓ Zabere 5 minut
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </ScrollAnimation>
             </section>
           </ScrollAnimation>
+        </div>
+
+        {/* CTA - Přihláška pro děti - FULL WIDTH */}
+        <ScrollAnimation animation="fade-up">
+          <section className="mb-20 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-32">
+            <div className="bg-gradient-to-br from-green-500 via-emerald-600 to-teal-600 py-12 md:py-16 px-4 relative overflow-hidden">
+              {/* Background effects */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-0 right-0 w-full h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-full h-64 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
+              </div>
+
+              <div className="container mx-auto max-w-5xl relative z-10">
+                <div className="text-center text-white">
+                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-5 py-2 mb-4">
+                    <Sparkles className="h-4 w-4 text-yellow-300" />
+                    <span className="font-semibold text-sm">Junior členství • 5-16 let</span>
+                  </div>
+
+                  <h3 className="text-3xl md:text-4xl font-black mb-4">
+                    Připrav se na akci! 🎉
+                  </h3>
+
+                  <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+                    S rodiči vyplňte online přihlášku a staňte se součástí junior sportovní party.
+                    Je to jednoduché a rychlé!
+                  </p>
+
+                  <Button
+                    size="lg"
+                    className="bg-white text-green-700 hover:bg-gray-100 font-black px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
+                    asChild
+                  >
+                    <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FileText className="mr-2 h-6 w-6" />
+                      Vyplnit přihlášku
+                      <ChevronRight className="ml-2 h-6 w-6" />
+                    </a>
+                  </Button>
+
+                  <p className="text-sm text-white/70 mt-6">
+                    ✓ Pro děti 5-16 let  •  ✓ Vyplňte s rodiči  •  ✓ Zabere 5 minut
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ScrollAnimation>
+
+        <div className="container mx-auto px-4 py-16 md:py-24">
 
           {/* Bezpečnost a pravidla - ale cool */}
           <ScrollAnimation animation="fade-up">
@@ -590,94 +578,91 @@ const ProCleny = () => {
               </div>
             </section>
           </ScrollAnimation>
+        </div>
 
-          {/* Kontakt - Atraktivnější CTA */}
-          <ScrollAnimation animation="fade-up">
-            <section id="kontakt" className="mb-20">
-              <div className="max-w-5xl mx-auto">
-                <Card className="relative overflow-hidden border-0 shadow-2xl">
-                  {/* Gradient background */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-tjk-blue via-purple-900 to-pink-900"></div>
+        {/* Kontakt - Atraktivnější CTA - FULL WIDTH */}
+        <ScrollAnimation animation="fade-up">
+          <section id="kontakt" className="mb-20 -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-16 xl:-mx-32">
+            <div className="bg-gradient-to-br from-tjk-blue via-purple-900 to-pink-900 py-12 md:py-16 px-4 relative overflow-hidden">
+              {/* Pattern overlay */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                }}></div>
+              </div>
 
-                  {/* Pattern overlay */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                    }}></div>
+              <div className="container mx-auto max-w-5xl relative z-10">
+                <div className="text-center text-white">
+                  <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 mb-6">
+                    <Sparkles className="h-5 w-5 text-yellow-300" />
+                    <span className="font-semibold">Připravený na akci?</span>
                   </div>
 
-                  <CardContent className="relative z-10 p-10 md:p-16 text-center text-white">
-                    <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-6 py-3 mb-6">
-                      <Sparkles className="h-5 w-5 text-yellow-300" />
-                      <span className="font-semibold">Připravený na akci?</span>
-                    </div>
+                  <h2 className="text-4xl md:text-5xl font-black mb-6">
+                    Přihlaš své dítě ještě dnes!
+                  </h2>
 
-                    <h2 className="text-4xl md:text-5xl font-black mb-6">
-                      Přihlaš své dítě ještě dnes!
-                    </h2>
+                  <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10">
+                    Máte dotazy k junior členství? Chcete se dozvědět víc o programu
+                    pro děti? Kontaktujte nás a my vám všechno vysvětlíme. Těšíme se! 🤙
+                  </p>
 
-                    <p className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10">
-                      Máte dotazy k junior členství? Chcete se dozvědět víc o programu
-                      pro děti? Kontaktujte nás a my vám všechno vysvětlíme. Těšíme se! 🤙
-                    </p>
-
-                    <div className="grid md:grid-cols-2 gap-6 mb-10 max-w-2xl mx-auto">
-                      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all">
-                        <Mail className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
-                        <p className="text-sm text-white/70 mb-2">Napiš nám</p>
-                        <a
-                          href="mailto:telovychovnajednotakrupka@gmail.com"
-                          className="text-white font-bold hover:text-cyan-400 transition-colors break-all"
-                        >
-                          telovychovnajednotakrupka@gmail.com
-                        </a>
-                      </div>
-                      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all">
-                        <Phone className="h-8 w-8 text-green-400 mx-auto mb-3" />
-                        <p className="text-sm text-white/70 mb-2">Zavolej nám</p>
-                        <a
-                          href="tel:+420777734389"
-                          className="text-white font-bold hover:text-green-400 transition-colors text-xl"
-                        >
-                          +420 777 734 389
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                      <Button
-                        size="lg"
-                        className="bg-white text-tjk-blue hover:bg-gray-100 font-bold px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
-                        asChild
+                  <div className="grid md:grid-cols-2 gap-6 mb-10 max-w-2xl mx-auto">
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all">
+                      <Mail className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
+                      <p className="text-sm text-white/70 mb-2">Napiš nám</p>
+                      <a
+                        href="mailto:telovychovnajednotakrupka@gmail.com"
+                        className="text-white font-bold hover:text-cyan-400 transition-colors break-all"
                       >
-                        <a
-                          href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FileText className="mr-2 h-6 w-6" />
-                          Vyplnit přihlášku
-                        </a>
-                      </Button>
-
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:bg-white/20 text-white font-bold px-10 py-7 text-lg"
-                        asChild
-                      >
-                        <Link to="/kontakt">
-                          <Mail className="mr-2 h-5 w-5" />
-                          Nebo nás kontaktuj
-                        </Link>
-                      </Button>
+                        telovychovnajednotakrupka@gmail.com
+                      </a>
                     </div>
-                  </CardContent>
-                </Card>
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all">
+                      <Phone className="h-8 w-8 text-green-400 mx-auto mb-3" />
+                      <p className="text-sm text-white/70 mb-2">Zavolej nám</p>
+                      <a
+                        href="tel:+420777734389"
+                        className="text-white font-bold hover:text-green-400 transition-colors text-xl"
+                      >
+                        +420 777 734 389
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <Button
+                      size="lg"
+                      className="bg-white text-tjk-blue hover:bg-gray-100 font-bold px-10 py-7 text-lg shadow-2xl transform hover:scale-105 transition-all"
+                      asChild
+                    >
+                      <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSeSVSjZo7teeg2oxoAbLzIMrBqA0_12cR7Uuzd-hTThLMKBig/viewform?usp=header"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FileText className="mr-2 h-6 w-6" />
+                        Vyplnit přihlášku
+                      </a>
+                    </Button>
+
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="bg-white/10 backdrop-blur-md border-2 border-white/30 hover:bg-white/20 text-white font-bold px-10 py-7 text-lg"
+                      asChild
+                    >
+                      <Link to="/kontakt">
+                        <Mail className="mr-2 h-5 w-5" />
+                        Nebo nás kontaktuj
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
               </div>
-            </section>
-          </ScrollAnimation>
-        </div>
+            </div>
+          </section>
+        </ScrollAnimation>
       </main>
 
       <Footer />

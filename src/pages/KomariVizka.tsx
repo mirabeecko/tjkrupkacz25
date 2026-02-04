@@ -5,11 +5,12 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { supabase } from '@/supabaseClient';
-import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target, Phone, TrendingUp, Heart, Sprout, CloudSun, Bus, Cable, TreePine, Car } from "lucide-react";
+import { MapPin, ArrowRight, Users, Bike, Coffee, Map as MapIcon, Clock, Mountain, Bird, Home, Shield, GraduationCap, Sparkles, ChevronRight, Star, Award, Target, Phone, TrendingUp, Heart, Sprout, CloudSun, Bus, Cable, TreePine, Car, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 interface Vlek {
   id: number;
@@ -78,15 +79,6 @@ const KomariVizka = () => {
 
   const services = [
     {
-      icon: <Bike className="h-6 w-6" />,
-      title: "Trailpark Komárka",
-      description: "Udržované traily pro všechny úrovně. Single tracky, technické sjezdy i rodinné stezky.",
-      link: "/trailpark",
-      buttonText: "Prozkoumat traily",
-      gradient: "from-purple-600 to-indigo-600",
-      hoverGradient: "from-purple-700 to-indigo-700"
-    },
-    {
       icon: <TreePine className="h-6 w-6" />,
       title: "Snowkiting kurzy",
       description: "Naučte se snowkiting s certifikovanými instruktory v ideálních podmínkách Krušných hor.",
@@ -127,7 +119,7 @@ const KomariVizka = () => {
     {
       icon: <Users className="h-6 w-6" />,
       title: "Dobrovolnické programy",
-      description: "Přidejte se k nám při budování trailů nebo jako instruktoři. Získejte slevy a výhody.",
+      description: "Přidejte se k nám při údržbě areálu nebo jako instruktoři. Získejte slevy a výhody.",
       link: "/dobrovolnici",
       buttonText: "Přidat se k týmu",
       gradient: "from-orange-500 to-red-500",
@@ -180,8 +172,8 @@ const KomariVizka = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Komáří vížka | Lyžařský Areál a Trailpark v Krušných Horách 2026"
-        description="Největší lyžařský a bikový areál v Krušných horách ⛷️ Trailpark s airbagem | Snowkiting kurzy | Ubytování | Bistro. ✓ Ideální pro rodiny ✓ 15 min z Teplic ✓ Nejdelší lanovka v ČR"
+        title="Komáří vížka | Junior Sportovní Areál v Krušných Horách | TJ Krupka"
+        description="Junior sportovní areál v Krušných horách ⛷️ Momentálně výhradně pro členy spolku TJ Krupka (děti 5-16 let) | Lyžování | Snowkiting | Airbag | Sportovní aktivity. ✓ Nejdelší lanovka v ČR ✓ 15 min z Teplic"
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
@@ -215,6 +207,24 @@ const KomariVizka = () => {
         </section>
 
         <div className="container mx-auto px-4 py-16 md:py-24">
+          {/* Důležité upozornění */}
+          <ScrollAnimation animation="fade-up">
+            <Alert className="mb-20 border-2 border-tjk-orange bg-gradient-to-r from-orange-50 to-amber-50 shadow-lg">
+              <AlertCircle className="h-6 w-6 text-tjk-orange" />
+              <AlertTitle className="text-tjk-blue font-bold text-xl">
+                Důležitá informace o využívání areálu
+              </AlertTitle>
+              <AlertDescription className="text-gray-700 text-base leading-relaxed">
+                Areál Komáří vížka <strong>momentálně slouží výhradně pro junior sportovní činnost</strong> –
+                děti a mládež ve věku 5-16 let jako členy spolku TJ Krupka z.s.
+                Nejde o veřejný komerční provoz. Pro více informací o členství navštivte sekci{" "}
+                <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">
+                  Pro členy
+                </Link>. 🏔️
+              </AlertDescription>
+            </Alert>
+          </ScrollAnimation>
+
           {/* Úvodní text - O Komáří vížce s fotkou */}
           <ScrollAnimation animation="fade-up">
             <section className="mb-20">
@@ -235,15 +245,15 @@ const KomariVizka = () => {
                    </div>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Zažijte legendu Krušných hor!</strong> Komáří vížka je ikonické místo s více než 50letou tradicí, kde vyrostly celé generace lyžařů a milovníků hor. Díky nejdelší sedačkové lanovce v ČR a jedinečné polohe se stal areál srdcem zimní rekreace v regionu Teplice, Ústí nad Labem a Krupka.
+                     <strong className="text-tjk-blue">Legenda Krušných hor ožívá!</strong> Komáří vížka je ikonické místo s více než 50letou tradicí, kde vyrostly celé generace lyžařů a milovníků hor. Díky nejdelší sedačkové lanovce v ČR a jedinečné polohe se stal areál srdcem zimní rekreace v regionu Teplice, Ústí nad Labem a Krupka.
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Komárka ožívá – sport, adrenalin a zábava 365 dní v roce!</strong> Obnovujeme tradici a rozšiřujeme možnosti. V zimě si užijte lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě objevte špičkový trailpark s tratěmi pro všechny úrovně jezdců – od rodinných vyjížděk až po technické single tracky.
+                     <strong className="text-tjk-blue">Komárka ožívá prostřednictvím junior sportovní činnosti!</strong> Areál momentálně slouží výhradně pro členy spolku TJ Krupka z.s. (děti a mládež 5-16 let). Obnovujeme tradici a vytváříme bezpečné sportovní zázemí pro mladé nadšence. V zimě lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě sportovní aktivity pro všechny úrovně – od začátečníků až po pokročilé mladé sportovce.
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     Náš trailpark propojuje Komárku s Horní Krupkou a okolím prostřednictvím sítě udržovaných trailů. Vyzkoušejte sjezd na kole po lanovce, prozkoumejte přírodní i upravené úseky nebo si užijte flow trails ideální pro rodiny s dětmi. Pro odvážnější připravujeme technické sekce a jump line.
+                     Areál nabízí junior členům rozmanité sportovní aktivity v krásném horském prostředí. Od zimních sportů jako lyžování a snowkiting až po letní sportovní vyžití s využitím lanovky. Vytváříme podmínky pro bezpečný rozvoj sportovních dovedností dětí a mládeže.
                    </p>
 
                    <div className="clear-both"></div>
@@ -252,11 +262,11 @@ const KomariVizka = () => {
                 {/* Další text pod fotkou */}
                 <div className="mt-8 space-y-4">
                   <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    <strong className="text-tjk-blue">Více než areál – centrum aktivního života v horách.</strong> Spolupracujeme se školami, sportovními kluby a rodinami. Nabízíme školy v přírodě, adaptační kurzy, sportovní příměstské tábory, víkendové pobyty i individuální tréninky. Vše na jednom místě s ubytováním, stravováním a profesionálním zázemím.
+                    <strong className="text-tjk-blue">Více než areál – centrum junior sportovní činnosti v horách.</strong> Areál momentálně slouží výhradně pro členy spolku. Spolupracujeme se školami a sportovními kluby na přípravě dětských programů. Nabízíme adaptační kurzy, sportovní tábory, tréninky mládeže a víkendové pobyty s ubytováním a profesionálním zázemím.
                   </p>
 
                   <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    <strong className="text-tjk-blue">Dokonalé místo pro rodiny i adrenalinové nadšence!</strong> Lyžování, snowkiting, mountain biking, airbag pro bezpečný nácvik triků, čtyřkolky a adrenalinové atrakce. Naše novinká – profesionální AIRBAG matrace – umožní bezpečné trénování skoků a triků na kole, snowboardu i lyžích. Přijeďte si vyzkoušet, proč je Komárka nejoblíbenější destinací v Krušných horách!
+                    <strong className="text-tjk-blue">Dokonalé místo pro mladé sportovce a adrenalinové nadšence!</strong> Areál je zaměřen na děti a mládež (5-16 let) jako členy spolku. Lyžování, snowkiting, mountain biking, airbag pro bezpečný nácvik triků a další aktivity. Naše novinka – profesionální AIRBAG matrace – umožní bezpečné trénování skoků a triků na kole, snowboardu i lyžích. Pro informace o členství navštivte sekci <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">Pro členy</Link>.
                   </p>
                 </div>
               </div>
@@ -402,13 +412,16 @@ const KomariVizka = () => {
               <div className="bg-tjk-blue py-12 md:py-16 px-4">
                 <div className="container mx-auto max-w-5xl">
                   <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white">
-                    Proč zvolit Komárku?
+                    Proč přihlásit dítě do junior členství?
                   </h2>
                   <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-4 text-center max-w-3xl mx-auto text-justify">
-                    Moderní areál s 50letou tradicí, nejdelší lanovka v ČR, špičkový trailpark a celoroční nabídka aktivit. Ideální vzdálenost z Teplic (15 km), profesionální zázemí a rodinná atmosféra. Přijeďte zalyžovat, zvládnout traily, vyzkoušet airbag nebo prostě prožít nezapomenutelný den v koruně Krušných hor!
+                    Moderní junior sportovní areál s 50letou tradicí, nejdelší lanovka v ČR a celoroční nabídka aktivit pro děti a mládež. Ideální vzdálenost z Teplic (15 km), profesionální zázemí a bezpečné prostředí. Areál momentálně slouží výhradně pro členy spolku (děti 5-16 let). Lyžování, snowkiting, airbag a nezapomenutelné sportovní zážitky v Krušných horách!
                   </p>
                   <p className="text-base md:text-lg text-white/90 text-center mt-6">
-                    <strong>Tělovýchovná jednota Krupka z.s.</strong> vás zve na Komárku – místo, kde tradice ožívá a kde každá návštěva znamená nový zážitek.
+                    <strong>Tělovýchovná jednota Krupka z.s.</strong> nabízí junior členství na Komárce – místo, kde tradice ožívá a mladí sportovci získávají nové dovednosti!{" "}
+                    <Link to="/komari-vizka/pro-cleny" className="text-yellow-300 hover:text-yellow-100 font-bold underline">
+                      Zjistit více o členství
+                    </Link>
                   </p>
                 </div>
               </div>

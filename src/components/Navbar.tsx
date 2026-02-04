@@ -26,12 +26,14 @@ const servicesSubmenu = [
 const menuItems = [
   { name: "O nás", icon: <Info className="h-5 w-5" />, href: "/o-nas" },
   { name: "Komáří vížka", icon: <Map className="h-5 w-5" />, href: "/komari-vizka" },
-  { name: "Pro členy spolku", icon: <Users className="h-5 w-5" />, href: "/komari-vizka/pro-cleny" },
   { name: "Služby", icon: <Briefcase className="h-5 w-5" />, href: "/sluzby", hasSubmenu: true },
   { name: "Dobrovolníci & Sponzoři", icon: <Heart className="h-5 w-5" />, href: "/dobrovolnici" },
   { name: "Kontakt", icon: <Mail className="h-5 w-5" />, href: "/kontakt" },
   { name: "Počasí", icon: <CloudSun className="h-5 w-5" />, href: "/pocasi" },
 ];
+
+// Speciální položka pro členy - zvýrazněná
+const memberMenuItem = { name: "Pro členy", icon: <Users className="h-5 w-5" />, href: "/komari-vizka/pro-cleny" };
 
 const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
   const location = useLocation();
@@ -94,8 +96,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
         {/* Navigation Links */}
         <ul className={cn(
           "space-y-1 p-4",
-          // Desktop: horizontal layout
-          "lg:flex lg:space-y-0 lg:space-x-1 lg:items-center lg:p-0 lg:py-0"
+          // Desktop: horizontal layout centered
+          "lg:flex lg:space-y-0 lg:space-x-1 lg:items-center lg:p-0 lg:py-0 lg:justify-center"
         )}>
           {menuItems.map((item) => (
             <li key={item.name} className="lg:h-full lg:relative">
@@ -240,6 +242,41 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
               )}
             </li>
           ))}
+
+          {/* Pro členy - Zvýrazněná položka s mírným oddělením */}
+          <li className="lg:h-full lg:ml-4">
+            <Link
+              to={memberMenuItem.href}
+              className={cn(
+                "group relative flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300",
+                // Mobile styles
+                "text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm",
+                "border border-transparent hover:border-white/20",
+                isActive(memberMenuItem.href) && "bg-white/15 border-white/30",
+                // Desktop styles - zvýrazněné
+                "lg:text-white lg:bg-gradient-to-r lg:from-purple-600 lg:to-pink-600 lg:hover:from-purple-700 lg:hover:to-pink-700",
+                "lg:py-3 lg:px-6 lg:rounded-full lg:shadow-lg lg:hover:shadow-xl",
+                "lg:border-0 lg:transform lg:hover:scale-105",
+                isActive(memberMenuItem.href) && "lg:from-purple-700 lg:to-pink-700 lg:font-bold"
+              )}
+              onClick={closeNavbar}
+            >
+              {/* Mobile icon */}
+              <span className="lg:hidden flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-tjk-orange/20 to-amber-500/20 flex items-center justify-center group-hover:from-tjk-orange/30 group-hover:to-amber-500/30 transition-all duration-300">
+                {memberMenuItem.icon}
+              </span>
+
+              {/* Desktop icon */}
+              <span className="hidden lg:flex flex-shrink-0 w-5 h-5 items-center justify-center text-white">
+                {memberMenuItem.icon}
+              </span>
+
+              {/* Text */}
+              <span className="font-poppins font-medium lg:font-bold relative z-10">
+                {memberMenuItem.name}
+              </span>
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile Footer */}
