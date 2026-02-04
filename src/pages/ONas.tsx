@@ -186,8 +186,8 @@ const ONas = () => {
                 50 let tradice sportu v Krušných horách
               </p>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 drop-shadow-md leading-relaxed">
-                Od roku 1974 budujeme sportovní komunitu, provozujeme moderní
-                areál a věnujeme se systematické práci s dětmi a mládeží. Jsme
+                Od roku 1974 budujeme sportovní komunitu, provozujeme areál a
+                věnujeme se systematické práci s dětmi a mládeží. Jsme
                 domovem pro širokou škálu sportů.
               </p>
             </ScrollAnimation>
