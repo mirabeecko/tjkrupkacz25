@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "@/supabaseClient";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "@/components/ui/sonner";
 import { Mail, User, Smartphone, ListChecks, MessageCircle } from "lucide-react";
 
 type Props = {
@@ -9,7 +9,6 @@ type Props = {
 };
 
 const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
-  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -85,8 +84,7 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
 
       if (insertError || notifyError) {
         if (insertError && !notifyError) {
-          toast({
-            title: "Zpráva odeslána",
+          toast("Zpráva odeslána", {
             description: "Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
           });
           console.error(insertError);
@@ -94,33 +92,27 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
           return;
         }
         if (!insertError && notifyError) {
-          toast({
-            title: "Zpráva odeslána",
+          toast("Zpráva odeslána", {
             description: "Emailové upozornění se nepodařilo odeslat, ale zprávu jsme přijali.",
           });
           console.error(notifyError);
           resetForm();
           return;
         }
-        toast({
-          title: "Zprávu se nepodařilo odeslat.",
+        toast.error("Zprávu se nepodařilo odeslat.", {
           description: insertError?.message || "Zkuste to prosím znovu.",
-          variant: "destructive",
         });
         if (insertError) console.error(insertError);
         if (notifyError) console.error(notifyError);
       } else {
-        toast({
-          title: "Odesláno!",
+        toast.success("Odesláno!", {
           description: "Děkujeme za vaši zprávu. Brzy se vám ozveme.",
         });
         resetForm();
       }
     } catch (error) {
-      toast({
-        title: "Chyba!",
+      toast.error("Chyba!", {
         description: String(error),
-        variant: "destructive",
       });
       console.error(error);
     } finally {
