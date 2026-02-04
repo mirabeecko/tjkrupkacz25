@@ -231,13 +231,13 @@ const KomariVizka = () => {
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 bg-tjk-blue/10 border border-tjk-blue/20 rounded-full mb-4">
-                    <span className="text-sm font-semibold text-tjk-blue">Informace</span>
+                    <span className="text-sm font-semibold text-tjk-blue">Důležitá informace</span>
                   </div>
                   <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue">
                     Komáří vížka – aktuálně a přehledně
                   </h2>
                   <p className="text-lg text-gray-600 mt-3">
-                    Krátké, jasné informace o areálu a jeho provozu.
+                    Areál Komáří vížka momentálně slouží výhradně pro junior sportovní činnost.
                   </p>
                 </div>
 
@@ -250,27 +250,26 @@ const KomariVizka = () => {
                       <span className="text-xs text-gray-500">Aktualizace</span>
                     </div>
                     <h3 className="text-xl md:text-2xl font-bold text-tjk-blue mb-3">
-                      Legenda Krušných hor ožívá
+                      Komáří vížka – hlavní informace
                     </h3>
                     <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                      Komáří vížka je ikonické místo s více než 50letou tradicí. Díky nejdelší sedačkové lanovce v ČR a jedinečné poloze
-                      se areál stal srdcem zimní rekreace regionu Teplice, Ústí nad Labem a Krupka.
+                      Areál je určen pro děti a mládež ve věku 5–16 let jako členy spolku
+                      Tělovýchovná jednota Krupka z.s. Nejde o veřejný komerční provoz.
                     </p>
                   </article>
 
                   <article className="bg-white border-2 border-emerald-200 rounded-2xl shadow-lg p-6">
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-xs font-bold tracking-wide text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-                        PROVOZ
+                        AKTUÁLNĚ
                       </span>
-                      <span className="text-xs text-gray-500">Aktuální stav</span>
+                      <span className="text-xs text-gray-500">Důležité</span>
                     </div>
                     <h3 className="text-xl md:text-2xl font-bold text-tjk-blue mb-3">
-                      Areál slouží sportovní činnosti mládeže
+                      Nejde o veřejný komerční provoz
                     </h3>
                     <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                      Areál momentálně slouží výhradně pro členy spolku Tělovýchovná jednota Krupka z.s. (děti a mládež 5-16 let).
-                      Provoz není veřejný komerční.
+                      Areál je vyhrazen pro junior sportovní činnost. Informace k členství najdete v sekci níže.
                     </p>
                     <div className="mt-4">
                       <Link to="/komari-vizka/pro-cleny" className="text-tjk-orange hover:text-tjk-blue font-bold underline">
