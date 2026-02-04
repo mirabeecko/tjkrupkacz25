@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School, Smile
+  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School, Smile, Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -26,6 +26,7 @@ const servicesSubmenu = [
 const menuItems = [
   { name: "O nás", icon: <Info className="h-5 w-5" />, href: "/o-nas" },
   { name: "Komáří vížka", icon: <Map className="h-5 w-5" />, href: "/komari-vizka" },
+  { name: "Pro členy spolku", icon: <Users className="h-5 w-5" />, href: "/komari-vizka/pro-cleny" },
   { name: "Služby", icon: <Briefcase className="h-5 w-5" />, href: "/sluzby", hasSubmenu: true },
   { name: "Dobrovolníci & Sponzoři", icon: <Heart className="h-5 w-5" />, href: "/dobrovolnici" },
   { name: "Kontakt", icon: <Mail className="h-5 w-5" />, href: "/kontakt" },

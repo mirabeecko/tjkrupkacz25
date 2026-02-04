@@ -25,6 +25,7 @@ import Ubytovani from "./pages/Ubytovani";
 import Trailpark from "./pages/trailpark";
 import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
+import ProCleny from "./pages/ProCleny";
 
 // FEATURE FLAG: Půjčovna imports - pro obnovení odkomentuj následující řádky a změň ENABLE_PUJCOVNA na true v src/config/features.ts
 // import Pujcovna from "./pages/Pujcovna";
@@ -75,6 +76,7 @@ const App = () => (
               <Route path="/trailpark" element={<Trailpark />} />
               <Route path="/pripravujeme" element={<Pripravujeme />} />
               <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
+              <Route path="/komari-vizka/pro-cleny" element={<ProCleny />} />
 
               {/* PŮJČOVNA SKRYTA - pro obnovení odkomentuj následující řádky */}
               {/* <Route path="/pujcovna" element={<Pujcovna />} /> */}
