@@ -58,6 +58,10 @@ const KontaktPujcovna: React.FC = () => {
   const [rentalDays, setRentalDays] = useState(0);
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
   const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+  const confirmDurationMs = 10000;
+  const confirmClassName =
+    "border-2 border-orange-500 bg-orange-50 text-orange-900 shadow-xl";
+  const confirmDescriptionClassName = "text-orange-800";
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const closeNavbar = () => setNavbarOpen(false);
@@ -232,9 +236,20 @@ const KontaktPujcovna: React.FC = () => {
 
       if (notifyError) {
         console.error("Formspree notify error:", notifyError);
-        toast.success("✅ Rezervace byla odeslána. Emailové upozornění se nepodařilo odeslat.");
+        toast.success("REZERVACE ODESLÁNA", {
+          description:
+            "Rezervaci jsme přijali. Emailové upozornění se nepodařilo odeslat.",
+          duration: confirmDurationMs,
+          className: confirmClassName,
+          descriptionClassName: confirmDescriptionClassName,
+        });
       } else {
-        toast.success("✅ Rezervace byla úspěšně odeslána! Obdržíte potvrzení na email.");
+        toast.success("REZERVACE ODESLÁNA", {
+          description: "Děkujeme! Rezervaci jsme přijali a brzy se ozveme.",
+          duration: confirmDurationMs,
+          className: confirmClassName,
+          descriptionClassName: confirmDescriptionClassName,
+        });
       }
 
       // Reset form

@@ -495,7 +495,7 @@ const KomariVizka = () => {
                   <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-7xl mx-auto">
                     <div className="flex-1 flex items-center justify-center relative">
                       <img
-                        src="/src/loga/komárek.png"
+                        src="/images/loga/komarek.png"
                         alt="Logo Komárek"
                         className="max-h-80 w-auto object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-500"
                       />

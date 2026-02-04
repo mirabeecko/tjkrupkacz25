@@ -36,6 +36,10 @@ const KontaktSnowkiting: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+  const confirmDurationMs = 10000;
+  const confirmClassName =
+    "border-2 border-cyan-500 bg-cyan-50 text-cyan-900 shadow-xl";
+  const confirmDescriptionClassName = "text-cyan-800";
 
   const resetForm = () => {
     setFormData({
@@ -104,13 +108,25 @@ const KontaktSnowkiting: React.FC = () => {
 
       if (insertError || notifyError) {
         if (insertError && !notifyError) {
-          toast.success("Poptávka odeslána. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.");
+          toast.success("POPTÁVKA ODESLÁNA", {
+            description:
+              "Emailové upozornění jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+            duration: confirmDurationMs,
+            className: confirmClassName,
+            descriptionClassName: confirmDescriptionClassName,
+          });
           console.error(insertError);
           resetForm();
           return;
         }
         if (!insertError && notifyError) {
-          toast.success("Poptávka odeslána. Emailové upozornění se nepodařilo odeslat.");
+          toast.success("POPTÁVKA ODESLÁNA", {
+            description:
+              "Poptávku jsme přijali a uložili. Emailové upozornění se nepodařilo odeslat.",
+            duration: confirmDurationMs,
+            className: confirmClassName,
+            descriptionClassName: confirmDescriptionClassName,
+          });
           console.error(notifyError);
           resetForm();
           return;
@@ -121,7 +137,12 @@ const KontaktSnowkiting: React.FC = () => {
         return;
       }
 
-      toast.success("Děkujeme! Vaši poptávku jsme obdrželi a brzy se vám ozveme.");
+      toast.success("POPTÁVKA ODESLÁNA", {
+        description: "Děkujeme! Vaši poptávku jsme přijali a brzy se ozveme.",
+        duration: confirmDurationMs,
+        className: confirmClassName,
+        descriptionClassName: confirmDescriptionClassName,
+      });
       resetForm();
     } catch (error) {
       console.error(error);

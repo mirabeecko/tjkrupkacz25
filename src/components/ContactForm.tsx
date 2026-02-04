@@ -18,6 +18,10 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
   });
   const [loading, setLoading] = useState(false);
   const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+  const confirmDurationMs = 10000;
+  const confirmClassName =
+    "border-2 border-emerald-500 bg-emerald-50 text-emerald-900 shadow-xl";
+  const confirmDescriptionClassName = "text-emerald-800";
 
   const resetForm = () => {
     setFormData({
@@ -84,16 +88,24 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
 
       if (insertError || notifyError) {
         if (insertError && !notifyError) {
-          toast("Zpráva odeslána", {
-            description: "Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+          toast("ZPRÁVA ODESLÁNA", {
+            description:
+              "Emailové upozornění jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+            duration: confirmDurationMs,
+            className: confirmClassName,
+            descriptionClassName: confirmDescriptionClassName,
           });
           console.error(insertError);
           resetForm();
           return;
         }
         if (!insertError && notifyError) {
-          toast("Zpráva odeslána", {
-            description: "Emailové upozornění se nepodařilo odeslat, ale zprávu jsme přijali.",
+          toast("ZPRÁVA ODESLÁNA", {
+            description:
+              "Zprávu jsme přijali a uložili. Emailové upozornění se nepodařilo odeslat.",
+            duration: confirmDurationMs,
+            className: confirmClassName,
+            descriptionClassName: confirmDescriptionClassName,
           });
           console.error(notifyError);
           resetForm();
@@ -105,8 +117,11 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
         if (insertError) console.error(insertError);
         if (notifyError) console.error(notifyError);
       } else {
-        toast.success("Odesláno!", {
-          description: "Děkujeme za vaši zprávu. Brzy se vám ozveme.",
+        toast.success("ZPRÁVA ODESLÁNA", {
+          description: "Děkujeme! Vaši zprávu jsme přijali a brzy se ozveme.",
+          duration: confirmDurationMs,
+          className: confirmClassName,
+          descriptionClassName: confirmDescriptionClassName,
         });
         resetForm();
       }
