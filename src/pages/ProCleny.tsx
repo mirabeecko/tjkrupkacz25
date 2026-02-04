@@ -354,10 +354,10 @@ const ProCleny = () => {
                         <div>
                           <p className="text-sm text-gray-600 mb-1">E-mail</p>
                           <a
-                            href="mailto:miroslavbroozek@gmail.com"
+                            href="mailto:telovychovnajednotakrupka@gmail.com"
                             className="text-tjk-blue font-semibold hover:text-tjk-orange transition-colors"
                           >
-                            miroslavbroozek@gmail.com
+                            telovychovnajednotakrupka@gmail.com
                           </a>
                         </div>
                       </div>

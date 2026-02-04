@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     const emailResponse = await resend.emails.send({
       from: "Webová stránka TJK <onboarding@resend.dev>",
-      to: ["miroslavbroozek@gmail.com"],
+      to: ["telovychovnajednotakrupka@gmail.com"],
       subject: `Nová zpráva z kontaktního formuláře od ${name}`,
       html: `
         <h1>Nová zpráva z kontaktního formuláře</h1>

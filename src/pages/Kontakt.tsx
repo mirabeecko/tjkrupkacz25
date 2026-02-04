@@ -105,7 +105,7 @@ const Kontakt = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-tjk-blue text-lg mb-1">E-mail</h3>
-                  <p><a href="mailto:miroslavbroozek@gmail.com" className="text-tjk-blue hover:text-tjk-orange hover:underline transition-colors">miroslavbroozek@gmail.com</a></p>
+                  <p><a href="mailto:telovychovnajednotakrupka@gmail.com" className="text-tjk-blue hover:text-tjk-orange hover:underline transition-colors">telovychovnajednotakrupka@gmail.com</a></p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

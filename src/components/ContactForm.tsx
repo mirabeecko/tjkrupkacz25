@@ -18,6 +18,17 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      interest: "dobrovolnictví",
+      message: "",
+    });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -30,36 +41,80 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
     setLoading(true);
 
     try {
-      const { error } = await supabase.from("contact_messages").insert([
+      const messageWithMeta = [
+        `Zájem: ${formData.interest}`,
+        formData.phone ? `Telefon: ${formData.phone}` : null,
+        "",
+        formData.message,
+      ]
+        .filter((line) => line !== null)
+        .join("\n");
+
+      const { error: insertError } = await supabase.from("contact_messages").insert([
         {
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
-          interest: formData.interest,
-          message: formData.message,
+          message: messageWithMeta,
           status: "new",
         },
       ]);
 
-      if (error) {
+      let notifyError: Error | null = null;
+      try {
+        const response = await fetch(formspreeEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            source: "Kontakt",
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || "",
+            interest: formData.interest,
+            message: formData.message,
+          }),
+        });
+        if (!response.ok) {
+          notifyError = new Error(`Formspree error: ${response.status}`);
+        }
+      } catch (err) {
+        notifyError = err as Error;
+      }
+
+      if (insertError || notifyError) {
+        if (insertError && !notifyError) {
+          toast({
+            title: "Zpráva odeslána",
+            description: "Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+          });
+          console.error(insertError);
+          resetForm();
+          return;
+        }
+        if (!insertError && notifyError) {
+          toast({
+            title: "Zpráva odeslána",
+            description: "Emailové upozornění se nepodařilo odeslat, ale zprávu jsme přijali.",
+          });
+          console.error(notifyError);
+          resetForm();
+          return;
+        }
         toast({
-          title: "Chyba!",
-          description: error.message,
+          title: "Zprávu se nepodařilo odeslat.",
+          description: insertError?.message || "Zkuste to prosím znovu.",
           variant: "destructive",
         });
-        console.error(error);
+        if (insertError) console.error(insertError);
+        if (notifyError) console.error(notifyError);
       } else {
         toast({
           title: "Odesláno!",
           description: "Děkujeme za vaši zprávu. Brzy se vám ozveme.",
         });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          interest: "dobrovolnictví",
-          message: "",
-        });
+        resetForm();
       }
     } catch (error) {
       toast({

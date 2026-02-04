@@ -180,8 +180,8 @@ const KomariVizka = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Komáří vížka - Sportovní areál v Krušných horách"
-        description="Moderní sportovní areál v Krušných horách. Trailpark, lyžařský areál, ubytování a bistro. Celoroční provoz pro rodiny i sportovce."
+        title="Komáří vížka | Lyžařský Areál a Trailpark v Krušných Horách 2026"
+        description="Největší lyžařský a bikový areál v Krušných horách ⛷️ Trailpark s airbagem | Snowkiting kurzy | Ubytování | Bistro. ✓ Ideální pro rodiny ✓ 15 min z Teplic ✓ Nejdelší lanovka v ČR"
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />
@@ -208,7 +208,7 @@ const KomariVizka = () => {
 
               {/* Subtitle */}
               <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Sportovní areál v srdci Krušných hor
+                Váš domov pro adrenalin, zábavu a nezapomenutelné zážitky v Krušných horách
               </p>
             </div>
           </div>
@@ -220,7 +220,7 @@ const KomariVizka = () => {
             <section className="mb-20">
               <div className="max-w-7xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold text-tjk-blue mb-8 text-center">
-                  Komáří vížka – Tradice žije dál
+                  Komáří vížka – Legendární areál probouzí Krušné hory k životu
                 </h2>
 
                  <div className="prose prose-lg max-w-none prose-p:text-justify">
@@ -235,15 +235,15 @@ const KomariVizka = () => {
                    </div>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     Komáří vížka patří mezi nejznámější místa v Krušných horách. Tento areál má více než padesátiletou historii, během které sloužil především jako lyžařské středisko pro širokou veřejnost. Po desetiletí zde vyrůstaly celé generace lyžařů a sportovců z Krupky i okolí a Komárka se stala přirozeným centrem zimní rekreace v regionu.
+                     <strong className="text-tjk-blue">Zažijte legendu Krušných hor!</strong> Komáří vížka je ikonické místo s více než 50letou tradicí, kde vyrostly celé generace lyžařů a milovníků hor. Díky nejdelší sedačkové lanovce v ČR a jedinečné polohe se stal areál srdcem zimní rekreace v regionu Teplice, Ústí nad Labem a Krupka.
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     <strong className="text-tjk-blue">Dnes navazujeme na tuto tradici a obnovujeme Komárku jako místo sportu, zábavy a setkávání.</strong> Postupně rozšiřujeme nabídku o letní provoz zaměřený více na milovníky horských kol a sportovní vyžití pro všechny generace.
+                     <strong className="text-tjk-blue">Komárka ožívá – sport, adrenalin a zábava 365 dní v roce!</strong> Obnovujeme tradici a rozšiřujeme možnosti. V zimě si užijte lyžování, snowboarding a snowkiting v ideálních podmínkách. V létě objevte špičkový trailpark s tratěmi pro všechny úrovně jezdců – od rodinných vyjížděk až po technické single tracky.
                    </p>
 
                    <p className="text-base md:text-lg text-gray-700 leading-relaxed">
-                     V okolí vzniká síť trailů různých obtížností, které propojují areál s Horní Krupkou a okolními částmi hor. Traily nabízejí přírodní i upravené úseky pro rekreační i výkonnostní jezdce, možnost jízdy lanovkou i návratu po lesních cestách.
+                     Náš trailpark propojuje Komárku s Horní Krupkou a okolím prostřednictvím sítě udržovaných trailů. Vyzkoušejte sjezd na kole po lanovce, prozkoumejte přírodní i upravené úseky nebo si užijte flow trails ideální pro rodiny s dětmi. Pro odvážnější připravujeme technické sekce a jump line.
                    </p>
 
                    <div className="clear-both"></div>
@@ -252,11 +252,11 @@ const KomariVizka = () => {
                 {/* Další text pod fotkou */}
                 <div className="mt-8 space-y-4">
                   <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    <strong className="text-tjk-blue">Naším cílem je, aby Komárka znovu ožila – nejen v zimě, ale celoročně.</strong> Připravujeme spolupráci se školami, sportovními kluby a dalšími institucemi, aby mohl být areál využíván i pro školy v přírodě, sportovní kurzy, příměstské tábory nebo tréninky mládeže.
+                    <strong className="text-tjk-blue">Více než areál – centrum aktivního života v horách.</strong> Spolupracujeme se školami, sportovními kluby a rodinami. Nabízíme školy v přírodě, adaptační kurzy, sportovní příměstské tábory, víkendové pobyty i individuální tréninky. Vše na jednom místě s ubytováním, stravováním a profesionálním zázemím.
                   </p>
 
                   <p className="text-base md:text-lg text-gray-700 leading-relaxed text-justify">
-                    Areál je přirozeně orientován pro volnočasové aktivity dětí s rodiči – od lyžování a snowkitingu, přes jízdu na kolech a čtyřkolkách, až po balanční a adrenalinové atrakce. Novinkou bude AIRBAG matrace, která nabídne bezpečné skoky a trénink triků – ať už na kole, snowboardu nebo lyžích.
+                    <strong className="text-tjk-blue">Dokonalé místo pro rodiny i adrenalinové nadšence!</strong> Lyžování, snowkiting, mountain biking, airbag pro bezpečný nácvik triků, čtyřkolky a adrenalinové atrakce. Naše novinká – profesionální AIRBAG matrace – umožní bezpečné trénování skoků a triků na kole, snowboardu i lyžích. Přijeďte si vyzkoušet, proč je Komárka nejoblíbenější destinací v Krušných horách!
                   </p>
                 </div>
               </div>
@@ -402,13 +402,13 @@ const KomariVizka = () => {
               <div className="bg-tjk-blue py-12 md:py-16 px-4">
                 <div className="container mx-auto max-w-5xl">
                   <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-white">
-                    Komárka dnes
+                    Proč zvolit Komárku?
                   </h2>
                   <p className="text-lg md:text-xl text-white/95 leading-relaxed mb-4 text-center max-w-3xl mx-auto text-justify">
-                    Představuje novou éru tradičního areálu – propojení sportu, přírody a volného času. Přijeďte si zalyžovat, projet traily, skočit do airbagu nebo si prostě užít den na horách.
+                    Moderní areál s 50letou tradicí, nejdelší lanovka v ČR, špičkový trailpark a celoroční nabídka aktivit. Ideální vzdálenost z Teplic (15 km), profesionální zázemí a rodinná atmosféra. Přijeďte zalyžovat, zvládnout traily, vyzkoušet airbag nebo prostě prožít nezapomenutelný den v koruně Krušných hor!
                   </p>
                   <p className="text-base md:text-lg text-white/90 text-center mt-6">
-                    <strong>Tělovýchovná jednota Krupka z.s.</strong> vás zve na Komárku – místo, kde se tradice mění v zážitek.
+                    <strong>Tělovýchovná jednota Krupka z.s.</strong> vás zve na Komárku – místo, kde tradice ožívá a kde každá návštěva znamená nový zážitek.
                   </p>
                 </div>
               </div>

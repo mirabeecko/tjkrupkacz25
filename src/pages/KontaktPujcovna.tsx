@@ -57,6 +57,7 @@ const KontaktPujcovna: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rentalDays, setRentalDays] = useState(0);
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
+  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const closeNavbar = () => setNavbarOpen(false);
@@ -195,38 +196,46 @@ const KontaktPujcovna: React.FC = () => {
         return;
       }
 
-      // Send confirmation emails via Edge Function
+      // Send email via Formspree
+      let notifyError: Error | null = null;
       try {
         const extras = typeof booking.extras === 'string' ? JSON.parse(booking.extras) : booking.extras;
-        const { error: emailError } = await supabase.functions.invoke('send-rental-booking-email', {
-          body: { booking: {
-            id: booking.id,
-            booking_number: booking.booking_number,
-            full_name: booking.customer_name,
+        const response = await fetch(formspreeEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            source: "Kontakt Půjčovna",
+            bookingNumber: booking.booking_number,
+            name: booking.customer_name,
             email: booking.customer_email,
             phone: booking.customer_phone,
-            vehicle_name: booking.reference_name,
-            rental_start_date: booking.booking_start_date,
-            rental_end_date: booking.booking_end_date,
-            rental_duration_days: rentalDays,
-            helmet_needed: extras?.helmet_needed || false,
-            protective_gear_needed: extras?.protective_gear_needed || false,
-            total_price: booking.total_price,
+            vehicle: booking.reference_name,
+            rentalStart: booking.booking_start_date,
+            rentalEnd: booking.booking_end_date,
+            rentalDays,
+            helmetNeeded: extras?.helmet_needed || false,
+            protectiveGearNeeded: extras?.protective_gear_needed || false,
+            totalPrice: booking.total_price,
             message: booking.customer_message,
-            driving_license_number: booking.driving_license_number
-          }}
+            drivingLicenseNumber: booking.driving_license_number,
+          }),
         });
-
-        if (emailError) {
-          console.error("Error sending email:", emailError);
-          // Don't fail the whole operation if email fails
+        if (!response.ok) {
+          notifyError = new Error(`Formspree error: ${response.status}`);
         }
       } catch (emailError) {
-        console.error("Email function error:", emailError);
-        // Continue anyway - booking was successful
+        notifyError = emailError as Error;
       }
 
-      toast.success("✅ Rezervace byla úspěšně odeslána! Obdržíte potvrzení na email.");
+      if (notifyError) {
+        console.error("Formspree notify error:", notifyError);
+        toast.success("✅ Rezervace byla odeslána. Emailové upozornění se nepodařilo odeslat.");
+      } else {
+        toast.success("✅ Rezervace byla úspěšně odeslána! Obdržíte potvrzení na email.");
+      }
 
       // Reset form
       setFormData({

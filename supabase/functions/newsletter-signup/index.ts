@@ -26,7 +26,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification email to admin
     const emailResponse = await resend.emails.send({
       from: "Webová stránka TJK <onboarding@resend.dev>",
-      to: ["miroslavbroozek@gmail.com"],
+      to: ["telovychovnajednotakrupka@gmail.com"],
       subject: "Nový odběratel newsletteru",
       html: `
         <h1>Nový odběratel newsletteru</h1>

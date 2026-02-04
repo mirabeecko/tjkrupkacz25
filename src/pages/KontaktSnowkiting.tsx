@@ -21,6 +21,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import toast from "react-hot-toast";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import { supabase } from "@/supabaseClient";
 
 const KontaktSnowkiting: React.FC = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -34,6 +35,19 @@ const KontaktSnowkiting: React.FC = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      courseType: "",
+      participants: "",
+      preferredDate: "",
+      message: "",
+    });
+  };
 
   const toggleNavbar = () => setNavbarOpen(!navbarOpen);
   const closeNavbar = () => setNavbarOpen(false);
@@ -42,20 +56,79 @@ const KontaktSnowkiting: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulace odeslání formuláře
-    setTimeout(() => {
+    try {
+      const messageWithMeta = [
+        "Zájem: Snowkiting kurz",
+        `Typ kurzu: ${formData.courseType || "Neuvedeno"}`,
+        `Počet účastníků: ${formData.participants || "Neuvedeno"}`,
+        `Preferovaný termín: ${formData.preferredDate || "Neuvedeno"}`,
+        `Telefon: ${formData.phone || "Neuvedeno"}`,
+        "",
+        formData.message || "",
+      ].join("\n");
+
+      const { error: insertError } = await supabase.from("contact_messages").insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          message: messageWithMeta,
+          status: "new",
+        },
+      ]);
+
+      let notifyError: Error | null = null;
+      try {
+        const response = await fetch(formspreeEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            source: "Kontakt Snowkiting",
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || "",
+            courseType: formData.courseType,
+            participants: formData.participants,
+            preferredDate: formData.preferredDate,
+            message: formData.message,
+          }),
+        });
+        if (!response.ok) {
+          notifyError = new Error(`Formspree error: ${response.status}`);
+        }
+      } catch (err) {
+        notifyError = err as Error;
+      }
+
+      if (insertError || notifyError) {
+        if (insertError && !notifyError) {
+          toast.success("Poptávka odeslána. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.");
+          console.error(insertError);
+          resetForm();
+          return;
+        }
+        if (!insertError && notifyError) {
+          toast.success("Poptávka odeslána. Emailové upozornění se nepodařilo odeslat.");
+          console.error(notifyError);
+          resetForm();
+          return;
+        }
+        toast.error("Nepodařilo se odeslat poptávku. Zkuste to prosím znovu.");
+        if (insertError) console.error(insertError);
+        if (notifyError) console.error(notifyError);
+        return;
+      }
+
       toast.success("Děkujeme! Vaši poptávku jsme obdrželi a brzy se vám ozveme.");
+      resetForm();
+    } catch (error) {
+      console.error(error);
+      toast.error("Došlo k chybě. Prosím, zkuste to znovu.");
+    } finally {
       setIsSubmitting(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        courseType: "",
-        participants: "",
-        preferredDate: "",
-        message: "",
-      });
-    }, 1500);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
