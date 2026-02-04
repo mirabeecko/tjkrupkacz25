@@ -38,6 +38,7 @@ import {
   Wind,
   Coffee,
   PartyPopper,
+  Cable,
 } from "lucide-react";
 
 const ProCleny = () => {
@@ -289,6 +290,58 @@ const ProCleny = () => {
                     </Card>
                   </ScrollAnimation>
                 ))}
+              </div>
+            </section>
+          </ScrollAnimation>
+
+          {/* Info blok - Dětský vlek zdarma */}
+          <ScrollAnimation animation="fade-up">
+            <section className="mb-24">
+              <div className="max-w-4xl mx-auto">
+                <Card className="relative overflow-hidden border-0 shadow-2xl bg-gradient-to-br from-cyan-500 via-blue-600 to-indigo-600">
+                  {/* Background pattern */}
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-0 -left-4 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl"></div>
+                    <div className="absolute bottom-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl"></div>
+                  </div>
+
+                  <CardContent className="relative z-10 p-8 md:p-12">
+                    <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                      {/* Icon */}
+                      <div className="flex-shrink-0">
+                        <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-md border-2 border-white/40 flex items-center justify-center">
+                          <Cable className="h-10 w-10 text-white" />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="flex-1 text-white">
+                        <div className="flex items-center gap-3 mb-3">
+                          <Badge className="bg-yellow-400 text-tjk-blue border-0 px-3 py-1 text-xs font-bold">
+                            ZDARMA PRO ČLENY
+                          </Badge>
+                          <Sparkles className="h-5 w-5 text-yellow-300" />
+                        </div>
+
+                        <h3 className="text-2xl md:text-3xl font-black mb-3">
+                          Dětský vlek bez poplatků!
+                        </h3>
+
+                        <p className="text-lg md:text-xl text-white/95 leading-relaxed">
+                          Junior členové spolku mohou <strong className="text-yellow-300">využívat dětský vlek zcela zdarma</strong> ve vyhrazených časech.
+                          Ideální pro nácvik lyžování, snowboardingu a získávání prvních zkušeností na svahu!
+                        </p>
+
+                        <div className="mt-4 flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-yellow-300 flex-shrink-0 mt-0.5" />
+                          <p className="text-white/90 text-sm">
+                            Po přijetí za člena obdržíte informace o vyhrazených časech a pravidlech využívání.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </section>
           </ScrollAnimation>
