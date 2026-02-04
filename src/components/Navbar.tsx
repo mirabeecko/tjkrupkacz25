@@ -244,7 +244,7 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
           ))}
 
           {/* Pro členy - Zvýrazněná položka s mírným oddělením */}
-          <li className="lg:h-full lg:ml-4">
+          <li className="lg:h-full lg:ml-2">
             <Link
               to={memberMenuItem.href}
               className={cn(
@@ -253,10 +253,10 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                 "text-white/90 hover:text-white hover:bg-white/10 backdrop-blur-sm",
                 "border border-transparent hover:border-white/20",
                 isActive(memberMenuItem.href) && "bg-white/15 border-white/30",
-                // Desktop styles - zvýrazněné
+                // Desktop styles - zvýrazněné, ale stejná výška jako ostatní
                 "lg:text-white lg:bg-gradient-to-r lg:from-purple-600 lg:to-pink-600 lg:hover:from-purple-700 lg:hover:to-pink-700",
-                "lg:py-3 lg:px-6 lg:rounded-full lg:shadow-lg lg:hover:shadow-xl",
-                "lg:border-0 lg:transform lg:hover:scale-105",
+                "lg:py-6 lg:px-5 lg:rounded-none lg:shadow-md lg:hover:shadow-lg",
+                "lg:border-0 lg:relative lg:overflow-hidden",
                 isActive(memberMenuItem.href) && "lg:from-purple-700 lg:to-pink-700 lg:font-bold"
               )}
               onClick={closeNavbar}
@@ -266,8 +266,8 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
                 {memberMenuItem.icon}
               </span>
 
-              {/* Desktop icon */}
-              <span className="hidden lg:flex flex-shrink-0 w-5 h-5 items-center justify-center text-white">
+              {/* Desktop icon - stejně jako ostatní položky */}
+              <span className="hidden lg:inline-block flex-shrink-0 text-white">
                 {memberMenuItem.icon}
               </span>
 
@@ -275,6 +275,9 @@ const Navbar: React.FC<NavbarProps> = ({ isOpen, closeNavbar }) => {
               <span className="font-poppins font-medium lg:font-bold relative z-10">
                 {memberMenuItem.name}
               </span>
+
+              {/* Glow efekt při hover - desktop */}
+              <span className="hidden lg:block absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300"></span>
             </Link>
           </li>
         </ul>
