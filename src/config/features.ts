@@ -6,5 +6,5 @@
 
 export const FEATURES = {
   // Půjčovna motocyklů - změň na true pro obnovení
-  ENABLE_PUJCOVNA: false,
+  ENABLE_PUJCOVNA: true,
 } as const;

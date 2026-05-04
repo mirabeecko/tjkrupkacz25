@@ -1,0 +1,83 @@
+{
+    "name": "webdo24-generator",
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "manual-trigger",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [200, 300]
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              { "name": "companyName", "value": "Autoservis Novák" },
+              { "name": "industry", "value": "Autoservis" },
+              { "name": "goal", "value": "získávat poptávky" },
+              { "name": "email", "value": "test@test.cz" },
+              { "name": "tone", "value": "profesionální" }
+            ]
+          }
+        },
+        "id": "set-data",
+        "name": "Set Data",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [400, 300]
+      },
+      {
+        "parameters": {
+          "model": "claude-3-sonnet-20240229",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Vytvoř obsah webu pro firmu {{$json.companyName}}. Obor: {{$json.industry}}. Cíl: {{$json.goal}}. Styl: {{$json.tone}}.\n\nVrať JSON:\n{\n\"headline\": \"\",\n\"subheadline\": \"\",\n\"sections\": [\"\"],\n\"cta\": \"\"\n}"
+            }
+          ]
+        },
+        "id": "ai-content",
+        "name": "AI Generate Content",
+        "type": "n8n-nodes-langchain.anthropicChatModel",
+        "typeVersion": 1,
+        "position": [600, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "const data = JSON.parse(items[0].json.content || '{}');\n\nreturn [{\n  json: {\n    html: `\n<!DOCTYPE html>\n<html>\n<head>\n  <meta charset=\"UTF-8\">\n  <title>${data.headline}</title>\n</head>\n<body>\n  <h1>${data.headline}</h1>\n  <p>${data.subheadline}</p>\n  ${data.sections.map(s => `<section><p>${s}</p></section>`).join('')}\n  <button>${data.cta}</button>\n</body>\n</html>\n`\n  }\n}];"
+        },
+        "id": "build-html",
+        "name": "Build HTML",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [800, 300]
+      },
+      {
+        "parameters": {
+          "subject": "Tvůj web je připraven",
+          "text": "Hotový web:\n\n{{$json.html}}",
+          "toEmail": "test@test.cz"
+        },
+        "id": "send-email",
+        "name": "Send Email",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2,
+        "position": [1000, 300]
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [[{ "node": "Set Data", "type": "main", "index": 0 }]]
+      },
+      "Set Data": {
+        "main": [[{ "node": "AI Generate Content", "type": "main", "index": 0 }]]
+      },
+      "AI Generate Content": {
+        "main": [[{ "node": "Build HTML", "type": "main", "index": 0 }]]
+      },
+      "Build HTML": {
+        "main": [[{ "node": "Send Email", "type": "main", "index": 0 }]]
+      }
+    }
+  }

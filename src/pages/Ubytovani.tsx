@@ -36,7 +36,7 @@ const Ubytovani = () => {
                 </li>
                 <li className="flex items-center">
                   <Hammer className="h-5 w-5 text-amber-600 mr-2" />
-                  <span>Právě probíhá kompletní rekonstrukce – těšte se na moderní komfort!</span>
+                  <span>Právě probíhá kompletní rekonstrukce – těšte se na vysoký komfort!</span>
                 </li>
                 <li className="flex items-center">
                   <Mountain className="h-5 w-5 text-green-700 mr-2" />

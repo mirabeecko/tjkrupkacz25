@@ -7,8 +7,9 @@ export default defineConfig(({ mode }) => ({
   // Use relative asset paths so the site works under subpaths (e.g., /spoolku/)
   base: './',
   server: {
-    host: "::",
-    port: 8080,
+    host: true,
+    port: 5173,
+    strictPort: true,
   },
   plugins: [
     react(),

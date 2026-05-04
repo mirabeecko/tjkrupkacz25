@@ -7,7 +7,7 @@ const TPK = () => {
       <div className="flex flex-col items-center justify-center min-h-[40vh] py-16">
         <div className="bg-gradient-to-r from-tjk-blue to-blue-400 text-white px-8 py-10 rounded-2xl shadow-lg text-center mb-10 animate-fade-in">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Připravujeme.</h1>
-          <p className="text-lg md:text-xl text-white/90">Stránka TPK (TrailPark Komárka) bude brzy spuštěna.<br/> Sledujte novinky a těšte se na moderní trailpark v Krušných horách!</p>
+          <p className="text-lg md:text-xl text-white/90">Stránka TPK (TrailPark Komárka) bude brzy spuštěna.<br/> Sledujte novinky a těšte se na trailpark v Krušných horách!</p>
         </div>
         <div className="w-full max-w-2xl mt-8 animate-fade-in-up">
           <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl p-8 text-white shadow-lg flex flex-col items-center">

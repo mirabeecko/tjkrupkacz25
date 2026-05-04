@@ -443,7 +443,7 @@ const Airbag = () => {
                     S podporou našich partnerů
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                    Tento projekt by nevznikl bez podpory <strong>Ústeckého kraje</strong> a <strong>Veterinární kliniky Vet-Live z Litoměřic</strong>, kterým tímto vyjadřujeme velké poděkování a upřímnou vděčnost. Díky jejich pomoci můžeme přinést do regionu moderní sportovní prvek, který bude sloužit dětem, sportovcům i široké veřejnosti.
+                    Tento projekt by nevznikl bez podpory <strong>Ústeckého kraje</strong> a <strong>Veterinární kliniky Vet-Live z Litoměřic</strong>, kterým tímto vyjadřujeme velké poděkování a upřímnou vděčnost. Díky jejich pomoci můžeme přinést do regionu sportovní prvek, který bude sloužit dětem, sportovcům i široké veřejnosti.
                     </p>
                 </div>
                 </ScrollAnimation>
@@ -556,7 +556,7 @@ const Airbag = () => {
                             <strong>Sportovní podpora:</strong> Kraj dlouhodobě investuje do sportovní infrastruktury a podporuje sportovní aktivity dětí a mládeže. Cílem je vytvářet kvalitní podmínky pro rozvoj talentů.
                         </p>
                         <p className="text-gray-700 leading-relaxed">
-                            <strong>Význam podpory:</strong> Dotace od Ústeckého kraje výrazně přispěla k realizaci AIRBAG matrace, která slouží jako moderní tréninkové zařízení pro bezpečný rozvoj dovedností mladých sportovců v Krušnohoří.
+                            <strong>Význam podpory:</strong> Dotace od Ústeckého kraje výrazně přispěla k realizaci AIRBAG matrace, která slouží jako tréninkové zařízení pro bezpečný rozvoj dovedností mladých sportovců v Krušnohoří.
                         </p>
                         </div>
 

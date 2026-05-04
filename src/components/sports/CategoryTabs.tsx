@@ -44,7 +44,7 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
           {activeCategory === "outdoor" && "Outdoorové aktivity v krásné přírodě Krušných hor. Zažijte dobrodružství na čerstvém vzduchu."}
           {activeCategory === "winter" && "Zimní sporty a aktivity pro milovníky sněhu a ledu. Ideální podmínky od prosince do března."}
           {activeCategory === "air" && "Zažijte pocit volnosti při vzdušných sportech. Paragliding, vyhlídkové lety a další aktivity ve vzduchu."}
-          {activeCategory === "indoor" && "Indoorové aktivity pro každé počasí. Sportoviště v centru města Krupka s moderním vybavením."}
+          {activeCategory === "indoor" && "Indoorové aktivity pro každé počasí. Sportoviště v centru města Krupka s kvalitním vybavením."}
           {activeCategory === "team" && "Týmové sporty pro všechny věkové kategorie. Zapojte se do místních lig nebo si zahrajte s přáteli."}
         </p>
       </div>

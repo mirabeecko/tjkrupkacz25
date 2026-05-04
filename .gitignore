@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 # Lokální env soubory
+.env
 .env.local
 .env.*.local
 

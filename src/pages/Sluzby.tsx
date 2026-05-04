@@ -132,7 +132,7 @@ const allServices = [
     id: "airbag",
     title: "AIRBAG",
     subtitle: "Bezpečnost na nové úrovni",
-    description: "Již brzy – moderní airbag systém pro maximální ochranu při zimních a letních sportech.",
+    description: "Již brzy – airbag systém pro maximální ochranu při zimních a letních sportech.",
     icon: Shield,
     cta: "Více informací",
     link: "/airbag",

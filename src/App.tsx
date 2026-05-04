@@ -27,10 +27,9 @@ import Pripravujeme from "./pages/Pripravujeme";
 import SnowkitingKurzy from "./pages/SnowkitingKurzy";
 import ProCleny from "./pages/ProCleny";
 
-// FEATURE FLAG: Půjčovna imports - pro obnovení odkomentuj následující řádky a změň ENABLE_PUJCOVNA na true v src/config/features.ts
-// import Pujcovna from "./pages/Pujcovna";
-// import KontaktPujcovna from "./pages/KontaktPujcovna";
-// import VehicleDetail from "./pages/VehicleDetail";
+import Pujcovna from "./pages/Pujcovna";
+import KontaktPujcovna from "./pages/KontaktPujcovna";
+import VehicleDetail from "./pages/VehicleDetail";
 
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -44,67 +43,84 @@ import Pokladna from "./pages/Pokladna";
 import PlatbaUspech from "./pages/PlatbaUspech";
 import PlatbaZruseno from "./pages/PlatbaZruseno";
 import AktivityProDeti from "./pages/AktivityProDeti";
+import Dashboard from "./pages/Dashboard";
 
 import { CartProvider } from "./context/CartContext";
+import { FEATURES } from "./config/features";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <CartProvider>
-          <Sonner />
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/o-nas" element={<ONasModern />} />
-              <Route path="/sporty" element={<Sporty />} />
-              <Route path="/sluzby" element={<Sluzby />} />
-              <Route path="/komari-vizka" element={<KomariVizka />} />
-              <Route path="/merch" element={<Merch />} />
-              <Route path="/vstupenky" element={<Vstupenky />} />
-              <Route path="/dobrovolnici" element={<Dobrovolnici />} />
-              <Route path="/kontakt" element={<Kontakt />} />
-              <Route path="/pocasi" element={<Pocasi />} />
-              <Route path="/trail-park-komarka" element={<TrailParkKomarka />} />
-              <Route path="/tpk" element={<TPK />} />
-              <Route path="/skoly" element={<Skoly />} />
-              <Route path="/firmy" element={<Firmy />} />
-              <Route path="/ubytovani" element={<Ubytovani />} />
-              <Route path="/trailpark" element={<Trailpark />} />
-              <Route path="/pripravujeme" element={<Pripravujeme />} />
-              <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
-              <Route path="/komari-vizka/pro-cleny" element={<ProCleny />} />
+const App = () => {
+  const hostname = window.location.hostname;
+  const isStatsSubdomain = hostname.startsWith('stats.');
 
-              {/* PŮJČOVNA SKRYTA - pro obnovení odkomentuj následující řádky */}
-              {/* <Route path="/pujcovna" element={<Pujcovna />} /> */}
-              {/* <Route path="/vozidlo/:id" element={<VehicleDetail />} /> */}
-              {/* <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} /> */}
+  return (
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <CartProvider>
+            <Sonner />
+            <BrowserRouter>
+              <ScrollToTop />
+              {isStatsSubdomain ? (
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="*" element={<Dashboard />} />
+                </Routes>
+              ) : (
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/o-nas" element={<ONasModern />} />
+                  <Route path="/sporty" element={<Sporty />} />
+                  <Route path="/sluzby" element={<Sluzby />} />
+                  <Route path="/komari-vizka" element={<KomariVizka />} />
+                  <Route path="/merch" element={<Merch />} />
+                  <Route path="/vstupenky" element={<Vstupenky />} />
+                  <Route path="/dobrovolnici" element={<Dobrovolnici />} />
+                  <Route path="/kontakt" element={<Kontakt />} />
+                  <Route path="/pocasi" element={<Pocasi />} />
+                  <Route path="/trail-park-komarka" element={<TrailParkKomarka />} />
+                  <Route path="/tpk" element={<TPK />} />
+                  <Route path="/skoly" element={<Skoly />} />
+                  <Route path="/firmy" element={<Firmy />} />
+                  <Route path="/ubytovani" element={<Ubytovani />} />
+                  <Route path="/trailpark" element={<Trailpark />} />
+                  <Route path="/pripravujeme" element={<Pripravujeme />} />
+                  <Route path="/snowkiting-kurzy" element={<SnowkitingKurzy />} />
+                  <Route path="/komari-vizka/pro-cleny" element={<ProCleny />} />
 
-              <Route
-                path="/zasady-ochrany-osobnich-udaju"
-                element={<PrivacyPolicy />}
-              />
-              <Route path="/podminky-pouziti" element={<TermsOfService />} />
-              <Route path="/cookies" element={<Cookies />} />
-              <Route path="/pristupnost" element={<Accessibility />} />
-              <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
-              <Route path="/airbag" element={<Airbag />} />
-              <Route path="/eshop" element={<Eshop />} />
-              <Route path="/kosik" element={<Kosik />} />
-              <Route path="/pokladna" element={<Pokladna />} />
-              <Route path="/platba/uspech" element={<PlatbaUspech />} />
-              <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
-              <Route path="/aktivity-pro-deti" element={<AktivityProDeti />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </CartProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
-);
+                  {FEATURES.ENABLE_PUJCOVNA && (
+                    <>
+                      <Route path="/pujcovna" element={<Pujcovna />} />
+                      <Route path="/vozidlo/:id" element={<VehicleDetail />} />
+                      <Route path="/kontakt-pujcovna" element={<KontaktPujcovna />} />
+                    </>
+                  )}
+
+                  <Route
+                    path="/zasady-ochrany-osobnich-udaju"
+                    element={<PrivacyPolicy />}
+                  />
+                  <Route path="/podminky-pouziti" element={<TermsOfService />} />
+                  <Route path="/cookies" element={<Cookies />} />
+                  <Route path="/pristupnost" element={<Accessibility />} />
+                  <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
+                  <Route path="/airbag" element={<Airbag />} />
+                  <Route path="/eshop" element={<Eshop />} />
+                  <Route path="/kosik" element={<Kosik />} />
+                  <Route path="/pokladna" element={<Pokladna />} />
+                  <Route path="/platba/uspech" element={<PlatbaUspech />} />
+                  <Route path="/platba/zruseno" element={<PlatbaZruseno />} />
+                  <Route path="/aktivity-pro-deti" element={<AktivityProDeti />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              )}
+            </BrowserRouter>
+          </CartProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  );
+};
 
 export default App;

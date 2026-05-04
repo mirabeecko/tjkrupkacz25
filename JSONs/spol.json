@@ -1,0 +1,108 @@
+{
+    "name": "webdo24-full-pipeline",
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "manual",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [200, 300]
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              { "name": "companyName", "value": "Autoservis Novák" },
+              { "name": "industry", "value": "Autoservis" },
+              { "name": "goal", "value": "získávat poptávky" },
+              { "name": "tone", "value": "profesionální" },
+              { "name": "email", "value": "webdo24cz@gmail.com" }
+            ]
+          }
+        },
+        "id": "set",
+        "name": "Set Input",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [400, 300]
+      },
+      {
+        "parameters": {
+          "url": "https://api.anthropic.com/v1/messages",
+          "method": "POST",
+          "sendBody": true,
+          "specifyHeaders": "json",
+          "jsonHeaders": "{\n  \"x-api-key\": \"TVUJ_API_KEY\",\n  \"anthropic-version\": \"2023-06-01\",\n  \"content-type\": \"application/json\"\n}",
+          "jsonBody": "{\n  \"model\": \"claude-sonnet-4-5-20250929\",\n  \"max_tokens\": 1500,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Vytvoř JSON ve formátu: {siteBrief, copyPack, claudePrompt}. Firma: {{$json.companyName}}, obor: {{$json.industry}}, cíl: {{$json.goal}}, styl: {{$json.tone}}\"\n    }\n  ]\n}"
+        },
+        "id": "gpt",
+        "name": "Generate Strategy (Claude)",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4,
+        "position": [600, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "const raw = items[0].json.content?.[0]?.text || '{}';\nlet data;\ntry { data = JSON.parse(raw); } catch(e){ data = {}; }\nreturn [{ json: data }];"
+        },
+        "id": "parse",
+        "name": "Parse GPT Output",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [800, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "const site = $json.siteBrief || {};\nconst copy = $json.copyPack || {};\nconst prompt = $json.claudePrompt || '';\n\nreturn [{ json: {\n  finalPrompt: `\nVytvoř moderní firemní web.\n\nBRIEF:\\n${JSON.stringify(site, null, 2)}\n\nTEXTY:\\n${JSON.stringify(copy, null, 2)}\n\nÚKOL:\\n${prompt}\n\nPo dokončení:\n- oprav chyby\n- zkontroluj responzivitu\n- optimalizuj layout\n- připrav finální HTML\n`\n}}];"
+        },
+        "id": "buildprompt",
+        "name": "Build Claude Prompt",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [1000, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "const p = $json.finalPrompt;\nreturn [{ json: {\n  html: `<!DOCTYPE html>\n<html>\n<head><meta charset=\"UTF-8\"><title>Web</title></head>\n<body>\n<h1>GENEROVANÝ WEB</h1>\n<pre>${p}</pre>\n</body>\n</html>`\n}}];"
+        },
+        "id": "html",
+        "name": "Generate HTML Preview",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [1200, 300]
+      },
+      {
+        "parameters": {
+          "subject": "Webdo24 - návrh webu",
+          "text": "Hotový návrh:\n\n{{$json.html}}",
+          "toEmail": "webdo24cz@gmail.com"
+        },
+        "id": "email",
+        "name": "Send Email",
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2,
+        "position": [1400, 300]
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [[{ "node": "Set Input", "type": "main", "index": 0 }]]
+      },
+      "Set Input": {
+        "main": [[{ "node": "Generate Strategy (Claude)", "type": "main", "index": 0 }]]
+      },
+      "Generate Strategy (Claude)": {
+        "main": [[{ "node": "Parse GPT Output", "type": "main", "index": 0 }]]
+      },
+      "Parse GPT Output": {
+        "main": [[{ "node": "Build Claude Prompt", "type": "main", "index": 0 }]]
+      },
+      "Build Claude Prompt": {
+        "main": [[{ "node": "Generate HTML Preview", "type": "main", "index": 0 }]]
+      },
+      "Generate HTML Preview": {
+        "main": [[{ "node": "Send Email", "type": "main", "index": 0 }]]
+      }
+    }
+  }

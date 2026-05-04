@@ -121,7 +121,7 @@ const ONas = () => {
           <ul className="space-y-4 pl-6 list-disc text-lg">
             <li>Udržet a rozvíjet ski areál Komáří vížka</li>
             <li>Rozšířit letní nabídku sportů pro rodiny a školy</li>
-            <li>Vytvořit moderní zázemí pro členy i návštěvníky</li>
+            <li>Vytvořit kvalitní zázemí pro členy i návštěvníky</li>
             <li>Propojit sportovní aktivity s ekologickými principy a udržitelností</li>
           </ul>
         </div>

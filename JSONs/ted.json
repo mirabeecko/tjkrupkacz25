@@ -1,0 +1,67 @@
+{
+    "name": "webdo24-generator-fixed",
+    "nodes": [
+      {
+        "parameters": {},
+        "id": "manual-trigger",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [200, 300]
+      },
+      {
+        "parameters": {
+          "values": {
+            "string": [
+              { "name": "companyName", "value": "Autoservis Novák" },
+              { "name": "industry", "value": "Autoservis" },
+              { "name": "goal", "value": "získávat poptávky" },
+              { "name": "email", "value": "test@test.cz" },
+              { "name": "tone", "value": "profesionální" }
+            ]
+          }
+        },
+        "id": "set-data",
+        "name": "Set Data",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 2,
+        "position": [400, 300]
+      },
+      {
+        "parameters": {
+          "url": "https://api.anthropic.com/v1/messages",
+          "method": "POST",
+          "jsonParameters": true,
+          "options": {},
+          "headerParametersJson": "{\n  \"x-api-key\": \"TVUJ_API_KEY\",\n  \"anthropic-version\": \"2023-06-01\",\n  \"content-type\": \"application/json\"\n}",
+          "bodyParametersJson": "{\n  \"model\": \"claude-3-sonnet-20240229\",\n  \"max_tokens\": 1000,\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"Vytvoř obsah webu pro firmu {{$json.companyName}}. Obor: {{$json.industry}}. Cíl: {{$json.goal}}. Styl: {{$json.tone}}.\\n\\nVrať JSON ve formátu: {headline, subheadline, sections, cta}\"\n    }\n  ]\n}"
+        },
+        "id": "ai-http",
+        "name": "Claude API",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4,
+        "position": [600, 300]
+      },
+      {
+        "parameters": {
+          "functionCode": "const content = items[0].json.content?.[0]?.text || '{}';\nlet data;\ntry {\n  data = JSON.parse(content);\n} catch (e) {\n  data = { headline: 'Chyba', subheadline: content, sections: [], cta: 'Kontaktujte nás' };\n}\n\nreturn [{\n  json: {\n    html: `\n<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\">\n<title>${data.headline}</title>\n</head>\n<body>\n<h1>${data.headline}</h1>\n<p>${data.subheadline}</p>\n${(data.sections || []).map(s => `<section><p>${s}</p></section>`).join('')}\n<button>${data.cta}</button>\n</body>\n</html>`\n  }\n}];"
+        },
+        "id": "build-html",
+        "name": "Build HTML",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [800, 300]
+      }
+    ],
+    "connections": {
+      "Manual Trigger": {
+        "main": [[{ "node": "Set Data", "type": "main", "index": 0 }]]
+      },
+      "Set Data": {
+        "main": [[{ "node": "Claude API", "type": "main", "index": 0 }]]
+      },
+      "Claude API": {
+        "main": [[{ "node": "Build HTML", "type": "main", "index": 0 }]]
+      }
+    }
+  }
