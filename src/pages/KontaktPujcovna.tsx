@@ -57,7 +57,7 @@ const KontaktPujcovna: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [rentalDays, setRentalDays] = useState(0);
   const [estimatedPrice, setEstimatedPrice] = useState<number | null>(null);
-  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+  const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
   const confirmDurationMs = 10000;
   const confirmClassName =
     "border-2 border-orange-500 bg-orange-50 text-orange-900 shadow-xl";
@@ -200,17 +200,18 @@ const KontaktPujcovna: React.FC = () => {
         return;
       }
 
-      // Send email via Formspree
-      let notifyError: Error | null = null;
+      // Send to N8N webhook
+      let webhookError: Error | null = null;
       try {
         const extras = typeof booking.extras === 'string' ? JSON.parse(booking.extras) : booking.extras;
-        const response = await fetch(formspreeEndpoint, {
+        const response = await fetch(N8N_WEBHOOK, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
           body: JSON.stringify({
+            web_id: "tjkrupka",
             source: "Kontakt Půjčovna",
             bookingNumber: booking.booking_number,
             name: booking.customer_name,
@@ -228,17 +229,17 @@ const KontaktPujcovna: React.FC = () => {
           }),
         });
         if (!response.ok) {
-          notifyError = new Error(`Formspree error: ${response.status}`);
+          webhookError = new Error(`Webhook error: ${response.status}`);
         }
-      } catch (emailError) {
-        notifyError = emailError as Error;
+      } catch (err) {
+        webhookError = err as Error;
       }
 
-      if (notifyError) {
-        console.error("Formspree notify error:", notifyError);
+      if (webhookError) {
+        console.error("Webhook error:", webhookError);
         toast.success("REZERVACE ODESLÁNA", {
           description:
-            "Rezervaci jsme přijali. Emailové upozornění se nepodařilo odeslat.",
+            "Rezervaci jsme přijali. Webhook se nepodařilo odeslat.",
           duration: confirmDurationMs,
           className: confirmClassName,
           descriptionClassName: confirmDescriptionClassName,

@@ -8,6 +8,8 @@ type Props = {
   showPhone?: boolean;
 };
 
+const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
+
 const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,7 +19,6 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
   const confirmDurationMs = 10000;
   const confirmClassName =
     "border-2 border-emerald-500 bg-emerald-50 text-emerald-900 shadow-xl";
@@ -62,15 +63,17 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
         },
       ]);
 
-      let notifyError: Error | null = null;
+      // Send to N8N webhook
+      let webhookError: Error | null = null;
       try {
-        const response = await fetch(formspreeEndpoint, {
+        const response = await fetch(N8N_WEBHOOK, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
           body: JSON.stringify({
+            web_id: "tjkrupka",
             source: "Kontakt",
             name: formData.name,
             email: formData.email,
@@ -80,17 +83,17 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
           }),
         });
         if (!response.ok) {
-          notifyError = new Error(`Formspree error: ${response.status}`);
+          webhookError = new Error(`Webhook error: ${response.status}`);
         }
       } catch (err) {
-        notifyError = err as Error;
+        webhookError = err as Error;
       }
 
-      if (insertError || notifyError) {
-        if (insertError && !notifyError) {
+      if (insertError || webhookError) {
+        if (insertError && !webhookError) {
           toast("ZPRÁVA ODESLÁNA", {
             description:
-              "Emailové upozornění jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+              "Webhook jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
             duration: confirmDurationMs,
             className: confirmClassName,
             descriptionClassName: confirmDescriptionClassName,
@@ -99,15 +102,15 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
           resetForm();
           return;
         }
-        if (!insertError && notifyError) {
+        if (!insertError && webhookError) {
           toast("ZPRÁVA ODESLÁNA", {
             description:
-              "Zprávu jsme přijali a uložili. Emailové upozornění se nepodařilo odeslat.",
+              "Zprávu jsme přijali a uložili. Webhook se nepodařilo odeslat.",
             duration: confirmDurationMs,
             className: confirmClassName,
             descriptionClassName: confirmDescriptionClassName,
           });
-          console.error(notifyError);
+          console.error(webhookError);
           resetForm();
           return;
         }
@@ -115,7 +118,7 @@ const ContactForm: React.FC<Props> = ({ showPhone = true }) => {
           description: insertError?.message || "Zkuste to prosím znovu.",
         });
         if (insertError) console.error(insertError);
-        if (notifyError) console.error(notifyError);
+        if (webhookError) console.error(webhookError);
       } else {
         toast.success("ZPRÁVA ODESLÁNA", {
           description: "Děkujeme! Vaši zprávu jsme přijali a brzy se ozveme.",

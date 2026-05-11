@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
-  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Bike, Coffee, Mountain, Shield, School, Smile, Users
+  Info, Map, Heart, Mail, CloudSun, Wind, Briefcase, ChevronDown, Bed, Mountain, Shield, School, Smile, Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,6 @@ interface NavbarProps {
 // Submenu pro Služby
 const servicesSubmenu = [
   { name: "Snowkiting Kurzy", icon: <Wind className="h-4 w-4" />, href: "/snowkiting-kurzy" },
-  { name: "Půjčovna Motocyklů", icon: <Bike className="h-4 w-4" />, href: "/pujcovna" },
   { name: "Lyžařský areál", icon: <Mountain className="h-4 w-4" />, href: "/komari-vizka" },
   { name: "Pro školy", icon: <School className="h-4 w-4" />, href: "/skoly" },
   { name: "Pro firmy", icon: <Briefcase className="h-4 w-4" />, href: "/firmy" },

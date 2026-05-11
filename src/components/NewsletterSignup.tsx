@@ -4,6 +4,8 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/supabaseClient";
 import { Mail } from "lucide-react";
 
+const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
+
 const NewsletterSignup: React.FC = () => {
   const { toast } = useToast();
   const [email, setEmail] = useState("");
@@ -27,17 +29,17 @@ const NewsletterSignup: React.FC = () => {
           variant: "destructive",
         });
       } else {
-        // Send email notification
+        // Send to N8N webhook
         try {
-          await fetch('https://mljqltwcdqknezuqpisb.functions.supabase.co/newsletter-signup', {
+          await fetch(N8N_WEBHOOK, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ web_id: "tjkrupka", source: "Newsletter", email }),
           });
-        } catch (emailError) {
-          console.error('Error sending email notification:', emailError);
+        } catch (webhookError) {
+          console.error('Error sending webhook:', webhookError);
         }
 
         toast({

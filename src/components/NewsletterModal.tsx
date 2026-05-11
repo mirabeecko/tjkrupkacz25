@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 
+const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
+
 interface NewsletterModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -19,17 +21,26 @@ const NewsletterModal: React.FC<NewsletterModalProps> = ({ isOpen, onClose }) =>
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulace API volání
+    try {
+      await fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ web_id: "tjkrupka", source: "Newsletter Modal", email }),
+      });
+    } catch (webhookError) {
+      console.error('Error sending webhook:', webhookError);
+    }
+
+    setIsSubmitted(true);
+    setIsLoading(false);
+    toast.success("Děkujeme za přihlášení k odběru!");
     setTimeout(() => {
-      setIsSubmitted(true);
-      setIsLoading(false);
-      toast.success("Děkujeme za přihlášení k odběru!");
-      setTimeout(() => {
-        onClose();
-        setIsSubmitted(false);
-        setEmail("");
-      }, 2000);
-    }, 1500);
+      onClose();
+      setIsSubmitted(false);
+      setEmail("");
+    }, 2000);
   };
 
   return (

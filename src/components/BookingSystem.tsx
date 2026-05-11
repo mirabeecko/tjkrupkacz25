@@ -3,6 +3,8 @@ import { Calendar, Users, Bed, Check, ArrowRight, Mail, Phone, User } from "luci
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
+const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
+
 interface RoomType {
   id: string;
   name: string;
@@ -89,12 +91,27 @@ const BookingSystem: React.FC = () => {
     return false;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    try {
+      await fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          web_id: "tjkrupka",
+          source: "Rezervace ubytování",
+          ...formData,
+        }),
+      });
+    } catch (webhookError) {
+      console.error('Error sending webhook:', webhookError);
+    }
+
     toast({
       title: "Rezervace odeslána!",
       description: "Brzy vás budeme kontaktovat s potvrzením.",
     });
-    // Here you would typically send the data to your backend
     console.log("Booking data:", formData);
   };
 

@@ -35,7 +35,7 @@ const KontaktSnowkiting: React.FC = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const formspreeEndpoint = "https://formspree.io/f/mnjzeozj";
+  const N8N_WEBHOOK = "https://n8n.webdo24.cz/webhook/new-lead";
   const confirmDurationMs = 10000;
   const confirmClassName =
     "border-2 border-cyan-500 bg-cyan-50 text-cyan-900 shadow-xl";
@@ -80,15 +80,17 @@ const KontaktSnowkiting: React.FC = () => {
         },
       ]);
 
-      let notifyError: Error | null = null;
+      // Send to N8N webhook
+      let webhookError: Error | null = null;
       try {
-        const response = await fetch(formspreeEndpoint, {
+        const response = await fetch(N8N_WEBHOOK, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
           body: JSON.stringify({
+            web_id: "tjkrupka",
             source: "Kontakt Snowkiting",
             name: formData.name,
             email: formData.email,
@@ -100,17 +102,17 @@ const KontaktSnowkiting: React.FC = () => {
           }),
         });
         if (!response.ok) {
-          notifyError = new Error(`Formspree error: ${response.status}`);
+          webhookError = new Error(`Webhook error: ${response.status}`);
         }
       } catch (err) {
-        notifyError = err as Error;
+        webhookError = err as Error;
       }
 
-      if (insertError || notifyError) {
-        if (insertError && !notifyError) {
+      if (insertError || webhookError) {
+        if (insertError && !webhookError) {
           toast.success("POPTÁVKA ODESLÁNA", {
             description:
-              "Emailové upozornění jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
+              "Webhook jsme odeslali. Uložení do systému se nezdařilo, ale zprávu jsme obdrželi.",
             duration: confirmDurationMs,
             className: confirmClassName,
             descriptionClassName: confirmDescriptionClassName,
@@ -119,21 +121,21 @@ const KontaktSnowkiting: React.FC = () => {
           resetForm();
           return;
         }
-        if (!insertError && notifyError) {
+        if (!insertError && webhookError) {
           toast.success("POPTÁVKA ODESLÁNA", {
             description:
-              "Poptávku jsme přijali a uložili. Emailové upozornění se nepodařilo odeslat.",
+              "Poptávku jsme přijali a uložili. Webhook se nepodařilo odeslat.",
             duration: confirmDurationMs,
             className: confirmClassName,
             descriptionClassName: confirmDescriptionClassName,
           });
-          console.error(notifyError);
+          console.error(webhookError);
           resetForm();
           return;
         }
         toast.error("Nepodařilo se odeslat poptávku. Zkuste to prosím znovu.");
         if (insertError) console.error(insertError);
-        if (notifyError) console.error(notifyError);
+        if (webhookError) console.error(webhookError);
         return;
       }
 
