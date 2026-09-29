@@ -195,6 +195,8 @@
   .taskbar .btn{padding:9px 16px;font-size:.88rem}
   .badge-test{background:#fde68a;color:#78350f;border:1px solid #f59e0b;border-radius:8px;
     padding:12px 16px;margin:14px 0;font-size:.92rem;font-weight:700}
+  .dangerbox{border-color:var(--red);border-style:solid;background:#fff}
+  .dangerbox h3{color:#991b1b}
   @media(max-width:640px){
     .cf{grid-template-columns:1fr}
     .vote .seg label{padding:8px 12px}
@@ -1387,6 +1389,17 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
     <button type="button" class="btn danger" id="ow-del">Smazat stránku z URL</button>
     <a class="btn ghost" href="https://github.com/mirabeecko/tjkrupkacz25/delete/main/public/webaudit-test/index.html" target="_blank" rel="noreferrer noopener">Přímé smazání souboru na GitHubu</a>
   </div>
+
+  <div class="fallback dangerbox" id="ow-del-confirm">
+    <h3>Potvrdit smazání /webaudit z URL</h3>
+    <p style="margin:4px 0 0;font-size:.92rem">Po smazání bude stránka vracet <b>404</b> a přestane být dostupná na adrese.
+    Odsouhlasený obsah zůstává v odeslaném výsledku i v historii repozitáře — obnovit ji lze revertem commitu.
+    Pokračujte jen tehdy, když už je odsouhlasení odeslané.</p>
+    <div class="btnrow">
+      <button type="button" class="btn danger" id="ow-del-go">Ano, smazat /webaudit</button>
+      <button type="button" class="btn ghost" id="ow-del-cancel">Zrušit</button>
+    </div>
+  </div>
   <p style="font-size:.85rem;color:var(--muted);margin-top:10px">Maže se soubor
   <code>public/webaudit/index.html</code>. Revert: <code>git revert &lt;sha-commitu-nasazení&gt; &amp;&amp; git push origin main</code>.</p>
 </section>
@@ -1569,11 +1582,15 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
     }
   }
 
-  function submit(){
+  function submit(force){
     var p=collect(), c=counts();
     if(!p.name.trim()){ showStatus("err","Vyplňte, prosím, kdo odsouhlasení posílá (pole „Jméno“)."); $("#ow-name").focus(); return; }
-    if(c.none>0){
-      if(!window.confirm("U "+c.none+" bodů není zvoleno ANO/NE. Odeslat i tak?")) return;
+    if(c.none>0 && !force){
+      showStatus("warn","<b>"+c.none+" bodů zatím nemá volbu.</b> Můžete je doplnit, nebo odeslat i tak — nerozhodnuté body se odešlou jako „?“. "+
+        "<button type='button' class='btn' id='ow-force'>Přesto odeslat</button>");
+      var f=$("#ow-force");
+      if(f) f.addEventListener("click",function(){ submit(true); });
+      return;
     }
     var txt=human(p), btn=$("#ow-send");
     btn.disabled=true; btn.textContent="Odesílám…";
@@ -1598,7 +1615,10 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
       return r.text().catch(function(){return "";});
     }).then(function(){
       saveDraft();
-      showStatus("good","<b>ODESLÁNO.</b> Odsouhlasení dorazilo na náš kanál (n8n → upozornění DEV/CHIEF). Uloženo "+new Date().toLocaleString("cs-CZ")+". Pro jistotu si můžete stáhnout kopii — <button type='button' class='btn ghost' onclick=\"document.getElementById('ow-dl2').click()\">stáhnout kopii</button>");
+      showStatus("good","<b>ODESLÁNO.</b> Odsouhlasení dorazilo na náš kanál (n8n → upozornění DEV/CHIEF). Uloženo "+new Date().toLocaleString("cs-CZ")+
+        ". Pro jistotu si můžete <button type='button' class='btn ghost' id='ow-dl2'>stáhnout kopii</button>.");
+      var d2=$("#ow-dl2");
+      if(d2) d2.addEventListener("click",function(){ download("webaudit-odsouhlaseni.txt", human(collect())); });
       $("#ow-fallback").classList.remove("show");
     }).catch(function(err){
       clearTimeout(to);
@@ -1611,9 +1631,12 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
 
   /* ---------- 5. smazani stranky ---------- */
   function deletePage(){
-    var ok=window.confirm("Opravdu chcete stránku /webaudit smazat z URL?\n\nStránka po smazání zmizí (404). Obnovit ji lze revertem commitu.\n\nPo potvrzení se otevře GitHub s předplněným smazáním souboru.");
-    if(!ok) return;
-    showStatus("warn","Smazání připraveno — potvrďte ho, prosím, na GitHubu (otevřeno v nové kartě). Stránka zmizí po přebudování (~1–2 min).");
+    var box=$("#ow-del-confirm");
+    if(box){ box.classList.add("show"); box.scrollIntoView({behavior:"smooth",block:"center"}); }
+  }
+  function doDelete(){
+    var box=$("#ow-del-confirm"); if(box) box.classList.remove("show");
+    showStatus("warn","Smazání připraveno — potvrďte ho, prosím, na GitHubu (otevřeno v nové kartě). Stránka zmizí po přebudování webu (~1–2 min).");
     var body=JSON.stringify({
       web_id:"tjkrupka", source:"Webaudit — zadost o smazani stranky (DRE-100467.2)",
       name:(($("#ow-name")||{}).value||"OWNER"), email:(($("#ow-email")||{}).value||""),
@@ -1643,8 +1666,10 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
   function boot(){
     if(!IDS.length) return;
     loadDraft(); refresh();
-    var s=$("#ow-send"); if(s) s.addEventListener("click",submit);
+    var s=$("#ow-send"); if(s) s.addEventListener("click",function(){ submit(false); });
     var d=$("#ow-del"); if(d) d.addEventListener("click",deletePage);
+    var dg=$("#ow-del-go"); if(dg) dg.addEventListener("click",doDelete);
+    var dc=$("#ow-del-cancel"); if(dc) dc.addEventListener("click",function(){ $("#ow-del-confirm").classList.remove("show"); });
     var g=$("#ow-guide-issue");
     if(g){ g.addEventListener("click",function(ev){ ev.preventDefault(); showFallback(collect(), null);
       var a=$("#ow-issue"); if(a){ window.open(a.href,"_blank","noopener"); } }); }
