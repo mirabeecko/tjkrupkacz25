@@ -1369,15 +1369,26 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
 
 <section id="smazani">
   <h2>Smazání stránky z URL</h2>
-  <p class="lead">Tato stránka je dočasná. Až odsouhlasení odešlete, smažte ji tlačítkem níže — zmizí z adresy
-  <code>/webaudit</code> a začne vracet <b>404</b>. Obsah, který jste odsouhlasili, zůstává v repozitáři i v odeslaném
-  výsledku; obnovit ji lze revertem jednoho commitu.</p>
+  <p class="lead">Tato stránka je dočasná. Až odsouhlasení odešlete, smažte ji tlačítkem níže — <b>obsah stránky
+  zmizí z adresy</b> <code>/webaudit</code>. Co jste odsouhlasili, zůstává v odeslaném výsledku i v historii
+  repozitáře; obnovit ji lze revertem jednoho commitu.</p>
   <div class="note">
     <b>Proč to není na jedno kliknutí:</b> web je statický na Vercelu a nasazuje se z repozitáře. Automatické smazání
     by vyžadovalo token s právem zápisu do produkčního repozitáře — ten záměrně nemáme. Tlačítko proto připraví
     <b>předplněné smazání souboru</b> na GitHubu a zároveň pošle požadavek na smazání naším kanálem:
     klik na tlačítko → na GitHubu potvrdit <i>Commit changes</i> → stránka zmizí po přebudování webu (obvykle 1–2 minuty).
     Celkem dva kliky, žádné přihlašovací údaje pro nás.
+  </div>
+  <div class="note">
+    <b>Co se po smazání stane doopravdy (měřeno 29. 9. 2026):</b> obsah webauditu z adresy skutečně zmizí, ale adresa
+    <code>/webaudit</code> pak <b>nevrací 404</b> — vrací úvodní stránku webu s HTTP 200. Důvod je architektura: web je
+    jednostránková aplikace (SPA) a Vercel má catch-all rewrite <code>/:path* → /index.html</code>, který obslouží
+    i neexistující adresy. Naměřeno na testovací cestě <code>/webaudit-test</code>: před smazáním souboru vracela obsah
+    (HTTP 200), po smazání souboru vrací úvodní stránku webu (HTTP 200); tvrdé 404/410 se na Vercelu bez serverless
+    funkce nebo middlewaru dosáhnout nedá. Na adrese přesto zůstává hlavička <code>X-Robots-Tag: noindex</code>, takže ji
+    vyhledávače neindexují a obsah stránky je z URL nevratně pryč.
+    <br><b>Chcete tvrdé 404/410</b> (aby adresa zmizela i pro odkazy a roboty)? Jde to, ale znamená to malý zásah do
+    projektu (serverless funkce/middleware) — tedy změnu nad rámec tohoto zadání. Řekněte si o ni a DEV ji dodá.
   </div>
   <div class="btnrow">
     <button type="button" class="btn danger" id="ow-del">Smazat stránku z URL</button>
@@ -1386,7 +1397,8 @@ POVINNÉ ODKAZY NA app.tjkrupka.cz
 
   <div class="fallback dangerbox" id="ow-del-confirm">
     <h3>Potvrdit smazání /webaudit z URL</h3>
-    <p style="margin:4px 0 0;font-size:.92rem">Po smazání bude stránka vracet <b>404</b> a přestane být dostupná na adrese.
+    <p style="margin:4px 0 0;font-size:.92rem">Po smazání souboru zmizí obsah stránky z adresy <code>/webaudit</code>
+    (adresa pak vrací úvodní stránku webu — viz měření výše).
     Odsouhlasený obsah zůstává v odeslaném výsledku i v historii repozitáře — obnovit ji lze revertem commitu.
     Pokračujte jen tehdy, když už je odsouhlasení odeslané.</p>
     <div class="btnrow">
