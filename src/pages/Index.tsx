@@ -159,7 +159,7 @@ const Index = () => {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 animate-[fade-in_1s_ease-out]">
                 <Snowflake className="w-4 h-4 text-cyan-400" />
-                <span className="text-sm font-medium">Zimní sezóna 2025 je tady!</span>
+                <span className="text-sm font-medium">Zimní sezóna 2026/27 se blíží!</span>
               </div>
 
               {/* Main Heading */}

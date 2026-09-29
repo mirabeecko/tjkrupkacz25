@@ -217,40 +217,7 @@ const Dobrovolnici = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {/* Ústecký kraj */}
-              <a
-                href="https://www.kr-ustecky.cz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100 hover:border-blue-300 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-full h-32 flex items-center justify-center mb-4">
-                    <img
-                      src="/images/partners/ustecky-kraj-logo.png"
-                      alt="Ústecký kraj"
-                      className="max-h-28 max-w-full object-contain"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                        e.currentTarget.nextElementSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="hidden flex-col items-center justify-center text-blue-600">
-                      <svg className="h-20 w-20 mb-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                      </svg>
-                      <span className="font-bold text-xl">Ústecký kraj</span>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-tjk-blue mb-2 text-center">Ústecký kraj</h3>
-                  <p className="text-gray-600 text-center text-sm">
-                    Podpora rozvoje sportu a cestovního ruchu v regionu
-                  </p>
-                </div>
-              </a>
-
+            <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
               {/* Veterina Live */}
               <a
                 href="https://www.veterina-live.eu"

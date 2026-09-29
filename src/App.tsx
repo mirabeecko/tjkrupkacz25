@@ -12,7 +12,6 @@ import Sporty from "./pages/Sporty";
 import Sluzby from "./pages/Sluzby";
 import KomariVizka from "./pages/KomariVizka";
 import Merch from "./pages/Merch";
-import Vstupenky from "./pages/Vstupenky";
 import Dobrovolnici from "./pages/Dobrovolnici";
 import Kontakt from "./pages/Kontakt";
 import Pocasi from "./pages/Pocasi";
@@ -37,6 +36,7 @@ import Cookies from "./pages/cookies";
 import Accessibility from "./pages/Accessibility";
 import KontaktSnowkiting from "./pages/KontaktSnowkiting";
 import Airbag from "./pages/Airbag";
+import AirbagV2 from "./pages/AirbagV2";
 import Eshop from "./pages/Eshop";
 import Kosik from "./pages/Kosik";
 import Pokladna from "./pages/Pokladna";
@@ -46,6 +46,9 @@ import AktivityProDeti from "./pages/AktivityProDeti";
 import Dashboard from "./pages/Dashboard";
 
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
+import MemberApp from "./pages/member/MemberApp";
+import { Capacitor } from "@capacitor/core";
 import { FEATURES } from "./config/features";
 
 const queryClient = new QueryClient();
@@ -53,11 +56,24 @@ const queryClient = new QueryClient();
 const App = () => {
   const hostname = window.location.hostname;
   const isStatsSubdomain = hostname.startsWith('stats.');
+  const isNative = Capacitor.isNativePlatform();
+
+  // Nativní Android aplikace = členská zóna (registrace / přihlášení / podmínky)
+  if (isNative) {
+    return (
+      <HelmetProvider>
+        <AuthProvider>
+          <MemberApp />
+        </AuthProvider>
+      </HelmetProvider>
+    );
+  }
 
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <AuthProvider>
           <CartProvider>
             <Sonner />
             <BrowserRouter>
@@ -70,12 +86,12 @@ const App = () => {
               ) : (
                 <Routes>
                   <Route path="/" element={<Index />} />
+                  <Route path="/clenska-zona" element={<MemberApp />} />
                   <Route path="/o-nas" element={<ONasModern />} />
                   <Route path="/sporty" element={<Sporty />} />
                   <Route path="/sluzby" element={<Sluzby />} />
                   <Route path="/komari-vizka" element={<KomariVizka />} />
                   <Route path="/merch" element={<Merch />} />
-                  <Route path="/vstupenky" element={<Vstupenky />} />
                   <Route path="/dobrovolnici" element={<Dobrovolnici />} />
                   <Route path="/kontakt" element={<Kontakt />} />
                   <Route path="/pocasi" element={<Pocasi />} />
@@ -106,6 +122,7 @@ const App = () => {
                   <Route path="/pristupnost" element={<Accessibility />} />
                   <Route path="/kontakt-snowkiting" element={<KontaktSnowkiting />} />
                   <Route path="/airbag" element={<Airbag />} />
+                  <Route path="/airbag-v2" element={<AirbagV2 />} />
                   <Route path="/eshop" element={<Eshop />} />
                   <Route path="/kosik" element={<Kosik />} />
                   <Route path="/pokladna" element={<Pokladna />} />
@@ -117,6 +134,7 @@ const App = () => {
               )}
             </BrowserRouter>
           </CartProvider>
+          </AuthProvider>
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>

@@ -43,7 +43,7 @@ const AccessibilityPage = () => {
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 mb-8">
-                  Poslední aktualizace: 16. října 2025
+                  Poslední aktualizace: 30. srpna 2026
                 </p>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
@@ -272,8 +272,8 @@ const AccessibilityPage = () => {
                   </div>
                   <div className="flex items-center gap-2 mb-4">
                     <Phone className="w-5 h-5 text-indigo-600" />
-                    <a href="tel:+420773090842" className="text-indigo-600 hover:underline text-lg">
-                      +420 773 090 842
+                    <a href="tel:+420777734389" className="text-indigo-600 hover:underline text-lg">
+                      +420 777 734 389
                     </a>
                   </div>
                   <p className="text-sm text-gray-700">
@@ -324,11 +324,11 @@ const AccessibilityPage = () => {
                 </h2>
                 <p className="text-gray-700 mb-6">
                   Toto prohlášení o přístupnosti bylo naposledy přezkoumáno a aktualizováno
-                  dne <strong>16. října 2025</strong>.
+                  dne <strong>30. srpna 2026</strong>.
                 </p>
                 <p className="text-gray-700 mb-6">
                   Webové stránky byly naposledy technicky testovány z hlediska přístupnosti
-                  dne <strong>16. října 2025</strong> prostřednictvím kombinace automatických
+                  dne <strong>30. srpna 2026</strong> prostřednictvím kombinace automatických
                   nástrojů a manuálního testování.
                 </p>
 

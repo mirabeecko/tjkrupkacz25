@@ -142,7 +142,7 @@ const allServices = [
       "Maximální ochrana",
       "Profesionální vybavení",
       "Moderní technologie",
-      "Coming soon 2025"
+      "Připravujeme"
     ],
     badge: "BRZY"
   },

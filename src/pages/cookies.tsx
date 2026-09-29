@@ -43,7 +43,7 @@ const Cookies = () => {
 
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-600 mb-8">
-                  Poslední aktualizace: 16. října 2025
+                  Poslední aktualizace: 30. srpna 2026
                 </p>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 mt-8">
@@ -301,8 +301,8 @@ const Cookies = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="w-5 h-5 text-amber-600" />
-                    <a href="tel:+420773090842" className="text-amber-600 hover:underline text-lg">
-                      +420 773 090 842
+                    <a href="tel:+420777734389" className="text-amber-600 hover:underline text-lg">
+                      +420 777 734 389
                     </a>
                   </div>
                 </div>

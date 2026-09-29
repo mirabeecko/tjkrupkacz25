@@ -17,7 +17,7 @@ const SEO: React.FC<SEOProps> = ({
   title = "Tělovýchovná jednota Krupka z.s. | Snowkiting a Trail Park",
   description = "Objevte snowkiting v Krušných horách, trail park Komárka a další outdoorové aktivity s TJK Krupka. Kurzy, půjčovna, ubytování a mnoho dalšího!",
   keywords = "snowkiting, trail park, Krupka, Krušné hory, outdoor, kurzy, bike park, MTB, Komárka",
-  image = "/images/og-image.jpg",
+  image = "https://tjkrupka.cz/images/og-image.jpg",
   url = "https://tjkrupka.cz",
   type = "website",
   author = "Tělovýchovná jednota Krupka z.s.",
@@ -82,7 +82,7 @@ const SEO: React.FC<SEOProps> = ({
           },
           contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+420-123-456-789",
+            telephone: "+420-777-734-389",
             contactType: "customer service",
             email: "info@tjkrupka.cz",
           },

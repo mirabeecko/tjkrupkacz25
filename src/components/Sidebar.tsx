@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { 
-  Info, Activity, Map, Coffee, ShoppingBag, Ticket, Heart, Mail, CloudSun, X 
+  Info, Activity, Map, Coffee, ShoppingBag, Heart, Mail, CloudSun, X 
 } from "lucide-react";
 
 interface SidebarProps {
@@ -16,7 +16,6 @@ const menuItems = [
   { name: "Služby", icon: <Coffee className="h-5 w-5" />, href: "#sluzby" },
   { name: "Komáří vížka", icon: <Map className="h-5 w-5" />, href: "#komari-vizka" },
   { name: "Merch", icon: <ShoppingBag className="h-5 w-5" />, href: "#merch" },
-  { name: "Vstupenky", icon: <Ticket className="h-5 w-5" />, href: "#vstupenky" },
   { name: "Dobrovolníci & Sponzoři", icon: <Heart className="h-5 w-5" />, href: "#dobrovolnici" },
   { name: "Kontakt", icon: <Mail className="h-5 w-5" />, href: "#kontakt" },
   { name: "Počasí", icon: <CloudSun className="h-5 w-5" />, href: "#pocasi" },

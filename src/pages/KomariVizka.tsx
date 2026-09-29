@@ -138,16 +138,6 @@ const KomariVizka = () => {
 
   const facilities = [
     {
-      title: "Jízdenky",
-      icon: <ArrowRight className="h-6 w-6" />,
-      description: "Zakupte si jízdenky na vleky online. Nabízíme výhodné celodenní, polodenní a bodové jízdné.",
-      link: "/pripravujeme",
-      buttonText: "Koupit jízdenky",
-      gradient: "from-blue-600 to-indigo-600",
-      iconBg: "bg-blue-100",
-      iconColor: "text-blue-600"
-    },
-    {
       title: "Ubytování",
       icon: <Home className="h-6 w-6" />,
       description: "Komfortní pokoje s výhledem do Krušných hor. Ideální pro víkendové pobyty i skupiny.",

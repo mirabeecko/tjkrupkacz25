@@ -48,7 +48,7 @@ const Ubytovani = () => {
                 </li>
               </ul>
               <div className="mb-4 text-gray-600">
-                <strong>Otevíráme již brzy!</strong> Sledujte naše stránky pro aktuální informace o zahájení provozu a možnostech rezervace.
+                <strong>Otevíráme v zimní sezóně 2026/27!</strong> Zanechte nám kontakt a jako první se dozvíte o termínech a rezervacích — prvních 20 hostů dostane slevu 15 %.
               </div>
               <Button asChild className="bg-tjk-blue hover:bg-tjk-blue/90 text-white font-semibold px-6 py-2 rounded-md">
                 <Link to="/kontakt">
@@ -78,7 +78,7 @@ const Ubytovani = () => {
                 </li>
               </ul>
               <div className="mb-4 text-gray-600">
-                <strong>Glamping bude spuštěn v roce 2025.</strong> Sledujte novinky a rezervujte si svůj zážitek včas!
+                <strong>Glamping připravujeme — spuštění společně s penzionem v zimní sezóně 2026/27.</strong> Zanechte nám kontakt a rezervujte si svůj zážitek včas — prvních 20 hostů dostane slevu 15 %.
               </div>
               <Button asChild className="bg-amber-500 hover:bg-orange-500 text-white font-semibold px-6 py-2 rounded-md">
                 <Link to="/kontakt">

@@ -7,7 +7,7 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Sparkles, Target, Users, Award, CheckCircle2, ChevronRight, Heart, Star, Zap, TrendingUp, Baby, GraduationCap, Trophy, ShieldCheck, Rabbit, Smile, BrainCircuit, School } from "lucide-react";
+import { Shield, Sparkles, Target, Users, CheckCircle2, ChevronRight, Heart, Star, Zap, TrendingUp, Baby, GraduationCap, Trophy, ShieldCheck, Rabbit, Smile, BrainCircuit, School } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const benefits = [
@@ -443,12 +443,12 @@ const Airbag = () => {
                     S podporou našich partnerů
                     </h2>
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                    Tento projekt by nevznikl bez podpory <strong>Ústeckého kraje</strong> a <strong>Veterinární kliniky Vet-Live z Litoměřic</strong>, kterým tímto vyjadřujeme velké poděkování a upřímnou vděčnost. Díky jejich pomoci můžeme přinést do regionu sportovní prvek, který bude sloužit dětem, sportovcům i široké veřejnosti.
+                    Tento projekt by nevznikl bez podpory <strong>Veterinární kliniky Vet-Live z Litoměřic</strong>, které tímto vyjadřujeme velké poděkování a upřímnou vděčnost. Díky její pomoci můžeme přinést do regionu sportovní prvek, který bude sloužit dětem, sportovcům i široké veřejnosti.
                     </p>
                 </div>
                 </ScrollAnimation>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
                 {/* LIVE VET Litoměřice */}
                 <ScrollAnimation animation="fade-up" delay={100}>
                     <Card className="group border-2 border-gray-200 hover:border-green-500 transition-all duration-500 hover:shadow-2xl overflow-hidden">
@@ -505,68 +505,6 @@ const Airbag = () => {
                         className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold transition-colors"
                         >
                         <span>Navštivte web LIVE VET</span>
-                        <ChevronRight className="h-4 w-4" />
-                        </a>
-                    </CardContent>
-                    </Card>
-                </ScrollAnimation>
-
-                {/* Ústecký kraj */}
-                <ScrollAnimation animation="fade-up" delay={200}>
-                    <Card className="group border-2 border-gray-200 hover:border-blue-500 transition-all duration-500 hover:shadow-2xl overflow-hidden">
-                    <CardContent className="p-8">
-                        <a href="https://www.kr-ustecky.cz" target="_blank" rel="noopener noreferrer" className="block">
-                        <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 mb-6 shadow-md group-hover:shadow-xl transition-all duration-300">
-                            <div className="flex items-center justify-center h-32">
-                            {/* Logo Ústeckého kraje - nahraďte vlastním logem */}
-                            <img
-                                src="/images/partners/ustecky-kraj-logo.png"
-                                alt="Ústecký kraj"
-                                className="h-24 object-contain"
-                                onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                e.currentTarget.nextElementSibling.style.display = 'flex';
-                                }}
-                            />
-                            <div className="text-blue-600 flex-col items-center gap-2 hidden">
-                                <Award className="h-16 w-16" />
-                                <span className="font-bold text-2xl">Ústecký kraj</span>
-                            </div>
-                            </div>
-                        </div>
-                        </a>
-
-                        <div className="flex items-center justify-center gap-2 mb-4">
-                        <Star className="h-5 w-5 fill-blue-500 text-blue-500" />
-                        <Badge className="bg-blue-500 text-white">Oficiální partner</Badge>
-                        </div>
-
-                        <h3 className="text-2xl font-bold text-tjk-blue mb-3 group-hover:text-blue-600 transition-colors text-center">
-                        Ústecký kraj
-                        </h3>
-
-                        <div className="space-y-3 text-left mb-4">
-                        <p className="text-gray-700 leading-relaxed font-semibold text-blue-700">
-                            🏛️ Regionální samospráva a podpora rozvoje
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            <strong>Zaměření:</strong> Ústecký kraj podporuje rozvoj regionu v oblastech vzdělávání, kultury, sportu, sociálních služeb a infrastruktury. Aktivně podporuje projekty zaměřené na mládež a sport.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            <strong>Sportovní podpora:</strong> Kraj dlouhodobě investuje do sportovní infrastruktury a podporuje sportovní aktivity dětí a mládeže. Cílem je vytvářet kvalitní podmínky pro rozvoj talentů.
-                        </p>
-                        <p className="text-gray-700 leading-relaxed">
-                            <strong>Význam podpory:</strong> Dotace od Ústeckého kraje výrazně přispěla k realizaci AIRBAG matrace, která slouží jako tréninkové zařízení pro bezpečný rozvoj dovedností mladých sportovců v Krušnohoří.
-                        </p>
-                        </div>
-
-                        <a
-                        href="https://www.kr-ustecky.cz"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors"
-                        >
-                        <span>Navštivte web Ústeckého kraje</span>
                         <ChevronRight className="h-4 w-4" />
                         </a>
                     </CardContent>
