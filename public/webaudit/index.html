@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="referrer" content="no-referrer" />
+<title>Webaudit tjkrupka.cz — obsahová a prodejní analýza (DRE-100467.1)</title>
+<style>
+  :root{
+    --blue:#161c2d; --dark:#0f172a; --orange:#ff5722; --gray:#f9fafb;
+    --light:#f7fafc; --line:#e2e8f0; --text:#1e293b; --muted:#64748b;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626; --cyan:#0891b2;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--light); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.65;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  header.hero{
+    background:linear-gradient(135deg,var(--blue) 0%,var(--dark) 60%,#1e293b 100%);
+    color:#fff;padding:52px 0 44px;
+  }
+  header.hero h1{margin:0 0 10px;font-size:2.1rem;line-height:1.2;letter-spacing:-.02em}
+  header.hero .sub{color:#cbd5e1;font-size:1.05rem;margin:0 0 22px;max-width:70ch}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .meta span{
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    border-radius:999px;padding:5px 13px;font-size:.82rem;color:#e2e8f0;
+  }
+  .status{
+    display:inline-block;background:var(--orange);color:#fff;font-weight:700;
+    border-radius:8px;padding:9px 16px;font-size:.92rem;letter-spacing:.04em;
+  }
+  .hero-note{
+    margin-top:22px;background:rgba(255,255,255,.07);border-left:4px solid var(--orange);
+    padding:14px 18px;border-radius:0 8px 8px 0;font-size:.9rem;color:#e2e8f0;
+  }
+
+  nav.toc{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
+    box-shadow:0 1px 3px rgba(15,23,42,.06)}
+  nav.toc ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:10px 0}
+  nav.toc a{
+    display:block;padding:6px 12px;border-radius:8px;text-decoration:none;
+    color:var(--blue);font-size:.86rem;font-weight:600;border:1px solid var(--line);
+  }
+  nav.toc a:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+
+  main{padding:38px 0 70px}
+  section{margin-bottom:46px;scroll-margin-top:70px}
+  h2{
+    font-size:1.55rem;margin:0 0 6px;color:var(--blue);letter-spacing:-.01em;
+    padding-bottom:10px;border-bottom:3px solid var(--orange);display:inline-block;
+  }
+  h3{font-size:1.16rem;margin:30px 0 12px;color:var(--blue)}
+  h4{font-size:1rem;margin:22px 0 8px;color:var(--dark)}
+  p{margin:0 0 12px}
+  .lead{color:var(--muted);margin:8px 0 22px;max-width:80ch}
+
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .kpi b{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--orange);margin-bottom:6px}
+  .kpi span{font-size:.93rem;color:var(--text)}
+
+  .finding{
+    background:#fff;border:1px solid var(--line);border-left:5px solid var(--cyan);
+    border-radius:10px;padding:16px 18px;margin:0 0 14px;
+  }
+  .finding.p1{border-left-color:var(--red)}
+  .finding.p2{border-left-color:var(--amber)}
+  .finding h4{margin:0 0 10px;font-size:1.02rem;color:var(--blue)}
+  .finding .tag{
+    display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;
+    padding:3px 9px;border-radius:6px;margin-right:8px;background:#e2e8f0;color:#334155;
+  }
+  .tag.p1{background:#fee2e2;color:#991b1b}
+  .tag.p2{background:#fef3c7;color:#92400e}
+  .tag.p3{background:#e0f2fe;color:#075985}
+  .finding dl{margin:0;display:grid;gap:6px}
+  .finding dt{font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .finding dd{margin:0 0 6px;font-size:.95rem}
+  code{
+    background:#f1f5f9;border:1px solid var(--line);border-radius:4px;
+    padding:1px 6px;font-size:.85em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:#0f172a;word-break:break-word;
+  }
+
+  table{width:100%;border-collapse:collapse;background:#fff;margin:14px 0;font-size:.9rem;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--blue);color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+  tr:last-child td{border-bottom:none}
+  tbody tr:nth-child(even){background:var(--gray)}
+  td.c{text-align:center;white-space:nowrap}
+
+  .copy{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin:14px 0}
+  .copy .block{border-left:4px solid var(--orange);padding:10px 0 10px 16px;margin:0 0 14px;background:var(--gray)}
+  .copy .block:last-child{margin-bottom:0}
+  .copy .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}
+  .copy .val{font-size:1rem;color:var(--dark)}
+  .copy .val.big{font-size:1.35rem;font-weight:800;color:var(--blue);line-height:1.3}
+  .copy ul{margin:6px 0 0;padding-left:20px}
+
+  details{background:#fff;border:1px solid var(--line);border-radius:10px;margin:0 0 8px;padding:0 16px}
+  details summary{cursor:pointer;font-weight:700;color:var(--blue);padding:13px 0;font-size:.97rem}
+  details[open] summary{border-bottom:1px solid var(--line)}
+  details p{padding:12px 0 4px;margin:0;font-size:.94rem}
+
+  .tree{background:var(--blue);color:#e2e8f0;border-radius:10px;padding:18px 20px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85rem;line-height:1.75;overflow-x:auto;white-space:pre}
+  .tree b{color:#fdba74}
+
+  ul.check{list-style:none;margin:0;padding:0}
+  ul.check li{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 10px;
+    display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;
+  }
+  ul.check .box{
+    width:20px;height:20px;border:2px solid var(--blue);border-radius:5px;margin-top:2px;
+  }
+  ul.check b{color:var(--blue)}
+  ul.check .why{display:block;color:var(--muted);font-size:.88rem;margin-top:4px}
+
+  .note{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--orange);
+    border-radius:10px;padding:14px 18px;margin:16px 0;font-size:.93rem}
+  .note b{color:#9a3412}
+  .ok{background:#f0fdf4;border-color:#bbf7d0;border-left-color:var(--green)}
+  .ok b{color:#166534}
+
+  footer{border-top:1px solid var(--line);background:#fff;padding:26px 0;color:var(--muted);font-size:.85rem}
+
+  @media(max-width:640px){
+    header.hero h1{font-size:1.5rem}
+    header.hero .sub{font-size:.96rem}
+    h2{font-size:1.28rem}
+    table{font-size:.82rem}
+    th,td{padding:8px 9px}
+    .copy .val.big{font-size:1.15rem}
+    ul.check li{grid-template-columns:22px 1fr;gap:9px}
+  }
+
+  /* ==== DEV: interaktivni vrstva schvalovaci stranky (pridano DRE-100467.2) ==== */
+  ul.check .box.done{background:var(--green);border-color:var(--green);position:relative}
+  ul.check .box.done::after{content:"";position:absolute;left:5px;top:1px;width:6px;height:11px;
+    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  ul.check .box.neg{background:var(--red);border-color:var(--red);position:relative}
+  ul.check .box.neg::after{content:"";position:absolute;left:3px;top:8px;width:10px;height:2px;background:#fff}
+  ul.check .box.tbd{background:var(--amber);border-color:var(--amber);position:relative}
+  ul.check .box.tbd::after{content:"?";position:absolute;left:3px;top:-2px;color:#fff;font-size:12px;font-weight:800}
+  .vote{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:11px;padding-top:10px;
+    border-top:1px dashed var(--line)}
+  .vote .seg{display:inline-flex;border:1.5px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+  .vote .seg label{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;cursor:pointer;
+    font-size:.88rem;font-weight:700;color:var(--muted);user-select:none;border-right:1.5px solid var(--line)}
+  .vote .seg label:last-child{border-right:0}
+  .vote .seg input{position:absolute;opacity:0;pointer-events:none}
+  .vote .seg label:hover{background:#f1f5f9}
+  .vote .seg label.sel-yes{background:var(--green);color:#fff}
+  .vote .seg label.sel-no{background:var(--red);color:#fff}
+  .vote .seg label.sel-tbd{background:var(--amber);color:#fff}
+  .vote textarea{flex:1 1 260px;min-width:220px;border:1.5px solid var(--line);border-radius:8px;padding:7px 10px;
+    font:inherit;font-size:.88rem;color:var(--text);background:#fff;resize:vertical;min-height:38px}
+  .vote textarea:focus,.cf input:focus{outline:2px solid #93c5fd;outline-offset:1px}
+
+  .cf{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:6px 0 0}
+  .cf label{display:block;font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:5px}
+  .cf input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;font-size:.95rem;background:#fff}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:9px;padding:12px 20px;cursor:pointer;
+    font:inherit;font-size:.95rem;font-weight:800;background:var(--orange);color:#fff;text-decoration:none}
+  .btn:hover{filter:brightness(.94)}
+  .btn.ghost{background:#fff;color:var(--blue);border:1.5px solid var(--line)}
+  .btn.danger{background:#fff;color:var(--red);border:1.5px solid var(--red)}
+  .btn.dark{background:var(--blue)}
+  .btn[disabled]{opacity:.55;cursor:not-allowed}
+  .btnrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+  .cnt{font-size:.85rem;color:var(--muted);margin-top:10px}
+  .statusout{margin-top:14px;padding:13px 16px;border-radius:9px;font-size:.92rem;display:none}
+  .statusout.show{display:block}
+  .statusout.err{background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+  .statusout.warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e}
+  .statusout.good{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534}
+  .statusout a{color:inherit;font-weight:800}
+  .fallback{display:none;margin-top:14px;padding:16px 18px;border:1.5px dashed var(--orange);border-radius:10px;background:#fff}
+  .fallback.show{display:block}
+  .fallback h3{margin:0 0 8px;font-size:1rem;color:#9a3412}
+  .taskbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(22,28,45,.97);color:#fff;
+    padding:10px 16px;display:none;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap;
+    box-shadow:0 -4px 18px rgba(0,0,0,.22)}
+  .taskbar.show{display:flex}
+  .taskbar .t{font-size:.88rem;color:#cbd5e1}
+  .taskbar .btn{padding:9px 16px;font-size:.88rem}
+  .badge-test{background:#fde68a;color:#78350f;border:1px solid #f59e0b;border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:.92rem;font-weight:700}
+  @media(max-width:640px){
+    .cf{grid-template-columns:1fr}
+    .vote .seg label{padding:8px 12px}
+    ul.check li{padding:12px 13px}
+  }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Webaudit tjkrupka.cz — obsahová a prodejní analýza + hotové texty</h1>
+    <p class="sub">Kompletní obsahový podklad pro schvalovací stránku <code style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff">tjkrupka.cz/webaudit</code>:
+      analýza současného webu ve 4 vrstvách, návrh nové struktury, hotové české texty, návrh webových prvků,
+      grafická doporučení a seznam bodů k odsouhlasení Ownerem.</p>
+    <div class="meta">
+      <span>Task <b>DRE-100467.1</b></span>
+      <span>Parent <b>DRE-100467</b></span>
+      <span>Autor <b>GROWTH</b></span>
+      <span>Datum <b>29. 9. 2026</b></span>
+      <span>Verze <b>1.0</b></span>
+    </div>
+    <div class="status">K ODSOUHLASENÍ OWNEREM</div>
+    <div class="hero-note">
+      <b>Nic na webu nebylo změněno, nic nebylo publikováno ani odesláno.</b>
+      Tento dokument je pouze analýza a návrh textů. Veškerá čísla, která nejsou doložená z webu nebo z kódu,
+      jsou označena <code style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#fff">[DOPLNIT]</code> —
+      nic není vymyšleno.
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <ul>
+      <li><a href="#souhrn">Souhrn</a></li>
+      <li><a href="#analyza">1 Analýza</a></li>
+      <li><a href="#struktura">2 Nová struktura</a></li>
+      <li><a href="#texty">3 Hotové texty</a></li>
+      <li><a href="#prvky">4 Webové prvky</a></li>
+      <li><a href="#grafika">5 Grafika</a></li>
+      <li><a href="#priorita">6 Prioritizace</a></li>
+      <li><a href="#schvaleni">7 K ODSOUHLASENÍ</a></li>
+      <li><a href="#odeslani">Odeslat odsouhlasení</a></li>
+      <li><a href="#smazani">Smazat stránku</a></li>
+      <li><a href="#limity">8 Limity</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ================= SOUHRN ================= -->
+<section id="souhrn">
+  <h2>Souhrn — tři nálezy, které rozhodují o prodeji</h2>
+  <p class="lead">Web dnes funguje jako informační rozcestník klubu. Prodat kurzy a airbag se mu nedaří ze tří
+  systémových důvodů, které se dají opravit obsahem, bez zásahu do techniky:</p>
+  <div class="grid3">
+    <div class="kpi"><b>1. Produkty nejsou v menu</b>
+      <span>SnowKite kurzy ani AIRBAG nejsou v desktopové navigaci. Oba jsou schované v podmenu, které se na desktopu
+      vůbec nezobrazí (<code>Navbar.tsx</code> — <code>servicesSubmenu</code> se renderuje jen s <code>lg:hidden</code>).</span></div>
+    <div class="kpi"><b>2. Airbag se sám odprodává</b>
+      <span>Hlavní blok airbagu na homepage nese badge <code>COMING SOON</code> a text „Již brzy u nás!“ — přitom airbag
+      je reálná služba s cenou 300 Kč (člen) / 600 Kč (nečlen).</span></div>
+    <div class="kpi"><b>3. Chybí cena i důkaz</b>
+      <span>Blok kurzů i reference jsou na homepage zakomentované (<code>Index.tsx</code>: „Course Types Section - HIDDEN“,
+      „Testimonials Section - HIDDEN“). Návštěvník nevidí cenu ani nikoho, kdo už kurz absolvoval.</span></div>
+  </div>
+  <div class="note">
+    <b>Dobrá zpráva:</b> infrastruktura pro prodej na webu už existuje — napojený n8n webhook pro formuláře
+    (<code>n8n.webdo24.cz/webhook/new-lead</code>), komponenta <code>BookingSystem.tsx</code>, košík a platební kanál
+    <code>app.tjkrupka.cz</code>. Chybí jen obsah a odkazy, které je propojí. To je přesně to, co tento dokument dodává.
+  </div>
+</section>
+
+<!-- ================= 1 ANALYZA ================= -->
+<section id="analyza">
+  <h2>1. Analýza současného stavu</h2>
+  <p class="lead">Nálezy jsou rozdělené do čtyř vrstev. Každý nález má <b>důkaz</b> (konkrétní soubor/řádek nebo konkrétní
+  text na stránce), <b>dopad na prodej</b> a <b>doporučení</b>. Priority: <span class="tag p1">P1</span> přímo blokuje prodej,
+  <span class="tag p2">P2</span> výrazně oslabuje důvěru a konverzi, <span class="tag p3">P3</span> dolaďovací.</p>
+
+  <h3>(a) Obsah a sdělení</h3>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>A1 — Hero homepage neprodává, jen básní</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>src/pages/Index.tsx</code> (ř. 166–175): <code>h1</code> = „Snowkiting v Krušných horách“, podtitul =
+        „Když vítr <b>šeptá tvé jméno..</b>“. Primární CTA = „Zobrazit kurzy“, sekundární CTA = „O nás“.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Návštěvník do 5 sekund nezjistí, <i>co si může koupit</i>, za kolik a jak. Hero je náladový, ne obchodní.
+        Sekundární cesta vede na historii klubu místo na druhý produkt.</dd>
+      <dt>Co s tím</dt>
+      <dd>Nový hero: produkt + konkrétní výsledek + cena „od“ + dvě produktová CTA (Kurzy / Airbag). Hotový text viz
+        sekce 3.1.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>A2 — Druhá priorita (Airbag) je na homepage označená jako „ještě není“</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>Index.tsx</code> ř. 417: badge <code>COMING SOON</code>; ř. 429–431: „Bezpečnost na <b>nové úrovni</b> /
+        <b>Již brzy u nás!</b>“; CTA ř. 455 = „Více informací“.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Zákazník, který si chce airbag koupit, dostane sdělení „není k dispozici“. Reálná služba s reálnou cenou se
+        takto sama vyřadí z prodeje. Zároveň je to v rozporu s prioritou zadání (Airbag = 2. hlavní produkt).</dd>
+      <dt>Co s tím</dt>
+      <dd>Přepsat blok na prodejní: nadpis, cena 300/600 Kč, co je v ceně, pro koho, CTA „Rezervovat airbag den“.
+        Hotový text viz 3.3 a 3.4.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>A3 — Kurzy a reference jsou na homepage vypnuté</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>Index.tsx</code> ř. 218 „<code>{/* Course Types Section - HIDDEN */}</code>“ (blok „Vyberte si svůj
+        snowkiting kurz“ je v komentáři, ř. 219–268) a ř. 270 „<code>{/* Testimonials Section - HIDDEN */}</code>“.
+        V zakomentovaném bloku je i věta „<b>Certifikát po absolvování kurzu</b>“ (ř. 77 v datech <code>courseBenefits</code>).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Hlavní produkt nemá na homepage ani cenu, ani varianty, ani sociální důkaz. Návštěvník musí kliknout do podstránky,
+        aby zjistil cokoliv konkrétního — a většina to neudělá.</dd>
+      <dt>Co s tím</dt>
+      <dd>Zapnout zpět blok kurzů s cenami a blok referencí s <b>reálnými</b> citacemi (viz 2 a 3.2). Reference bez jména
+        a fotky jsou horší než žádné — buď reálné, nebo pryč.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>A4 — Zbytky „certifikace“ v rozporu s požadavkem Ownera</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Owner požaduje u instruktorů <b>nepoužívat</b> slova „certifikovaný / certifikace“. Přesto se na webu stále
+        vyskytují: <code>Index.tsx:77</code> („Certifikát po absolvování kurzu“), <code>KomariVizka.tsx:84</code>
+        („s certifikovanými instruktory“), <code>mista.tsx:65</code> („Naši instruktoři jsou certifikovaní“),
+        <code>AktivityProDeti.tsx:41</code> („Naši certifikovaní instruktoři“).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Nepodložené tvrzení o certifikaci je zbytečné reputační a právní riziko a zároveň jde proti výslovnému zadání
+        Ownera. Důvěru staví konkrétní zkušenost, ne přídavné jméno.</dd>
+      <dt>Co s tím</dt>
+      <dd>Nahradit jazykem zkušenosti: „instruktoři s letitou praxí na Komáří vížce“, „instruktoři, kteří učí snowkiting
+        přes <span class="tag">[DOPLNIT]</span> let“. Body B8 a B9 níže. Body B8/B9 jsou změny pro DEV — obsah dodán zde.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>A5 — „TJ Krupka“ místo plného názvu na 15 místech</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Owner požaduje všude plný název <b>„Tělovýchovná jednota Krupka“</b> (sídlo Husitská 191/8, 417 41 Krupka).
+        Plný název už je v patičce (<code>Footer.tsx</code>: „Tělovýchovná jednota Krupka z.s.“), ale zkratka zůstává:
+        <code>AirbagV2.tsx</code> (3×), <code>KomariVizka.tsx</code> (2×), <code>ProCleny.tsx</code> (1×),
+        <code>member/Documents.tsx</code> (4×), <code>member/Register.tsx</code> (3×), <code>member/Login.tsx</code> (1×),
+        <code>context/AuthContext.tsx</code> (1×).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Nekonzistentní název subjektu působí nedbale a u smluvních/platebních textů je to riziko pro LEGAL.
+        Zákazník i firma musí mít jistotu, s kým jednají.</dd>
+      <dt>Co s tím</dt>
+      <dd>Sjednotit na plný název včetně IČ/sídla v právním kontextu. Jde o textovou změnu — DEV podle bodu B10.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>A6 — Nedoložená čísla a nekonzistentní statistiky</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Na webu se mísí různé údaje o zkušenosti a počtu účastníků; dokument <code>PROPOSAL_persuasion.md</code>
+        (ř. 40–41) uvádí rozpory „10+ / 15+ / 50+ let“ a „50+ / 1000+ účastníků“ a označuje „⭐️ Perfektní hodnocení“
+        jako metriku, která nic neříká.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Číslo, které si návštěvník nemůže ověřit, důvěru snižuje, ne zvyšuje. Tři různá čísla na jednom webu znamenají
+        tři krát „tomu nevěřím“.</dd>
+      <dt>Co s tím</dt>
+      <dd>Jedna ověřitelná sada čísel pro celý web. Dokud je Owner nedodá, používat v textech
+        <span class="tag">[DOPLNIT]</span>. Nikdy nevymýšlet.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p3">
+    <h4><span class="tag p3">P3</span>A7 — Překlepy v prodejních textech</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>SnowkitingKurzy.tsx:509</code> „Kurz <b>začína</b>!“ (správně „začíná“), <code>Sluzby.tsx:29</code> a
+        <code>SnowkitingKurzy.tsx:251</code> „<b>Létejte</b> na sněhu s drakem“ (správně „Leťte“).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Chyba v nadpisu prodejního bloku je přesně to místo, kde si zákazník řekne „kdo to tu spravuje?“. U placené
+        služby s bezpečnostním rizikem to váží dvojnásob.</dd>
+      <dt>Co s tím</dt>
+      <dd>Opravit (body B11). Drobnost, ale čistě „quick win“.</dd>
+    </dl>
+  </div>
+
+  <h3>(b) Prodejnost a konverzní cesta</h3>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>B1 — Z webu nevede žádný odkaz na prodejní kanál app.tjkrupka.cz</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>V celém <code>src/</code> se řetězec <code>app.tjkrupka.cz</code> nevyskytuje ani jednou. Jediné napojení na členskou
+        zónu je interní routa <code>/clenska-zona</code> (<code>App.tsx:89</code>), na kterou z menu ani z homepage nic
+        neodkazuje (jediná zmínka „Pro členy“ vede na <code>/komari-vizka/pro-cleny</code>).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Zadání říká, že na <code>app.tjkrupka.cz</code> se <b>má odkazovat</b> — je to místo, kde probíhá platba
+        (airbag den 300/600 Kč, členství 200 Kč). Dnes je nejsilnější konverzní cíl odříznutý: zákazník, který se rozhodl
+        koupit, nemá kam kliknout.</dd>
+      <dt>Co s tím</dt>
+      <dd>Napojení na app.tjkrupka.cz jako primární rezervační/platobní cíl: v hero, v bloku kurzů, v bloku airbagu,
+        v patičce a ve sticky CTA na mobilu. Texty CTA viz 3.5, body B1–B4.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>B2 — Airbag nemá na svých stránkách cenu ani rezervaci</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Cena airbagu (300 Kč člen / 600 Kč nečlen) se na stránkách <code>/airbag</code> a <code>/airbag-v2</code>
+        nevyskytuje — v projektu je jen v <code>Sporty.tsx</code> („od 300 Kč“). Všechna CTA na obou airbag stránkách
+        vedou na obecný <code>/kontakt</code> (<code>Airbag.tsx</code> ř. 181, 213, 417, 423; <code>AirbagV2.tsx</code> ř. 250,
+        471, 522).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Chybějící cena u služby, kterou si zákazník neumí představit, je nejčastější důvod, proč poptávka skončí
+        zavřeným tabem. Obecný kontakt navíc neumí zachytit termín ani počet osob.</dd>
+      <dt>Co s tím</dt>
+      <dd>Na obě stránky (resp. na jednu sjednocenou) doplnit ceník 300/600 Kč, co je v ceně, pro koho a rezervační blok
+        s poptávkovým formulářem (existující n8n webhook). Hotové texty viz 3.3 a 3.4.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>B3 — Dvě konkurenční airbag stránky bez vzájemného vztahu</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>App.tsx:124</code> <code>/airbag</code> a <code>App.tsx:125</code> <code>/airbag-v2</code> — dvě routy,
+        dvě různé stránky, ve vyhledávání i v prohlížeči dvě URL pro jeden produkt. Z menu vede jen <code>/airbag</code>.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Dvě verze se navzájem ředí (SEO i sdílení), zákazník neví, která je „ta správná“, a udržovat dvě znamená dvakrát
+        riziko neaktuální ceny. <code>airbag-v2</code> je navíc vizuálně odlišný design (font Poppins, vlastní paleta).</dd>
+      <dt>Co s tím</dt>
+      <dd>Rozhodnout jednu prodejní stránku (doporučuji ponechat <code>/airbag</code> a z <code>/airbag-v2</code> udělat
+        redirect na <code>/airbag</code>, nebo naopak — dle posouzení DEV/OWNER). Není to změna obsahu, ale rozhodnutí,
+        které je potřeba schválit (bod B2).</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>B4 — Rezervace kurzů končí ve formuláři, ne v termínu</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Na <code>/snowkiting-kurzy</code> je postup popsán slovy „Vyberte si kurz a termín… <b>Kontaktujte nás
+        telefonicky nebo e-mailem</b>“ a tlačítko vede na <code>/kontakt-snowkiting</code>. Komponenta
+        <code>BookingSystem.tsx</code> (napojená na n8n webhook) v projektu existuje, ale na stránce kurzů se nepoužívá.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Každý krok navíc mezi „chci to“ a „zaplatil jsem“ snižuje konverzi. Telefonát navíc vyžaduje, aby měl zákazník
+        čas v momentě, kdy prohlíží web.</dd>
+      <dt>Co s tím</dt>
+      <dd>Na stránce kurzů zavést rezervační blok s volbou kurzu, termínu a počtu osob, napojený na app.tjkrupka.cz
+        (platba) nebo na existující n8n webhook. Texty formuláře viz 3.8, bod B4.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>B5 — Firmy a školy nemají cenu ani balíčky, reference jsou anonymní</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Na <code>/firmy</code> a <code>/skoly</code> nejsou žádné balíčky ani ceny „od“ (pouze texty „Zážitkové programy,
+        teambuilding…“). Reference jsou bez jména a organizace: „Skvělý teambuilding, perfektní organizace…“,
+        „Děti byly nadšené!…“.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Firma ani škola nemá rozpočtový bod, o který by se mohla opřít, a anonymní reference působí jako šablona.
+        Pro skupinový prodej je to nejslabší místo.</dd>
+      <dt>Co s tím</dt>
+      <dd>Doplnit 2–3 balíčky s cenou „od“ <span class="tag">[DOPLNIT]</span> a reference s názvem organizace a kontaktní
+        osobou — samozřejmě se souhlasem dotčených. Hotová struktura a texty viz 3.4 a 3.7.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p3">
+    <h4><span class="tag p3">P3</span>B6 — Airbag se ve firemní a skupinové nabídce neobjevuje jako produkt</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Airbag stránky zmiňují „Sportovní školy — ideální pro tréninky a soustředění“ (<code>Airbag.tsx</code>), ale
+        stránky <code>/firmy</code> a <code>/skoly</code> airbag jako součást programu neuvádějí a neodkazují na něj.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Skupinový zákazník (firma, škola, oddíl) je pro airbag ideální — přijede v počtu, který zaplatí den. Chybí mu ale
+        nabídka a odkaz.</dd>
+      <dt>Co s tím</dt>
+      <dd>Do <code>/firmy</code> a <code>/skoly</code> přidat blok „Airbag v programu“ s odkazem na airbag stránku.
+        Hotový text viz 3.4.</dd>
+    </dl>
+  </div>
+
+  <h3>(c) UX a struktura navigace</h3>
+
+  <div class="finding p1">
+    <h4><span class="tag p1">P1</span>C1 — Oba prioritní produkty chybí v desktopovém menu</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>src/components/Navbar.tsx</code> — desktopová navigace se skládá z pole <code>menuItems</code> (ř. 24–34):
+        O nás, Komáří vížka, Služby, Dobrovolníci &amp; Sponzoři, Kontakt, Počasí (+ Pro členy). SnowKite kurzy a AIRBAG
+        jsou pouze v poli <code>servicesSubmenu</code> (ř. 14–22) pod položkou „Služby“ — a toto podmenu se renderuje
+        výhradně s třídou <code>lg:hidden</code> (ř. 129), tedy <b>jen na mobilu</b>.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Zákazník na počítači nemá z hlavního menu cestu k hlavnímu produktu. Musí uhodnout, že je schovaný pod
+        „Služby“, a pak najít odkaz v obsahu stránky. To je ztracená konverze u každého návštěvníka z desktopu.</dd>
+      <dt>Co s tím</dt>
+      <dd>Povýšit oba produkty do hlavního menu jako samostatné položky s vlastní barvou (viz 2.2). Bod B1.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>C2 — Dvě různé navigace v jednom projektu</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>Navbar.tsx</code> (hlavní menu: O nás, Komáří vížka, Služby, Dobrovolníci, Kontakt, Počasí) a
+        <code>Sidebar.tsx</code> (odlišná sada: O nás, Sporty, Služby, Komáří vížka, Merch, Dobrovolníci &amp; Sponzoři,
+        Kontakt, Počasí) — jiná struktura i jiné názvy pro tytéž cíle.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Rozpadá se orientace i brand. Návštěvník, který přejde mezi stránkami, dostane jiné menu a ztratí kontext.</dd>
+      <dt>Co s tím</dt>
+      <dd>Jedna navigační struktura pro celý web (viz 2.2). Bod B13.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>C3 — Homepage je 6 fullscreen sekcí bez prodejní logiky</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd><code>Index.tsx</code> — každá sekce má <code>h-screen</code> (hero, ubytování, airbag, firemní akce, školní akce,
+        finální CTA) a každá obsahuje 30 animovaných částic. Chybí sekce „proč my“, ceník a FAQ.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Šest obrazovek bez ceny a bez důvodu k důvěře = dlouhé skrolování s prázdným výsledkem. Uživatel odejde dřív,
+        než narazí na nabídku.</dd>
+      <dt>Co s tím</dt>
+      <dd>Přeskládat homepage podle prodejní logiky (viz 2.1): produkt → cena → důkaz → FAQ → CTA. Sekce zkrátit,
+        fullscreen ponechat jen pro hero a jednu image sekci. Bod B14.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p3">
+    <h4><span class="tag p3">P3</span>C4 — Nesoulad u půjčovny a chybějící sticky CTA na mobilu</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Půjčovna je vypnutá z menu, ale je aktivní (<code>config/features.ts</code>: <code>ENABLE_PUJCOVNA: true</code>)
+        a odkazuje na ni patička (<code>Footer.tsx</code> → <code>/pujcovna</code>, <code>/kontakt-pujcovna</code>).
+        Na mobilu chybí jakákoli trvale dostupná prodejní CTA lišta.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Telefon 777 734 389 je hlavní kontakt pro půjčovnu — pokud na stránku s půjčovnou nevede cesta z menu, je to
+        nevyužitý kanál. Chybějící sticky CTA znamená, že na mobilu musí zákazník vždy skrolovat nahoru, aby něco koupil.</dd>
+      <dt>Co s tím</dt>
+      <dd>Doplnit odkaz na půjčovnu do menu (nebo ji vědomě nechat jen v patičce — rozhodnutí Ownera, bod B18)
+        a přidat sticky prodejní lištu na mobil (bod B15).</dd>
+    </dl>
+  </div>
+
+  <h3>(d) Grafika a vizuál</h3>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>D1 — Každá sekce homepage má vlastní barevný svět</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Hero: <code>from-cyan-500 to-blue-600</code> (<code>Index.tsx:196</code>). Airbag blok: <code>purple-500/20</code>,
+        <code>from-purple-500 to-pink-600</code>, gradient <code>via-purple-200 to-pink-300</code> (ř. 393, 415, 423, 453).
+        Zbytek webu používá brand <code>tjk-blue #161c2d</code> a <code>tjk-orange #ff5722</code> (tailwind.config.ts).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Purple/pink „coming soon“ paleta signáluje placeholder, ne seriózní službu. Rozpadá se vizuální identita a
+        stránka působí, jako by ji skládalo několik různých lidí.</dd>
+      <dt>Co s tím</dt>
+      <dd>Jedna paleta: tjk-blue jako základ, tjk-orange jako akční barva pro CTA. Produkty odlišit <b>obsahem a
+        ikonou</b>, ne novou barevnou škálou (viz 5).</dd>
+    </dl>
+  </div>
+
+  <div class="finding p2">
+    <h4><span class="tag p2">P2</span>D2 — Chybí důkazní prvky (trust)</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Na homepage nejsou žádná čísla ani hodnocení, která by se dala ověřit; v zakomentovaném bloku referencí
+        (<code>Index.tsx</code> ř. 270–307) jsou citace bez jména a fotky. Datum „Zimní sezóna 2026/27 se blíží!“ (ř. 162)
+        je jediný aktuální prvek v hero.</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>U služby s fyzickým rizikem (kiting, airbag) je důkaz o bezpečnosti a o spokojených účastnících rozhodující.
+        Bez něj zákazník nemá co porovnat s konkurencí.</dd>
+      <dt>Co s tím</dt>
+      <dd>Trust pás: počet účastníků za sezónu <span class="tag">[DOPLNIT]</span>, hodnocení Google
+        <span class="tag">[DOPLNIT]</span>, roky praxe <span class="tag">[DOPLNIT]</span>, reference s fotkou.
+        Struktura viz 4, body B5–B6.</dd>
+    </dl>
+  </div>
+
+  <div class="finding p3">
+    <h4><span class="tag p3">P3</span>D3 — Fotky z externího zdroje a animační šum</h4>
+    <dl>
+      <dt>Důkaz</dt>
+      <dd>Kurzové karty používají obrázky z <code>images.unsplash.com</code> (<code>SnowkitingKurzy.tsx</code> ř. 63, 78, 93),
+        zbytek webu lokální <code>/images/…</code>. Každá homepage sekce generuje 30 animovaných prvků
+        (<code>[...Array(30)]</code> v pěti sekcích).</dd>
+      <dt>Proč to škodí prodeji</dt>
+      <dd>Externí stock fotky na vlastní službě působí neautenticky a závisí na cizím serveru (výpadek = rozbitá karta).
+        Animace zdržují načítání na mobilu, kde rozhoduje rychlost.</dd>
+      <dt>Co s tím</dt>
+      <dd>Nahradit vlastními fotkami z areálu (v repu už jsou <code>public/images/snowkiting/</code>,
+        <code>/images/vybaveni/</code>, <code>/images/homepage/</code>). Animace omezit na hero.</dd>
+    </dl>
+  </div>
+
+  <div class="note ok">
+    <b>Pozitivní nálezy (neztratit):</b> plný název spolku v patičce už je správně; lokality snowkitu už obsahují
+    <b>Fojtovice a Petrovice</b> (<code>SnowkitingKurzy.tsx</code> ř. 396, 650; <code>KontaktSnowkiting.tsx</code> ř. 260);
+    telefon 777 734 389 a snowkiting 773 090 842 jsou nasazené; OG obrázek <code>public/images/og-image.jpg</code> existuje;
+    FAQ na stránce kurzů má 5 otázek a je věcně dobré; formuláře už mají napojený n8n webhook.
+  </div>
+</section>
+
+<!-- ================= 2 STRUKTURA ================= -->
+<section id="struktura">
+  <h2>2. Návrh nové struktury</h2>
+
+  <h3>2.1 Homepage — sekce po sekci</h3>
+  <p class="lead">Pořadí je prodejní, ne prezentační: produkt a cena nahoře, důkaz ve středu, FAQ a poslední CTA dole.
+  Cíl: návštěvník má za 10 sekund jasno v tom, co si koupí a kde to zaplatí.</p>
+  <table>
+    <thead><tr><th style="width:4%">#</th><th style="width:19%">Sekce</th><th style="width:26%">Nadpis (návrh)</th><th>Účel</th><th style="width:20%">CTA</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td><b>Hero</b></td><td>Naučíme vás létat na sněhu. A když spadnete, spadnete bezpečně.</td>
+        <td>Okamžitě pojmenovat oba produkty, cenu „od“ a lokalitu. Odstranit básnický podtitul.</td>
+        <td>„Rezervovat kurz“ → app · „Airbag den od 300 Kč“ → /airbag</td></tr>
+      <tr><td class="c">2</td><td><b>Trust pás</b></td><td>Proč jezdit k nám</td>
+        <td>Čtyři ověřitelná čísla (roky praxe, účastníci, hodnocení, počet instruktorů). Vše doložitelné.</td>
+        <td>—</td></tr>
+      <tr><td class="c">3</td><td><b>Produkt 1 — SnowKite kurzy</b></td><td>Snowkite kurzy pro každou úroveň</td>
+        <td>Tři karty kurzů s délkou, náročností a cenou + „co je v ceně“. Hlavní prodejní blok webu.</td>
+        <td>„Vybrat kurz a termín“ → app.tjkrupka.cz</td></tr>
+      <tr><td class="c">4</td><td><b>Produkt 2 — Airbag</b></td><td>Airbag: trénujte triky bez rizika pádu</td>
+        <td>Prodávat (ne „coming soon“): cena 300/600 Kč, co je v ceně, pro koho — veřejnost i skupiny.</td>
+        <td>„Rezervovat airbag den“ → app.tjkrupka.cz</td></tr>
+      <tr><td class="c">5</td><td><b>Galerie / video</b></td><td>Jak to u nás vypadá</td>
+        <td>Reálné fotky a video z areálu — hlavní nástroj proti anonymitě webu.</td>
+        <td>„Chci to zkusit“ → /kontakt-snowkiting</td></tr>
+      <tr><td class="c">6</td><td><b>Skupiny — firmy a školy</b></td><td>Teambuilding a školní programy s airbagem</td>
+        <td>Balíčky s cenou „od“, propojení airbagu se skupinovým prodejem.</td>
+        <td>„Poslat poptávku“ → formulář → n8n</td></tr>
+      <tr><td class="c">7</td><td><b>Reference</b></td><td>Co říkají účastníci a firmy</td>
+        <td>2–3 reálné citace se jménem, organizací a fotkou, nebo nic. Anonymní citace neuvádět.</td>
+        <td>—</td></tr>
+      <tr><td class="c">8</td><td><b>FAQ</b></td><td>Než se zeptáte</td>
+        <td>Odstranit poslední překážky: bezpečnost, vítr, vybavení, věk, storno.</td>
+        <td>„Rezervovat“ (znovu)</td></tr>
+      <tr><td class="c">9</td><td><b>Závěrečné CTA</b></td><td>Rezervujte kurz nebo airbag den</td>
+        <td>Poslední konverzní bod s telefonem 773 090 842 (snowkiting) a odkazem do aplikace.</td>
+        <td>„Rezervovat“ + „Zavolat“</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2.2 Doporučený strom webu a menu</h3>
+  <p class="lead">Hlavní menu má 7 položek. Dvě z nich jsou produkty — nahoře, s vlastní barvou. Vše ostatní je servisní.</p>
+  <div class="tree">HLAVNÍ MENU (desktop i mobil — stejné)
+├── <b>SNOWKITE KURZY</b>  →  /snowkiting-kurzy      ← produkt 1, vlastní barva (orange)
+├── <b>AIRBAG</b>          →  /airbag                ← produkt 2, vlastní barva (orange outline)
+├── Komáří vížka / Lyžařský areál  → /komari-vizka
+├── Služby ▾  → /sluzby
+│     ├── Ubytování ......... /ubytovani
+│     ├── Půjčovna .......... /pujcovna          (dle rozhodnutí Ownera — viz B18)
+│     ├── Pro školy ......... /skoly
+│     ├── Pro firmy ......... /firmy
+│     └── Aktivity pro děti . /aktivity-pro-deti
+├── O nás  → /o-nas
+├── Kontakt  → /kontakt
+└── [Pro členy / Rezervace]  → app.tjkrupka.cz   ← konverzní cíl, výrazné tlačítko vpravo
+
+PODSTRÁNKY PRODUKTŮ
+/snowkiting-kurzy
+  ├── #cenik        (struktura kurzů dle náročnosti a délky)
+  ├── #co-je-v-cene
+  ├── #terminy      (rezervační blok)
+  ├── #faq
+  └── /kontakt-snowkiting     ← tel. 773 090 842 (zachovat)
+/airbag
+  ├── #cenik        (300 Kč člen / 600 Kč nečlen)
+  ├── #pro-verejnost
+  ├── #pro-skupiny   (firmy, školy, oddíly)
+  ├── #jak-to-funguje
+  └── #rezervace     (→ app.tjkrupka.cz nebo n8n webhook)
+/airbag-v2  →  redirect na /airbag   (rozhodnutí Ownera, bod B2)
+
+POVINNÉ ODKAZY NA app.tjkrupka.cz
+  hero · karty kurzů · blok airbagu · sticky CTA na mobilu · patička („Pro členy / Rezervace“)
+</div>
+
+  <div class="note">
+    <b>Kde bydlí obě priority (explicitně dle zadání):</b><br>
+    <b>SnowKite kurzy</b> = 1. položka hlavního menu + sekce č. 3 na homepage + vlastní stránka s ceníkem a rezervací.<br>
+    <b>Airbag</b> = 2. položka hlavního menu + sekce č. 4 na homepage + vlastní stránka s ceníkem 300/600 Kč,
+    sekcí pro veřejnost i pro skupiny a rezervací.
+  </div>
+</section>
+
+<!-- ================= 3 TEXTY ================= -->
+<section id="texty">
+  <h2>3. Hotové texty (k přímému použití)</h2>
+  <p class="lead">Texty jsou psané pro web, v češtině, bez hype. Tam, kde chybí doložené číslo, je
+  <span class="tag">[DOPLNIT]</span> — Owner doplní, my nedomýšlíme. Ceny kurzů vycházejí z aktuálních hodnot v kódu
+  a <b>musí je Owner potvrdit</b> (viz 8).</p>
+
+  <h3>3.1 Hero — headline a subheadline</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">H1 (hlavní nadpis)</span>
+      <div class="val big">Naučíme vás létat na sněhu.<br>A když spadnete, spadnete bezpečně.</div></div>
+    <div class="block"><span class="lbl">Subheadline</span>
+      <div class="val">Snowkite kurzy na Komáří vížce pro začátečníky i pokročilé. Airbag pro bezpečný trénink triků —
+      pro veřejnost i pro skupiny. Vybavení je v ceně, stačí přijet.</div></div>
+    <div class="block"><span class="lbl">Benefit řádek (3 položky)</span>
+      <div class="val"><ul>
+        <li><b>Vybavení v ceně</b> — kite, trapéz i helmu půjčíme. Přijeďte jen v tom, v čem se hýbete.</li>
+        <li><b>Malé skupiny</b> — maximálně 4 účastníci na instruktora.</li>
+        <li><b>Nefouká? Přesuneme to zdarma</b> — kurz posuneme na termín s lepšími podmínkami.</li>
+      </ul></div></div>
+    <div class="block"><span class="lbl">CTA dvojice</span>
+      <div class="val">Primární: <b>„Rezervovat kurz“</b> → app.tjkrupka.cz&nbsp;&nbsp;|&nbsp;&nbsp;Sekundární:
+      <b>„Airbag den od 300 Kč“</b> → /airbag</div></div>
+    <div class="block"><span class="lbl">Alternativní H1 (verze B, k A/B porovnání)</span>
+      <div class="val big">Snowkite kurzy a airbag na Komáří vížce</div>
+      <div class="val">Kurzy od <span class="tag">[DOPLNIT — potvrdit cenu]</span> Kč · Airbag den od 300 Kč · Vybavení v ceně</div></div>
+  </div>
+
+  <h3>3.2 SnowKite kurzy — texty a struktura kurzů</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">Nadpis sekce na homepage</span>
+      <div class="val big">Snowkite kurzy pro každou úroveň</div></div>
+    <div class="block"><span class="lbl">Podtitul</span>
+      <div class="val">Od prvního kontaktu s drakem po big air. Tři úrovně kurzů, jasná cena, vybavení v ceně
+      a instruktoři, kteří učí na sněhu celou sezónu.</div></div>
+    <div class="block"><span class="lbl">Co je v ceně (použít na všech kurzech)</span>
+      <div class="val"><ul>
+        <li>kompletní zapůjčení vybavení — kite, trapéz, helma,</li>
+        <li>výuka pod vedením instruktora (max. 4 osoby na instruktora),</li>
+        <li>teorie větru, počasí a bezpečnosti,</li>
+        <li>praxe na sněhu v Krušných horách,</li>
+        <li>přesun kurzu na jiný termín, pokud nebudou vhodné podmínky.</li>
+      </ul></div></div>
+    <div class="block"><span class="lbl">Poznámka ke „certifikaci“ (dle požadavku Ownera)</span>
+      <div class="val">Slovo „certifikace / certifikovaný“ se u instruktorů nepoužívá. Místo toho:
+      „instruktoři s praxí <span class="tag">[DOPLNIT]</span> let“, „instruktoři, kteří jezdí na Komáří vížce celou sezónu“.</div></div>
+  </div>
+
+  <h4>Struktura a ceník kurzů — podle náročnosti a podle délky (požadavek Ownera)</h4>
+  <p>Ceny jsou <b>převzaty z aktuálního kódu webu</b> (<code>SnowkitingKurzy.tsx</code>, <code>defaultLevels</code>) a jsou
+  zároveň načítané z databáze. Před zveřejněním je <b>musí Owner potvrdit</b> — pokud se liší, platí hodnota Ownera.</p>
+  <table>
+    <thead><tr><th>Úroveň</th><th>Pro koho</th><th>Délka</th><th>Obsah</th><th>Cena</th><th>Stav ceny</th></tr></thead>
+    <tbody>
+      <tr><td><b>Začátečník</b><br><span style="color:#64748b;font-size:.85em">PRVNÍ KROKY NA SNĚHU</span></td>
+        <td>Nemáte s kitem žádnou zkušenost. Lyžujete nebo jezdíte na snowboardu.</td><td>2–3 dny</td>
+        <td>ovládání draka na zemi · základy bezpečnosti · první jízdy s drakem · teorie větru · vybavení v ceně</td>
+        <td class="c"><b>4 500 Kč</b></td><td class="c">k potvrzení</td></tr>
+      <tr><td><b>Pokročilý</b><br><span style="color:#64748b;font-size:.85em">ZLEPŠETE TECHNIKU</span></td>
+        <td>Už jezdíte. Chcete rychlost, jízdu proti větru, první skoky.</td><td>2 dny</td>
+        <td>jízda ve vyšších rychlostech · jízda proti větru · skoky a triky · pokročilé ovládání draka · taktika</td>
+        <td class="c"><b>3 800 Kč</b></td><td class="c">k potvrzení</td></tr>
+      <tr><td><b>Expert</b><br><span style="color:#64748b;font-size:.85em">MISTROVSTVÍ NA SNĚHU</span></td>
+        <td>Jezdíte jistě a chcete akrobacii a big air.</td><td>1–2 dny</td>
+        <td>extrémní podmínky · akrobatické prvky · big air skoky · závodní techniky · individuální coaching</td>
+        <td class="c"><b>3 200 Kč</b></td><td class="c">k potvrzení</td></tr>
+      <tr><td><b>Individuální lekce</b></td><td>Chcete instruktora jen pro sebe nebo pro dvojici.</td><td>dle dohody</td>
+        <td>program na míru vaší úrovni a cíli</td><td class="c"><b>od 2 000 Kč/hod</b></td><td class="c">k potvrzení</td></tr>
+    </tbody>
+  </table>
+  <p><b>Doporučená alternativa řazení pro rychlé rozhodnutí:</b> nabídnout dvě osy filtrování — „podle náročnosti“
+  (Začátečník / Pokročilý / Expert) a „podle délky“ (1 den / 2 dny / víkend / 3 dny). Zákazník, který ví jen to, kolik
+  má času, se tak dostane k produktu bez dotazu. Konkrétní kombinaci délek u jednotlivých úrovní je nutné potvrdit
+  <span class="tag">[DOPLNIT]</span>.</p>
+
+  <div class="copy">
+    <div class="block"><span class="lbl">Lokality (doplněno dle požadavku Ownera)</span>
+      <div class="val">Praxe probíhá na <b>Komáří vížce, ve Fojtovicích a v Petrovicích</b> — v Krušných horách.
+      Lokalitu vybíráme podle aktuálních podmínek.</div></div>
+    <div class="block"><span class="lbl">Garance podmínek</span>
+      <div class="val">„Nebude foukat? Nevadí. Kurz přesuneme na jiný termín bez poplatku — o podmínkách vás vždy
+      informujeme předem.“</div></div>
+  </div>
+
+  <h3>3.3 Airbag pro veřejnost</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">Nadpis</span><div class="val big">Airbag: zkuste trik, který jste si nikdy nedovolili</div></div>
+    <div class="block"><span class="lbl">Podtitul</span>
+      <div class="val">Měkká dopadová matrace pro bezpečný trénink triků na lyžích, snowboardu i kole. Trénujete pod
+      dohledem instruktora, opakujete prvek tak dlouho, dokud ho nemáte jistý — a pády bolí jen v hlavě.</div></div>
+    <div class="block"><span class="lbl">Text bloku (3 odstavce / bodů)</span>
+      <div class="val"><ul>
+        <li><b>Kontrolovaný risk.</b> Matrace je určená k dopadům z výšky a k opakovaným pokusům. Každý pád je měkký, takže
+          se nebojíte zkusit další.</li>
+        <li><b>Instruktor u vás.</b> Před prvním skokem projdete bezpečnostní instruktáží a pravidly používání.
+          Dohlíží na vás po celou dobu.</li>
+        <li><b>Vhodné pro každého.</b> Od prvního skoku dítěte po závodníka, který ladí rotaci. Začátečník i profík
+          trénuje to, co zrovna potřebuje.</li>
+      </ul></div></div>
+    <div class="block"><span class="lbl">Cena (dle existujícího ceníku — potvrdit)</span>
+      <div class="val"><b>Airbag den: 300 Kč pro členy · 600 Kč pro nečleny.</b>
+      Členství stojí <b>200 Kč</b> — pokud plánujete přijet víckrát, členství se vyplatí už po prvním dni.</div></div>
+    <div class="block"><span class="lbl">CTA</span>
+      <div class="val">Primární: <b>„Rezervovat airbag den“</b> → app.tjkrupka.cz &nbsp;|&nbsp; Sekundární:
+      <b>„Chci nejdřív vědět víc“</b> → /kontakt</div></div>
+  </div>
+  <div class="note">
+    <b>Musí pryč:</b> badge <code>COMING SOON</code> (Index.tsx ř. 417) a text „Již brzy u nás!“ (ř. 431).
+    Airbag je v provozu a má cenu — sdělení „ještě není“ ho vyřazuje z prodeje.
+  </div>
+
+  <h3>3.4 Airbag pro skupiny a firmy</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">Nadpis</span>
+      <div class="val big">Airbag pro firmy, školy a oddíly</div></div>
+    <div class="block"><span class="lbl">Podtitul</span>
+      <div class="val">Program, který se vejde do jednoho odpoledne a baví celý tým — včetně lidí, kteří na snowboardu
+      nikdy nestáli. Měkká matrace zvládne každý pokus, takže se zapojí i ten, kdo se jinak bojí.</div></div>
+    <div class="block"><span class="lbl">Pro koho (3 položky)</span>
+      <div class="val"><ul>
+        <li><b>Firmy a teambuildingy</b> — aktivita se sdíleným zážitkem, kterou zvládne celá skupina bez ohledu na úroveň.</li>
+        <li><b>Sportovní oddíly a soustředění</b> — trénink triků mimo závodní tlak. Každý prvek lze zopakovat, dokud
+          není jistý.</li>
+        <li><b>Školy a dětské kolektivy</b> — bezpečné vyzkoušení akrobacie pod dohledem, přizpůsobené věku skupiny.</li>
+      </ul></div></div>
+    <div class="block"><span class="lbl">Ceník skupin</span>
+      <div class="val">Cena za skupinu a délku programu:
+      <span class="tag">[DOPLNIT — Owner: cena za skupinu, minimální počet osob, délka programu]</span>.
+      Pro jednodenní program bez navýšení platí cena <b>300 Kč na člena / 600 Kč na nečlena</b>, u skupin
+      se členství vyplatí vyřídit předem (200 Kč).</div></div>
+    <div class="block"><span class="lbl">Reference (šablona — nutné doplnit reálným zněním)</span>
+      <div class="val">„<span class="tag">[DOPLNIT citaci]</span>“ — <b><span class="tag">[jméno]</span>,
+      <span class="tag">[firma/organizace]</span></b>, <span class="tag">[rok]</span></div></div>
+    <div class="block"><span class="lbl">CTA</span>
+      <div class="val"><b>„Poslat poptávku na airbag pro skupinu“</b> → formulář (n8n webhook).
+      Formulář předvyplnit účelem „Airbag pro skupinu“.</div></div>
+  </div>
+
+  <h3>3.5 CTA texty (jednotná sada)</h3>
+  <table>
+    <thead><tr><th>Místo</th><th>Současný text (důkaz)</th><th>Navrhovaný text</th><th>Cíl</th></tr></thead>
+    <tbody>
+      <tr><td>Hero — primární</td><td>„Zobrazit kurzy“ (Index.tsx:198)</td><td><b>Rezervovat kurz</b></td><td>app.tjkrupka.cz</td></tr>
+      <tr><td>Hero — sekundární</td><td>„O nás“ (Index.tsx:205)</td><td><b>Airbag den od 300 Kč</b></td><td>/airbag</td></tr>
+      <tr><td>Blok kurzů na homepage</td><td>(blok je vypnutý)</td><td><b>Vybrat kurz a termín</b></td><td>app.tjkrupka.cz</td></tr>
+      <tr><td>Blok airbagu na homepage</td><td>„Více informací“ + badge COMING SOON (Index.tsx:455)</td>
+        <td><b>Rezervovat airbag den</b></td><td>app.tjkrupka.cz</td></tr>
+      <tr><td>Airbag stránka — hlavní</td><td>bez textu specifického CTA → /kontakt (Airbag.tsx:181)</td>
+        <td><b>Rezervovat airbag den (300/600 Kč)</b></td><td>app.tjkrupka.cz</td></tr>
+      <tr><td>Airbag stránka — skupiny</td><td>→ /kontakt</td><td><b>Poptat airbag pro skupinu</b></td><td>n8n formulář</td></tr>
+      <tr><td>Kurzy — rezervace</td><td>„Kontaktujte nás telefonicky nebo e-mailem“</td>
+        <td><b>Zkontrolovat volné termíny</b></td><td>app.tjkrupka.cz / BookingSystem</td></tr>
+      <tr><td>Firmy</td><td>obecný text bez ceny</td><td><b>Poslat poptávku na teambuilding</b></td><td>n8n formulář</td></tr>
+      <tr><td>Školy</td><td>obecný text bez ceny</td><td><b>Zarezervovat termín pro školu</b></td><td>n8n formulář</td></tr>
+      <tr><td>Mobil — sticky lišta</td><td>(neexistuje)</td><td><b>Rezervovat</b> + <b>Zavolat 773 090 842</b></td><td>app / tel:</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.6 FAQ (8 otázek, důraz na bezpečnost)</h3>
+  <p class="lead">Otázky 1–5 jsou převzaté z existujícího FAQ na stránce kurzů (věcně dobré, jen přeformulované pro prodej),
+  otázky 6–8 jsou nové s důrazem na bezpečnost airbagu.</p>
+
+  <details><summary>1. Je to bezpečné? Co když spadnu?</summary>
+    <p>U kitingu i na airbagu je bezpečnost první věc, kterou řešíme. Před jízdou i před skokem projdete instruktáží,
+    dostanete helmu a kompletní vybavení a jste pod dohledem instruktora. Na airbagu je dopad měkký — právě proto
+    existuje: abyste mohli zkoušet nové prvky bez rizika tvrdého pádu.</p></details>
+
+  <details><summary>2. Potřebuji vlastní vybavení?</summary>
+    <p>Ne. Kompletní vybavení — kite, trapéz, helma — je součástí kurzu a zapůjčíme vám ho. Přijeďte v oblečení,
+    ve kterém se hýbete, zbytek máme my.</p></details>
+
+  <details><summary>3. Musím umět lyžovat nebo snowboardovat?</summary>
+    <p>U kurzů kitingu ano — snowkiting staví na základech lyžování nebo snowboardingu, takže je potřebujete zvládat
+    alespoň na úrovni bezpečného sjíždění. <b>Na airbag lyžařská zkušenost potřeba není</b> — skáče se z místa
+    a dopadá na matraci.</p></details>
+
+  <details><summary>4. Co když nebude foukat?</summary>
+    <p>Kurz přesuneme na jiný termín s vhodnějšími podmínkami, bez poplatku. Předpověď sledujeme a informujeme vás předem.</p></details>
+
+  <details><summary>5. Od kolika let to jde?</summary>
+    <p>Kurzy kitingu jsou vhodné od 12 let (s písemným souhlasem zákonného zástupce), horní hranice není stanovena.
+    Airbag je vhodný i pro mladší děti v rámci školních a dětských programů — konkrétní věkovou hranici
+    <span class="tag">[DOPLNIT]</span> potvrdí Owner.</p></details>
+
+  <details><summary>6. Jak vypadá airbag den a co si mám vzít?</summary>
+    <p>Airbag den je samostatný blok, během kterého máte matraci a instruktora k dispozici. Přijdete, projdete
+    bezpečnostní instruktáží, seznámíte se s pravidly a pak skáčete tak dlouho, dokud chcete. Vezměte si sportovní
+    oblečení a helmu (můžeme zapůjčit) <span class="tag">[DOPLNIT — potvrdit, co je na airbag potřeba]</span>.</p></details>
+
+  <details><summary>7. Kolik lidí může být na airbagu najednou?</summary>
+    <p>Na matraci skáče vždy jeden, ostatní čekají mimo dopadovou zónu a řídí se pokyny instruktora. Pro skupiny
+    rozvrhneme program tak, aby se nikdo neprostál. Kapacitu skupiny potvrdí Owner: <span class="tag">[DOPLNIT]</span>.</p></details>
+
+  <details><summary>8. Jak zruším nebo přesunu termín?</summary>
+    <p>Ozvěte se nám na <b>773 090 842</b> (snowkiting) nebo na <b>777 734 389</b> (klub a půjčovna).
+    Podmínky zrušení a přesunu <span class="tag">[DOPLNIT — potvrdí Owner/LEGAL]</span>.</p></details>
+
+  <h3>3.7 Sociální důkazy (šablony — nutno doplnit reálnými údaji)</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">Trust pás — 4 čísla</span>
+      <div class="val">
+        <b><span class="tag">[DOPLNIT]</span></b> let na Komáří vížce · <b><span class="tag">[DOPLNIT]</span></b> účastníků kurzů
+        · <b><span class="tag">[DOPLNIT]</span></b> hodnocení na Google · <b><span class="tag">[DOPLNIT]</span></b> instruktorů
+      </div></div>
+    <div class="block"><span class="lbl">Reference — kurz (šablona)</span>
+      <div class="val">„Po dvou dnech jsem poprvé jel s drakem sám. Instruktor šel krok po kroku a nikdy mě nenechal
+      ve stavu, kdy jsem si nebyl jistý.“ — <b><span class="tag">[jméno]</span></b>,
+      <span class="tag">[rok]</span></div></div>
+    <div class="block"><span class="lbl">Reference — airbag (šablona)</span>
+      <div class="val">„Na airbagu jsem poprvé zkusil rotaci, kterou jsem si na svahu netroufl. Po pátém pádu jsem se
+      přestal bát a na šestý to vyšlo.“ — <b><span class="tag">[jméno]</span></b>,
+      <span class="tag">[rok]</span></div></div>
+    <div class="block"><span class="lbl">Reference — firma/škola (šablona)</span>
+      <div class="val">„<span class="tag">[citace]</span>“ — <b><span class="tag">[jméno]</span>,
+      <span class="tag">[organizace]</span></b>, <span class="tag">[rok]</span></div></div>
+    <div class="block"><span class="lbl">Pravidlo</span>
+      <div class="val">Citace bez jména a organizace se <b>nepoužívá</b>. Anonymní reference je pro zákazníka horší
+      signál než žádná.</div></div>
+  </div>
+
+  <h3>3.8 Texty pro formuláře</h3>
+  <div class="copy">
+    <div class="block"><span class="lbl">Formulář — rezervace kurzu / rychlý dotaz</span>
+      <div class="val"><b>Nadpis:</b> Nezávazná poptávka kurzu<br>
+      <b>Podtitul:</b> Napište nám, co vás zajímá. Ozveme se do <span class="tag">[DOPLNIT — potvrdit dobu odpovědi]</span>.<br>
+      <b>Pole:</b> Jméno a příjmení · Telefon · E-mail · Kurz / úroveň (výběr) · Preferovaný termín · Počet osob ·
+      Poznámka (úroveň, zkušenosti)<br>
+      <b>Tlačítko:</b> Odeslat poptávku<br>
+      <b>Potvrzení po odeslání:</b> „Díky, poptávku máme. Ozveme se na uvedený kontakt.“</div></div>
+    <div class="block"><span class="lbl">Formulář — airbag pro skupinu / firmu</span>
+      <div class="val"><b>Nadpis:</b> Airbag pro skupinu<br>
+      <b>Podtitul:</b> Napište nám rozsah a termín, připravíme program na míru.<br>
+      <b>Pole:</b> Firma/organizace · Kontaktní osoba · E-mail · Telefon · Typ skupiny (firma / škola / oddíl / jiné) ·
+      Počet osob · Preferovaný termín · Doplnění (co byste chtěli zařadit)<br>
+      <b>Tlačítko:</b> Odeslat poptávku<br>
+      <b>Potvrzení:</b> „Díky, poptávku na airbag pro skupinu máme. Ozveme se s návrhem programu a ceny.“</div></div>
+    <div class="block"><span class="lbl">Chybové a prázdné stavy</span>
+      <div class="val">Povinné pole: „Vyplňte prosím toto pole.“ · Telefon: „Zadejte telefon ve formátu 777 123 456.“ ·
+      E-mail: „Zkontrolujte prosím e-mail.“ · Odesílání: „Odesíláme…“ ·
+      Chyba sítě: „Odeslání se nepovedlo. Zkuste to znovu, nebo nám zavolejte na 777 734 389.“</div></div>
+    <div class="block"><span class="lbl">Souhlas se zpracováním údajů (text pro LEGAL ke schválení)</span>
+      <div class="val">„Odesláním formuláře souhlasíte se <a href="/zasady-ochrany-osobnich-udaju">zpracováním osobních
+      údajů</a> za účelem vyřízení poptávky. Údaje používáme jen pro tuto komunikaci.“
+      <b>Závazné znění musí potvrdit LEGAL.</b></div></div>
+  </div>
+</section>
+
+<!-- ================= 4 PRVKY ================= -->
+<section id="prvky">
+  <h2>4. Návrh webových prvků (bloky a komponenty)</h2>
+  <p class="lead">Konkrétní komponenty k implementaci. U každého je účel a napojení — implementaci dělá DEV,
+  obsah a chování jsou popsány zde.</p>
+  <table>
+    <thead><tr><th style="width:20%">Prvek</th><th>Co obsahuje</th><th style="width:28%">Napojení / chování</th></tr></thead>
+    <tbody>
+      <tr><td><b>Hero blok</b></td><td>H1, subheadline, 3 benefity, dvojice CTA, 2 badge („Vybavení v ceně“,
+        „Airbag den od 300 Kč“)</td><td>Primární CTA → app.tjkrupka.cz; sekundární → /airbag. Bez básnického podtitulu.</td></tr>
+      <tr><td><b>Trust pás</b></td><td>4 čísla + 1 věta kontextu</td><td>Statická data ověřená Ownerem. Žádné placeholder hodnoty.</td></tr>
+      <tr><td><b>Karty kurzů</b> (3×)</td><td>Název úrovně, délka, seznam obsahu, cena, „co je v ceně“</td>
+        <td>Klik → detail/rezervace. Data z databáze kurzů (už existuje) nebo staticky dle potvrzení Ownera.</td></tr>
+      <tr><td><b>Ceník kurzů</b></td><td>Tabulka: úroveň × délka × cena + individuální lekce</td>
+        <td>Přepínač osy „podle náročnosti / podle délky“ (prostý filtr bez JS knihoven).</td></tr>
+      <tr><td><b>Blok airbagu na homepage</b></td><td>Nadpis, 3 benefity, cena 300/600 Kč, dvě CTA</td>
+        <td>Odstranit COMING SOON. Primární CTA → app.tjkrupka.cz.</td></tr>
+      <tr><td><b>Ceník airbagu</b></td><td>300 Kč člen / 600 Kč nečlen / členství 200 Kč + věta „vyplatí se po prvním dni“</td>
+        <td>Statické hodnoty dle stávajícího ceníku — potvrdit Ownerem.</td></tr>
+      <tr><td><b>Rezervační / objednávkový blok</b></td><td>Výběr produktu (kurz / airbag), délka, počet osob, termín, kontakt</td>
+        <td>Napojit na <b>app.tjkrupka.cz</b> (platba) nebo na existující n8n webhook
+          <code>n8n.webdo24.cz/webhook/new-lead</code> (tam už dnes míří formuláře a <code>BookingSystem.tsx</code>).</td></tr>
+      <tr><td><b>Kalkulace orientační ceny</b></td><td>Počet osob × délka → orientační cena „od“</td>
+        <td>Jen pro kurz a airbag. Musí zobrazovat „orientační, potvrdíme e-mailem“, aby neslibovala pevnou cenu.</td></tr>
+      <tr><td><b>FAQ akordeon</b></td><td>8 otázek (viz 3.6)</td><td>Nativní <code>&lt;details&gt;</code> — bez JS, funguje offline.</td></tr>
+      <tr><td><b>Foto / video blok</b></td><td>4–6 vlastních fotek areálu + 1 krátké video</td>
+        <td>Lokální soubory z <code>public/images/</code>, bez externích stocků.</td></tr>
+      <tr><td><b>Reference</b></td><td>2–3 citace se jménem, organizací, rokem, fotkou</td>
+        <td>Zobrazit jen s reálným obsahem. Prázdný stav = blok se nezobrazí.</td></tr>
+      <tr><td><b>Sticky CTA lišta (mobil)</b></td><td>„Rezervovat“ + „Zavolat 773 090 842“</td>
+        <td>Fixní lišta dole, zobrazit po odskrolování hero.</td></tr>
+      <tr><td><b>Patička — rozcestník produktů</b></td><td>Sloupec „Rezervace“: Kurzy, Airbag, Pro členy</td>
+        <td>Všechny odkazy na app.tjkrupka.cz, kde to dává smysl.</td></tr>
+      <tr><td><b>Hlavička — tlačítko „Rezervovat“</b></td><td>Výrazné tlačítko vpravo v menu</td>
+        <td>→ app.tjkrupka.cz. Trvale viditelné na desktopu.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= 5 GRAFIKA ================= -->
+<section id="grafika">
+  <h2>5. Grafická doporučení</h2>
+
+  <h3>Paleta — držet stávající brand TJK</h3>
+  <table>
+    <thead><tr><th>Barva</th><th>Kód</th><th>Použití</th></tr></thead>
+    <tbody>
+      <tr><td><b>tjk-blue</b></td><td><code>#161c2d</code></td><td>Základní tmavá — hlavička, patička, nadpisy, hero overlay.</td></tr>
+      <tr><td><b>tjk-dark</b></td><td><code>#0f172a</code></td><td>Hlubší odstín pro gradienty a pozadí sekcí.</td></tr>
+      <tr><td><b>tjk-orange</b></td><td><code>#ff5722</code></td><td><b>Výhradně akční barva</b> — primární CTA, odsazení nadpisů, zvýraznění ceny.</td></tr>
+      <tr><td><b>tjk-gray / light</b></td><td><code>#f9fafb</code> / <code>#f7fafc</code></td><td>Podklad sekcí, karty, tabulky.</td></tr>
+      <tr><td style="color:#dc2626"><b>Vypustit</b></td><td><code>purple/pink/cyan</code></td><td>Airbag blok dnes jede v purple/pink (Index.tsx ř. 393–453), hero v cyan/blue (ř. 196). Sjednotit na brand.</td></tr>
+    </tbody>
+  </table>
+  <p><b>Pravidlo jedné akční barvy:</b> oranžová = „tady se kliká a kupuje“. Nikde jinde. Tím se CTA přestanou ztrácet
+  v ostatních barvách — dnes je na homepage pět různých barevných gradientů na tlačítkách.</p>
+
+  <h3>Hierarchie</h3>
+  <ul>
+    <li><b>H1 na stránce jen jednou</b> (dnes má homepage <code>h1</code> v hero a další sekce používají <code>h2</code> —
+      správně; na podstránkách to zkontrolovat).</li>
+    <li><b>Cena vždy viditelná bez skrolování</b> u produktové sekce — číslo zvednout velikostí nad ostatní text.</li>
+    <li><b>Max. 2 tlačítka v jedné sekci</b> — jedno primární (oranžové), jedno sekundární (outline).</li>
+    <li>Sekce zkrátit: fullscreen (<code>h-screen</code>) ponechat jen pro hero; ostatní na obsahovou výšku.</li>
+  </ul>
+
+  <h3>Typografie</h3>
+  <ul>
+    <li>Držet se stávajícího páru <b>Poppins</b> (nadpisy) a <b>Inter</b> (text) z <code>tailwind.config.ts</code> —
+      <code>airbag-v2</code> dnes používá jen Poppins pro všechno, sjednotit.</li>
+    <li>Na mobilu minimální velikost textu 16 px u odstavců; nadpisy nepřesáhnout do 3 řádků.</li>
+    <li>Nadpisy bez dvojitého prostoru a bez <code>tracking-tight</code> u dlouhých českých slov (drží se špatně).</li>
+  </ul>
+
+  <h3>Práce s fotkami</h3>
+  <ul>
+    <li><b>Vlastní fotky místo stocků.</b> Kurzové karty dnes načítají obrázky z <code>images.unsplash.com</code>
+      (<code>SnowkitingKurzy.tsx</code> ř. 63, 78, 93). V repu jsou lokální fotky v <code>public/images/snowkiting/</code>,
+      <code>/images/vybaveni/</code>, <code>/images/homepage/</code>.</li>
+    <li>Jednotný poměr stran u karet (doporučuji 3:2) a jednotný filtr (mírné ztmavení + teplý nádech), aby série vypadala
+      jako jedna sada.</li>
+    <li>U airbagu ukázat <b>reálný dopad na matraci</b> — to je celý produkt. Bez takové fotky zákazník nevidí hodnotu.</li>
+    <li>U kurzů ukázat instruktora s účastníkem (důvěra), nejen osamoceného jezdce.</li>
+  </ul>
+
+  <h3>Ikony a vizuální prvky</h3>
+  <ul>
+    <li>Zůstat u jedné sady (dnes <code>lucide-react</code>) — velikost sjednotit (dnes se míchá <code>w-4/w-5/w-6/w-12</code>).</li>
+    <li>Ikona produktu: snowkite = drak/vítr, airbag = štít/ochrana. Používat konzistentně i v menu.</li>
+    <li>Odstranit 30 animovaných částic z každé sekce (5 sekcí × 30 prvků) — ponechat jen v hero. Zrychlí to mobil.</li>
+    <li>Badge místo dekorace: badge musí něco sdělovat („Vybavení v ceně“), ne „COMING SOON“.</li>
+  </ul>
+
+  <h3>Co konkrétně změnit na homepage, aby vypadala jako prodejní landing</h3>
+  <ol>
+    <li>Hero: básnický podtitul „Když vítr šeptá tvé jméno..“ nahradit produktovým sdělením s cenou (viz 3.1).</li>
+    <li>Přidat trust pás hned pod hero — čtyři čísla, jeden řádek.</li>
+    <li>Zapnout vypnutý blok kurzů a doplnit do něj cenu (dnes je celý v komentáři, <code>Index.tsx</code> ř. 218–268).</li>
+    <li>Airbag blok přebarvit do brandu, sundat „COMING SOON“ a dát tam cenu 300/600 Kč + tlačítko „Rezervovat“.</li>
+    <li>Zapnout blok referencí (ř. 270–307) — ale teprve s reálnými citacemi; jinak ho nechat vypnutý.</li>
+    <li>Přidat FAQ a závěrečné CTA s telefonem — dnes homepage končí obecným „Připraveni na dobrodružství?“.</li>
+    <li>Sekce zkrátit z fullscreen na obsahovou výšku, aby se cena a důkaz dostaly nad „fold“.</li>
+  </ol>
+</section>
+
+<!-- ================= 6 PRIORITIZACE ================= -->
+<section id="priorita">
+  <h2>6. Prioritizace</h2>
+  <p class="lead">Řazeno tak, aby první kroky byly co nejlevnější a nejrychleji vidět výsledek. „Náročnost“ je odhad
+  pracnosti pro DEV (S = hodiny, M = 1–2 dny, L = více).</p>
+  <table>
+    <thead><tr><th style="width:5%">Pořadí</th><th>Změna</th><th style="width:14%">Dopad na prodej</th>
+      <th style="width:12%">Náročnost</th><th style="width:18%">Kdo</th></tr></thead>
+    <tbody>
+      <tr><td class="c">1</td><td>Airbag: sundat „COMING SOON“, doplnit cenu 300/600 Kč a tlačítko „Rezervovat airbag den“</td>
+        <td class="c"><b>vysoký</b></td><td class="c">S</td><td>DEV (obsah hotový zde)</td></tr>
+      <tr><td class="c">2</td><td>Oba produkty do hlavního menu (desktop) — dnes na desktopu nedostupné</td>
+        <td class="c"><b>vysoký</b></td><td class="c">S</td><td>DEV</td></tr>
+      <tr><td class="c">3</td><td>Hero přepsat na produktové sdělení s cenou „od“ a dvěma produktovými CTA</td>
+        <td class="c"><b>vysoký</b></td><td class="c">S</td><td>DEV (text hotový)</td></tr>
+      <tr><td class="c">4</td><td>Odkaz na app.tjkrupka.cz — hero, produktové bloky, patička, tlačítko v hlavičce</td>
+        <td class="c"><b>vysoký</b></td><td class="c">S–M</td><td>DEV</td></tr>
+      <tr><td class="c">5</td><td>Zapnout blok kurzů na homepage včetně ceny a délky</td>
+        <td class="c"><b>vysoký</b></td><td class="c">M</td><td>DEV (text hotový)</td></tr>
+      <tr><td class="c">6</td><td>Opravit překlepy a odstranit jazyk „certifikovaný/certifikace“</td>
+        <td class="c">střední</td><td class="c">S</td><td>DEV</td></tr>
+      <tr><td class="c">7</td><td>Sticky CTA lišta na mobilu (Rezervovat + Zavolat)</td>
+        <td class="c"><b>vysoký</b></td><td class="c">S–M</td><td>DEV</td></tr>
+      <tr><td class="c">8</td><td>Trust pás se čtyřmi ověřenými čísly</td><td class="c">střední</td>
+        <td class="c">S</td><td>DEV + Owner (data)</td></tr>
+      <tr><td class="c">9</td><td>Rezervační blok u kurzů a airbagu (napojení app.tjkrupka.cz / n8n)</td>
+        <td class="c"><b>vysoký</b></td><td class="c">L</td><td>DEV</td></tr>
+      <tr><td class="c">10</td><td>Sjednotit název „Tělovýchovná jednota Krupka“ na všech místech</td>
+        <td class="c">nízký/střední</td><td class="c">S</td><td>DEV + LEGAL (znění)</td></tr>
+      <tr><td class="c">11</td><td>FAQ blok (8 otázek) na kurzích a airbagu</td><td class="c">střední</td>
+        <td class="c">S</td><td>DEV (text hotový)</td></tr>
+      <tr><td class="c">12</td><td>Reference s reálnými jmény a fotkami (nebo nic)</td><td class="c">střední</td>
+        <td class="c">S</td><td>Owner (data) + DEV</td></tr>
+      <tr><td class="c">13</td><td>Homepage blok pro firmy/školy s airbagem a cenou „od“</td><td class="c">střední</td>
+        <td class="c">M</td><td>DEV + Owner (ceny)</td></tr>
+      <tr><td class="c">14</td><td>Vlastní fotky místo stocků, sjednotit poměry stran</td><td class="c">střední</td>
+        <td class="c">M</td><td>DEV + Owner (fotky)</td></tr>
+      <tr><td class="c">15</td><td>Sjednotit paletu do brandu, omezit animace, zkrátit fullscreen sekce</td>
+        <td class="c">střední</td><td class="c">M</td><td>DEV</td></tr>
+      <tr><td class="c">16</td><td>Vyřešit duplicitu /airbag vs /airbag-v2 (redirect)</td><td class="c">střední</td>
+        <td class="c">M</td><td>DEV (rozhodnutí Ownera)</td></tr>
+      <tr><td class="c">17</td><td>Jednotná navigace (Navbar vs Sidebar)</td><td class="c">střední</td>
+        <td class="c">M</td><td>DEV</td></tr>
+      <tr><td class="c">18</td><td>Kalkulace orientační ceny u kurzů a airbagu</td><td class="c">nízký/střední</td>
+        <td class="c">M</td><td>DEV</td></tr>
+    </tbody>
+  </table>
+  <div class="note ok">
+    <b>Quick wins (pořadí 1–4):</b> všechny jsou textové nebo odkazovací, bez zásahu do logiky, a dohromady řeší
+    tři největší nálezy (airbag se odprodává, produkty nejsou v menu, chybí cesta k platbě).
+  </div>
+</section>
+
+<!-- ================= 7 K ODSOUHLASENI ================= -->
+<section id="schvaleni">
+  <h2>7. K ODSOUHLASENÍ (body B1–B18)</h2>
+  <p class="lead">Každý bod je jedna samostatně schvalitelná změna — dá se zaškrtnout ano/ne. U každého je jedna věta
+  odůvodnění. Body, které by bez dalšího schválení měnit nešly (nové ceny, nové produkty, právní texty, redirect),
+  jsou formulované jako <b>rozhodnutí Ownera</b>, ne jako hotová změna.</p>
+
+  <ul class="check">
+    <li id="b1"><span class="box"></span><div><b>B1 — Povýšit „SnowKite kurzy“ a „AIRBAG“ do hlavního menu jako samostatné položky.</b>
+      <span class="why">Bez toho se na desktopu k hlavním produktům nedostane — dnes jsou jen v podmenu, které se na desktopu nezobrazuje.</span>
+    <div class="vote" data-for="b1">
+      <span class="seg">
+        <label><input type="radio" name="b1" value="ANO">ANO</label>
+        <label><input type="radio" name="b1" value="NE">NE</label>
+        <label><input type="radio" name="b1" value="?">?</label>
+      </span>
+      <textarea name="note_b1" rows="2" placeholder="Poznámka k b1 (nepovinné)" aria-label="Poznamka k b1"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b2"><span class="box"></span><div><b>B2 — Rozhodnout jednu prodejní airbag stránku a druhou přesměrovat.</b>
+      <span class="why">Dvě konkurenční stránky pro jeden produkt ředí SEO i důvěru a udržují dvě verze ceny.</span>
+    <div class="vote" data-for="b2">
+      <span class="seg">
+        <label><input type="radio" name="b2" value="ANO">ANO</label>
+        <label><input type="radio" name="b2" value="NE">NE</label>
+        <label><input type="radio" name="b2" value="?">?</label>
+      </span>
+      <textarea name="note_b2" rows="2" placeholder="Poznámka k b2 (nepovinné)" aria-label="Poznamka k b2"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b3"><span class="box"></span><div><b>B3 — Nahradit badge „COMING SOON“ a text „Již brzy u nás!“ prodejním sdělením airbagu.</b>
+      <span class="why">Airbag je v provozu a má cenu — sdělení „ještě není“ ho vyřazuje z prodeje.</span>
+    <div class="vote" data-for="b3">
+      <span class="seg">
+        <label><input type="radio" name="b3" value="ANO">ANO</label>
+        <label><input type="radio" name="b3" value="NE">NE</label>
+        <label><input type="radio" name="b3" value="?">?</label>
+      </span>
+      <textarea name="note_b3" rows="2" placeholder="Poznámka k b3 (nepovinné)" aria-label="Poznamka k b3"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b4"><span class="box"></span><div><b>B4 — Doplnit na airbag stránky ceník (300 Kč člen / 600 Kč nečlen, členství 200 Kč) a rezervační CTA.</b>
+      <span class="why">Cena a tlačítko „Rezervovat“ jsou dvě věci, které dnes na airbag stránce chybí úplně.</span>
+    <div class="vote" data-for="b4">
+      <span class="seg">
+        <label><input type="radio" name="b4" value="ANO">ANO</label>
+        <label><input type="radio" name="b4" value="NE">NE</label>
+        <label><input type="radio" name="b4" value="?">?</label>
+      </span>
+      <textarea name="note_b4" rows="2" placeholder="Poznámka k b4 (nepovinné)" aria-label="Poznamka k b4"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b5"><span class="box"></span><div><b>B5 — Odkazovat na app.tjkrupka.cz jako hlavní rezervační a platební cíl (hero, produktové bloky, hlavička, patička).</b>
+      <span class="why">Z webu na něj dnes nevede ani jeden odkaz, přičemž je to místo, kde probíhá platba.</span>
+    <div class="vote" data-for="b5">
+      <span class="seg">
+        <label><input type="radio" name="b5" value="ANO">ANO</label>
+        <label><input type="radio" name="b5" value="NE">NE</label>
+        <label><input type="radio" name="b5" value="?">?</label>
+      </span>
+      <textarea name="note_b5" rows="2" placeholder="Poznámka k b5 (nepovinné)" aria-label="Poznamka k b5"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b6"><span class="box"></span><div><b>B6 — Zapnout na homepage blok kurzů včetně ceny a délky.</b>
+      <span class="why">Hlavní produkt nemá na homepage žádnou cenu ani varianty, protože je blok zakomentovaný.</span>
+    <div class="vote" data-for="b6">
+      <span class="seg">
+        <label><input type="radio" name="b6" value="ANO">ANO</label>
+        <label><input type="radio" name="b6" value="NE">NE</label>
+        <label><input type="radio" name="b6" value="?">?</label>
+      </span>
+      <textarea name="note_b6" rows="2" placeholder="Poznámka k b6 (nepovinné)" aria-label="Poznamka k b6"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b7"><span class="box"></span><div><b>B7 — Přepsat hero homepage na produktové sdělení s cenou „od“ a dvěma produktovými CTA (Kurzy, Airbag).</b>
+      <span class="why">Současný hero je básnický a vede druhou CTA na „O nás“, tedy mimo prodej.</span>
+    <div class="vote" data-for="b7">
+      <span class="seg">
+        <label><input type="radio" name="b7" value="ANO">ANO</label>
+        <label><input type="radio" name="b7" value="NE">NE</label>
+        <label><input type="radio" name="b7" value="?">?</label>
+      </span>
+      <textarea name="note_b7" rows="2" placeholder="Poznámka k b7 (nepovinné)" aria-label="Poznamka k b7"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b8"><span class="box"></span><div><b>B8 — Odstranit ze všech textů slova „certifikovaný“ a „certifikace“ u instruktorů a nahradit je jazykem zkušenosti.</b>
+      <span class="why">Explicitní požadavek Ownera; zároveň odpadá nepodložené tvrzení, které je reputační riziko.</span>
+    <div class="vote" data-for="b8">
+      <span class="seg">
+        <label><input type="radio" name="b8" value="ANO">ANO</label>
+        <label><input type="radio" name="b8" value="NE">NE</label>
+        <label><input type="radio" name="b8" value="?">?</label>
+      </span>
+      <textarea name="note_b8" rows="2" placeholder="Poznámka k b8 (nepovinné)" aria-label="Poznamka k b8"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b9"><span class="box"></span><div><b>B9 — Rozhodnout, jak nahradit text „Certifikát po absolvování kurzu“ na homepage (Index.tsx:77).</b>
+      <span class="why">Obsahuje slovo z požadavku Ownera, ale má jiný význam (osvědčení účastníka) — potřebuje rozhodnutí, ne tichou změnu.</span>
+    <div class="vote" data-for="b9">
+      <span class="seg">
+        <label><input type="radio" name="b9" value="ANO">ANO</label>
+        <label><input type="radio" name="b9" value="NE">NE</label>
+        <label><input type="radio" name="b9" value="?">?</label>
+      </span>
+      <textarea name="note_b9" rows="2" placeholder="Poznámka k b9 (nepovinné)" aria-label="Poznamka k b9"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b10"><span class="box"></span><div><b>B10 — Sjednotit název spolku na „Tělovýchovná jednota Krupka“ na všech místech (15 výskytů zkratky).</b>
+      <span class="why">Požadavek Ownera; u platebních a smluvních textů je konzistentní název subjektu otázka důvěry i práva.</span>
+    <div class="vote" data-for="b10">
+      <span class="seg">
+        <label><input type="radio" name="b10" value="ANO">ANO</label>
+        <label><input type="radio" name="b10" value="NE">NE</label>
+        <label><input type="radio" name="b10" value="?">?</label>
+      </span>
+      <textarea name="note_b10" rows="2" placeholder="Poznámka k b10 (nepovinné)" aria-label="Poznamka k b10"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b11"><span class="box"></span><div><b>B11 — Opravit překlepy „Kurz začína!“ a „Létejte na sněhu s drakem“.</b>
+      <span class="why">Chyba v nadpisu prodejního bloku přímo podkopává důvěru u placené služby.</span>
+    <div class="vote" data-for="b11">
+      <span class="seg">
+        <label><input type="radio" name="b11" value="ANO">ANO</label>
+        <label><input type="radio" name="b11" value="NE">NE</label>
+        <label><input type="radio" name="b11" value="?">?</label>
+      </span>
+      <textarea name="note_b11" rows="2" placeholder="Poznámka k b11 (nepovinné)" aria-label="Poznamka k b11"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b12"><span class="box"></span><div><b>B12 — Doplnit sticky CTA lištu na mobilu („Rezervovat“ + „Zavolat 773 090 842“).</b>
+      <span class="why">Na mobilu dnes neexistuje trvale dostupná cesta k rezervaci ani k telefonu.</span>
+    <div class="vote" data-for="b12">
+      <span class="seg">
+        <label><input type="radio" name="b12" value="ANO">ANO</label>
+        <label><input type="radio" name="b12" value="NE">NE</label>
+        <label><input type="radio" name="b12" value="?">?</label>
+      </span>
+      <textarea name="note_b12" rows="2" placeholder="Poznámka k b12 (nepovinné)" aria-label="Poznamka k b12"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b13"><span class="box"></span><div><b>B13 — Sjednotit navigaci na jednu strukturu pro celý web (dnes Navbar a Sidebar s různými položkami).</b>
+      <span class="why">Dvě různé navigace rozpadají orientaci a nutí zákazníka hledat stejný cíl dvakrát.</span>
+    <div class="vote" data-for="b13">
+      <span class="seg">
+        <label><input type="radio" name="b13" value="ANO">ANO</label>
+        <label><input type="radio" name="b13" value="NE">NE</label>
+        <label><input type="radio" name="b13" value="?">?</label>
+      </span>
+      <textarea name="note_b13" rows="2" placeholder="Poznámka k b13 (nepovinné)" aria-label="Poznamka k b13"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b14"><span class="box"></span><div><b>B14 — Zkrátit fullscreen sekce homepage a přeskládat je v prodejním pořadí (produkt → cena → důkaz → FAQ → CTA).</b>
+      <span class="why">Šest obrazovek bez ceny a bez důkazu znamená, že zákazník odejde dřív, než narazí na nabídku.</span>
+    <div class="vote" data-for="b14">
+      <span class="seg">
+        <label><input type="radio" name="b14" value="ANO">ANO</label>
+        <label><input type="radio" name="b14" value="NE">NE</label>
+        <label><input type="radio" name="b14" value="?">?</label>
+      </span>
+      <textarea name="note_b14" rows="2" placeholder="Poznámka k b14 (nepovinné)" aria-label="Poznamka k b14"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b15"><span class="box"></span><div><b>B15 — Sjednotit barvy do brandu TJK (tjk-blue #161c2d + tjk-orange #ff5722 jako jediná akční barva) a vypustit purple/pink/cyan.</b>
+      <span class="why">Pět různých gradientů na tlačítkách rozbíjí brand a CTA se v nich ztrácejí.</span>
+    <div class="vote" data-for="b15">
+      <span class="seg">
+        <label><input type="radio" name="b15" value="ANO">ANO</label>
+        <label><input type="radio" name="b15" value="NE">NE</label>
+        <label><input type="radio" name="b15" value="?">?</label>
+      </span>
+      <textarea name="note_b15" rows="2" placeholder="Poznámka k b15 (nepovinné)" aria-label="Poznamka k b15"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b16"><span class="box"></span><div><b>B16 — Doplnit trust pás se čtyřmi ověřenými čísly a zapnout reference pouze s reálnými jmény, nebo je neuvádět.</b>
+      <span class="why">Anonymní citace působí jako šablona; ověřitelné číslo je nejsilnější dostupný důkaz.</span>
+    <div class="vote" data-for="b16">
+      <span class="seg">
+        <label><input type="radio" name="b16" value="ANO">ANO</label>
+        <label><input type="radio" name="b16" value="NE">NE</label>
+        <label><input type="radio" name="b16" value="?">?</label>
+      </span>
+      <textarea name="note_b16" rows="2" placeholder="Poznámka k b16 (nepovinné)" aria-label="Poznamka k b16"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b17"><span class="box"></span><div><b>B17 — Zavést rezervační blok u kurzů a airbagu napojený na app.tjkrupka.cz nebo stávající n8n webhook.</b>
+      <span class="why">Dnešní rezervace končí ve formuláři nebo telefonátu — každý krok navíc snižuje konverzi.</span>
+    <div class="vote" data-for="b17">
+      <span class="seg">
+        <label><input type="radio" name="b17" value="ANO">ANO</label>
+        <label><input type="radio" name="b17" value="NE">NE</label>
+        <label><input type="radio" name="b17" value="?">?</label>
+      </span>
+      <textarea name="note_b17" rows="2" placeholder="Poznámka k b17 (nepovinné)" aria-label="Poznamka k b17"></textarea>
+    </div>
+    </div></li>
+
+    <li id="b18"><span class="box"></span><div><b>B18 — Rozhodnout, zda se půjčovna (tel. 777 734 389) vrátí do menu, nebo zůstane jen v patičce.</b>
+      <span class="why">Půjčovna je aktivní (<code>ENABLE_PUJCOVNA: true</code>) a odkazuje na ni patička, ale v menu chybí — je to nevyužitý kanál.</span>
+    <div class="vote" data-for="b18">
+      <span class="seg">
+        <label><input type="radio" name="b18" value="ANO">ANO</label>
+        <label><input type="radio" name="b18" value="NE">NE</label>
+        <label><input type="radio" name="b18" value="?">?</label>
+      </span>
+      <textarea name="note_b18" rows="2" placeholder="Poznámka k b18 (nepovinné)" aria-label="Poznamka k b18"></textarea>
+    </div>
+    </div></li>
+  </ul>
+
+  <div class="note">
+    <b>Co v tomto seznamu záměrně není:</b> nové produkty, nové ceny (uvedené ceny jsou převzaté z existujícího ceníku
+    a čekají na potvrzení), zásahy do právních textů, změny v platební logice a cokoli, co by znamenalo publikaci.
+    Tyto věci patří k rozhodnutí Ownerovi / LEGAL / DEV.
+  </div>
+</section>
+
+
+<!-- ================= DEV: ovladani schvalovaci stranky ================= -->
+<section id="odeslani">
+  <h2>Odeslání odsouhlasení</h2>
+  <p class="lead">Označte u každého bodu <b>ANO</b>, <b>NE</b> nebo <b>?</b> (nerozhodnuto) a případně doplňte poznámku.
+  Tlačítko <b>Odeslat odsouhlasení</b> doručí celý výsledek naším kanálem. Rozpracované volby se průběžně ukládají
+  ve vašem prohlížeči, takže se nic neztratí ani při obnovení stránky.</p>
+
+  <div class="cf">
+    <div><label for="ow-name">Kdo odsouhlasení posílá (povinné)</label>
+      <input id="ow-name" type="text" autocomplete="name" placeholder="Jméno / funkce" /></div>
+    <div><label for="ow-email">Kontakt pro doplnění (nepovinné)</label>
+      <input id="ow-email" type="email" autocomplete="email" placeholder="e-mail nebo telefon" /></div>
+  </div>
+
+  <div class="cnt">0 ANO · 0 NE · 0 ? · 0 nerozhodnuto</div>
+
+  <div class="btnrow">
+    <button type="button" class="btn" id="ow-send">Odeslat odsouhlasení</button>
+    <button type="button" class="btn ghost" id="ow-del2" onclick="document.getElementById('smazani').scrollIntoView({behavior:'smooth'})">Přejít na smazání stránky</button>
+  </div>
+
+  <div class="statusout" id="ow-status"></div>
+
+  <div class="fallback" id="ow-fallback"></div>
+
+  <details style="margin-top:16px">
+    <summary>Když se odeslání nepodaří — záložní cesty (vždy dostupné)</summary>
+    <p>Výsledek nikdy nezmizí: zůstává v prohlížeči a dá se zkopírovat, stáhnout, poslat jako GitHub issue
+    nebo e-mailem na <b>info@tjkrupka.cz</b>. Tlačítko níže připraví všechny záložní cesty najednou.</p>
+    <div class="btnrow"><button type="button" class="btn ghost" id="ow-guide-issue">Připravit záložní doručení</button></div>
+  </details>
+</section>
+
+<section id="smazani">
+  <h2>Smazání stránky z URL</h2>
+  <p class="lead">Tato stránka je dočasná. Až odsouhlasení odešlete, smažte ji tlačítkem níže — zmizí z adresy
+  <code>/webaudit</code> a začne vracet <b>404</b>. Obsah, který jste odsouhlasili, zůstává v repozitáři i v odeslaném
+  výsledku; obnovit ji lze revertem jednoho commitu.</p>
+  <div class="note">
+    <b>Proč to není na jedno kliknutí:</b> web je statický na Vercelu a nasazuje se z repozitáře. Automatické smazání
+    by vyžadovalo token s právem zápisu do produkčního repozitáře — ten záměrně nemáme. Tlačítko proto připraví
+    <b>předplněné smazání souboru</b> na GitHubu a zároveň pošle požadavek na smazání naším kanálem:
+    klik na tlačítko → na GitHubu potvrdit <i>Commit changes</i> → stránka zmizí po přebudování webu (obvykle 1–2 minuty).
+    Celkem dva kliky, žádné přihlašovací údaje pro nás.
+  </div>
+  <div class="btnrow">
+    <button type="button" class="btn danger" id="ow-del">Smazat stránku z URL</button>
+    <a class="btn ghost" href="https://github.com/mirabeecko/tjkrupkacz25/delete/main/public/webaudit/index.html" target="_blank" rel="noreferrer noopener">Přímé smazání souboru na GitHubu</a>
+  </div>
+  <p style="font-size:.85rem;color:var(--muted);margin-top:10px">Maže se soubor
+  <code>public/webaudit/index.html</code>. Revert: <code>git revert &lt;sha-commitu-nasazení&gt; &amp;&amp; git push origin main</code>.</p>
+</section>
+
+<!-- ================= 8 LIMITY ================= -->
+<section id="limity">
+  <h2>8. Limity tohoto dokumentu a co potřebuji doplnit</h2>
+  <p class="lead">Dokument je fail-closed: nic nebylo na webu změněno a nic nebylo publikováno. Následující údaje
+  chybí a bez nich nelze texty finalizovat — všechna tato místa jsou v textu označená <span class="tag">[DOPLNIT]</span>.</p>
+  <table>
+    <thead><tr><th>Co chybí</th><th>Kde se to používá</th><th>Kdo doplní</th></tr></thead>
+    <tbody>
+      <tr><td>Potvrzení cen kurzů (4 500 / 3 800 / 3 200 Kč a individuální lekce od 2 000 Kč/hod)</td>
+        <td>Blok kurzů, ceník, homepage</td><td>Owner</td></tr>
+      <tr><td>Cena airbag programu pro skupiny, minimální počet osob, délka programu</td><td>Airbag pro skupiny/firmy</td><td>Owner</td></tr>
+      <tr><td>Ověřená čísla: roky praxe, počet účastníků, hodnocení Google, počet instruktorů</td><td>Trust pás, hero, reference</td><td>Owner</td></tr>
+      <tr><td>Reálné reference (jméno, organizace, rok, foto) — nebo rozhodnutí je neuvádět</td><td>Reference na homepage, firmy, školy</td><td>Owner</td></tr>
+      <tr><td>Doba odpovědi na poptávku (např. do 24 h)</td><td>Texty formulářů</td><td>Owner</td></tr>
+      <tr><td>Věková hranice u airbagu pro děti, co je potřeba si přinést</td><td>FAQ (otázky 5 a 6)</td><td>Owner</td></tr>
+      <tr><td>Podmínky zrušení a přesunu termínu</td><td>FAQ (otázka 8)</td><td>Owner + LEGAL</td></tr>
+      <tr><td>Závazné znění souhlasu se zpracováním osobních údajů ve formulářích</td><td>Formuláře</td><td>LEGAL</td></tr>
+      <tr><td>Rozhodnutí o duplicitě /airbag vs /airbag-v2</td><td>Navigace, SEO</td><td>Owner</td></tr>
+      <tr><td>Rozhodnutí o půjčovně v menu</td><td>Menu, patička</td><td>Owner</td></tr>
+    </tbody>
+  </table>
+  <div class="note ok">
+    <b>Co dokument poskytuje hotové:</b> analýzu ve čtyřech vrstvách s doloženými nálezy, návrh struktury homepage
+    i menu, kompletní české texty pro všechny prioritní produkty, návrh webových prvků, grafická doporučení
+    a seznam 18 samostatně schvalitelných změn.
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Webaudit tjkrupka.cz</b> · task DRE-100467.1 (parent DRE-100467) · GROWTH · 29. 9. 2026 · verze 1.0 · stav: K ODSOUHLASENÍ OWNEREM</p>
+    <p>Analýza vychází z aktuálního stavu repozitáře <code>mirabeecko/tjkrupkacz25</code> (větev <code>main</code>) a ze stránek
+    webu. Žádná změna nebyla nasazena ani publikována. Nedoložené údaje jsou označeny <code>[DOPLNIT]</code>.</p>
+  </div>
+</footer>
+
+
+<div class="taskbar">
+  <span class="t">Průběžný stav: <b class="cnt">0 ANO · 0 NE · 0 ? · 0 nerozhodnuto</b></span>
+  <button type="button" class="btn send">Odeslat odsouhlasení</button>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var N8N = "https://n8n.webdo24.cz/webhook/new-lead";
+  var GH_NEW_ISSUE = "https://github.com/mirabeecko/tjkrupkacz25/issues/new";
+  var GH_DELETE = "https://github.com/mirabeecko/tjkrupkacz25/delete/main/public/webaudit/index.html";
+  var PAGE = "https://tjkrupka.cz/webaudit";
+  var TASK = "DRE-100467.2 / DRE-100467.1";
+  var DRAFTKEY = "webaudit_draft_v1";
+  var $ = function(s,r){return (r||document).querySelector(s);};
+  var $$ = function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+  var IDS = $$("ul.check li").map(function(li){return li.id;});
+
+  /* ---------- 1. zvyrazneni stavu u kazdeho bodu ---------- */
+  function paint(bid){
+    var li = document.getElementById(bid); if(!li) return;
+    var box = $(".box", li);
+    var sel = $('input[name="'+bid+'"]:checked', li);
+    box.classList.remove("done","neg","tbd");
+    if(sel){ box.classList.add(sel.value==="ANO"?"done":sel.value==="NE"?"neg":"tbd"); }
+  }
+  function counts(){
+    var c={ANO:0,NE:0,"?":0,none:0};
+    IDS.forEach(function(id){
+      var s=document.querySelector('input[name="'+id+'"]:checked');
+      if(!s){c.none++;} else {c[s.value]++;} 
+    });
+    return c;
+  }
+  function refresh(){
+    IDS.forEach(paint);
+    var c=counts();
+    var t=c.ANO+" ANO · "+c.NE+" NE · "+c["?"]+" ? · "+c.none+" nerozhodnuto (z "+IDS.length+")";
+    $$(".cnt").forEach(function(e){e.textContent=t;});
+    return c;
+  }
+
+  /* ---------- 2. sestaveni payloadu ---------- */
+  function collect(){
+    var name=($("#ow-name")||{}).value||"";
+    var email=($("#ow-email")||{}).value||"";
+    var decisions=[], notes=[], unresolved=[];
+    IDS.forEach(function(id){
+      var s=document.querySelector('input[name="'+id+'"]:checked');
+      var note=(document.querySelector('textarea[name="note_'+id+'"]')||{}).value||"";
+      note=note.replace(/\s+/g," ").trim();
+      decisions.push(id.toUpperCase().replace(/^B/,"B")+"="+(s?s.value:"(bez volby)"));
+      if(!s) unresolved.push(id.toUpperCase());
+      if(note) notes.push(id.toUpperCase()+": "+note);
+    });
+    return {name:name, email:email, decisions:decisions, notes:notes, unresolved:unresolved};
+  }
+  function human(p){
+    var c=counts();
+    var L=[];
+    L.push("ODSOUHLASENI WEBAUDIT tjkrupka.cz — task "+TASK);
+    L.push("Stranka: "+PAGE);
+    L.push("Kdo: "+(p.name||"(neuvedeno)")+(p.email?" <"+p.email+">":""));
+    L.push("Vysledek: "+c.ANO+" ANO, "+c.NE+" NE, "+c["?"]+" ?, "+c.none+" nerozhodnuto (celkem "+IDS.length+" bodu)");
+    L.push("");
+    L.push("ROZHODNUTI:");
+    L.push(p.decisions.join("  "));
+    if(p.notes.length){ L.push(""); L.push("POZNAMKY:"); p.notes.forEach(function(n){L.push("- "+n);}); }
+    return L.join("\n");
+  }
+  function jsonOf(p){ return JSON.stringify(p, null, 2); }
+
+  /* ---------- 3. lokalni zaloha (localStorage + stazeni) ---------- */
+  function saveDraft(){
+    try{ localStorage.setItem(DRAFTKEY, jsonOf(collect())); }catch(e){}
+  }
+  function loadDraft(){
+    try{
+      var raw=localStorage.getItem(DRAFTKEY); if(!raw) return;
+      var p=JSON.parse(raw);
+      if(p.name && $("#ow-name")) $("#ow-name").value=p.name;
+      if(p.email && $("#ow-email")) $("#ow-email").value=p.email;
+      (p.decisions||[]).forEach(function(d){
+        var m=/^([A-Z0-9]+)=(.+)$/.exec(d); if(!m) return;
+        var id=m[1].toLowerCase(), v=m[2];
+        var el=document.querySelector('input[name="'+id+'"][value="'+v+'"]'); if(el) el.checked=true;
+      });
+    }catch(e){}
+  }
+  function download(name, text){
+    var b=new Blob([text],{type:"text/plain;charset=utf-8"});
+    var u=URL.createObjectURL(b), a=document.createElement("a");
+    a.href=u; a.download=name; document.body.appendChild(a); a.click();
+    setTimeout(function(){URL.revokeObjectURL(u); a.remove();},400);
+  }
+
+  /* ---------- 4. odeslani ---------- */
+  function showStatus(cls, html){
+    var el=$("#ow-status"); if(!el) return;
+    el.className="statusout show "+cls; el.innerHTML=html;
+  }
+  function showFallback(p, why){
+    var fb=$("#ow-fallback"); if(!fb) return;
+    var bodyTxt=human(p), j=jsonOf(p);
+    var issueBody="### Odsouhlaseni webaudit tjkrupka.cz (task "+TASK+")\n\n```\n"+bodyTxt+"\n```\n\n```json\n"+j+"\n```\n";
+    var i=GH_NEW_ISSUE+"?title="+encodeURIComponent("Webaudit: ODSOUHLASENI od OWNERA (DRE-100467.2)")+
+          "&labels="+encodeURIComponent("webaudit")+"&body="+encodeURIComponent(issueBody);
+    var mt="mailto:info@tjkrupka.cz?subject="+encodeURIComponent("Webaudit: ODSOUHLASENI od OWNERA (DRE-100467.2)")+
+          "&body="+encodeURIComponent(bodyTxt);
+    var tooLong=(i.length>7800);
+    var h=['<h3>Záložní doručení — použijte, prosím, tuto cestu</h3>'];
+    if(why) h.push('<p style="margin:4px 0 10px;font-size:.9rem">Důvod: '+why+'</p>');
+    h.push('<p style="margin:4px 0 12px;font-size:.92rem">Výsledek je níže připravený celý. Vyberte jednu z cest — všechny tři doručí totéž:</p>');
+    h.push('<div class="btnrow">');
+    h.push('<button type="button" class="btn" id="ow-copy">1 · Zkopírovat odsouhlasení</button>');
+    h.push('<button type="button" class="btn dark" id="ow-dl">2 · Stáhnout soubor</button>');
+    if(!tooLong){
+      h.push('<a class="btn ghost" id="ow-issue" target="_blank" rel="noreferrer noopener" href="'+i.replace(/"/g,"&quot;")+'">3 · Odeslat přes GitHub issue</a>');
+      h.push('<a class="btn ghost" href="'+mt.replace(/"/g,"&quot;")+'">4 · Odeslat e-mailem (info@tjkrupka.cz)</a>');
+    }else{
+      h.push('<span style="font-size:.88rem;color:#92400e">Odsouhlasení je příliš dlouhé pro odkaz — použijte „Stáhnout soubor“ a přiložte ho k e-mailu na info@tjkrupka.cz.</span>');
+    }
+    h.push('</div>');
+    h.push('<p style="font-size:.82rem;color:#64748b;margin:12px 0 0">Nic se neztratí — text je i v tomto poli, můžete ho zkopírovat ručně:</p>');
+    h.push('<textarea id="ow-payload" rows="8" style="width:100%;margin-top:6px;border:1.5px solid #e2e8f0;border-radius:8px;padding:10px;font-family:ui-monospace,Menlo,monospace;font-size:.8rem">'+bodyTxt.replace(/</g,"&lt;")+'</textarea>');
+    fb.innerHTML=h.join("");
+    fb.classList.add("show");
+    var cp=$("#ow-copy"); if(cp) cp.addEventListener("click",function(){ copy($("#ow-payload").value); });
+    var dl=$("#ow-dl"); if(dl) dl.addEventListener("click",function(){ download("webaudit-odsouhlaseni.txt", $("textarea#ow-payload").value); });
+  }
+  function copy(txt){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ showStatus("good","Zkopírováno do schránky."); },
+        function(){ showStatus("warn","Kopírování prohlížeč zablokoval — text označte a zkopírujte ručně."); });
+    } else {
+      var ta=$("#ow-payload"); if(ta){ ta.select(); document.execCommand("copy"); showStatus("good","Zkopírováno."); }
+    }
+  }
+
+  function submit(){
+    var p=collect(), c=counts();
+    if(!p.name.trim()){ showStatus("err","Vyplňte, prosím, kdo odsouhlasení posílá (pole „Jméno“)."); $("#ow-name").focus(); return; }
+    if(c.none>0){
+      if(!window.confirm("U "+c.none+" bodů není zvoleno ANO/NE. Odeslat i tak?")) return;
+    }
+    var txt=human(p), btn=$("#ow-send");
+    btn.disabled=true; btn.textContent="Odesílám…";
+    showStatus("warn","Odesílám…");
+    var ctl=new AbortController(); var to=setTimeout(function(){ctl.abort();},12000);
+    fetch(N8N,{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({
+        web_id:"tjkrupka",
+        source:"Webaudit — odsouhlaseni (DRE-100467.2)",
+        name:p.name,
+        email:p.email||"",
+        phone:"",
+        interest:"webaudit-odsouhlaseni",
+        message:txt+"\n\n--- JSON ---\n"+jsonOf(p)
+      }),
+      signal:ctl.signal
+    }).then(function(r){
+      clearTimeout(to);
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      return r.text().catch(function(){return "";});
+    }).then(function(){
+      saveDraft();
+      showStatus("good","<b>ODESLÁNO.</b> Odsouhlasení dorazilo na náš kanál (n8n → upozornění DEV/CHIEF). Uloženo "+new Date().toLocaleString("cs-CZ")+". Pro jistotu si můžete stáhnout kopii — <button type='button' class='btn ghost' onclick=\"document.getElementById('ow-dl2').click()\">stáhnout kopii</button>");
+      $("#ow-fallback").classList.remove("show");
+    }).catch(function(err){
+      clearTimeout(to);
+      showStatus("err","<b>Kanál n8n teď neodpovídá ("+(err && err.message ? err.message : "chyba sítě")+").</b> Odsouhlasení NEbylo doručeno — použijte prosím záložní cestu níže. Vaše volby zůstávají vyplněné.");
+      showFallback(p, "Automatické odeslání selhalo, protože kanál n8n.webdo24.cz je momentálně nedostupný.");
+    }).then(function(){
+      btn.disabled=false; btn.textContent="Odeslat odsouhlasení";
+    });
+  }
+
+  /* ---------- 5. smazani stranky ---------- */
+  function deletePage(){
+    var ok=window.confirm("Opravdu chcete stránku /webaudit smazat z URL?\n\nStránka po smazání zmizí (404). Obnovit ji lze revertem commitu.\n\nPo potvrzení se otevře GitHub s předplněným smazáním souboru.");
+    if(!ok) return;
+    showStatus("warn","Smazání připraveno — potvrďte ho, prosím, na GitHubu (otevřeno v nové kartě). Stránka zmizí po přebudování (~1–2 min).");
+    var body=JSON.stringify({
+      web_id:"tjkrupka", source:"Webaudit — zadost o smazani stranky (DRE-100467.2)",
+      name:(($("#ow-name")||{}).value||"OWNER"), email:(($("#ow-email")||{}).value||""),
+      phone:"", interest:"webaudit-smazani",
+      message:"OWNER pozadal o smazani schvalovaci stranky /webaudit. Soubor k smazani: public/webaudit/index.html. Odeslano z "+PAGE+" v "+new Date().toLocaleString("cs-CZ")+"."
+    });
+    try{
+      var ctl=new AbortController(); setTimeout(function(){ctl.abort();},8000);
+      fetch(N8N,{method:"POST",headers:{"Content-Type":"application/json"},body:body,signal:ctl.signal}).catch(function(){});
+    }catch(e){}
+    window.open(GH_DELETE,"_blank","noopener");
+  }
+
+  /* ---------- 6. napojeni ---------- */
+  document.addEventListener("change",function(e){
+    var t=e.target;
+    if(t && t.name && IDS.indexOf(t.name)>=0){
+      var seg=t.closest(".seg");
+      if(seg){ $$("label",seg).forEach(function(l){ l.classList.remove("sel-yes","sel-no","sel-tbd"); });
+        t.parentNode.classList.add(t.value==="ANO"?"sel-yes":t.value==="NE"?"sel-no":"sel-tbd"); }
+      refresh(); saveDraft();
+    }
+  });
+  document.addEventListener("input",function(e){
+    if(e.target && (e.target.id==="ow-name"||e.target.id==="ow-email"||/^note_b/.test(e.target.name||""))) saveDraft();
+  });
+  function boot(){
+    if(!IDS.length) return;
+    loadDraft(); refresh();
+    var s=$("#ow-send"); if(s) s.addEventListener("click",submit);
+    var d=$("#ow-del"); if(d) d.addEventListener("click",deletePage);
+    var g=$("#ow-guide-issue");
+    if(g){ g.addEventListener("click",function(ev){ ev.preventDefault(); showFallback(collect(), null);
+      var a=$("#ow-issue"); if(a){ window.open(a.href,"_blank","noopener"); } }); }
+    var bar=$(".taskbar");
+    window.addEventListener("scroll",function(){
+      if(!bar) return;
+      if(window.scrollY>600){ bar.classList.add("show"); } else { bar.classList.remove("show"); }
+    });
+    var tb=$(".taskbar .btn.send");
+    if(tb) tb.addEventListener("click",function(){ var t=$("#odeslani"); if(t) t.scrollIntoView({behavior:"smooth"});
+      setTimeout(submit,420); });
+  }
+  if(document.readyState==="loading"){ document.addEventListener("DOMContentLoaded",boot); } else { boot(); }
+})();
+</script>
+</body>
+</html>
