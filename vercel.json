@@ -14,18 +14,6 @@
   ],
   "rewrites": [
     {
-      "source": "/webaudit-probe-a",
-      "destination": "/404"
-    },
-    {
-      "source": "/webaudit-probe-b",
-      "destination": "/webaudit-probe-gone.html"
-    },
-    {
-      "source": "/webaudit-probe-c",
-      "destination": "/api/probe"
-    },
-    {
       "source": "/webaudit",
       "destination": "/webaudit/index.html"
     },
@@ -47,19 +35,6 @@
     }
   ],
   "headers": [
-    {
-      "source": "/webaudit-probe-(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive, nosnippet, noimageindex"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "no-referrer"
-        }
-      ]
-    },
     {
       "source": "/webaudit",
       "headers": [
