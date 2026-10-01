@@ -62,7 +62,7 @@ const ONas = () => {
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold text-tjk-blue mb-2">Bezpečnost a profesionalita</h3>
-            <p>Všechny naše aktivity plánujeme s důrazem na bezpečnost a profesionální přístup. Naši instruktoři jsou certifikovaní a pravidelně školeni.</p>
+            <p>Všechny naše aktivity plánujeme s důrazem na bezpečnost a profesionální přístup. Naši instruktoři na Komáří vížce jezdí celou sezónu a snowkiting učí v praxi.</p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h3 className="text-xl font-semibold text-tjk-blue mb-2">Inovace a progres</h3>

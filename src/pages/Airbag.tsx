@@ -2,12 +2,36 @@ import React from "react";
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AirbagReservation from "@/components/AirbagReservation";
+import FaqSection from "@/components/FaqSection";
+import { AIRBAG, AIRBAG_GROUPS, AIRBAG_IMAGES, FAQ_AIRBAG, appLink } from "@/config/site";
 import SEO from "@/components/SEO";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Sparkles, Target, Users, Award, CheckCircle2, ChevronRight, Heart, Star, Zap, TrendingUp, Baby, GraduationCap, Trophy, ShieldCheck, Rabbit, Smile, BrainCircuit, School } from "lucide-react";
+import {
+  Shield,
+  Sparkles,
+  Award,
+  Target,
+  Users,
+  CheckCircle2,
+  ChevronRight,
+  Heart,
+  Star,
+  Zap,
+  TrendingUp,
+  Baby,
+  GraduationCap,
+  Trophy,
+  ShieldCheck,
+  Rabbit,
+  Smile,
+  BrainCircuit,
+  School,
+  CalendarCheck,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const benefits = [
@@ -106,15 +130,9 @@ const Airbag = () => {
         {/* Hero Section */}
         <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
           {/* Background with parallax effect */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-fixed"
-            style={{
-              backgroundImage: "url('/images/homepage/airbag.avif')",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/50 via-transparent to-purple-900/50"></div>
-          </div>
+          {/* Pozadí = brand gradient (fotky airbagu jsou cutouty bez pozadí) */}
+          <div className="absolute inset-0 bg-gradient-to-br from-tjk-dark via-tjk-blue to-tjk-dark"></div>
+          <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "url('/images/homepage/jj_kom_jump.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
 
           {/* Animated particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -176,12 +194,37 @@ const Airbag = () => {
                   </div>
                 </div>
 
+                {/* Produktová fotka — cutout matrace (dodal Owner) */}
+                <img
+                  src={AIRBAG_IMAGES.matrace}
+                  alt="Airbag — dopadová matrace pro trénink triků"
+                  className="mx-auto mb-8 w-full max-w-2xl h-auto drop-shadow-[0_18px_35px_rgba(0,0,0,0.55)]"
+                />
+
+                {/* Cena — must have (webaudit 3.3 / bod B4) */}
+                <div className="inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-6 py-4 mb-10">
+                  <span className="font-poppins font-black text-3xl md:text-4xl text-tjk-orange">
+                    300 Kč <span className="text-base font-semibold text-white/85">/ člen</span>
+                  </span>
+                  <span className="font-poppins font-black text-3xl md:text-4xl text-tjk-orange">
+                    600 Kč <span className="text-base font-semibold text-white/85">/ nečlen</span>
+                  </span>
+                  <span className="font-inter text-sm text-white/80 max-w-xs text-left">
+                    Členství stojí 200 Kč — vyplatí se už po prvním dni.
+                  </span>
+                </div>
+
                 {/* CTA Buttons */}
-                <div className="flex justify-center">
-                  <Link to="/kontakt">
-                    <Button size="lg" className="bg-gradient-to-r from-tjk-orange to-amber-500 hover:from-tjk-orange/90 hover:to-amber-500/90 text-white font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105">
-                      Rezervovat trénink
-                      <ChevronRight className="ml-2 h-5 w-5" />
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a href={appLink("airbag-hero")} target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="w-full sm:w-auto bg-tjk-orange hover:bg-tjk-orange/90 text-white font-poppins font-bold text-lg px-9 py-7 rounded-xl shadow-2xl transition-all duration-300 hover:scale-105">
+                      <CalendarCheck className="mr-2 h-5 w-5" />
+                      Rezervovat airbag den
+                    </Button>
+                  </a>
+                  <Link to={AIRBAG.ctaSecondary.href}>
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-white/40 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-poppins font-semibold text-lg px-9 py-7 rounded-xl">
+                      Chci nejdřív vědět víc
                     </Button>
                   </Link>
                 </div>
@@ -200,21 +243,90 @@ const Airbag = () => {
 
 
         {/* Group Rental Section */}
-        <section className="py-20 bg-blue-50">
-          <div className="max-w-4xl mx-auto text-center px-4">
-            <ScrollAnimation animation="fade-up">
+        <section id="cenik" className="py-20 bg-tjk-light scroll-mt-24">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="text-center mb-12">
               <h2 className="font-montserrat font-bold text-3xl md:text-5xl text-tjk-blue mb-4">
-                Možnost pronájmu pro skupinu
+                Ceník airbagu
               </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-                Plánujete teambuilding, sportovní soustředění nebo jen zábavný den s přáteli? Nabízíme možnost exkluzivního pronájmu AIRBAG matrace pro vaši skupinu. Užijte si soukromí a maximální prostor pro váš trénink a zábavu.
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Cena za airbag den. Délku i počet osob doladíme podle vaší skupiny.
               </p>
-              <Link to="/kontakt">
-                <Button size="lg" className="bg-gradient-to-r from-tjk-orange to-amber-500 hover:from-tjk-orange/90 hover:to-amber-500/90 text-white font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105">
-                  Kontaktujte nás
-                  <ChevronRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div className="bg-white rounded-2xl border-2 border-tjk-orange p-6 text-center">
+                <div className="font-poppins font-black text-4xl text-tjk-orange mb-2">300 Kč</div>
+                <div className="font-poppins font-semibold text-tjk-blue">Airbag den — člen</div>
+                <p className="font-inter text-sm text-gray-600 mt-2">Pro členy Tělovýchovné jednoty Krupka</p>
+              </div>
+              <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                <div className="font-poppins font-black text-4xl text-tjk-blue mb-2">600 Kč</div>
+                <div className="font-poppins font-semibold text-tjk-blue">Airbag den — nečlen</div>
+                <p className="font-inter text-sm text-gray-600 mt-2">Bez členství</p>
+              </div>
+              <div className="bg-white rounded-2xl border border-gray-200 p-6 text-center">
+                <div className="font-poppins font-black text-4xl text-tjk-blue mb-2">200 Kč</div>
+                <div className="font-poppins font-semibold text-tjk-blue">Členství</div>
+                <p className="font-inter text-sm text-gray-600 mt-2">
+                  {AIRBAG.priceNote}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Skupiny a firmy (webaudit 3.4, bod B16) */}
+        <section id="pro-skupiny" className="py-20 bg-blue-50 scroll-mt-24">
+          <div className="max-w-5xl mx-auto px-4">
+            <ScrollAnimation animation="fade-up">
+              <div className="text-center mb-10">
+                <h2 className="font-montserrat font-bold text-3xl md:text-5xl text-tjk-blue mb-4">
+                  {AIRBAG_GROUPS.title}
+                </h2>
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                  {AIRBAG_GROUPS.subtitle}
+                </p>
+              </div>
+              <div className="mb-10">
+                <img
+                  src={AIRBAG_IMAGES.matrace2}
+                  alt="Airbag — dopadová matrace"
+                  loading="lazy"
+                  className="mx-auto w-full max-w-2xl h-auto drop-shadow-[0_14px_28px_rgba(15,23,42,0.25)]"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6 mb-10">
+                {AIRBAG_GROUPS.audiences.map((a) => (
+                  <div key={a.title} className="bg-white rounded-2xl p-6 border border-gray-100">
+                    <h3 className="font-poppins font-bold text-lg text-tjk-blue mb-2">{a.title}</h3>
+                    <p className="font-inter text-gray-600 leading-relaxed">{a.text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center">
+                {AIRBAG_GROUPS.priceFrom ? (
+                  <p className="font-poppins font-black text-3xl text-tjk-orange mb-2">
+                    {AIRBAG_GROUPS.priceFrom}
+                  </p>
+                ) : null}
+                <p className="font-inter text-gray-600 max-w-2xl mx-auto mb-8">
+                  {AIRBAG_GROUPS.priceNote}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link to="/firmy">
+                    <Button size="lg" className="w-full sm:w-auto bg-tjk-orange hover:bg-tjk-orange/90 text-white font-poppins font-bold text-lg px-9 py-7 rounded-xl shadow-xl">
+                      Poptat airbag pro skupinu
+                      <ChevronRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </Link>
+                  <Link to="/skoly">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-tjk-blue text-tjk-blue hover:bg-tjk-blue/5 font-poppins font-semibold text-lg px-9 py-7 rounded-xl bg-white">
+                      Zarezervovat termín pro školu
+                    </Button>
+                  </Link>
+                </div>
+              </div>
             </ScrollAnimation>
           </div>
         </section>
@@ -337,11 +449,11 @@ const Airbag = () => {
         </section>
 
         {/* Pro koho je AIRBAG určen */}
-        <section className="py-20 px-4 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+        <section id="pro-verejnost" className="py-20 px-4 bg-gradient-to-br from-tjk-light via-white to-tjk-light scroll-mt-24">
           <div className="max-w-6xl mx-auto">
             <ScrollAnimation animation="fade-up">
               <div className="text-center mb-16">
-                <Badge className="mb-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 text-sm font-semibold shadow-lg">
+                <Badge className="mb-4 bg-tjk-blue text-white px-4 py-2 text-sm font-semibold shadow-lg">
                   Pro koho
                 </Badge>
                 <h2 className="font-montserrat font-bold text-3xl md:text-5xl text-tjk-blue mb-4">
@@ -388,6 +500,12 @@ const Airbag = () => {
           </div>
         </section>
 
+        {/* Rezervační blok pro AIRBAG (bod B17) — kurzy mají vlastní blok na své stránce */}
+        <AirbagReservation id="rezervace" />
+
+        {/* FAQ (webaudit 3.6) */}
+        <FaqSection items={FAQ_AIRBAG} title="Časté dotazy k airbagu" subtitle="Bezpečnost, průběh dne, vybavení i storno." id="faq" />
+
         {/* CTA Section */}
         <section className="relative py-24 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-tjk-orange via-amber-500 to-orange-600"></div>
@@ -414,8 +532,14 @@ const Airbag = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href={appLink("airbag-cta")} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" className="w-full sm:w-auto bg-white text-tjk-orange hover:bg-blue-50 font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all duration-300">
+                    Rezervovat airbag den
+                    <ChevronRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </a>
                 <Link to="/kontakt">
-                  <Button size="lg" className="bg-white text-tjk-orange hover:bg-blue-50 font-bold text-lg px-10 py-7 rounded-xl shadow-2xl hover:scale-105 transition-all duration-300">
+                  <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-white text-white bg-white/10 backdrop-blur-md hover:bg-white/20 font-bold text-lg px-10 py-7 rounded-xl">
                     Kontaktovat nás
                     <ChevronRight className="ml-2 h-5 w-5" />
                   </Button>

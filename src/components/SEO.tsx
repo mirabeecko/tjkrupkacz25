@@ -15,7 +15,7 @@ interface SEOProps {
 
 const SEO: React.FC<SEOProps> = ({
   title = "Tělovýchovná jednota Krupka z.s. | Snowkiting a Trail Park",
-  description = "Objevte snowkiting v Krušných horách, trail park Komárka a další outdoorové aktivity s TJK Krupka. Kurzy, půjčovna, ubytování a mnoho dalšího!",
+  description = "Objevte snowkiting v Krušných horách, trail park Komárka a další outdoorové aktivity s Tělovýchovnou jednotou Krupka. Kurzy, airbag, ubytování a mnoho dalšího!",
   keywords = "snowkiting, trail park, Krupka, Krušné hory, outdoor, kurzy, bike park, MTB, Komárka",
   image = "/images/og-image.jpg",
   url = "https://tjkrupka.cz",
@@ -24,8 +24,10 @@ const SEO: React.FC<SEOProps> = ({
   publishedTime,
   modifiedTime,
 }) => {
-  const siteName = "TJK Krupka";
-  const fullTitle = title.includes("TJK") ? title : `${title} | ${siteName}`;
+  const siteName = "Tělovýchovná jednota Krupka";
+  // Když už titulek název spolku obsahuje (nebo zkratku TJK), nedoplňovat znovu.
+  const fullTitle =
+    title.includes(siteName) || title.includes("TJK") ? title : `${title} | ${siteName}`;
 
   return (
     <Helmet>

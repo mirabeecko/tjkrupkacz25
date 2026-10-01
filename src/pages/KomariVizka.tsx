@@ -81,7 +81,7 @@ const KomariVizka = () => {
     {
       icon: <TreePine className="h-6 w-6" />,
       title: "Snowkiting kurzy",
-      description: "Naučte se snowkiting s certifikovanými instruktory v ideálních podmínkách Krušných hor.",
+      description: "Naučte se snowkiting s instruktory, kteří na Komáří vížce jezdí celou sezónu.",
       link: "/snowkiting-kurzy",
       buttonText: "Zjistit více",
       gradient: "from-cyan-500 to-blue-600",
@@ -172,8 +172,8 @@ const KomariVizka = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Komáří vížka | Junior Sportovní Areál v Krušných Horách | TJ Krupka"
-        description="Junior sportovní areál v Krušných horách ⛷️ Momentálně výhradně pro členy spolku TJ Krupka (děti 5-16 let) | Lyžování | Snowkiting | Airbag | Sportovní aktivity. ✓ Nejdelší lanovka v ČR ✓ 15 min z Teplic"
+        title="Komáří vížka | Junior Sportovní Areál v Krušných Horách | Tělovýchovná jednota Krupka"
+        description="Junior sportovní areál v Krušných horách ⛷️ Momentálně výhradně pro členy spolku Tělovýchovná jednota Krupka (děti 5-16 let) | Lyžování | Snowkiting | Airbag | Sportovní aktivity. ✓ Nejdelší lanovka v ČR ✓ 15 min z Teplic"
       />
       <Header toggleNavbar={toggleNavbar} />
       <Navbar isOpen={navbarOpen} closeNavbar={closeNavbar} />

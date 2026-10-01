@@ -24,6 +24,9 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import KurzReservation from "@/components/KurzReservation";
+import FaqSection from "@/components/FaqSection";
+import { COURSES, COURSE_GUARANTEE, COURSE_INCLUDED, COURSE_LOCATIONS, FAQ_KURZY, appLink } from "@/config/site";
 
 export const meta = {
   title: "Kurzy Snowkitingu | Komáří Vížka",
@@ -52,7 +55,7 @@ const defaultLevels = [
     duration: "2-3 dny",
     price: "4 500 Kč",
     icon: <Users className="w-12 h-12" />,
-    color: "from-blue-500 to-cyan-500",
+    color: "from-tjk-blue to-tjk-dark",
     features: [
       "Ovládání draka na zemi",
       "Základy bezpečnosti",
@@ -60,7 +63,7 @@ const defaultLevels = [
       "Teorie větru a počasí",
       "Kompletní zapůjčení vybavení",
     ],
-    image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80"
+    image: "/images/snowkiting/jj produktovka.jpg"
   },
   {
     title: "Pokročilý",
@@ -68,7 +71,7 @@ const defaultLevels = [
     duration: "2 dny",
     price: "3 800 Kč",
     icon: <TrendingUp className="w-12 h-12" />,
-    color: "from-purple-500 to-pink-500",
+    color: "from-tjk-blue to-tjk-dark",
     features: [
       "Jízda ve vyšších rychlostech",
       "Jízda proti větru",
@@ -76,7 +79,7 @@ const defaultLevels = [
       "Pokročilé ovládání draka",
       "Taktika a strategie",
     ],
-    image: "https://images.unsplash.com/photo-1483921020237-2ff51e8e4b22?w=800&q=80"
+    image: "/images/snowkiting/jj_vrtule.jpg"
   },
   {
     title: "Expert",
@@ -84,7 +87,7 @@ const defaultLevels = [
     duration: "1-2 dny",
     price: "3 200 Kč",
     icon: <Award className="w-12 h-12" />,
-    color: "from-orange-500 to-red-500",
+    color: "from-tjk-blue to-tjk-dark",
     features: [
       "Extrémní podmínky",
       "Akrobatické prvky",
@@ -92,7 +95,7 @@ const defaultLevels = [
       "Závodní techniky",
       "Individuální coaching",
     ],
-    image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80"
+    image: "/images/snowkiting/jj_top_ride_promo.jpg"
   },
 ];
 
@@ -100,7 +103,7 @@ const whyUs = [
   {
     icon: <Award className="w-8 h-8 text-blue-600" />,
     title: "Profesionální instruktoři",
-    description: "Zkušení lektoři s mezinárodními kvalifikacemi"
+    description: "Instruktoři, kteří na Komáří vížce jezdí celou sezónu"
   },
   {
     icon: <Shield className="w-8 h-8 text-green-600" />,
@@ -150,16 +153,16 @@ const SnowkitingKurzy = () => {
             // Určíme ikonu a barvu podle názvu kurzu
             if (jmeno.includes('intro') || jmeno.includes('flyday') || jmeno.includes('kids')) {
               icon = <Users className="w-12 h-12" />;
-              color = "from-blue-500 to-cyan-500";
+              color = "from-tjk-blue to-tjk-dark";
             } else if (jmeno.includes('freeride') || jmeno.includes('progress')) {
               icon = <TrendingUp className="w-12 h-12" />;
-              color = "from-purple-500 to-pink-500";
+              color = "from-tjk-blue to-tjk-dark";
             } else if (jmeno.includes('expedition') || jmeno.includes('backcountry')) {
               icon = <Award className="w-12 h-12" />;
-              color = "from-orange-500 to-red-500";
+              color = "from-tjk-blue to-tjk-dark";
             } else {
               icon = <Mountain className="w-12 h-12" />;
-              color = "from-green-500 to-teal-500";
+              color = "from-tjk-blue to-tjk-dark";
             }
 
             // Převedeme obsah kurzu na array features
@@ -180,7 +183,9 @@ const SnowkitingKurzy = () => {
               duration: kurz.doba_trvani || 'Dle dohody',
               price: `${kurz.cena_czk} Kč`,
               features: features.slice(0, 5), // Max 5 features pro zobrazení
-              image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&q=80", // Default image
+              // Vlastní fotky areálu (webaudit P3D3) — databáze obrázky nedodává,
+              // dřív tu byl stock z Unsplashu.
+              image: COURSES[index % COURSES.length].image,
               icon,
               color,
             };
@@ -248,12 +253,12 @@ const SnowkitingKurzy = () => {
 
             <p className="text-lg sm:text-xl md:text-2xl mb-12 font-light max-w-4xl mx-auto animate-fade-in-up delay-100 text-white">
               Zažijte adrenalin snowkitingu s profesionálními instruktory
-              <span className="block mt-2 text-cyan-400 font-semibold">Létejte na sněhu s drakem!</span>
+              <span className="block mt-2 text-cyan-400 font-semibold">Leťte na sněhu s drakem!</span>
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up delay-200">
-              <a href="#kurzy">
-                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold px-12 py-8 text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all">
+              <a href={appLink("kurzy-hero")} target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-tjk-orange hover:bg-tjk-orange/90 text-white font-bold px-12 py-8 text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all">
                   <Calendar className="mr-3 w-6 h-6" />
                   Rezervovat kurz
                 </Button>
@@ -406,11 +411,16 @@ const SnowkitingKurzy = () => {
                   ))}
                 </div>
 
-                <div className="mt-10">
-                  <Link to="/kontakt-snowkiting">
-                    <Button size="lg" className="bg-blue-600 text-white hover:bg-blue-700 font-bold text-lg px-8 py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                  <a href={appLink("kurzy-proc")} target="_blank" rel="noopener noreferrer">
+                    <Button size="lg" className="w-full sm:w-auto bg-tjk-orange hover:bg-tjk-orange/90 text-white font-bold text-lg px-8 py-5 rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                       <Calendar className="mr-2 h-5 w-5" />
-                      Chci začít!
+                      Vybrat kurz a termín
+                    </Button>
+                  </a>
+                  <Link to="/kontakt-snowkiting">
+                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-2 border-tjk-blue text-tjk-blue hover:bg-tjk-blue/5 font-semibold text-lg px-8 py-5 rounded-xl bg-white">
+                      Nezávazná poptávka
                     </Button>
                   </Link>
                 </div>
@@ -446,7 +456,7 @@ const SnowkitingKurzy = () => {
                 </ul>
               </div>
               <div className="bg-gray-50 rounded-2xl p-8">
-                <img src="/images/vybaveni/soul.jpg" alt="Flysurfer SOUL" className="w-full h-auto object-contain mb-4"/>
+                <img src="/images/vybaveni/bar.jpg" alt="Flysurfer SOUL — kite bar" className="w-full h-auto object-contain mb-4"/>
                 <h3 className="text-2xl font-bold text-tjk-blue">Flysurfer SOUL</h3>
                 <p className="text-gray-600 mb-4">Univerzální closed-cell foil kite pro freeride a big air s obrovským větrným rozsahem.</p>
                 <ul className="space-y-2 text-gray-700">
@@ -506,7 +516,7 @@ const SnowkitingKurzy = () => {
                   },
                   {
                     step: "03",
-                    title: "Kurz začína!",
+                    title: "Kurz začíná!",
                     description: "Přijeďte na místo, získáte vybavení a začneme s teorií a praxí na sněhu.",
                     icon: <Zap className="w-8 h-8 text-orange-600" />
                   }
@@ -560,7 +570,40 @@ const SnowkitingKurzy = () => {
           </div>
         </section>
 
-        {/* FAQ */}
+        {/* Co je v ceně + lokality + garance (webaudit 3.2) */}
+        <section id="co-je-v-cene" className="py-16 md:py-20 bg-tjk-light scroll-mt-24">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-5xl font-black text-tjk-blue mb-4">Co je v ceně</h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                U každého kurzu stejné: vybavení, instruktor a přesun termínu, když nebudou podmínky.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-2xl border border-gray-100 p-6 md:col-span-2">
+                <ul className="space-y-3">
+                  {COURSE_INCLUDED.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-tjk-orange flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-tjk-blue text-white rounded-2xl p-6">
+                <h3 className="font-bold text-xl mb-3">Garance podmínek</h3>
+                <p className="text-white/85 mb-5">{COURSE_GUARANTEE}</p>
+                <p className="text-sm text-white/70 mb-1">Kde se jezdí</p>
+                <p className="font-semibold">{COURSE_LOCATIONS.join(" · ")}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Rezervační blok pro KURZY (bod B17) — airbag má vlastní blok na své stránce */}
+        <KurzReservation id="rezervace" />
+
+        {/* FAQ (webaudit 3.6) */}
         <section id="faq" className="py-16 md:py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4">
             <div className="text-center mb-12 md:mb-16">
@@ -569,37 +612,12 @@ const SnowkitingKurzy = () => {
               </h2>
             </div>
 
-            <div className="space-y-6">
-              {[
-                {
-                  q: "Potřebuji vlastní vybavení?",
-                  a: "Ne, kompletní vybavení (kite, trapéz, helma) je součástí kurzu a zapůjčíme vám ho."
-                },
-                {
-                  q: "Musím umět lyžovat nebo snowboardovat?",
-                  a: "Ano, základní znalost lyžování nebo snowboardingu je nutná. Snowkiting staví na těchto dovednostech."
-                },
-                {
-                  q: "Jaké jsou věkové limity?",
-                  a: "Kurzy jsou vhodné pro účastníky od 12 let (s písemným souhlasem zákonného zástupce). Horní věková hranice není stanovena."
-                },
-                {
-                  q: "Co když nebude vítr?",
-                  a: "Kurz přesuneme na jiný termín s vhodnějšími podmínkami. Sledujeme předpověď a vždy vás včas informujeme."
-                },
-                {
-                  q: "Mohu absolvovat kurz sám nebo jen ve skupině?",
-                  a: "Nabízíme jak skupinové kurzy (max 4 osoby), tak individuální lekce. Cena se liší podle typu kurzu."
-                }
-              ].map((item, idx) => (
-                <Card key={idx} className="border-2 border-gray-200 hover:border-blue-600 transition-colors">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.q}</h3>
-                    <p className="text-gray-600 leading-relaxed">{item.a}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <FaqSection
+              items={FAQ_KURZY}
+              title="Časté dotazy ke kurzům"
+              subtitle="Vybavení, zkušenosti, vítr, věk i storno — bezpečnost řešíme první."
+              id="faq-otazky"
+            />
           </div>
         </section>
 
@@ -620,10 +638,15 @@ const SnowkitingKurzy = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-12">
-              <Link to="/kontakt-snowkiting" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full bg-white text-blue-600 hover:bg-gray-100 font-black px-12 py-8 text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all">
+              <a href={appLink("kurzy-cta")} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full bg-white text-tjk-orange hover:bg-gray-100 font-black px-12 py-8 text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all">
                   <Calendar className="mr-3 w-6 h-6" />
                   Rezervovat kurz
+                </Button>
+              </a>
+              <Link to="/kontakt-snowkiting" className="w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="w-full border-2 border-white text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 font-bold px-12 py-8 text-xl rounded-2xl">
+                  Nezávazná poptávka
                 </Button>
               </Link>
             </div>

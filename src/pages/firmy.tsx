@@ -2,6 +2,8 @@ import React from "react";
 import PageLayout from "@/components/PageLayout";
 import { Briefcase, Users, Calendar, Mountain, Smile, Award, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Shield } from "lucide-react";
+import { AIRBAG_IMAGES } from "@/config/site";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const meta = {
@@ -15,7 +17,7 @@ export const meta = {
 const Firmy = () => (
   <PageLayout
     title="Firemní akce a teambuilding"
-    description="Zážitkové programy, teambuilding a firemní eventy v přírodě. Inspirujte svůj tým v areálu Komáří Vížka."
+    description="Zážitkové programy, teambuilding a firemní eventy v přírodě — včetně airbagu. Inspirujte svůj tým v areálu Komáří vížka."
   >
     {/* Hero sekce s hlavní fotografií - full width */}
     <div className="relative -mx-4 md:-mx-12 mb-16">
@@ -23,7 +25,7 @@ const Firmy = () => (
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-700"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1600&q=80')"
+            backgroundImage: "url('/images/homepage/okoli.jpg')"
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-green-900/85 via-green-800/75 to-green-600/65 z-10" />
@@ -122,7 +124,7 @@ const Firmy = () => (
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           <Link to="/kontakt" className="flex-1">
             <button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all text-lg">
-              Požádat o nabídku
+              Poslat poptávku na teambuilding
             </button>
           </Link>
         </div>
@@ -132,7 +134,7 @@ const Firmy = () => (
       <div className="space-y-6">
         <div className="rounded-2xl overflow-hidden shadow-2xl animate-fade-in-up">
           <img
-            src="https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=800&q=80"
+            src="/images/homepage/okoli.jpg"
             alt="Týmová spolupráce outdoor"
             className="w-full h-[350px] object-cover hover:scale-105 transition-transform duration-500"
           />
@@ -141,14 +143,14 @@ const Firmy = () => (
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in-up delay-100">
             <img
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&q=80"
+              src="/images/deti/ski_instructor.jpg"
               alt="Firemní tým"
               className="w-full h-[200px] object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
           <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in-up delay-150">
             <img
-              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80"
+              src="/images/snowkiting/jj_top_ride_promo.jpg"
               alt="Workshop v přírodě"
               className="w-full h-[200px] object-cover hover:scale-105 transition-transform duration-500"
             />
@@ -157,7 +159,7 @@ const Firmy = () => (
 
         <div className="rounded-xl overflow-hidden shadow-lg animate-fade-in-up delay-200">
           <img
-            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"
+            src="/images/homepage/pujcovna.jpg"
             alt="Outdoor aktivity"
             className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-500"
           />
@@ -165,7 +167,56 @@ const Firmy = () => (
       </div>
     </section>
 
-    {/* Banner s referencí - full width */}
+
+    {/* Airbag v programu (webaudit P3B6 + 3.4) */}
+    <section id="airbag" className="mb-16 bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-10 scroll-mt-24">
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tjk-blue text-white text-sm font-semibold mb-4">
+            <Shield className="w-4 h-4" /> Airbag v programu
+          </span>
+          <h2 className="text-3xl font-bold text-tjk-blue mb-4">
+            Airbag: aktivita, kterou zvládne opravdu celý tým
+          </h2>
+          <p className="text-gray-600 leading-relaxed mb-4">
+            K programu přidejte měkkou dopadovou matraci. Každý si vyzkouší trik, na který
+            by si na svahu netroufl — a nikdo nemusí umět lyžovat ani snowboardovat.
+          </p>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            Airbag den stojí 300 Kč na člena a 600 Kč na nečlena. U skupin se členství
+            vyplatí vyřídit předem (200 Kč za rok) — ušetříte za každou osobu.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link to="/airbag">
+              <button className="w-full sm:w-auto bg-tjk-orange hover:bg-tjk-orange/90 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all text-lg">
+                Rezervovat airbag den
+              </button>
+            </Link>
+            <Link to="/kontakt">
+              <button className="w-full sm:w-auto border-2 border-tjk-blue text-tjk-blue hover:bg-tjk-blue/5 font-semibold px-8 py-4 rounded-xl bg-white text-lg">
+                Poslat poptávku
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className="rounded-2xl overflow-hidden">
+          <img
+            src={AIRBAG_IMAGES.matrace2}
+            alt="Airbag — dopadová matrace pro skupiny"
+            loading="lazy"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+      </div>
+    </section>
+
+    {/* Banner s referencí - full width.
+        ⚠️ WEBAUDIT 3.7: citace bez reálného jména se NEPOUŽÍVÁ. Dosavadní text
+        („HR tým, TechSolutions s.r.o.") je šablona bez doloženého zdroje —
+        dokud Owner nedodá reálnou referenci se souhlasem, blok se nezobrazuje.
+    */}
+    {/* NEZOBRAZOVAT, dokud není reálná reference:
+    <div className="relative -mx-4 md:-mx-12 mb-16">
     <div className="relative -mx-4 md:-mx-12 mb-16">
       <section className="relative bg-gradient-to-r from-green-500 via-green-600 to-green-700 py-16 md:py-20 text-center shadow-2xl overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -184,6 +235,7 @@ const Firmy = () => (
         </div>
       </section>
     </div>
+    */}
   </PageLayout>
 );
 

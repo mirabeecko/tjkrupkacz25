@@ -374,7 +374,7 @@ const ProCleny = () => {
                   Co ti junior členství přináší?
                 </h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Být junior členem TJ Krupka znamená partu, zábavu a sport po celý rok. Tady je 6 důvodů, proč se připojit!
+                  Být junior členem Tělovýchovné jednoty Krupka znamená partu, zábavu a sport po celý rok. Tady je 6 důvodů, proč se připojit!
                 </p>
               </div>
 

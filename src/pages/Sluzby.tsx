@@ -26,7 +26,7 @@ const allServices = [
   {
     id: "snowkiting",
     title: "Snowkiting Kurzy",
-    subtitle: "Létejte na sněhu s drakem",
+    subtitle: "Leťte na sněhu s drakem",
     description: "Zažijte jedinečný adrenalin snowkitingu v srdci Krušných hor. Zkušení instruktoři vás naučí ovládat sílu větru a sněhu.",
     icon: Wind,
     cta: "Zobrazit kurzy",

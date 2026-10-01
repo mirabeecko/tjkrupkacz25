@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, UserPlus, ChevronRight, Home, Book, ShoppingBag, Wind, Bike, Mountain, School, Briefcase, Bed, Shield, Building, Handshake } from "lucide-react";
+import { Facebook, Instagram, Youtube, ChevronRight, Wind, Bike, Mountain, School, Briefcase, Bed, Shield, Building, Handshake, Users } from "lucide-react";
+import { CONTACT, appLink } from "@/config/site";
+import { FEATURES } from "@/config/features";
 import WeatherWidget from "@/components/WeatherWidget";
 
 const Footer: React.FC = () => {
@@ -14,6 +16,62 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="container px-4 mx-auto relative z-10">
+        {/* Rezervace — rozcestník produktů (webaudit 4, bod B5) */}
+        <div className="mb-10">
+          <h3 className="font-poppins font-bold text-xl mb-4 text-white">Rezervace</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <a
+              href={appLink("paticka-kurzy")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-tjk-orange/90 hover:bg-tjk-orange rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-tjk-orange"
+            >
+              <span className="p-3 rounded-lg bg-white/15">
+                <Wind className="h-6 w-6 text-white" />
+              </span>
+              <span className="font-poppins font-bold text-base text-white">SnowKite kurzy</span>
+            </a>
+            <a
+              href={appLink("paticka-airbag")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-tjk-orange/90 hover:bg-tjk-orange rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-tjk-orange"
+            >
+              <span className="p-3 rounded-lg bg-white/15">
+                <Shield className="h-6 w-6 text-white" />
+              </span>
+              <span className="font-poppins font-bold text-base text-white">Airbag den</span>
+            </a>
+            <a
+              href={appLink("paticka-clen")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-white/10 hover:bg-white/20 rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/15"
+            >
+              <span className="p-3 rounded-lg bg-white/15">
+                <Users className="h-6 w-6 text-white" />
+              </span>
+              <span className="font-poppins font-bold text-base text-white">
+                Pro členy
+                <span className="block font-inter text-xs font-normal text-white/75">
+                  rezervace a platby
+                </span>
+              </span>
+            </a>
+          </div>
+          <p className="mt-3 font-inter text-sm text-white/70">
+            Rezervace a platba probíhají v aplikaci app.tjkrupka.cz · telefon{" "}
+            <a href={`tel:${CONTACT.phoneClub.tel}`} className="text-tjk-orange hover:underline">
+              {CONTACT.phoneClub.label}
+            </a>{" "}
+            (klub a půjčovna),{" "}
+            <a href={`tel:${CONTACT.phoneSnowkiting.tel}`} className="text-tjk-orange hover:underline">
+              {CONTACT.phoneSnowkiting.label}
+            </a>{" "}
+            (snowkiting)
+          </p>
+        </div>
+
         {/* Popular Links */}
         <div className="mb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
           <Link to="/ubytovani" className="group bg-white/5 backdrop-blur-sm rounded-2xl p-4 transition-all duration-300 flex items-center gap-4 border border-white/10 hover:border-tjk-orange/50 hover:bg-white/10">
@@ -116,17 +174,18 @@ const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               <li className="transition-transform duration-200 hover:translate-x-2">
                 <Link to="/snowkiting-kurzy" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
-                  <Wind className="h-4 w-4 mr-2 text-cyan-400" />
+                  <Wind className="h-4 w-4 mr-2 text-tjk-orange" />
                   <span className="group-hover:font-medium">Snowkiting Kurzy</span>
                 </Link>
               </li>
-              {/* PŮJČOVNA SKRYTA - pro obnovení odkomentuj */}
-              {/* <li className="transition-transform duration-200 hover:translate-x-2">
-                <Link to="/pujcovna" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
-                  <Bike className="h-4 w-4 mr-2 text-orange-400" />
-                  <span className="group-hover:font-medium">Půjčovna Motocyklů</span>
-                </Link>
-              </li> */}
+              {FEATURES.ENABLE_PUJCOVNA && (
+                <li className="transition-transform duration-200 hover:translate-x-2">
+                  <Link to="/pujcovna" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
+                    <Bike className="h-4 w-4 mr-2 text-tjk-orange" />
+                    <span className="group-hover:font-medium">Půjčovna</span>
+                  </Link>
+                </li>
+              )}
               <li className="transition-transform duration-200 hover:translate-x-2">
                 <Link to="/komari-vizka" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
                   <Mountain className="h-4 w-4 mr-2 text-green-400" />
@@ -141,7 +200,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="transition-transform duration-200 hover:translate-x-2">
                 <Link to="/firmy" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
-                  <Briefcase className="h-4 w-4 mr-2 text-purple-400" />
+                  <Briefcase className="h-4 w-4 mr-2 text-tjk-orange" />
                   <span className="group-hover:font-medium">Pro firmy</span>
                 </Link>
               </li>
@@ -153,7 +212,7 @@ const Footer: React.FC = () => {
               </li>
               <li className="transition-transform duration-200 hover:translate-x-2">
                 <Link to="/airbag" className="group text-white/80 hover:text-tjk-orange transition-colors flex items-center font-inter">
-                  <Shield className="h-4 w-4 mr-2 text-red-400" />
+                  <Shield className="h-4 w-4 mr-2 text-tjk-orange" />
                   <span className="group-hover:font-medium">AIRBAG</span>
                 </Link>
               </li>

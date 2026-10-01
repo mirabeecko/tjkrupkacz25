@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MessageCircleQuestion, Menu, Phone, Mail, Search, ShoppingCart } from "lucide-react";
+import { MessageCircleQuestion, Menu, Phone, Mail, Search, ShoppingCart, CalendarCheck } from "lucide-react";
 import WeatherWidget from "./WeatherWidget";
 import LanguageSelector from "./LanguageSelector";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
+import { CONTACT, appLink } from "@/config/site";
 
 interface HeaderProps {
   toggleNavbar: () => void;
@@ -78,7 +79,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
           {!isMobile && (
             <>
               <a
-                href="tel:+420777734389"
+                href={`tel:${CONTACT.phoneClub.tel}`}
                 className={cn(
                   "group flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-300 hover:scale-105",
                   scrolled
@@ -88,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
               >
                 <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
                 <span className="text-sm font-medium hidden lg:inline">
-                  +420 777 734 389
+                  {`+420 ${CONTACT.phoneClub.label}`}
                 </span>
               </a>
               <a
@@ -110,6 +111,25 @@ const Header: React.FC<HeaderProps> = ({ toggleNavbar }) => {
 
           <WeatherWidget />
           <LanguageSelector />
+
+          {/* Rezervovat — hlavní konverzní cíl celého webu (webaudit B5) */}
+          <a
+            href={appLink("hlavicka")}
+            className="hidden md:block"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Rezervace a platba v aplikaci"
+          >
+            <Button
+              className={cn(
+                "rounded-xl font-poppins font-bold transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg",
+                "bg-tjk-orange hover:bg-tjk-orange/90 text-white"
+              )}
+            >
+              <CalendarCheck className="h-5 w-5 mr-2" />
+              Rezervovat
+            </Button>
+          </a>
 
           {/* E-shop Button */}
           <Link to="/eshop">

@@ -38,7 +38,7 @@ const AktivityProDeti: React.FC = () => {
   const winterActivities = [
     {
       title: "Lyžařská a snowboardová škola",
-      description: "Naši certifikovaní instruktoři naučí vaše děti základům lyžování a snowboardingu v bezpečném a zábavném prostředí. Kurzy pro úplné začátečníky i pokročilé.",
+      description: "Naši instruktoři, kteří učí na sněhu celou sezónu, naučí vaše děti základům lyžování a snowboardingu v bezpečném a zábavném prostředí. Kurzy pro úplné začátečníky i pokročilé.",
       image: "/images/deti/ski_instructor.jpg",
       icon: <Award />
     },

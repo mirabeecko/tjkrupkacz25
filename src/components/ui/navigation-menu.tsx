@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const  = React.forwardRef<
+const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof Primitive.Root>,
   React.ComponentPropsWithoutRef<typeof Primitive.Root>
 >(({ className, children, ...props }, ref) => (
@@ -117,7 +117,7 @@ Indicator.displayName =
 
 export {
   TriggerStyle,
-  ,
+  NavigationMenu,
   List,
   Item,
   Content,

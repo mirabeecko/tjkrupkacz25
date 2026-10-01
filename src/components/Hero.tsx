@@ -44,14 +44,14 @@ const Hero: React.FC = () => {
           <div className="inline-block mb-8 animate-[fade-in_1s_ease-out]">
             <img 
               src="lovable-uploads/tjk-logo-light.png" 
-              alt="TJK Krupka" 
+              alt="Tělovýchovná jednota Krupka" 
               className="h-20 md:h-24 drop-shadow-lg"
             />
           </div>
           
           <h1 className="font-bold text-4xl md:text-6xl lg:text-7xl leading-tight mb-6 animate-[counter-up_1s_ease-out_0.2s_both] drop-shadow-lg">
             Zažij Krušné hory 
-            <span className="block text-tjk-orange mt-2">naplno s TJK Krupka!</span>
+            <span className="block text-tjk-orange mt-2">naplno s Tělovýchovnou jednotou Krupka!</span>
           </h1>
           
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 opacity-90 animate-[counter-up_1s_ease-out_0.4s_both]">

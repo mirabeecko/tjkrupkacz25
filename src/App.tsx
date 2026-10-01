@@ -46,6 +46,7 @@ import AktivityProDeti from "./pages/AktivityProDeti";
 import Dashboard from "./pages/Dashboard";
 
 import { CartProvider } from "./context/CartContext";
+import StickyCta from "./components/StickyCta";
 import { FEATURES } from "./config/features";
 
 const queryClient = new QueryClient();
@@ -60,6 +61,7 @@ const App = () => {
         <TooltipProvider>
           <CartProvider>
             <Sonner />
+            <StickyCta />
             <BrowserRouter>
               <ScrollToTop />
               {isStatsSubdomain ? (
